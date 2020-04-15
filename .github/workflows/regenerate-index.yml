@@ -1,0 +1,19 @@
+name: Regenerate the vulnerability index
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: tools/indexer
+
+jobs:
+  regenerate-index:
+    name: Create the vulnerability index
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install npm dependencies
+        run: npm i
+      - name: Run indexer
+        run: node index.js
