@@ -17,8 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - uses: actions/cache@v1
         with:
-          node-version: '10.x'
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install npm dependencies
         run: npm ci
       - name: Run indexer
@@ -29,6 +33,6 @@ jobs:
           git config --local user.name "huntr-helper"
           git commit -m "Regenerated the bounty index" -a
       - name: Push the changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.5.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
