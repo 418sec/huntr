@@ -13,7 +13,11 @@ jobs:
     name: Create the vulnerability index
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
       - name: Install npm dependencies
-        run: npm i
+        run: npm ci
       - name: Run indexer
         run: node index.js
