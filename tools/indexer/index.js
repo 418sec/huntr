@@ -9,7 +9,7 @@ const homeDir = "../../"
 const rootIndexFilename = "index.json"
 const rootIndexPath = homeDir + rootIndexFilename
 
-const vulnerabilityDir = homeDir + "Vulnerabilities"
+const vulnerabilityDir = homeDir + "vulnerabilities"
 const vulnerabilityFilename = "vulnerability.json"
 
 const writeFileAsync = promisify(fs.writeFile)
@@ -63,6 +63,3 @@ fdir.async(vulnerabilityDir, {
         // Write bounties to the index file
         await writeFileAsync(rootIndexPath, JSON.stringify(bounties));
     })
-    .catch(err => {
-        console.log("Error during index generation:", err)
-    });
