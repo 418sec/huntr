@@ -1,7 +1,9 @@
 'use strict';
 
-const { promisify } = require("util");
+
 const fs = require("fs");
+const { promisify } = require("util");
+
 const fdir = require("fdir");
 
 const homeDir = "../../"
@@ -13,23 +15,6 @@ const vulnerabilityDir = homeDir + "vulnerabilities"
 const vulnerabilityFilename = "vulnerability.json"
 
 const writeFileAsync = promisify(fs.writeFile)
-
-function cvssScoreToText(score) {
-    switch (true) {
-        case (score == 0):
-            return "None"
-        case (score > 0 && score < 4):
-            return "Low";
-        case (score >= 4 && score < 7):
-            return "Medium";
-        case (score >= 7 && score < 9):
-            return "High";
-        case (score >= 9 && score < 10):
-            return "Critical";
-        default:
-            return "Unknown";
-    }
-}
 
 // Find all open bounties
 fdir.async(vulnerabilityDir, {
@@ -45,15 +30,13 @@ fdir.async(vulnerabilityDir, {
             const vulnerability = require(vulnerabilityDir + vulnerabilityFilename);
             const bounty = require(bountyPath);
             
-            
-
             bounties.push({
                 "Registry": vulnerability.Package.Registry,
                 "PackageName": vulnerability.Package.Name,
                 "PackageVulnerabilityID": vulnerability.PackageVulnerabilityID,
                 "CodebasePrimaryLanguage": vulnerability.Repository.Codebase[0],
                 "VulnerabilityDescription": vulnerability.CWE.Description,
-                "Severity": cvssScoreToText(vulnerability.CVSS.Score),
+                "Severity": vulnerability.CVSS.Score,
                 "AffectedVersionRange": vulnerability.AffectedVersionRange,
                 "DisclosureDate": vulnerability.DisclosureDate,
                 "Bounty": bounty.Bounty
