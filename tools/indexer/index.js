@@ -45,8 +45,6 @@ fdir.async(vulnerabilityDir, {
             const vulnerability = require(vulnerabilityDir + vulnerabilityFilename);
             const bounty = require(bountyPath);
             
-            
-
             bounties.push({
                 "Registry": vulnerability.Package.Registry,
                 "PackageName": vulnerability.Package.Name,
