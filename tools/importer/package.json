@@ -1,0 +1,11 @@
+{
+  "name": "importer",
+  "version": "1.0.0",
+  "description": "This file injests bounties from the deprecated bounty data format (relational db) and converts into the new data format (document store)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "418sec",
+  "license": "ISC"
+}
