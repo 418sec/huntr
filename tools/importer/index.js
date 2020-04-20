@@ -9,7 +9,7 @@ const writeFileAsync = promisify(fs.writeFile);
 const mkdirAsync = promisify(fs.mkdir);
 
 const homeDir = "../../"
-const vulnerabilityDir = homeDir + "vulnerabilities"
+const bountyDir = homeDir + "bounties"
 
 // This roughly converts the language to a registry. Vulnerabilities will need to be reviewed before publishing
 function convertLanguageToRegistry(language) {
@@ -33,15 +33,15 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
     const registry = convertLanguageToRegistry(oldBounty.RepositoryLanguage);
     const packageName = oldBounty.PackageName.toLowerCase();
     const packageVulnerabilityID = "1"; // Hardcoded because we don't currently have multiple vulnerabilities against a single package
-    const thisVulnerabiltyDir = `${vulnerabilityDir}/${registry}/${packageName}/${packageVulnerabilityID}/`;
+    const thisBountyDir = `${bountyDir}/${registry}/${packageName}/${packageVulnerabilityID}/`;
 
     // Create required directories for this vulnerability
-    await mkdirAsync(thisVulnerabiltyDir, { recursive: true });
+    await mkdirAsync(thisBountyDir, { recursive: true });
 
     // Prepare the description file and save it
     const description = unescape(oldBounty.VulnerabilityDetail);
-    await writeFileAsync(thisVulnerabiltyDir + 'README.md', description);
-    console.log("Successfully wrote:", thisVulnerabiltyDir + 'README.md');
+    await writeFileAsync(thisBountyDir + 'README.md', description);
+    console.log("Successfully wrote", thisBountyDir + 'README.md');
 
     // Prepare the vulnerability file and save it
     const vulnerability = {
@@ -95,8 +95,8 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
             }
         ]
     }
-    await writeFileAsync(thisVulnerabiltyDir + 'vulnerability.json', JSON.stringify(vulnerability, null, 4));
-    console.log("Successfully wrote:", thisVulnerabiltyDir + 'vulnerability.json');
+    await writeFileAsync(thisBountyDir + 'vulnerability.json', JSON.stringify(vulnerability, null, 4));
+    console.log("Successfully wrote", thisBountyDir + 'vulnerability.json');
 
     // Prepare the bounty file and save it
     const bounty = {
@@ -112,6 +112,6 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
             }
         ]
     };
-    await writeFileAsync(thisVulnerabiltyDir + 'bounty.json', JSON.stringify(bounty, null, 4));
-    console.log("Successfully wrote:", thisVulnerabiltyDir + 'bounty.json');
+    await writeFileAsync(thisBountyDir + 'bounty.json', JSON.stringify(bounty, null, 4));
+    console.log("Successfully wrote", thisBountyDir + 'bounty.json');
 })
