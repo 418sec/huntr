@@ -11,13 +11,13 @@ const homeDir = "../../"
 const rootIndexFilename = "index.json"
 const rootIndexPath = homeDir + rootIndexFilename
 
-const vulnerabilityDir = homeDir + "vulnerabilities"
+const bountyDir = homeDir + "bounties"
 const vulnerabilityFilename = "vulnerability.json"
 
 const writeFileAsync = promisify(fs.writeFile)
 
 // Find all open bounties
-fdir.async(vulnerabilityDir, {
+fdir.async(bountyDir, {
         searchFn: path => path.includes("bounty.json")
     })
     .then(async bountyPaths => {
@@ -25,9 +25,9 @@ fdir.async(vulnerabilityDir, {
 
         // Iterate through the bounties and add them to the index array
         bountyPaths.forEach(bountyPath => {
-            const vulnerabilityDir = bountyPath.split("bounty.json")[0];
+            const bountyDir = bountyPath.split("bounty.json")[0];
         
-            const vulnerability = require(vulnerabilityDir + vulnerabilityFilename);
+            const vulnerability = require(bountyDir + vulnerabilityFilename);
             const bounty = require(bountyPath);
             
             bounties.push({
