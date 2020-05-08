@@ -1,0 +1,13 @@
+{
+    "ForkURL": "https://github.com/418sec/Django-CRM",
+    "Bounty": {
+        "Credit": 880,
+        "Cash": 25
+    },
+    "References": [
+        {
+            "Description": "Github Issue",
+            "URL": ""
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+name: Regenerate the bounty index
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'bounties/**'
+
+defaults:
+  run:
+    working-directory: tools/indexer
+
+jobs:
+  regenerate-index:
+    name: Regenerate the index
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Run indexer
+        run: node index.js
+      - name: Commit new index
+        run: |
+          git config --local user.email "61279246+huntr-helper@users.noreply.github.com"
+          git config --local user.name "huntr-helper"
+          git commit -m "Regenerated the bounty index" -a
+      - name: Push the changes
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

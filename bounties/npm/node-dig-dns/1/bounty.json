@@ -1,0 +1,13 @@
+{
+    "ForkURL": "https://github.com/418sec/node-dig-dns",
+    "Bounty": {
+        "Credit": 780,
+        "Cash": 25
+    },
+    "References": [
+        {
+            "Description": "Github Issue",
+            "URL": ""
+        }
+    ]
+}
