@@ -79,12 +79,6 @@ This contains all the metadata related to the bounty. This file only persists wh
     "Bounty": {
         "Credit": ,
         "Cash": 
-    },
-    "References": [
-        {
-            "Description": "",
-            "URL": ""
-        }
-    ]
+    }
 }
 ```

@@ -48,6 +48,7 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
         "PackageVulnerabilityID": "1",
         "DisclosureDate": oldBounty.DatePublished,
         "AffectedVersionRange": "*",
+        "Summary": oldBounty.VulnerabilityType,
         "Author": {
             "Username": "",
             "Name": ""
@@ -104,13 +105,7 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
         "Bounty": {
             "Credit": oldBounty.CreditReward,
             "Cash": oldBounty.CashReward
-        },
-        "References": [
-            {
-                "Description": "Github Issue",
-                "URL": ""
-            }
-        ]
+        }
     };
     await writeFileAsync(thisBountyDir + 'bounty.json', JSON.stringify(bounty, null, 4));
     console.log("Successfully wrote", thisBountyDir + 'bounty.json');

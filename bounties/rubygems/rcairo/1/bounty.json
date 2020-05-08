@@ -3,11 +3,5 @@
     "Bounty": {
         "Credit": 550,
         "Cash": 25
-    },
-    "References": [
-        {
-            "Description": "Github Issue",
-            "URL": ""
-        }
-    ]
+    }
 }
