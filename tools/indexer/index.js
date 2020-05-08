@@ -35,7 +35,7 @@ fdir.async(bountyDir, {
                 "PackageName": vulnerability.Package.Name,
                 "PackageVulnerabilityID": vulnerability.PackageVulnerabilityID,
                 "CodebasePrimaryLanguage": vulnerability.Repository.Codebase[0],
-                "VulnerabilityDescription": vulnerability.CWEs[0].Description,
+                "VulnerabilityDescription": vulnerability.Summary,
                 "Severity": vulnerability.CVSS.Score,
                 "AffectedVersionRange": vulnerability.AffectedVersionRange,
                 "DisclosureDate": vulnerability.DisclosureDate,
