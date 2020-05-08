@@ -1,1 +1,0 @@
-Affected versions of this package are vulnerable to Cross-site Scripting (XSS) via the content of a post. It an attacker to embed a malicious script into a vulnerable page, which is then executed when a victim views the page.

@@ -1,1 +1,0 @@
-Affected versions of this package are vulnerable to Unauthorized File Access. It is possible to access any git repository by using absolute paths, which may allow attackers to access private repositories.
