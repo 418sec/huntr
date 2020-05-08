@@ -1,1 +1,0 @@
-Affected versions of this package are vulnerable to Cross-site Scripting (XSS) attacks via a filename that is mishandled in File Manager.
