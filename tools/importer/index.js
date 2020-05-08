@@ -57,10 +57,10 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
             "Name": oldBounty.PackageName.toLowerCase(),
             "URL": ""
         },
-        "CWE": {
+        "CWEs": [{
             "ID": "",
             "Description": ""
-        },
+        }],
         "CVSS": {
             "Version": "3.1", // Standard version that was used for Score creation
             "AV": "",
