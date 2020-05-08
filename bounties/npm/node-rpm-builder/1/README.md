@@ -1,3 +1,4 @@
+# Overview
 Affected versions execute arbitrary commands remotely inside the victim's PC. The issue occurs because user input is formatted inside a `command` that will be executed without any checks. The `cmd` list is stringed and executed inside the `exec` function without checking the `buildRoot` and `specFile` variables, which are controlled by the user, leading to `RCE`.
 
 ## References

