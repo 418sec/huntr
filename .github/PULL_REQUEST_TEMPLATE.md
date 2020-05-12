@@ -1,12 +1,10 @@
 ## ✍️ Description
 
-_Please provide a clear and concise description that includes the type of vulnerability and the impacted package._
-
-...
+<!-- Please provide a clear and concise description that includes the type of vulnerability and the impacted package. -->
 
 ## 🕵️‍♂️ Proof of Concept
 
-_Please provide a code sample or use case that demonstrates the vulnerability and the outcome of this vulnerability. You can provide a code example or screenshot. For example:_
+<!-- Please provide a code sample or use case that demonstrates the vulnerability and the outcome of this vulnerability. You can provide a code example or screenshot. For example:
 ```js
 // poc.js
 var package = require('vulnerable-package')
@@ -15,27 +13,16 @@ var query = {
 };
 package.lookup(query, function(){ console.log('Done!') })
 ```
----
-```
-🖋️ Write your proof of concept here...
-```
----
-```
-📸 Put your screenshots here...
-```
----
+
+or provide a screenshot! -->
 
 ## 💥 Impact
 
-_What security impact could the attacker achieve by exploiting this vulnerability?_
-
-...
+<!-- What security impact could the attacker achieve by exploiting this vulnerability? -->
 
 ## ☎️ Contact
 
-_Have you made any contact to the package author/maintainer(s) or to another disclosure program?_
-
-...
+<!-- Have you made any contact to the package author/maintainer(s) or to another disclosure program? -->
 
 ## ✅ Checklist
 
