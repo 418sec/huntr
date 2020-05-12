@@ -1,7 +1,7 @@
 ## 💻 Repository
 _Please provide the repository URL where you have found a vulnerability._
 
-Repository: `https://github.com/...`
+**Repository:** `https://github.com/...`
 
 ## 🔗 Permalinks
 
@@ -22,10 +22,9 @@ Title:
 
 _Please provide a direct link to the package and registry that hosts this package (e.g. NPM, PyPI). For example, is-promise would be [https://www.npmjs.com/package/is-promise](https://www.npmjs.com/package/is-promise) as it is served by the NPM package manager._
 
-Package Link: 
+**Package Link:**
 
 ## 🕵️‍♂️ Proof of Concept
-<!-- A way (code) to prove that the package is vulnerable -->
 
 _Please provide a code sample or use case that demonstrates the vulnerability and the outcome of this vulnerability. You can provide a code example or screenshot. For example:_
 ```js
@@ -50,6 +49,8 @@ package.lookup(query, function(){ console.log('Done!') })
 
 _What security impact could the attacker achieve by exploiting this vulnerability?_
 
+...
+
 ## References
 <!-- Any supporting materials and references -->
 _Please provide any other supporting material or references._
@@ -60,9 +61,9 @@ _Please provide any other supporting material or references._
 
 ## ☎️ Contact
 
-<!-- Any contact made to the package owner/maintainer(s) or to another bug bounty board -->
-
 _Have you made any contact to the package author/maintainer(s) or to another disclosure program?_
+
+...
 
 
 ## ✅ Checklist
