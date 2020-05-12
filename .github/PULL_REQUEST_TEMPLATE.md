@@ -1,9 +1,9 @@
-### 💻 Repository
+## 💻 Repository
 _Please provide the repository URL where you have found a vulnerability._
 
 Repository: `https://github.com/...`
 
-### 🔗 Permalinks
+## 🔗 Permalinks
 
 _Now let us know specifically with [permalinks]([https://help.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet](https://help.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet)), where the vulnerabile code is and a brief description of the issue._
 
@@ -12,19 +12,19 @@ _Now let us know specifically with [permalinks]([https://help.github.com/en/gith
 3. `https://github.com/...`
 4. `...`
 
-### ✍️ Title
+## ✍️ Title
 
 _Please provide a clear and concise title that includes the type of vulnerability and the impacted package (e.g. Remote Code Execution: is-promise)._
 
 Title:
 
-### 📦 Package URL
+## 📦 Package URL
 
 _Please provide a direct link to the package and registry that hosts this package (e.g. NPM, PyPI). For example, is-promise would be [https://www.npmjs.com/package/is-promise](https://www.npmjs.com/package/is-promise) as it is served by the NPM package manager._
 
 Package Link: 
 
-### 🕵️‍♂️ Proof of Concept
+## 🕵️‍♂️ Proof of Concept
 <!-- A way (code) to prove that the package is vulnerable -->
 
 _Please provide a code sample or use case that demonstrates the vulnerability and the outcome of this vulnerability. You can provide a code example or screenshot. For example:_
@@ -46,11 +46,11 @@ package.lookup(query, function(){ console.log('Done!') })
 ```
 ---
 
-### 💥 Impact
+## 💥 Impact
 
 _What security impact could the attacker achieve by exploiting this vulnerability?_
 
-### References
+## References
 <!-- Any supporting materials and references -->
 _Please provide any other supporting material or references._
 
@@ -58,14 +58,14 @@ _Please provide any other supporting material or references._
 - `...`
 - `...`
 
-### ☎️ Contact
+## ☎️ Contact
 
 <!-- Any contact made to the package owner/maintainer(s) or to another bug bounty board -->
 
 _Have you made any contact to the package author/maintainer(s) or to another disclosure program?_
 
 
-### ✅ Checklist
+## ✅ Checklist
 
 _Please put an `x` in each box to confirm you have completed the checklist._
 
