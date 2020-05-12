@@ -51,8 +51,8 @@ _What security impact could the attacker achieve by exploiting this vulnerabilit
 
 ...
 
-## References
-<!-- Any supporting materials and references -->
+## 📁 References
+
 _Please provide any other supporting material or references._
 
 - `...`
