@@ -26,7 +26,7 @@ or provide a screenshot! -->
 
 ## ✅ Checklist
 
-_Please put an `x` in each box to confirm you have completed the checklist._
+<!-- Please put an `x` in each box to confirm you have completed the checklist. -->
 
 **In my pull request, I have:**
 
