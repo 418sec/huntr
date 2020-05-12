@@ -1,28 +1,8 @@
-## 💻 Repository
-_Please provide the repository URL where you have found a vulnerability._
+## ✍️ Description
 
-**Repository:** `https://github.com/...`
+_Please provide a clear and concise description that includes the type of vulnerability and the impacted package._
 
-## 🔗 Permalinks
-
-_Now let us know specifically with [permalinks]([https://help.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet](https://help.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet)), where the vulnerabile code is and a brief description of the issue._
-
-1. `https://github.com/...`
-2. `https://github.com/...`
-3. `https://github.com/...`
-4. `...`
-
-## ✍️ Title
-
-_Please provide a clear and concise title that includes the type of vulnerability and the impacted package (e.g. Remote Code Execution: is-promise)._
-
-Title:
-
-## 📦 Package URL
-
-_Please provide a direct link to the package and registry that hosts this package (e.g. NPM, PyPI). For example, is-promise would be [https://www.npmjs.com/package/is-promise](https://www.npmjs.com/package/is-promise) as it is served by the NPM package manager._
-
-**Package Link:**
+...
 
 ## 🕵️‍♂️ Proof of Concept
 
@@ -51,20 +31,11 @@ _What security impact could the attacker achieve by exploiting this vulnerabilit
 
 ...
 
-## 📁 References
-
-_Please provide any other supporting material or references._
-
-- `...`
-- `...`
-- `...`
-
 ## ☎️ Contact
 
 _Have you made any contact to the package author/maintainer(s) or to another disclosure program?_
 
 ...
-
 
 ## ✅ Checklist
 
