@@ -21,6 +21,7 @@ This contains all the metadata related to the vulnerability. This file is create
     "PackageVulnerabilityID": "",
     "DisclosureDate": "",
     "AffectedVersionRange": "",
+    "Summary": "",
     "Author": {
         "Username": "",
         "Name": ""
