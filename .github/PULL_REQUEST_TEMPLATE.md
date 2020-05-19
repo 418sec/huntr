@@ -1,33 +1,39 @@
-## Title
-<!-- A clear and concise title that includes the type of vulnerability and the impacted package -->
+## ✍️ Description
 
+<!-- Please provide a clear and concise description that includes the type of vulnerability and the impacted package. -->
 
-## Package URL
-<!-- A direct link (NPM, PyPI etc) to the package with the vulnerability you are disclosing -->
+## 🕵️‍♂️ Proof of Concept
 
+<!-- Please provide a code sample or use case that demonstrates the vulnerability and the outcome of this vulnerability. You can provide a code example or screenshot. For example:
+```js
+// poc.js
+var package = require('vulnerable-package')
+var query = {
+	pArgs:['test','; touch HACKED; #']
+};
+package.lookup(query, function(){ console.log('Done!') })
+```
 
-## Proof of Concept
-<!-- A way (code) to prove that the package is vulnerable -->
+or provide a screenshot! -->
 
+## 💥 Impact
 
-## Impact
 <!-- What security impact could the attacker achieve by exploiting this vulnerability? -->
 
+## ☎️ Contact
 
-## References
-<!-- Any supporting materials and references -->
+<!-- Have you made any contact to the package author/maintainer(s) or to another disclosure program? -->
 
+## ✅ Checklist
 
-## Contact
-<!-- Any contact made to the package owner/maintainer(s) or to another bug bounty board -->
+<!-- Please put an `x` in each box to confirm you have completed the checklist. -->
 
+**In my pull request, I have:**
 
-## Checklist
-<!-- Put an `x` in all to confirm the following: -->
-- [ ] I've created and populated the README.md and vulnerability.json files
-- [ ] I've provided the package repository URL and provided any applicable permalinks
-- [ ] I've defined all the applicable weaknesses (CWE's)
-- [ ] I've proposed the CVSS vectors
-- [ ] This vulnerability affects the latest version of the package released
-- [ ] A fix does not currently exist to remediate this vulnerability
-- [ ] I've complied with all applicable laws
+- [ ] _Created and populated the `README.md` and `vulnerability.json` files_
+- [ ] _Provided the repository URL and any applicable [permalinks]([https://help.github.com/en/github/managing-files-in-a-repository/getting-permanent-links-to-files](https://help.github.com/en/github/managing-files-in-a-repository/getting-permanent-links-to-files))_
+- [ ] _Defined all the applicable weaknesses ([CWEs]([https://cwe.mitre.org/](https://cwe.mitre.org/)))_
+- [ ] _Proposed the CVSS vector items i.e. User Interaction, Attack Complexity_
+- [ ] _Checked that the vulnerability affects the latest version of the package released_
+- [ ] _Checked that a fix does not currently exist that remediates this vulnerability_
+- [ ] _Complied with all applicable laws_
