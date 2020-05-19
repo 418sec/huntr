@@ -3,7 +3,7 @@
 
 Affected versions of this package are vulnerable to Arbitrary Code Execution via generating a  `RangeError: Maximum call stack size exceeded`.
 
-## Proof of Concept (Credit: Jonathan Leitschuh)
+# Proof of Concept (Credit: Jonathan Leitschuh)
 ```js
 const theFunction = function () {
   const f = Buffer.prototype.write;
