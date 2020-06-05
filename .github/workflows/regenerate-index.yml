@@ -2,7 +2,7 @@ name: Regenerate the bounty index
 on:
   push:
     branches:
-      - master
+      - staging
     paths:
       - 'bounties/**'
 
