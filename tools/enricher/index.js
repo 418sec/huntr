@@ -27,7 +27,7 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
         const reposioryName = repositoryUrlParts[4]
 
         // Check if there are existing GitHub Issue's in the metadata
-        const githubIssueUrls = vulnerabilityDetails.References.filter(reference => reference["Description"].equalsIgnoreCase("GitHub Issue"))
+        const githubIssueUrls = vulnerabilityDetails.References.filter(reference => reference.Description?.equalsIgnoreCase?.("GitHub Issue"))
 
         if(githubIssueUrls){
             // Bounty has a GitHub Issue
@@ -40,31 +40,34 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
 
                 console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/${githubIssueNumber}`)
                 //Add a comment to the issue
-                // octokit.issues.createComment({
-                //     owner: githubIssueOwner,
-                //     repo: githubIssueRepo,
-                //     issue_number: githubIssueNumber,
-                //     body: '' //TODO: Add comment body
-                // })
+                // if(process.env.GITHUB_TOKEN)
+                //     octokit.issues.createComment({
+                //         owner: githubIssueOwner,
+                //         repo: githubIssueRepo,
+                //         issue_number: githubIssueNumber,
+                //         body: '' //TODO: Add comment body
+                //     })
             })
         } else {
             // Bounty does not have a GitHub Issue
             console.log('Creating a new issue for:', `https://github.com/${repositoryOwner}/${reposioryName}`)
             // Create an issue
-            // octokit.issues.create({
-            //     owner: repositoryOwner,
-            //     repo: reposioryName,
-            //     title: '', //TODO: Add issue title
-            //     body: '' //TODO: Add issue body
-            // })
+            // if(process.env.GITHUB_TOKEN)
+            //     octokit.issues.create({
+            //         owner: repositoryOwner,
+            //         repo: reposioryName,
+            //         title: '', //TODO: Add issue title
+            //         body: '' //TODO: Add issue body
+            //     })
         }
         console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${reposioryName}`)
         
         // Try to create fork
-        octokit.repos.createFork({
-            owner: repositoryOwner,
-            repo: reposioryName,
-            organization: '418sec'
-        })
+        if(process.env.GITHUB_TOKEN)
+            octokit.repos.createFork({
+                owner: repositoryOwner,
+                repo: reposioryName,
+                organization: '418sec'
+            })
     })
 })

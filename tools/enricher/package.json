@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@octokit/rest": "^17.10.0"
+  },
+  "engines": {
+    "node": ">14.4.0"
   }
 }
