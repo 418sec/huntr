@@ -1,12 +1,23 @@
-# Welcome
-Hello and welcome to [huntr](https://www.huntr.dev)
+![[huntr-full]](https://github.com/418sec/huntr/blob/staging/huntr%20full.png)
 
+# huntr
+[huntr](https://www.huntr.dev) is a bug bounty board specifically for identifying and fixing vulnerabilities in open source code. 
 
-This is the huntr public repo, where you will find:
+# Readme
+Hello and welcome to the huntr public repo, where you will find:
 - [Bounty templates](https://github.com/418sec/huntr/tree/master/bounties)
 - Bounty files
-- Other Useful information
+- Misc information
 
+# Updates
+ 
+ We develop and release new features bi-weekly, so remember to star and watch the Repo to make sure you are notified of significant updates.
+
+<p align=”center”> 
+  <img src="https://github.com/418sec/huntr/blob/staging/huntrrepogif.mov" width="450" height="375" /> 
+</p>
+
+# Useful links
 
 If you'd like to disclose a vulnerability, [click here](https://github.com/418sec/huntr/compare/master...staging?template=disclose-vulnerability.md)
 
