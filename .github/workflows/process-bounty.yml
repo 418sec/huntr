@@ -2,7 +2,7 @@ name: Bounty processing
 on:
   push:
     branches:
-      - staging
+      - master
     paths:
       - 'bounties/**'
 
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        ref: 'staging'
+        ref: 'master'
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
