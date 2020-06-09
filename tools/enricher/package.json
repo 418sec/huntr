@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@octokit/rest": "^17.10.0"
+    "@octokit/rest": "^17.10.0",
+    "mustache": "^4.0.1"
   },
   "engines": {
     "node": ">14.4.0"
-  }
+  },
+  "devDependencies": {}
 }

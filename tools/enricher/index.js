@@ -1,6 +1,11 @@
 'use strict';
 const fs = require('fs')
-const { Octokit } = require("@octokit/rest")
+const { Octokit } = require('@octokit/rest')
+const Mustache = require('mustache')
+
+const githubIssueCommentBodyTemplate = fs.readFileSync('./github-issue-comment-body.mustache', 'utf8')
+const githubIssueTitleTemplate = fs.readFileSync('./github-issue-title.mustache', 'utf8')
+const githubIssueBodyTemplate = fs.readFileSync('./github-issue-body.mustache', 'utf8')
 
 const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
@@ -19,7 +24,9 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
     newBounties.forEach(bountyFilePath => {
         const bountyDir = bountyFilePath.split('/bounty.json')[0]
         console.log('Enriching bounty found in:', bountyDir)
-        const vulnerabilityDetails = JSON.parse(fs.readFileSync(`../../${bountyDir}/vulnerability.json`))
+
+        const vulnerabilityDescription = fs.readFileSync(`../../${bountyDir}/README.md`, 'utf8')
+        const vulnerabilityDetails = JSON.parse(fs.readFileSync(`../../${bountyDir}/vulnerability.json`, 'utf8'))
 
         // Let's work out the root repositry. Format: https://github.com/:owner/:repo
         const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
@@ -28,8 +35,8 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
 
         // Check if there are existing GitHub Issue's in the metadata
         const githubIssueUrls = vulnerabilityDetails.References.filter(reference => reference.Description?.equalsIgnoreCase?.("GitHub Issue"))
-
-        if(githubIssueUrls){
+        
+        if(githubIssueUrls && githubIssueUrls.length > 0){
             // Bounty has a GitHub Issue
             githubIssueUrls.forEach(githubIssueUrl => {
                 // Format: https://github.com/:owner/:repo/issues/:number
@@ -39,30 +46,46 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
                 const githubIssueNumber = githubIssueUrlParts[6]
 
                 console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/${githubIssueNumber}`)
+
+                const githubIssueCommentBody = githubIssueCommentBodyTemplate
+                console.log('Issue Comment body:', githubIssueCommentBody)
+
                 //Add a comment to the issue
-                // if(process.env.GITHUB_TOKEN)
-                //     octokit.issues.createComment({
-                //         owner: githubIssueOwner,
-                //         repo: githubIssueRepo,
-                //         issue_number: githubIssueNumber,
-                //         body: '' //TODO: Add comment body
-                //     })
+                if(process.env.GITHUB_TOKEN)
+                    octokit.issues.createComment({
+                        owner: githubIssueOwner,
+                        repo: githubIssueRepo,
+                        issue_number: githubIssueNumber,
+                        body: githubIssueCommentBody
+                    })
             })
         } else {
             // Bounty does not have a GitHub Issue
             console.log('Creating a new issue for:', `https://github.com/${repositoryOwner}/${reposioryName}`)
+
+            const githubIssueTitle = Mustache.render(githubIssueTitleTemplate, {
+                vulnerabilitySummary: vulnerabilityDetails.Summary
+            })
+            console.log('Issue Title:', githubIssueTitle)
+            
+            const githubIssueBody = Mustache.render(githubIssueBodyTemplate, { 
+                username: vulnerabilityDetails.Author.Username, 
+                vulnerabilityDescription, 
+            })
+            console.log('Issue Body:', githubIssueBody)
+
             // Create an issue
-            // if(process.env.GITHUB_TOKEN)
-            //     octokit.issues.create({
-            //         owner: repositoryOwner,
-            //         repo: reposioryName,
-            //         title: '', //TODO: Add issue title
-            //         body: '' //TODO: Add issue body
-            //     })
+            if(process.env.GITHUB_TOKEN)
+                octokit.issues.create({
+                    owner: repositoryOwner,
+                    repo: reposioryName,
+                    title: githubIssueTitle,
+                    body: githubIssueBody
+                })
         }
         console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${reposioryName}`)
         
-        // Try to create fork
+        // Try to create fork (async)
         if(process.env.GITHUB_TOKEN)
             octokit.repos.createFork({
                 owner: repositoryOwner,
