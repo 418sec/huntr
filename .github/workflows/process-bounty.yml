@@ -1,4 +1,4 @@
-name: Regenerate the bounty index
+name: Bounty processing
 on:
   push:
     branches:
@@ -6,23 +6,42 @@ on:
     paths:
       - 'bounties/**'
 
-defaults:
-  run:
-    working-directory: tools/indexer
-
 jobs:
-  regenerate-index:
-    name: Regenerate the index
+  setup:
+    name: Setup the environment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        ref: 'master'
       - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
       - uses: actions/cache@v1
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+  enrichment:
+    name: Enriching the bounty data
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/enricher
+    steps:
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Run enricher
+        run: node index.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  regenerate-index:
+    name: Regenerating the index
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/indexer
+    steps:
       - name: Install npm dependencies
         run: npm ci
       - name: Run indexer
@@ -33,7 +52,7 @@ jobs:
           git config --local user.name "huntr-helper"
           git commit -m "Regenerated the bounty index" -a
       - name: Push the changes
-        uses: ad-m/github-push-action@v0.5.0
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
