@@ -4,7 +4,7 @@ on:
     branches:
       - staging
     paths:
-      - 'bounties/**'
+      - 'bounties/**/bounty.json'
 
 jobs:      
   enrichment:
@@ -20,14 +20,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - uses: actions/cache@v1
+      - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - name: Install npm dependencies
         run: npm ci
       - name: Run enricher
@@ -35,7 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   regenerate-index:
-    name: Regenerae the index
+    name: Regenerate the index
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -47,14 +45,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - uses: actions/cache@v1
+      - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - name: Install npm dependencies
         run: npm ci
       - name: Run indexer
