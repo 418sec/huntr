@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# Welcome
-![[]](images/huntr%20full.png)
-Hello and welcome to [huntr](https://www.huntr.dev)
-=======
 ![[huntr-full]](https://github.com/418sec/huntr/blob/staging/docs/logo.png)
->>>>>>> fe495b937faaa5d6e222c12341a139f68709da62
 
 # huntr
 [huntr](https://www.huntr.dev) is a bug bounty board specifically for identifying and fixing vulnerabilities in open source code. 
