@@ -11,4 +11,3 @@ This can be leveraged to force a malicious update on Windows clients, effectivel
 Exploitation of this vulnerability requires the attacker to also have control over the update server, or alternatively a man-in-the-middle.
 
 A partial fix has been made available, blacklisting a small set of characters, but there are additional characters that can be used to exploit this vulnerability.
-
