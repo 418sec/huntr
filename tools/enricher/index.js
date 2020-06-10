@@ -51,7 +51,7 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
                 console.log('Issue Comment body:', githubIssueCommentBody)
 
                 //Add a comment to the issue
-                if(process.env.GITHUB_TOKEN)
+                if(process.env.GITHUB_TOKEN && false)
                     octokit.issues.createComment({
                         owner: githubIssueOwner,
                         repo: githubIssueRepo,
@@ -75,22 +75,28 @@ exec('git diff HEAD^ HEAD  --diff-filter=A --stat --name-only | grep \'bounty.js
             console.log('Issue Body:', githubIssueBody)
 
             // Create an issue
-            if(process.env.GITHUB_TOKEN)
-                octokit.issues.create({
+            if(process.env.GITHUB_TOKEN && false) {
+                const issueCreated = octokit.issues.create({
                     owner: repositoryOwner,
                     repo: reposioryName,
                     title: githubIssueTitle,
                     body: githubIssueBody
                 })
+            
+                // Add issue url to the vulnerability.json
+            }
         }
         console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${reposioryName}`)
         
-        // Try to create fork (async)
-        if(process.env.GITHUB_TOKEN)
-            octokit.repos.createFork({
+        // Try to create fork
+        if(process.env.GITHUB_TOKEN && false){
+            const forkCreated = octokit.repos.createFork({
                 owner: repositoryOwner,
                 repo: reposioryName,
                 organization: '418sec'
             })
+        
+            // Add fork url to the bounty.json
+        }  
     })
 })
