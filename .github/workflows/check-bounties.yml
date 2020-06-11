@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Check vulnerability.json
 
 on: [pull_request]
 
