@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: tools/
+        working-directory: tools/process-bounties
     steps:
       - uses: actions/checkout@v2
         with:
