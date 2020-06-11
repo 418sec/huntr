@@ -1,0 +1,27 @@
+{
+  "name": "huntr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "ajv": "6.12.2",
+    "glob": "7.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/418sec/huntr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/418sec/huntr/issues"
+  },
+  "homepage": "https://github.com/418sec/huntr#readme"
+}
