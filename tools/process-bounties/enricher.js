@@ -33,7 +33,8 @@ bounties.withPromise().then(async bountyPaths => {
 
             const bountyDir = bountyPath.split("/bounty.json")[0];
             const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
-            const vulnerabilityDetails = await fs.readFile(`${bountyDir}/vulnerability.json`, 'utf8').then(JSON.parse)
+            const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`
+            const vulnerabilityDetails = await fs.readFile(vulnerabilityDetailsPath, 'utf8').then(JSON.parse)
 
             // Let's work out the root repositry. Format: https://github.com/:owner/:repo
             const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
@@ -59,11 +60,17 @@ bounties.withPromise().then(async bountyPaths => {
 
                     //Add a comment to the issue
                     if (process.env.GITHUB_TOKEN && false)
-                        octokit.issues.createComment({
+                        await octokit.issues.createComment({
                             owner: githubIssueOwner,
                             repo: githubIssueRepo,
                             issue_number: githubIssueNumber,
                             body: githubIssueCommentBody
+                        })
+                        .then(response => {
+                            console.log('GitHub Issue Comment created:', response.data.html_url)
+                        })
+                        .catch(err => {
+                            console.log('Error creating issue comment:', err)
                         })
                 }
             } else {
@@ -82,29 +89,44 @@ bounties.withPromise().then(async bountyPaths => {
                 console.log('Issue Body:', githubIssueBody)
 
                 // Create an issue
-                if (process.env.GITHUB_TOKEN && false) {
-                    const issueCreated = octokit.issues.create({
+                if (process.env.GITHUB_TOKEN && false) 
+                    await octokit.issues.create({
                         owner: repositoryOwner,
                         repo: reposioryName,
                         title: githubIssueTitle,
                         body: githubIssueBody
                     })
-
-                    // Add issue url to the vulnerability.json
-                }
+                    .then(response => {
+                        // Add issue url to the vulnerability.json
+                        vulnerabilityDetails.References.push({
+                            "Description": "GitHub Issue",
+                            "URL": response.data.html_url
+                        })
+                        await fs.writeFile(vulnerabilityDetailsPath, JSON.stringify(vulnerabilityDetails));
+                        console.log('GitHub Issue added to vulnerability details:', response.data.html_url)
+                    })
+                    .catch(err => {
+                        console.log('Error creating issue:', err)
+                    })
             }
             console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${reposioryName}`)
 
             // Try to create fork
-            if (process.env.GITHUB_TOKEN && false) {
-                const forkCreated = octokit.repos.createFork({
+            if (process.env.GITHUB_TOKEN && false)
+                await octokit.repos.createFork({
                     owner: repositoryOwner,
                     repo: reposioryName,
                     organization: '418sec'
                 })
-
-                // Add fork url to the bounty.json
-            }
+                .then(response => {
+                    // Add fork url to the bounty.json
+                    bountyDetails.ForkURL = response.data.html_url
+                    await fs.writeFile(bountyPath, JSON.stringify(bountyDetails));
+                    console.log('ForkURL added to bounty details:', response.data.html_url)
+                })
+                .catch(err => {
+                    console.log('Error creating fork:', err)
+                })
         }
     }
 })
