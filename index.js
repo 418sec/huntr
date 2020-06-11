@@ -81,6 +81,6 @@ glob("bounties/**/vulnerability.json", [], function (_err, files) {
     files.map(file => {
         const data = require(`./${file}`)
         var valid = ajv.validate(schema, data);
-        if (!valid) console.log(file, ajv.errors);
+        if (!valid) throw file, ajv.errors
     })
 })
