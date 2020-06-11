@@ -1,4 +1,4 @@
-name: Bounty processing
+name: Process bounties
 on:
   push:
     branches:
@@ -7,12 +7,11 @@ on:
       - 'bounties/**/bounty.json'
 
 jobs:      
-  enrichment:
-    name: Enrich the bounty data
+  process-bounties:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: tools/enricher
+        working-directory: tools/
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,32 +28,11 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
       - name: Run enricher
-        run: node index.js
+        run: node enricher.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  regenerate-index:
-    name: Regenerate the index
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: tools/indexer
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: 'staging'
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install npm dependencies
-        run: npm ci
       - name: Run indexer
-        run: node index.js
+        run: node indexer.js
       - name: Commit new index
         run: |
           git config --local user.email "61279246+huntr-helper@users.noreply.github.com"
@@ -64,4 +42,3 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true

@@ -3,7 +3,7 @@
 const fs = require("fs");
 const { promisify } = require("util");
 
-const fdir = require("fdir");
+const fdir = require("fdir").default;
 
 const homeDir = "../../"
 
