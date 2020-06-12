@@ -30,7 +30,7 @@ jobs:
       - name: Run enricher
         run: node enricher.js
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
       - name: Run indexer
         run: node indexer.js
       - name: Commit new index
@@ -41,5 +41,5 @@ jobs:
       - name: Push the changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.HUNTR_HELPER_TOKEN }}
           branch: 'staging'
