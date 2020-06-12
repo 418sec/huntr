@@ -10,7 +10,7 @@ const homeDir = "../../"
 const bountyDir = homeDir + "bounties"
 
 const octokit = new Octokit({
-    auth: process.env.HUNTR_HELPER_TOKEN
+    auth: 'token ' + process.env.HUNTR_HELPER_TOKEN
 })
 
 const bounties = new fdir()
