@@ -10,7 +10,7 @@ const homeDir = "../../"
 const bountyDir = homeDir + "bounties"
 
 const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN
+    auth: process.env.HUNTR_HELPER_TOKEN
 })
 
 const bounties = new fdir()
@@ -39,7 +39,7 @@ bounties.withPromise().then(async bountyPaths => {
             // Let's work out the root repositry. Format: https://github.com/:owner/:repo
             const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
             const repositoryOwner = repositoryUrlParts[3]
-            const reposioryName = repositoryUrlParts[4]
+            const repositoryName = repositoryUrlParts[4]
 
             // Check if there are existing GitHub Issue's in the metadata
             const githubIssueUrls = vulnerabilityDetails.References.filter(reference => reference.Description?.equalsIgnoreCase?.("GitHub Issue"))
@@ -75,7 +75,7 @@ bounties.withPromise().then(async bountyPaths => {
                 }
             } else {
                 // Bounty does not have a GitHub Issue
-                console.log('Creating a new issue for:', `https://github.com/${repositoryOwner}/${reposioryName}`)
+                console.log('Creating a new issue for:', `https://github.com/${repositoryOwner}/${repositoryName}`)
 
                 const githubIssueTitle = Mustache.render(githubIssueTitleTemplate, {
                     vulnerabilitySummary: vulnerabilityDetails.Summary
@@ -92,7 +92,7 @@ bounties.withPromise().then(async bountyPaths => {
                 if (process.env.GITHUB_TOKEN)
                     await octokit.issues.create({
                         owner: repositoryOwner,
-                        repo: reposioryName,
+                        repo: repositoryName,
                         title: githubIssueTitle,
                         body: githubIssueBody
                     })
@@ -110,13 +110,13 @@ bounties.withPromise().then(async bountyPaths => {
                             console.log('Error creating issue:', err)
                         })
             }
-            console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${reposioryName}`)
+            console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${repositoryName}`)
 
             // Try to create fork
             if (process.env.GITHUB_TOKEN)
                 await octokit.repos.createFork({
                     owner: repositoryOwner,
-                    repo: reposioryName,
+                    repo: repositoryName,
                     organization: '418sec'
                 })
                     .then(async response => {
