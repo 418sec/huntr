@@ -129,7 +129,6 @@ bounties.withPromise().then(async bountyPaths => {
                     .catch(err => {
                         console.log('Error creating fork:', err)
                     })
-            break // This is to initially test the script (should limit execution to one iteration)
         }
     }
 })
