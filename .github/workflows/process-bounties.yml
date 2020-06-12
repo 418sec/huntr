@@ -37,7 +37,7 @@ jobs:
         run: |
           git config --local user.email "61279246+huntr-helper@users.noreply.github.com"
           git config --local user.name "huntr-helper"
-          git commit -m "Regenerated the bounty index" -a
+          git commit -m "Enriched bounties and regenerated the bounty index" -a
       - name: Push the changes
         uses: ad-m/github-push-action@v0.6.0
         with:
