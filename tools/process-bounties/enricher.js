@@ -102,7 +102,7 @@ bounties.withPromise().then(async bountyPaths => {
                                 "Description": "GitHub Issue",
                                 "URL": response.data.html_url
                             })
-                            await fs.writeFile(vulnerabilityDetailsPath, JSON.stringify(vulnerabilityDetails));
+                            await fs.writeFile(vulnerabilityDetailsPath, JSON.stringify(vulnerabilityDetails, null, 4));
                             console.log('GitHub Issue added to vulnerability details:', response.data.html_url)
                             // Need to commit the code back?
                         })
@@ -122,7 +122,7 @@ bounties.withPromise().then(async bountyPaths => {
                     .then(async response => {
                         // Add fork url to the bounty.json
                         bountyDetails.ForkURL = response.data.html_url
-                        await fs.writeFile(bountyPath, JSON.stringify(bountyDetails));
+                        await fs.writeFile(bountyPath, JSON.stringify(bountyDetails, null, 4));
                         console.log('ForkURL added to bounty details:', response.data.html_url)
                         // Need to commit this back?
                     })
