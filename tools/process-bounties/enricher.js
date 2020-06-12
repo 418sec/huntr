@@ -59,7 +59,7 @@ bounties.withPromise().then(async bountyPaths => {
                     //console.log('Issue Comment body:', githubIssueCommentBody)
 
                     //Add a comment to the issue
-                    if (process.env.GITHUB_TOKEN && false)
+                    if (process.env.GITHUB_TOKEN)
                         await octokit.issues.createComment({
                             owner: githubIssueOwner,
                             repo: githubIssueRepo,
@@ -89,7 +89,7 @@ bounties.withPromise().then(async bountyPaths => {
                 //console.log('Issue Body:', githubIssueBody)
 
                 // Create an issue
-                if (process.env.GITHUB_TOKEN && false)
+                if (process.env.GITHUB_TOKEN)
                     await octokit.issues.create({
                         owner: repositoryOwner,
                         repo: reposioryName,
@@ -113,7 +113,7 @@ bounties.withPromise().then(async bountyPaths => {
             console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${reposioryName}`)
 
             // Try to create fork
-            if (process.env.GITHUB_TOKEN && false)
+            if (process.env.GITHUB_TOKEN)
                 await octokit.repos.createFork({
                     owner: repositoryOwner,
                     repo: reposioryName,
