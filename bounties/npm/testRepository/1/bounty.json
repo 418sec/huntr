@@ -1,8 +1,7 @@
 {
-    "ForkURL":"",
-    "Bounty":
-    {
-        "Credit":0,
-        "Cash":0
+    "ForkURL": "https://github.com/418sec/testRepository",
+    "Bounty": {
+        "Credit": 0,
+        "Cash": 0
     }
 }
