@@ -42,5 +42,5 @@ bounties.withPromise().then(async bountyPaths => {
     }
     
     // Write bounties to the index file
-    await fs.writeFile(rootIndexPath, JSON.stringify(bounties));
+    await fs.writeFile(rootIndexPath, JSON.stringify(bountiesToIndex));
 })
