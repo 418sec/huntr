@@ -1,6 +1,6 @@
 # Overview
 
-[jison](https://github.com/zaach/jison) is a package that provides an API for creating parsers in JavaScript.
+[launchpad](https://www.npmjs.com/package/launchpad) allows you to launch browsers! With NodeJS!
 
-Affected versions of this package are vulnerable to Command Injection. Arbitrary OS shell command execution is possible through a crafted command-line argument.
+The issue occurs because a `user input` is formatted inside a `command` that will be executed without any check. 
 
