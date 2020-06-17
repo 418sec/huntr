@@ -21,7 +21,7 @@ const bountyDir = homeDir + 'bounties'
 
 const checkRunOutput = {
     title: 'Validate disclosure',
-    annotations = [],
+    annotations: [],
     summary: '',
 }
 
