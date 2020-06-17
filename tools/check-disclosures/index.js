@@ -72,7 +72,7 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
         owner: '418sec',
         repo: 'huntr',
         name: 'Check disclosures',
-        head_sha: process.env.GITHUB_SHA,
+        head_sha: process.env.GITHUB_HEAD_REF,
         conclusion: checkRunOutput.summary.length == 0 ? 'success' : 'failure',
         output: checkRunOutput
     })
