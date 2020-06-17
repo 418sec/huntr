@@ -3,16 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "dependencies": {
-    "ajv": "6.12.2",
-    "glob": "7.1.6"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "node index.js"
+    "@octokit/rest": "^18.0.0",
+    "ajv": "^6.12.2",
+    "fdir": "^3.4.3",
+    "json-source-map": "^0.6.1"
   },
   "repository": {
     "type": "git",
