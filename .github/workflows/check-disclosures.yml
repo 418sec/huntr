@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${GITHUB_REF##*/}
+          ref: 'staging'
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
