@@ -31,15 +31,15 @@ const vulnerabilities = new fdir()
     .crawl(bountyDir)
 
 vulnerabilities.withPromise().then(async vulnerabilityPaths => {
-    const vulnerabilitySchema = await fs.readFile('./assets/schemas/vulnerability.json', 'utf8')
+    const vulnerabilitySchema = await fs.readFile('./assets/schemas/vulnerability.json', 'utf8').then(JSON.parse)
     
     for (const vulnerabilityPath of vulnerabilityPaths) {
-        const vulnerabilityDetails = await fs.readFile(vulnerabilityPath, 'utf8')
+        const vulnerabilityDetails = await fs.readFile(vulnerabilityPath, 'utf8').then(JSON.parse)
 
         // Check if every vulnerability.json is valid
         if (!ajv.validate(vulnerabilitySchema, vulnerabilityDetails)) {
 
-            const sourceMap = jsonSourceMap.stringify(subject, null, 2);
+            const sourceMap = jsonSourceMap.stringify(vulnerabilityDetails, null, 2);
             
             for (const validationError of ajv.errors) {
                 // When a json is invalid, add the error to the check run output object
@@ -82,4 +82,7 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
     .catch(err => {
         console.log('Error creating check run:', err)
     })
+})
+.catch((err) => {
+    console.log(err)
 })
