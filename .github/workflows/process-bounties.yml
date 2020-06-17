@@ -14,8 +14,6 @@ jobs:
         working-directory: tools/process-bounties
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: 'staging'
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
