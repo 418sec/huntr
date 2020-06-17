@@ -9,7 +9,7 @@ on:
       - 'bounties/**/vulnerability.json'
 
 jobs:
-  check-disclosures:
+  'Run validator':
     runs-on: ubuntu-latest
     defaults:
       run:

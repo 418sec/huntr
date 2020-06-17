@@ -20,9 +20,9 @@ const homeDir = '../../'
 const bountyDir = homeDir + 'bounties'
 
 const checkRunOutput = {
-    title: 'Validate disclosure',
-    annotations: [],
+    title: '',
     summary: '',
+    annotations: [],
 }
 
 const vulnerabilities = new fdir()
@@ -33,17 +33,17 @@ const vulnerabilities = new fdir()
 vulnerabilities.withPromise().then(async vulnerabilityPaths => {
     const vulnerabilitySchema = await fs.readFile('./assets/schemas/vulnerability.json', 'utf8').then(JSON.parse)
     
-    for (const vulnerabilityPath of vulnerabilityPaths) {
-        const vulnerabilityDetails = await fs.readFile(vulnerabilityPath, 'utf8').then(JSON.parse)
+    for (var vulnerabilityPath of vulnerabilityPaths) {
+        var vulnerabilityDetails = await fs.readFile(vulnerabilityPath, 'utf8').then(JSON.parse)
 
         // Check if every vulnerability.json is valid
         if (!ajv.validate(vulnerabilitySchema, vulnerabilityDetails)) {
 
-            const sourceMap = jsonSourceMap.stringify(vulnerabilityDetails, null, 2);
+            var sourceMap = jsonSourceMap.stringify(vulnerabilityDetails, null, 2);
             
-            for (const validationError of ajv.errors) {
+            for (var validationError of ajv.errors) {
                 // When a json is invalid, add the error to the check run output object
-                const errorPointer = sourceMap.pointers[validationError.dataPath]
+                var errorPointer = sourceMap.pointers[validationError.dataPath]
                 checkRunOutput.annotations.push({
                     path: vulnerabilityPath,
                     start_line: errorPointer.value.line,
@@ -55,23 +55,25 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
             }
         }
 
-        if(checkRunOutput.annotations.length != 0) {
-            checkRunOutput.summary += '* Invalid vulnerability.json file(s) found.\n'
-        }
-
         // Check if every vulnerability has a corresponding README.md
-        const vulnerabilityDir = vulnerabilityPath.split('/vulnerability.json')[0];
+        var vulnerabilityDir = vulnerabilityPath.split('/vulnerability.json')[0];
         await fs.access(`${vulnerabilityDir}/README.md`)
             .catch(() => {
                 checkRunOutput.summary += '* Missing required README.md file(s).\n'
             })
     }
-    
+
+    if(checkRunOutput.annotations.length != 0) {
+        checkRunOutput.summary += '* Invalid vulnerability.json file(s) found.\n'
+    }
+
+    checkRunOutput.title = checkRunOutput.summary.length == 0 ? 'Validation succeeded' : 'Validation failed'
+
     // Send check run details to GitHub
     await octokit.checks.create({
         owner: '418sec',
         repo: 'huntr',
-        name: 'Check disclosures',
+        name: 'Disclosure validator',
         head_sha: process.env.GITHUB_HEAD_REF,
         conclusion: checkRunOutput.summary.length == 0 ? 'success' : 'failure',
         output: checkRunOutput
