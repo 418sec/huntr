@@ -25,6 +25,8 @@ const checkRunOutput = {
     summary: '',
 }
 
+console.log(process.env)
+
 const vulnerabilities = new fdir()
     .withBasePath()
     .filter(path => path.includes('vulnerability.json'))
