@@ -26,6 +26,8 @@ const vulnerabilities = new fdir()
     .filter(path => path.includes('vulnerability.json'))
     .crawl(bountyDir)
 
+console.log(process.env)
+
 vulnerabilities.withPromise().then(async vulnerabilityPaths => {
     const vulnerabilitySchema = await fs.readFile('./assets/schemas/vulnerability.json', 'utf8').then(JSON.parse)
     
