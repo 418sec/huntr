@@ -43,7 +43,7 @@ bounties.withPromise().then(async bountyPaths => {
 
             // Check if there are existing GitHub Issue's in the metadata
             const githubIssueReferences = vulnerabilityDetails.References.filter(reference => reference.Description?.toUpperCase() === ("GitHub Issue").toUpperCase())
-            console.log('GitHub Issue References', githubIssueReferences)
+            
             if (githubIssueReferences?.length > 0) {
                 // Bounty has a GitHub Issue
                 for (const githubIssueReference of githubIssueReferences) {
