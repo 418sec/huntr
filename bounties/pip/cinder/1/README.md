@@ -1,4 +1,0 @@
-# Overview
-[cinder](https://github.com/openstack/cinder) is a storage service for an open cloud computing service
-
-Affected versions of this package are vulnerable to Insufficiently Protected Credentials. When using Cinder with the Dell EMC ScaleIO or VxFlex OS backend storage driver, credentials for the entire backend are exposed in the connection_info element in all Block Storage v3 Attachments API calls containing that element. This enables an end user to create a volume, make an API call to show the attachment detail information, and retrieve a username and password that may be used to connect to another user's volume. Additionally, these credentials are valid for the ScaleIO or VxFlex OS Management API, should an attacker discover the Management API endpoint.
