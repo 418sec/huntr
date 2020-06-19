@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-validator:
-    name: 'Run validator'
+    name: 'Validation'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,5 +32,3 @@ jobs:
         run: npm ci
       - name: Check the disclosures
         run: node index.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
