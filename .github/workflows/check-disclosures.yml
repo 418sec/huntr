@@ -17,8 +17,6 @@ jobs:
         working-directory: tools/check-disclosures
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ GITHUB.HEAD_REF }} 
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
