@@ -3,17 +3,13 @@
 const fs = require('fs/promises')
 
 const Ajv = require('ajv')
+const core = require('@actions/core');
 const fdir = require('fdir')
 var jsonSourceMap = require('json-source-map')
-const { Octokit } = require('@octokit/rest')
 
 var ajv = new Ajv({
     allErrors: true,
     jsonPointers: true
-})
-
-const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN
 })
 
 const homeDir = '../../'
@@ -52,15 +48,16 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
                     message: validationError.message,
                     title: validationError.keyword,
                 })
+                core.error(validationError.message)
             }
         }
 
         // Check if every vulnerability has a corresponding README.md
         var vulnerabilityDir = vulnerabilityPath.split('/vulnerability.json')[0];
         await fs.access(`${vulnerabilityDir}/README.md`)
-            .catch(() => {
-                checkRunOutput.summary += '* Missing required README.md file(s).\n'
-            })
+        .catch(() => {
+            checkRunOutput.summary += '* Missing required README.md file(s).\n'
+        })
     }
 
     if(checkRunOutput.annotations.length != 0) {
@@ -69,21 +66,9 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
 
     checkRunOutput.title = checkRunOutput.summary.length == 0 ? 'Validation succeeded' : 'Validation failed'
 
-    // Send check run details to GitHub
-    await octokit.checks.create({
-        owner: '418sec',
-        repo: 'huntr',
-        name: 'Disclosure validator',
-        head_sha: process.env.GITHUB_HEAD_REF,
-        conclusion: checkRunOutput.summary.length == 0 ? 'success' : 'failure',
-        output: checkRunOutput
-    })
-    .then(response => {
-        console.log('GitHub Check Run created:', response.data.html_url)
-    })
-    .catch(err => {
-        console.log('Error creating check run:', err)
-    })
+    if(checkRunOutput.summary.length != 0){
+        core.setFailed(checkRunOutput.summary);
+    }
 })
 .catch((err) => {
     console.log(err)

@@ -42,18 +42,18 @@ bounties.withPromise().then(async bountyPaths => {
             const repositoryName = repositoryUrlParts[4]
 
             // Check if there are existing GitHub Issue's in the metadata
-            const githubIssueUrls = vulnerabilityDetails.References.filter(reference => reference.Description?.equalsIgnoreCase?.("GitHub Issue"))
-
-            if (githubIssueUrls?.length > 0) {
+            const githubIssueReferences = vulnerabilityDetails.References.filter(reference => reference.Description?.toUpperCase() === ("GitHub Issue").toUpperCase())
+            console.log('GitHub Issue References', githubIssueReferences)
+            if (githubIssueReferences?.length > 0) {
                 // Bounty has a GitHub Issue
-                for (const githubIssueUrl of githubIssueUrls) {
+                for (const githubIssueReference of githubIssueReferences) {
                     // Format: https://github.com/:owner/:repo/issues/:number
-                    const githubIssueUrlParts = githubIssueUrl.split('/')
+                    const githubIssueUrlParts = githubIssueReference?.URL.split('/')
                     const githubIssueOwner = githubIssueUrlParts[3]
                     const githubIssueRepo = githubIssueUrlParts[4]
                     const githubIssueNumber = githubIssueUrlParts[6]
 
-                    console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/${githubIssueNumber}`)
+                    console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/issues/${githubIssueNumber}`)
 
                     const githubIssueCommentBody = githubIssueCommentBodyTemplate
                     //console.log('Issue Comment body:', githubIssueCommentBody)
