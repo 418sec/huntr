@@ -42,24 +42,24 @@ bounties.withPromise().then(async bountyPaths => {
             const repositoryName = repositoryUrlParts[4]
 
             // Check if there are existing GitHub Issue's in the metadata
-            const githubIssueUrls = vulnerabilityDetails.References.filter(reference => reference.Description?.equalsIgnoreCase?.("GitHub Issue"))
-
-            if (githubIssueUrls?.length > 0) {
+            const githubIssueReferences = vulnerabilityDetails.References.filter(reference => reference.Description?.toUpperCase() === ("GitHub Issue").toUpperCase())
+            console.log('GitHub Issue References', githubIssueReferences)
+            if (githubIssueReferences?.length > 0) {
                 // Bounty has a GitHub Issue
-                for (const githubIssueUrl of githubIssueUrls) {
+                for (const githubIssueReference of githubIssueReferences) {
                     // Format: https://github.com/:owner/:repo/issues/:number
-                    const githubIssueUrlParts = githubIssueUrl.split('/')
+                    const githubIssueUrlParts = githubIssueReference?.URL.split('/')
                     const githubIssueOwner = githubIssueUrlParts[3]
                     const githubIssueRepo = githubIssueUrlParts[4]
                     const githubIssueNumber = githubIssueUrlParts[6]
 
-                    console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/${githubIssueNumber}`)
+                    console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/issues/${githubIssueNumber}`)
 
                     const githubIssueCommentBody = githubIssueCommentBodyTemplate
                     //console.log('Issue Comment body:', githubIssueCommentBody)
 
                     //Add a comment to the issue
-                    if (process.env.GITHUB_TOKEN && false)
+                    if (process.env.GITHUB_TOKEN)
                         await octokit.issues.createComment({
                             owner: githubIssueOwner,
                             repo: githubIssueRepo,
@@ -89,7 +89,7 @@ bounties.withPromise().then(async bountyPaths => {
                 //console.log('Issue Body:', githubIssueBody)
 
                 // Create an issue
-                if (process.env.GITHUB_TOKEN && false)
+                if (process.env.GITHUB_TOKEN)
                     await octokit.issues.create({
                         owner: repositoryOwner,
                         repo: repositoryName,
@@ -113,7 +113,7 @@ bounties.withPromise().then(async bountyPaths => {
             console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${repositoryName}`)
 
             // Try to create fork
-            if (process.env.GITHUB_TOKEN  && false)
+            if (process.env.GITHUB_TOKEN)
                 await octokit.repos.createFork({
                     owner: repositoryOwner,
                     repo: repositoryName,
