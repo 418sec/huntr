@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const fs = require("fs/promises");
+const fs = require("fs/promises")
 
 const fdir = require("fdir");
 const Mustache = require('mustache')
@@ -59,7 +59,7 @@ bounties.withPromise().then(async bountyPaths => {
                     //console.log('Issue Comment body:', githubIssueCommentBody)
 
                     //Add a comment to the issue
-                    if (process.env.GITHUB_TOKEN)
+                    if (process.env.GITHUB_TOKEN && false)
                         await octokit.issues.createComment({
                             owner: githubIssueOwner,
                             repo: githubIssueRepo,
@@ -89,7 +89,7 @@ bounties.withPromise().then(async bountyPaths => {
                 //console.log('Issue Body:', githubIssueBody)
 
                 // Create an issue
-                if (process.env.GITHUB_TOKEN)
+                if (process.env.GITHUB_TOKEN && false)
                     await octokit.issues.create({
                         owner: repositoryOwner,
                         repo: repositoryName,
@@ -113,7 +113,7 @@ bounties.withPromise().then(async bountyPaths => {
             console.log('Creating a fork of:', `https://github.com/${repositoryOwner}/${repositoryName}`)
 
             // Try to create fork
-            if (process.env.GITHUB_TOKEN)
+            if (process.env.GITHUB_TOKEN  && false)
                 await octokit.repos.createFork({
                     owner: repositoryOwner,
                     repo: repositoryName,
