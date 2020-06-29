@@ -72,4 +72,5 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
 })
 .catch((err) => {
     console.log(err)
+    core.setFailed(err);
 })
