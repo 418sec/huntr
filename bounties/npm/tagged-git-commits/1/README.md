@@ -1,8 +1,8 @@
-Details:
+## Details
 I would like to report a `RCE` issue in the `tagged-git-commits` module.
 It allows to execute `arbitrary commands remotely inside the victim's PC`
 
-# Module
+## Module
 * **module name:** `tagged-git-commits`
 * **version:** `1.0.0`
 * **npm page:** `https://www.npmjs.com/package/tagged-git-commits`
