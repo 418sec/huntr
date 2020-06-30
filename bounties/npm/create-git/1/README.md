@@ -27,10 +27,5 @@ createGit({
   })
 ```
 
-## Supporting Material/References:
-- [OPERATING SYSTEM VERSION]: Kali Linux
-- [NODEJS VERSION]: 10.16.3
-- [NPM VERSION]: 6.0.9
-
 ## Impact
 `RCE` via `insecure command formatting` on `create-git`
