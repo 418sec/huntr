@@ -11,10 +11,10 @@ Hello and welcome to the huntr public repo, where you will find:
 
 # Updates
  
- We develop and release new features bi-weekly, so remember to star and watch the repo to make sure you are notified of significant updates.
+ We develop and release new features bi-weekly, so remember to star the repo to make sure you are notified of significant updates.
 
 <p align="center"> 
-  <img src="https://github.com/418sec/huntr/blob/staging/docs/star-and-watch.gif" width="450" height="375" /> 
+  <img src="https://github.com/418sec/huntr/blob/staging/docs/star.gif" width="450" height="375" /> 
 </p>
 
 # Useful links
