@@ -19,7 +19,7 @@ Hello and welcome to the huntr public repo, where you will find:
 
 # Useful links
 
-If you'd like to disclose a vulnerability, [click here](https://github.com/418sec/huntr/compare/master...staging?template=disclose-vulnerability.md)
+If you'd like to disclose a vulnerability, [click here](https://github.com/418sec/huntr/compare/staging...staging?template=disclose-vulnerability.md)
 
 If you'd like to sponsor huntr, [click here](https://www.paypal.me/418sec)
 
