@@ -20,7 +20,7 @@ This is the description of the bounty that appears on a given bounty page. It's 
 
 ## Impact
 
-What impact does the vulnerability have on the package?
+What impact does the vulnerability have?
 
 ## Contact
 
