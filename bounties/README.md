@@ -16,7 +16,7 @@ This is the description of the bounty that appears on a given bounty page. It's 
 ```README
 ## Description
 
-# PoC
+## PoC
 
 ## Impact
 
