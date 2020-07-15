@@ -1,15 +1,3 @@
-## Details
-I would like to report a `RCE` issue in the `git-commit-range` module.
-It allows to execute `arbitrary commands remotely inside the victim's PC`
-
-## Module
-* **module name:** `git-commit-range`
-* **version:** `1.0.1`
-* **npm page:** `https://www.npmjs.com/package/git-commit-range`
-
-## Module Description
-> Get the git commithash within a Range from-to
-
 ## Vulnerability Description
 The issue occurs because a `user input` is formatted inside a `command` that will be executed without any check. The issue arises here: https://github.com/aichbauer/node-git-commit-range/blob/master/index.js#L32
 
