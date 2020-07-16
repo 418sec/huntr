@@ -9,7 +9,8 @@ With a symbolically linked file in the working directory, it is possible to read
 PoC: 
 1. Install the hapi: **npm i @hapi/hapi**
 2. Run the server as: **node static_server.js**. 
-Mentioning the code for static_server.js file below - 
+Mentioning the code for static_server.js file below -
+
 `const Path = require('path');
 const Hapi = require('@hapi/hapi');
 const Inert = require('@hapi/inert');
