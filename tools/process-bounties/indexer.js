@@ -24,13 +24,13 @@ bounties.withPromise().then(async bountyPaths => {
     for (const bountyPath of bountyPaths) {
         const bountyDir = bountyPath.split("/bounty.json")[0]
 
-        const bountyDetails = await fs.readFile(bountyPath, 'utf8').then(JSON.parse)        
+        const bountyDetails = await fs.readFile(bountyPath, 'utf8').then(JSON.parse)
         const vulnerabilityDetails = await fs.readFile(`${bountyDir}/${vulnerabilityFilename}`, 'utf8').then(JSON.parse)
-        
-        
+
         bountiesToIndex.push({
             "Registry": vulnerabilityDetails.Package.Registry,
             "PackageName": vulnerabilityDetails.Package.Name,
+            "Downloads": vulnerabilityDetails.Package.Downloads,
             "PackageVulnerabilityID": vulnerabilityDetails.PackageVulnerabilityID,
             "CodebasePrimaryLanguage": vulnerabilityDetails.Repository.Codebase[0],
             "VulnerabilityDescription": vulnerabilityDetails.Summary,
@@ -40,7 +40,7 @@ bounties.withPromise().then(async bountyPaths => {
             "Bounty": bountyDetails.Bounty
         });
     }
-    
+
     // Write bounties to the index file
     await fs.writeFile(rootIndexPath, JSON.stringify(bountiesToIndex));
 })

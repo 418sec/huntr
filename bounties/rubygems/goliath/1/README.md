@@ -1,4 +1,5 @@
 # Overview
+
 [goliath](https://rubygems.org/gems/goliath) is an Async framework for writing API servers.
 
 Affected versions of this package are vulnerable to HTTP Request Smuggling. HTTP pipelining issues and request smuggling attacks might be possible due to incorrect Content-Length and Transfer encoding header parsing.
