@@ -29,7 +29,7 @@ bounties.withPromise().then(async bountyPaths => {
 
         bountiesToIndex.push({
             "Registry": vulnerabilityDetails.Package.Registry,
-            "PackageName": vulnerabilityDetails.Repository.URL.split('/').pop(),
+            "PackageName": vulnerabilityDetails.Repository.URL.split('/')[4],
             "PackageOwner": vulnerabilityDetails.Repository.URL.split('/')[3],
             "Downloads": vulnerabilityDetails.Package.Downloads,
             "PackageVulnerabilityID": vulnerabilityDetails.PackageVulnerabilityID,
