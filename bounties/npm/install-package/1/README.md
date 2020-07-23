@@ -1,8 +1,11 @@
 # Overview
-install-package is a package that installs node modules from JavaScript.
-Affected versions of this package are vulnerable to Command Injection.
-The argument options can be controlled by users without any sanitization.
 
-# Proof of Concept
-var root = require("install-package");
+`install-package` is a package that installs node modules from JavaScript.
+
+This package is vulnerable to Command Injection, the argument options can be controlled by users without any sanitization giving attackers the ability to execute malicious code.
+
+## Proof of Concept
+
+```var root = require("install-package");
 root("", "& touch Song");
+```
