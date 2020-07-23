@@ -1,6 +1,9 @@
+# Description
+
 With a symbolically linked file in the working directory, it is possible to read arbitrary files outside of the web root directory.
 
-PoC: 
+# POC
+
 1. Install hapi: **npm i @hapi/hapi**
 2. Run the server as: **node static_server.js**. 
 
