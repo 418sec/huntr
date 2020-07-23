@@ -1,7 +1,7 @@
-## Vulnerability Description
+# Description
 The issue occurs because a `user input` is formatted inside a `command` that will be executed without any check. The issue arises here: https://github.com/aichbauer/node-git-commit-range/blob/master/index.js#L32
 
-## POC
+# POC
 
 ```js
 // poc.js
@@ -17,5 +17,5 @@ gitCommitRange({
 });
 ```
 
-## Impact
+# Impact
 `RCE` on `git-commit-range` via `insecure command formatting`

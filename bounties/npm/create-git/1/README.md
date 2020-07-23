@@ -1,7 +1,7 @@
-## Vulnerability Description
+# Description
 The issue arises because some `user supplied` inputs are formatted inside commands executed lately without any check. Issue arises on this line: https://github.com/wesleytodd/create-git/blob/master/index.js#L85
 
-## POC
+# POC
 
 ```js
 // poc.js
@@ -15,5 +15,5 @@ createGit({
   })
 ```
 
-## Impact
+# Impact
 `RCE` via `insecure command formatting` on `create-git`
