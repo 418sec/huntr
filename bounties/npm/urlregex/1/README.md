@@ -6,7 +6,7 @@ urlregex
 
 This package is vulnerable to Regular Expression Denial of Service (ReDoS). An attacker providing a long string in `String.test` can cause a Denial of Service attack.
 
-## Proof of Concept
+# PoC
 
 ```node
 const urlRegex = require("urlregex");
