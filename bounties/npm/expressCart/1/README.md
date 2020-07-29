@@ -4,7 +4,7 @@ express-cart is a fully functional shopping cart built in Node.js (Express, Mong
 
 This package is vulnerable to Cross-Site Request Forgery (CSRF) through `admin.js`.
 
-## Proof of Concept
+# Proof of Concept
 
 ```
 <html>
