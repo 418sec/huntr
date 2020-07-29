@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 670,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/opencart",
+    "Bounty": {
+        "Credit": 670,
+        "Cash": 25
+    }
 }
