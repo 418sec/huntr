@@ -4,7 +4,7 @@ uvicorn is a lightning-fast ASGI server.
 
 This package is vulnerable to HTTP Response Splitting. Uvicorn's implementation of the HTTP protocol for the httptools parser is vulnerable to HTTP response splitting. CRLF sequences are not escaped in the value of HTTP headers. Attackers can exploit this to add arbitrary headers to HTTP responses, or even return an arbitrary response body, whenever crafted input is used to construct HTTP headers.
 
-## Proof of Concept
+# Proof of Concept
 
 ```
 async def app(scope, receive, send):
