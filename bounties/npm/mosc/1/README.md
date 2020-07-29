@@ -4,7 +4,7 @@ mosc is an a simple inline object model builder for NodeJS (A small port exists 
 
 This package is vulnerable to Arbitrary Code Execution. User input provided to `properties` argument is executed by the eval function, allowing code execution.
 
-## Proof of Concept
+# Proof of Concept
 
 ```
 var Mosc = require("mosc")
