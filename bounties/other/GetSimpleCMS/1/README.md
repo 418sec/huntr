@@ -3,13 +3,13 @@ GetSimple CMS is a flatfile CMS written in PHP.The Latest release of the version
 /admin directory.
 
 ## POC
-1:This is Link to Download the CMS [Here](https://github.com/GetSimpleCMS/GetSimpleCMS)
-2:Extract the zipfile to an Apache Server 
-3:Under the /admin/ Directory there is a Setup.php file. Navigate to that file eg: localhost/GetSimpleCMS-master/admin/setup.php
-4:You will end up with a "GetSimple Installation" Form. Now enter your username with a payload like ( test"><script>alert(1)</script> )
+1:This is Link to Download the CMS [Here](https://github.com/GetSimpleCMS/GetSimpleCMS)  
+2:Extract the zipfile to an Apache Server   
+3:Under the /admin/ Directory there is a Setup.php file. Navigate to that file eg: localhost/GetSimpleCMS-master/admin/setup.php  
+4:You will end up with a "GetSimple Installation" Form. Now enter your username with a payload like ( test"><script>alert(1)</script> )  
 
 
-The file contains a vulnerable form
+The file contains a vulnerable form  
 
 ```
 <form action="<?php myself(); ?>" class="entersubmit" method="post" accept-charset="utf-8" >
