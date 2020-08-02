@@ -25,3 +25,5 @@ The file contains a vulnerable form
 ```
 
 Here none of the User Input is sanitized.If $_POST['user'] is set then it echos the UserInput. I think adding htmlspecialchars() to the $_POST['username'] may solve the issue.
+
+
