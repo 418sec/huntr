@@ -6,7 +6,7 @@ GetSimple CMS is a flatfile CMS written in PHP.The Latest release of the version
 1:This is Link to Download the CMS [Here](https://github.com/GetSimpleCMS/GetSimpleCMS)  
 2:Extract the zipfile to an Apache Server   
 3:Under the /admin/ Directory there is a Setup.php file. Navigate to that file eg: localhost/GetSimpleCMS-master/admin/setup.php  
-4:You will end up with a "GetSimple Installation" Form. Now enter your username with a payload like ( test"><script>alert(1)</script> )
+4:You will end up with a "GetSimple Installation" Form. Now enter your username with a payload like ``` test"><script>alert(1)</script> ```
 5:Fill the data and Submit the form
 
 
