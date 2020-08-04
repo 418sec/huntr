@@ -1,5 +1,6 @@
 'use strict'
 
+const fetch = require("node-fetch")
 const fs = require("fs/promises")
 const fdir = require("fdir")
 
@@ -116,5 +117,5 @@ bounties.withPromise().then(async bountyPaths => {
             // Write the final output to vulnerability.json
             await fs.writeFile(vulnerabilityDetailsPath, JSON.stringify(vulnerabilityDetails, null, 4))
         }
-    })
-}
+    }
+})

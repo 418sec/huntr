@@ -9,6 +9,8 @@ const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
 })
 
+const homeDir = "../../"
+const bountyDir = homeDir + "bounties"
 const bounties = new fdir()
     .withBasePath()
     .filter(path => path.includes("bounty.json"))
@@ -26,6 +28,11 @@ bounties.withPromise().then(async bountyPaths => {
             const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
             const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`
             let vulnerabilityDetails = await fs.readFile(vulnerabilityDetailsPath, 'utf8').then(JSON.parse)
+
+            // Let's work out the root repositry. Format: https://github.com/:owner/:repo
+            const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
+            const repositoryOwner = repositoryUrlParts[3]
+            const repositoryName = repositoryUrlParts[4]
 
             const githubIssueCommentBodyTemplate = await fs.readFile('./assets/templates/github-issue-comment-body.mustache', 'utf8')
             const githubIssueTitleTemplate = await fs.readFile('./assets/templates/github-issue-title.mustache', 'utf8')
@@ -121,4 +128,4 @@ bounties.withPromise().then(async bountyPaths => {
                     })
         }
     }
-}
+})
