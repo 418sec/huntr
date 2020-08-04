@@ -1,8 +1,8 @@
-## Description 
+# Description 
 GetSimple CMS is a flatfile CMS written in PHP.The Latest release of the version is affected with a Cross Site Scripting due to unsanitized user Input.The Issue is affecting the
 /admin directory.
 
-## POC
+# POC
 1:This is Link to Download the CMS [Here](https://github.com/GetSimpleCMS/GetSimpleCMS)  
 2:Extract the zipfile to an Apache Server   
 3:Under the /admin/ Directory there is a Setup.php file. Navigate to that file eg: localhost/GetSimpleCMS-master/admin/setup.php  
