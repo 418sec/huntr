@@ -8,5 +8,5 @@ This package is vulnerable to Arbitrary Code Execution. User input provided to t
 
 ```
 var a = require("cd-messenger");
-a.line("red(); console.log('JHU'); //"
+a.line("red(); console.log('JHU'); //")
 ```
