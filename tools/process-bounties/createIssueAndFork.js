@@ -24,7 +24,7 @@ bounties.withPromise().then(async bountyPaths => {
 
         // If no ForkURL is present, presume Issue & Fork is required
         if (bountyDetails.ForkURL.length == 0) {
-            // const bountyDir = bountyPath.split("/bounty.json")[0]
+            const bountyDir = bountyPath.split("/bounty.json")[0]
             // const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
             const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`
             let vulnerabilityDetails = await fs.readFile(vulnerabilityDetailsPath, 'utf8').then(JSON.parse)
