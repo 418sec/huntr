@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 860,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/cd-messenger",
+    "Bounty": {
+        "Credit": 860,
+        "Cash": 25
+    }
 }
