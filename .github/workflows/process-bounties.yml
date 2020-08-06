@@ -4,9 +4,9 @@ on:
     branches:
       - staging
     paths:
-      - 'bounties/**'
+      - "bounties/**"
 
-jobs:      
+jobs:
   process-bounties:
     runs-on: ubuntu-latest
     defaults:
@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: "14.x"
       - uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -27,6 +27,8 @@ jobs:
         run: npm ci
       - name: Run enricher
         run: node enricher.js
+      - name: Create Issue & Fork
+        run: node createIssueAndFork.js
         env:
           GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
       - name: Run indexer
@@ -40,4 +42,4 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.HUNTR_HELPER_TOKEN }}
-          branch: 'staging'
+          branch: "staging"
