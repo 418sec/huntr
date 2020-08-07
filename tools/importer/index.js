@@ -49,9 +49,9 @@ dataToImport.data.listBounties.forEach(async oldBounty => {
         "DisclosureDate": oldBounty.DatePublished,
         "AffectedVersionRange": "*",
         "Summary": oldBounty.VulnerabilityType,
-        "Author": {
-            "Username": "",
-            "Name": ""
+        "Contributor": {
+            "Discloser": "",
+            "Author": ""
         },
         "Package": {
             "Registry": convertLanguageToRegistry(oldBounty.RepositoryLanguage),
