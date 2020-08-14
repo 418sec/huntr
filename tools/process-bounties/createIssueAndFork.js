@@ -29,17 +29,11 @@ bounties.withPromise().then(async bountyPaths => {
             const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`
             let vulnerabilityDetails = await fs.readFile(vulnerabilityDetailsPath, 'utf8').then(JSON.parse)
 
+            console.log('vulnerabilityDetails.Repository.URL', vulnerabilityDetails.Repository.URL)
+            
             const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
-            let repositoryOwner = null
-            let repositoryName = null
-
-            try {
-                // Let's work out the root repositry. Format: https://github.com/:owner/:repo
-                repositoryOwner = repositoryUrlParts[3]
-                repositoryName = repositoryUrlParts[4]
-            } catch (error) {
-                console.log('ERROR: Could not parse repository URL:', vulnerabilityDetails.Repository.URL)
-            }
+            const repositoryOwner = repositoryUrlParts[3]
+            const repositoryName = repositoryUrlParts[4]
         }
     } // else {
     //     // Bounty does not have a GitHub Issue
