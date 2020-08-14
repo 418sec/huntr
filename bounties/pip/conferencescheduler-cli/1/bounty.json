@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 780,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/ConferenceScheduler-cli",
+    "Bounty": {
+        "Credit": 780,
+        "Cash": 25
+    }
 }

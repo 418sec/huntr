@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 650,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/kcfinder",
+    "Bounty": {
+        "Credit": 650,
+        "Cash": 25
+    }
 }
