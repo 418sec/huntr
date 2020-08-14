@@ -45,7 +45,7 @@ bounties.withPromise().then(async bountyPaths => {
             //         vulnerabilityDescription,
             //     })
             //     //console.log('Issue Body:', githubIssueBody)
-
+            
             //     // Create an issue
             //     if (process.env.GITHUB_TOKEN)
             //         await octokit.issues.create({
