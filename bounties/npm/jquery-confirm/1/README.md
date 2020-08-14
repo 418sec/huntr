@@ -10,3 +10,4 @@ This package is vulnerable to Cross-site Scripting (XSS), HTML can be injected v
 // This shows succesful script execution: alert(0) is executed:
 $.confirm().setIcon('"><img src onerror="alert(0)"><"')
 ```
+
