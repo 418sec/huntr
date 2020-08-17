@@ -1,3 +1,5 @@
+# Description
+
 I would like to report path traversal vulnerability in httpster module
 It allows an attacker to read system files via path traversal vulnerability
 
@@ -19,6 +21,8 @@ Vulnerability
 Vulnerability Description
 
 With a symbolically linked file in the working directory, it is possible to read arbitrary files outside of the web root directory.
+
+# PoC
 
 Steps To Reproduce:
 --------------------------------------------------
