@@ -1,6 +1,6 @@
-## Description
+# Description
 encountered **RateLimiting** in login page of LavaLite/CMS Repo while performing little recon to find the cms xss bug that is among the bugs to be fixed in the huntr platform. Lavavite/cms is an open source of Content Management System developed with Laravel framework.
-## POC
+# POC
 
 - clone and setup lavalite/cms **https://github.com/LavaLite/cms** or just test in CMS demos website **https://lavalite.org/client/login**
 
