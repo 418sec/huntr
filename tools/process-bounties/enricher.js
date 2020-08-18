@@ -18,8 +18,8 @@ bounties.withPromise().then(async bountyPaths => {
         let bountyDetails = await fs.readFile(bountyPath, 'utf8').then(JSON.parse)
         console.log('Enriching bounty:', bountyPath)
 
-        const bountyDir = bountyPath.split("/bounty.json")[0]
-        const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
+        const bountyDir = bountyPath.split("/vulnerability.json")[0]
+//         const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
         const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`
         let vulnerabilityDetails = await fs.readFile(vulnerabilityDetailsPath, 'utf8').then(JSON.parse)
 
