@@ -12,6 +12,7 @@ const rootIndexFilename = "index.json"
 const rootIndexPath = homeDir + rootIndexFilename
 
 const vulnerabilityFilename = "vulnerability.json"
+const bountyFilename = "bounty.json"
 
 const bounties = new fdir()
     .withBasePath()
@@ -23,11 +24,15 @@ bounties.withPromise().then(async bountyPaths => {
 
     // Iterate through the bounties and add them to the index array
     for (const bountyPath of bountyPaths) {
-        const bountyDir = bountyPath.split(`/${vulnerabilityFilename}`)[0]
+        const vulnerabilityJsonDir = bountyPath.split(`/${vulnerabilityFilename}`)[0]
 
-        const bountyDetails = await fs.readFile(bountyPath, 'utf8').then(JSON.parse)
-        const vulnerabilityDetails = await fs.readFile(`${bountyDir}/${vulnerabilityFilename}`, 'utf8').then(JSON.parse)
-        const liveBounty = fsSync.existsSync(bountyDir + '/bounty.json')
+        const vulnerabilityJsonContent = await fs.readFile(bountyPath, 'utf8').then(JSON.parse)
+        const vulnerabilityDetails = await fs.readFile(`${vulnerabilityJsonDir}/${vulnerabilityFilename}`, 'utf8').then(JSON.parse)
+
+        const liveBounty = fsSync.existsSync(vulnerabilityJsonDir + '/bounty.json')
+        const bountyJsonContent = liveBounty ?
+            await fs.readFile(vulnerabilityJsonDir + '/bounty.json', 'utf8').then(JSON.parse) :
+            { Bounty: { Credit: parseInt(vulnerabilityDetails.CVSS.Score * 100), Cash: 25 } }
 
         bountiesToIndex.push({
             "Registry": vulnerabilityDetails.Package.Registry,
@@ -40,7 +45,7 @@ bounties.withPromise().then(async bountyPaths => {
             "Severity": vulnerabilityDetails.CVSS.Score,
             "AffectedVersionRange": vulnerabilityDetails.AffectedVersionRange,
             "DisclosureDate": vulnerabilityDetails.DisclosureDate,
-            "Bounty": bountyDetails.Bounty,
+            "Bounty": bountyJsonContent.Bounty,
             "Live": liveBounty
         });
     }

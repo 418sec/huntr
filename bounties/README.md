@@ -1,6 +1,6 @@
 # Overview
 
-This folder contains all the bounties that have been hosted by the https://huntr.dev platform.
+This folder contains all the bounties that have been hosted by the https://huntr.dev platform.  
 
 Vulnerabilities are stored within folders with the following format:
 `/bounties/{RegistryName}/{PackageName}/{PackageVulnerabilityID}`
