@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require("fs/promises");
+const fsSync = require("fs");
 
 const fdir = require("fdir");
 
@@ -14,7 +15,7 @@ const vulnerabilityFilename = "vulnerability.json"
 
 const bounties = new fdir()
     .withBasePath()
-    .filter(path => path.includes("bounty.json"))
+    .filter(path => path.includes(vulnerabilityFilename))
     .crawl(bountyDir)
 
 bounties.withPromise().then(async bountyPaths => {
@@ -22,10 +23,11 @@ bounties.withPromise().then(async bountyPaths => {
 
     // Iterate through the bounties and add them to the index array
     for (const bountyPath of bountyPaths) {
-        const bountyDir = bountyPath.split("/bounty.json")[0]
+        const bountyDir = bountyPath.split(`/${vulnerabilityFilename}`)[0]
 
         const bountyDetails = await fs.readFile(bountyPath, 'utf8').then(JSON.parse)
         const vulnerabilityDetails = await fs.readFile(`${bountyDir}/${vulnerabilityFilename}`, 'utf8').then(JSON.parse)
+        const liveBounty = fsSync.existsSync(bountyDir + '/bounty.json')
 
         bountiesToIndex.push({
             "Registry": vulnerabilityDetails.Package.Registry,
@@ -38,7 +40,8 @@ bounties.withPromise().then(async bountyPaths => {
             "Severity": vulnerabilityDetails.CVSS.Score,
             "AffectedVersionRange": vulnerabilityDetails.AffectedVersionRange,
             "DisclosureDate": vulnerabilityDetails.DisclosureDate,
-            "Bounty": bountyDetails.Bounty
+            "Bounty": bountyDetails.Bounty,
+            "Live": liveBounty
         });
     }
 
