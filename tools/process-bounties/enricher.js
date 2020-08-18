@@ -9,7 +9,7 @@ const bountyDir = homeDir + "bounties"
 
 const bounties = new fdir()
     .withBasePath()
-    .filter(path => path.includes("bounty.json"))
+    .filter(path => path.includes("vulnerability.json"))
     .crawl(bountyDir)
 
 bounties.withPromise().then(async bountyPaths => {
