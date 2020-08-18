@@ -41,7 +41,7 @@ bounties.withPromise().then(async bountyPaths => {
             //     //console.log('Issue Title:', githubIssueTitle)
 
             //     const githubIssueBody = Mustache.render(githubIssueBodyTemplate, {
-            //         username: vulnerabilityDetails.Author.Username,
+            //         username: vulnerabilityDetails.Contributor.Discloser,
             //         vulnerabilityDescription,
             //     })
             //     //console.log('Issue Body:', githubIssueBody)
