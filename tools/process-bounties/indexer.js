@@ -45,7 +45,7 @@ bounties.withPromise().then(async bountyPaths => {
             "Severity": vulnerabilityDetails.CVSS.Score,
             "AffectedVersionRange": vulnerabilityDetails.AffectedVersionRange,
             "DisclosureDate": vulnerabilityDetails.DisclosureDate,
-            "Bounty": bountyDetails.Bounty,
+            "Bounty": bountyJsonContent,
             "Live": liveBounty
         });
     }
