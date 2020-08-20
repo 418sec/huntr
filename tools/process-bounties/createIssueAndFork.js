@@ -24,14 +24,51 @@ bounties.withPromise().then(async bountyPaths => {
         // If no ForkURL is present, presume Issue & Fork is required
         if (bountyDetails.ForkURL.length == 0) {
             const bountyDir = bountyPath.split("/bounty.json")[0]
-            // const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
+            const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
             const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`
             let vulnerabilityDetails = await fs.readFile(vulnerabilityDetailsPath, 'utf8').then(JSON.parse)
 
-            const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
-            const repositoryOwner = repositoryUrlParts[3]
-            const repositoryName = repositoryUrlParts[4]
-            // else {
+            const repositoryOwner = vulnerabilityDetails.Repository.Owner
+            const repositoryName = vulnerabilityDetails.Repository.Name
+
+            const githubIssueCommentBodyTemplate = await fs.readFile('./assets/templates/github-issue-comment-body.mustache', 'utf8')
+            const githubIssueTitleTemplate = await fs.readFile('./assets/templates/github-issue-title.mustache', 'utf8')
+            const githubIssueBodyTemplate = await fs.readFile('./assets/templates/github-issue-body.mustache', 'utf8')
+
+            // Check if there are existing GitHub Issue's in the metadata
+            const githubIssueReferences = vulnerabilityDetails.References.filter(reference => reference.Description?.toUpperCase() === ("GitHub Issue").toUpperCase())
+
+            if (githubIssueReferences?.length > 0) {
+                // Bounty has a GitHub Issue
+                for (const githubIssueReference of githubIssueReferences) {
+                    // Format: https://github.com/:owner/:repo/issues/:number
+                    const githubIssueUrlParts = githubIssueReference?.URL.split('/')
+                    const githubIssueOwner = githubIssueUrlParts[3]
+                    const githubIssueRepo = githubIssueUrlParts[4]
+                    const githubIssueNumber = githubIssueUrlParts[6]
+
+                    console.log('Adding a comment to issue:', `https://github.com/${githubIssueOwner}/${githubIssueRepo}/issues/${githubIssueNumber}`)
+
+                    const githubIssueCommentBody = githubIssueCommentBodyTemplate
+                    //console.log('Issue Comment body:', githubIssueCommentBody)
+
+                    //Add a comment to the issue
+                    if (process.env.GITHUB_TOKEN)
+                        await octokit.issues.createComment({
+                            owner: githubIssueOwner,
+                            repo: githubIssueRepo,
+                            issue_number: githubIssueNumber,
+                            body: githubIssueCommentBody
+                        })
+                            .then(response => {
+                                console.log('GitHub Issue Comment created:', response.data.html_url)
+                            })
+                            .catch(err => {
+                                console.log('Error creating issue comment:', err)
+                            })
+                }
+            }
+            // } else {
             //     // Bounty does not have a GitHub Issue
             //     console.log('Creating a new issue for:', `https://github.com/${repositoryOwner}/${repositoryName}`)
 
@@ -41,11 +78,11 @@ bounties.withPromise().then(async bountyPaths => {
             //     //console.log('Issue Title:', githubIssueTitle)
 
             //     const githubIssueBody = Mustache.render(githubIssueBodyTemplate, {
-            //         username: vulnerabilityDetails.Contributor.Discloser,
+            //         username: vulnerabilityDetails.Author.Username,
             //         vulnerabilityDescription,
             //     })
             //     //console.log('Issue Body:', githubIssueBody)
-            
+
             //     // Create an issue
             //     if (process.env.GITHUB_TOKEN)
             //         await octokit.issues.create({
