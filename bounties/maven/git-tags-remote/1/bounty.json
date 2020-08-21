@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 720,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/git-tags-remote",
+    "Bounty": {
+        "Credit": 720,
+        "Cash": 25
+    }
 }
