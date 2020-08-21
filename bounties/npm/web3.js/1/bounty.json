@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 330,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/web3.js",
+    "Bounty": {
+        "Credit": 330,
+        "Cash": 25
+    }
 }
