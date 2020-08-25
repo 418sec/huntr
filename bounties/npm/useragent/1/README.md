@@ -1,13 +1,11 @@
-# Overview
 
-useragent
+#  Description
 
-> Useragent parser for Node.js, ported from browserscope.org
-  
-> This package is vulnerable to Regular Expression Denial of Service (ReDoS) when passing long strings to the user-agent
-> field.
+useragent is a parser for Node.js, ported from browserscope.org.
 
-# PoC
+This package is vulnerable to Regular Expression Denial of Service (ReDoS) when passing long strings to the user-agent field.
+
+#  Proof of Concept
 
 ```node
 const useragent = require('useragent');
