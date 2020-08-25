@@ -1,6 +1,6 @@
 # Description
 
-I encountered **RateLimiting** in the login page of the LavaLite/CMS repo while performing recon to find the cms XSS bug that is among the bugs to be fixed in the huntr platform. Lavalite/CMS is an open source version of the Content Management System developed with Laravel framework.
+I encountered **RateLimiting** in the login page of the LavaLite/CMS repo while performing recon to find the CMS XSS bug that is among the bugs to be fixed on the huntr platform. Lavalite/CMS is an open source version of the Content Management System developed with Laravel framework.
 
 # POC
 
