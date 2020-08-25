@@ -1,6 +1,7 @@
 # Description
-```phpjs``` is a community build php binding in javasciript.
-This package is vulnearble to ```prototype pollution``` via ```parse_str```. 
+```phpjs``` is a community built PHP binding in JavaScript.
+This package is vulnerable to ```Prototype Pollution``` via ```parse_str```. 
+
 # Proof Of Concept
 ```
 const phpjs = require('phpjs');
