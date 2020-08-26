@@ -1,9 +1,9 @@
-# :bug: Description
+# Description
 
 The `lets-chat` application is a simple `chat` used for `small teams`, and can be hosted locally in order to have a better control on it.
 The chat however is vulnerable against a `POST-based CSRF` issue which occurs in the `/account/profile` endpoint and many others, leading to `personal information` change and `api key` revocation/generation.
 
-# :fire: PoC
+# PoC
 
 1. Install the chat using the `steps` described here:
 2. Create a new `user` and login
@@ -38,4 +38,4 @@ The chat however is vulnerable against a `POST-based CSRF` issue which occurs in
 </html>
 ```
 
-4. Opening this the `api key` created before will be `deleted` and another one created (invalidates previously connected applications)
+5. Opening this the `api key` created before will be `deleted` and another one created (invalidates previously connected applications)
