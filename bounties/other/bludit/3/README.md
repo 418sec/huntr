@@ -1,11 +1,11 @@
-# :bug: Description
+# Description
 
 The `bludit` software allows `admins` to set `social buttons` which are used to redirect people to the social accounts of the company who's using `bludit`.
 However, there isn't any `url validation` in place, which makes possible crafting arbitrary `a` HTML tags which could lead to `stored XSS` and similar issues.
 
 Since the `users` can have different privileges and `admin` can be more than one, a `malicious admin` could craft the `social button` and ask to another admin to check if it worked correctly, while `XSS` occurs and `sensitive information` or `cookies` are stealed using the injected `JS`.
 
-# :fire: PoC
+# PoC
 
 1. Download `bludit`
 2. Start a `server` on the root of the project (`php -S 0.0.0.0:8001`)
