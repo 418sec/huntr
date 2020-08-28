@@ -11,7 +11,7 @@ Vulnerabilities are stored within folders with the following format:
 
 # Files
 
-A valid bounty is split between 3 files:
+A valid bounty is split between 3 files: 
 
 ## README.md
 
