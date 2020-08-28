@@ -33,7 +33,7 @@ bounties.withPromise().then(async bountyPaths => {
 
         // Call GitHub's API
         const github = new Octokit({
-            auth: process.env.HUNTR_HELPER_TOKEN
+            auth: process.env.GITHUB_TOKEN
         });
 
         // Get Forks & Stars from GitHub
