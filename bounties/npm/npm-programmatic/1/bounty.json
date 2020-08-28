@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 750,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/npm-programmatic",
+    "Bounty": {
+        "Credit": 750,
+        "Cash": 25
+    }
 }
