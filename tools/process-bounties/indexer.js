@@ -39,6 +39,8 @@ bounties.withPromise().then(async bountyPaths => {
             "PackageName": vulnerabilityDetails.Repository.URL.split('/')[4],
             "PackageOwner": vulnerabilityDetails.Repository.URL.split('/')[3],
             "Downloads": vulnerabilityDetails.Package.Downloads,
+            "Forks": vulnerabilityDetails.Repository.Forks,
+            "Stars": vulnerabilityDetails.Repository.Stars,
             "PackageVulnerabilityID": vulnerabilityDetails.PackageVulnerabilityID,
             "CodebasePrimaryLanguage": vulnerabilityDetails.Repository.Codebase[0],
             "VulnerabilityDescription": vulnerabilityDetails.Summary,
