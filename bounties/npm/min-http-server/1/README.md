@@ -1,7 +1,7 @@
 # :bug: Description
 
 The `min-http-server` package is vulnerable against `path traversal`, which leads to `information disclosure` and `sensitive file leakage`.
-The package is vulnerable against this attacck through the `double dots` technique.
+The package is vulnerable against this attack through the `double dots` technique.
 
 # :fire: PoC
 
