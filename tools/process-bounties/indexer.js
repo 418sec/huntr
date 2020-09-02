@@ -35,6 +35,7 @@ bounties.withPromise().then(async bountyPaths => {
             { Bounty: { Credit: parseInt(vulnerabilityDetails.CVSS.Score * 100), Cash: 25 } }
 
         bountiesToIndex.push({
+            "BountyID": `${vulnerabilityDetails.PackageVulnerabilityID}-${vulnerabilityDetails.Package.Registry}-${vulnerabilityDetails.Repository.URL.split('/')[4].replace('.', '-dot-')}`,
             "Registry": vulnerabilityDetails.Package.Registry,
             "PackageName": vulnerabilityDetails.Repository.URL.split('/')[4],
             "PackageOwner": vulnerabilityDetails.Repository.URL.split('/')[3],
