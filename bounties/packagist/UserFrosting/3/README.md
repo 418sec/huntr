@@ -9,6 +9,7 @@ UserFrosting is following strict email verification but to bypass this use email
 https://cdn.discordapp.com/attachments/749019614352244777/751056377350324285/account_creation.png
 https://cdn.discordapp.com/attachments/749019614352244777/751056371776225340/Strict_email_verification_required.png
 https://cdn.discordapp.com/attachments/749019614352244777/751056374431088650/POC_of_email_verification_bypass.png
+
 Using this i registered an account with 
 username:admin@evil.com and password:Qwerty@12345
 ## 💥 Impact
