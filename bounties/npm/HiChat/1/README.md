@@ -1,9 +1,9 @@
-# :bug: Description
+# Description
 
 The `HiChat` application is a simple `chat` for `small teams` which is based on a small `server` which helps to `track` messages sent by various users.
 The project presents a `stored XSS` issue which could lead to `session stealing` or `HTML/JS injection` in a permanent way, until the victim leaves the `chat room`.
 
-# :fire: PoC
+# PoC
 
 1. Download the project locally
 2. Run `npm i`
