@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 430,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/fsa",
+    "Bounty": {
+        "Credit": 430,
+        "Cash": 25
+    }
 }
