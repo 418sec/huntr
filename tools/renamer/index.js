@@ -15,8 +15,6 @@ const vulnerabilities = new fdir()
     // Iterate through each bounty, and enrich, if appropriate
     for (const vulnerabilityPath of vulnerabilityPaths) {
         let vulnerabilityDetails = await fs.readFile(vulnerabilityPath, 'utf8').then(JSON.parse)
-        if (vulnerabilityDetails.Package.Registry == "packagist")
-            continue;
 
         const newPath = `${bountyDir}/${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}/${vulnerabilityDetails.PackageVulnerabilityID}`
         if(vulnerabilityPath != `${newPath}/vulnerability.json`){
