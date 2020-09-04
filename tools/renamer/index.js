@@ -21,7 +21,7 @@ const vulnerabilities = new fdir()
             console.log(`Renaming from ${vulnerabilityPath.split('/vulnerability.json')[0]} to ${newPath}`)
             await fs.mkdir(newPath, { recursive: true })
             await fs.move(vulnerabilityPath.split('/vulnerability.json')[0], newPath, {overwrite: true})
-            await fs.rmdir(vulnerabilityPath.split(`/${vulnerabilityDetails.PackageVulnerabilityID}/vulnerability.json`)[0]).catch()
+            await fs.rmdir(vulnerabilityPath.split(`/${vulnerabilityDetails.PackageVulnerabilityID}/vulnerability.json`)[0])
         }
      }
 })
