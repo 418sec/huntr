@@ -27,6 +27,8 @@ jobs:
         run: npm ci
       - name: Run enricher
         run: node enricher.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
       - name: Create Issue & Fork
         run: node createIssueAndFork.js --trace-warnings
         env:
