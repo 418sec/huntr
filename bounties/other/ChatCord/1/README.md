@@ -1,11 +1,11 @@
-# :bug: Description
+# Description
 
 The `ChatCord` application allows people to use a `instant messaging` chat to exchanges messages and is based on a `js server`.
 The `chat` however presents a `stored XSS` which is due to `time` field not validated correctly.
 
 The `username` and `message` field have been fixed by another PR merged inside the original repo (https://github.com/bradtraversy/chatcord/pull/17), however the `time` field hasn't been sanitized at all :smile:
 
-# :fire: PoC
+# PoC
 
 1. Download the project (or use Repl.it)
 2. Run `npm i`
