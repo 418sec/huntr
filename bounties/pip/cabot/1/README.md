@@ -1,6 +1,6 @@
-## ✍️ Description
+## Description
 Executed Persistent stored XSS in cabot check settings, As per CVEs present Stored XSS is a High Severity bug.
-## 🕵️‍♂️ Proof of Concept 
+## Proof of Concept 
 1. setup cabot to reproduce the vulnerability
 2. create an account now login to the account 
 3. Go to checks Create and navigate to http check, In the Endpoint column append a XSS payload
@@ -9,9 +9,9 @@ Executed Persistent stored XSS in cabot check settings, As per CVEs present Stor
 6. If we try again the persistant XSS get triggered
 https://drive.google.com/file/d/1hcRdxOArwzYlPOmBIj9sDkpLLGUXpiu2/view?usp=sharing
 https://drive.google.com/file/d/1hcRdxOArwzYlPOmBIj9sDkpLLGUXpiu2/view?usp=sharing
-## 💥 Impact
+## Impact
 Able to execute Persistent stored XSS payloads in cabot which can be used to capture user cookie.
-## ✅ Checklist
+## Checklist
 - [x] _Created and populated the README.md and vulnerability.json files_
 - [x] _Provided the repository URL and any applicable [permalinks]([https://help.github.com/en/github/managing-files-in-a-repository/getting-permanent-links-to-files](https://help.github.com/en/github/managing-files-in-a-repository/getting-permanent-links-to-files))_
 - [x] _Defined all the applicable weaknesses ([CWEs]([https://cwe.mitre.org/](https://cwe.mitre.org/)))_
