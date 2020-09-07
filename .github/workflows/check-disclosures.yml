@@ -10,23 +10,15 @@ on:
 
 jobs:
   run-validator:
-    name: 'Validation'
+    name: 'JSON Validation'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: tools/check-disclosures
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install npm dependencies
-        run: npm ci
-      - name: Check the disclosures
-        run: node index.js
+      - uses: actions/checkout@v1
+      - name: Validate JSON
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_SCHEMA: tools/check-disclosures/assets/schemas/vulnerability.json
+          INPUT_JSONS: bounties/**/vulnerability.json
