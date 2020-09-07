@@ -1,3 +1,0 @@
-# Description
-```SWIG``` is a compiler that integrates C and C++ with languages including Perl, Python, Tcl, Ruby, PHP, Java, C#, D, Go, Lua, Octave, R, Scheme (Guile, MzScheme/Racket), Scilab, Ocaml. SWIG can also export its parse tree into XML.
-One of the python tools of ```swig``` include a ```mkdist.py``` script. This script takes in arguments and execute it without sanitation leading to ```Arbitrary code execution```
