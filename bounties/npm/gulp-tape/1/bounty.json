@@ -1,7 +1,7 @@
 {
-	"ForkURL": "",
-	"Bounty": {
-		"Credit": 590,
-		"Cash": 25
-	}
+    "ForkURL": "https://github.com/418sec/gulp-tape",
+    "Bounty": {
+        "Credit": 590,
+        "Cash": 25
+    }
 }
