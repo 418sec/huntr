@@ -1,6 +1,6 @@
 # :bug: Description
 
-The `gity` module is vulnerable against `RCE` and `arbitrary command injection` due to `user-supplied input` formatted inside a command which is going to be executed without proper sanitizations.
+The `gity` module is vulnerable against `arbitrary command injection` caused by `insecure concatenation` of `user supplied` data which aren't sanitized properly, leading to `RCE`.
 
 # :fire: POC
 
@@ -16,11 +16,11 @@ var git = Git()
   .run();
 
 ```
-2. Check there aren't files called `HACKED` 
+2. Make sure that the `HACKED` file doesn't exist 
 3. Execute the following commands in another terminal:
 
 ```bash
 npm i gity # Install affected module
 node poc.js #  Run the PoC
 ```
-4. Recheck the files: now `HACKED` has been created
+4. The `HACKED` file is created :)
