@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `pdf-toolz` module is vulnerable against `arbitrary command injection` due to the fact some `inputs` given by the `user` are unsafely processed and executed.
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
