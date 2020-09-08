@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `snekserve` project is a `directory listing` server which is vulnerable against `stored XSS` because the `filename` isn't checked correctly, leading to `HTML/JS injection`
 
-# :fire: POC
+# POC
 
 1. Create a PoC file like this:
 
