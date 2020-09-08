@@ -1,9 +1,9 @@
-# :bug: Description
+# Description
 
-The issue occurs because a `user input` is formatted inside a `command` that will be executed without any checklading to `arbitrary command injection`
+The issue occurs because a `user input` is formatted inside a `command` that will be executed without any checks, leading to `arbitrary command injection`
 
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
