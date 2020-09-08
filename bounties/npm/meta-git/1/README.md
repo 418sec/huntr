@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `meta-git` module is vulnerable against `command injection` since the `user-supplied inputs` are concatenated with a command which is executed without validation.
 
-# :fire: POC
+# POC
 
 1. Create a new directory and insert some test files:
 
