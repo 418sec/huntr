@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `mrgit` module is vulnerable against `RCE` since some `inputs` are concatenated without sanitization to a `command` that is executed
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
