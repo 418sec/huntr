@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `npm-git-publish` module is vulnerable against `RCE` due to `user-supplied` inputs being formatted and executed without proper validation
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
