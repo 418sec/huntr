@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `gitlogplus` module is vulnerable against an `arbitrary command injection` issue which is made possible since some `user-inputs` are executed inside a command which doesn't have validations of any kind.
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
