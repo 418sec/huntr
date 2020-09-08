@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `gity` module is vulnerable against `arbitrary command injection` caused by `insecure concatenation` of `user supplied` data which aren't sanitized properly, leading to `RCE`.
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
