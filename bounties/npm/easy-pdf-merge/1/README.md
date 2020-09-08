@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `easy-pdf-merge` module is vulnerable against `RCE` since `user supplied inputs` are formatted inside a command which is executed without prior checks.
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
