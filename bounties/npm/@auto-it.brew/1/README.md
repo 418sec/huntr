@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `@auto-it/brew` module is vulnerable against `RCE` since the `inputs` are `formatted` inside a command executed without checks, leading to `arbitrary command injection`
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
