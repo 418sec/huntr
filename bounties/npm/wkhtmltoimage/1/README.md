@@ -1,6 +1,6 @@
 # Description
 
-The `wkhtmltoimage` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executedading to `arbitrary command injection`
+The `wkhtmltoimage` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executed, leading to `arbitrary command injection`
 
 # POC
 
