@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `jshint` package is vulnerable against `RCE` since `user-supplied` arguments are unsafely formatted inside a command and executed, leading to `arbitrary command injection`
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
