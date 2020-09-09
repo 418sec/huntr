@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
-The `strong-build` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executedading to `arbitrary command injection`
+The `strong-build` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executed, leading to `arbitrary command injection`
 
-# :fire: POC
+# POC
 
 1. Check there aren't files called `HACKED` 
 2. Execute the following commands in another terminal:
