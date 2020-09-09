@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
 The `gify` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executed, leading to `arbitrary command injection`
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
