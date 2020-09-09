@@ -1,8 +1,8 @@
-# :bug: Description
+# Description
 
-The `antlr4-cli` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executedading to `arbitrary command injection`
+The `antlr4-cli` module is vulnerable against `RCE` since a command is crafted using `user inputs` not validated and then executed, leading to `arbitrary command injection`
 
-# :fire: POC
+# POC
 
 1. Create the following PoC file:
 
