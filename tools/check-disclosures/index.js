@@ -49,6 +49,7 @@ vulnerabilities.withPromise().then(async vulnerabilityPaths => {
                     title: validationError.keyword,
                 })
                 core.error(validationError.message)
+                //console.log(vulnerabilityPath)
             }
         }
 
