@@ -1,0 +1,2 @@
+com.xuxueli:xxl-job is a distributed task scheduling framework.
+Affected versions of this package are vulnerable to Information Disclosure of username, model, and password via job/admin/controller/UserController.java.
