@@ -9,7 +9,7 @@
     "@octokit/rest": "^17.11.0",
     "fdir": "^3.4.3",
     "mustache": "^4.0.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "engines": {
     "node": ">14.4.0"
