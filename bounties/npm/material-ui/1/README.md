@@ -11,7 +11,7 @@ let object = utils.deepmerge({}, JSON.parse('{ "myProperty": "a", "prototype" : 
 console.log(object.prototype.isAdmin);
 2. Execute command npm install @material-ui/utils
 3. Execute command node poc.js
-*[POC] https://drive.google.com/file/d/1twz_btDed0aeQVEO8BBAVs4Vg8kWjcxV/view?usp=sharing
+4. [POC] https://drive.google.com/file/d/1twz_btDed0aeQVEO8BBAVs4Vg8kWjcxV/view?usp=sharing
 ## 💥 Impact
 Prototype pollution which could lead to DOS and RCE
 ## ✅ Checklist
