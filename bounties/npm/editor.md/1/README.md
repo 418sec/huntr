@@ -33,8 +33,12 @@ Insert in editor a self clossing element with event to execute code
   4. open http://localhost:8080/examples/html-tags-decode.html
   5. Filter code execution by clicking on Filter style,script,iframe|onclick,title,onmouseover,onmouseout,style
      (No code should be executed with this Filter)
-  2. Insert element with payload usig the editor: 
-     `<img src="https://picsum.photos/200" style="position:fixed;left:0;top:0;width:10000px;height:10000px;" style="z-index:3000" onload="alert('img execution...')"/>`
+  6. Insert element with payload usig the editor (New line is important):
+     ````
+     <img src="https://picsum.photos/200" style="position:fixed;left:0;top:0;width:200px;height:200px;z-index:100" onmouseover="alert('img execution...')"/>
+     sss
+     ```
+  7. Code will be executed when passing the mouse over the image
 
 # Impact
 This could have enabled an attacker to execute code remotely if the content of the editor is saved and then retrieved by some other user
