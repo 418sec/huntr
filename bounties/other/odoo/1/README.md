@@ -1,6 +1,6 @@
-## Overview
+# Overview
 Account takeover using Blind XSS in Survey application.
-## Proof of Concept 
+# Proof of Concept 
 1. setup odoo to reproduce the vulnerability
 2. create an account and navigate to Apps 
 3. Install Survey and create new survey
@@ -9,7 +9,3 @@ Account takeover using Blind XSS in Survey application.
 6. save and click Test. Blind XSS triggered and attacker gets the session.
 7. To exploit this widely to takeover any account use share option and share via email and use login required and in  accessmode use Anyone with the link 
 I used xsshunter.com platform for creating payload.
-https://drive.google.com/file/d/1NycVd3-IjgFwpZIxLggMxW6AvSL5Ckci/view?usp=sharing
-https://drive.google.com/file/d/1S_G6Pn89qmwwtBdQFNDtFjcC4R5s63_L/view?usp=sharing
-https://drive.google.com/file/d/1kpjlDb3XVcNjCQkMARX7CNiO3tj_FNWE/view?usp=sharing
-https://drive.google.com/file/d/13mUeUHFAlb9RQQjtLPjLkKzLO4id3F1b/view?usp=sharing
