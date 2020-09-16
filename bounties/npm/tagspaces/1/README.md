@@ -1,0 +1,3 @@
+# Description
+TagSpaces is a free, non-locking, open source application for organizing and managing your local files with the help of tags. It features note taking and some to-do app capabilities. 
+This package is vulnerable to MITM due to downloading resources over insecure protocol. This vulnerability however, only affects windows systems because only a windows executable is downloaded over ```http```. But the package downloaded is an ```exe``` file and ,under MITM, this could lead to RCE and an attacker gaining access to victim system. This file is available over secure protocol.
