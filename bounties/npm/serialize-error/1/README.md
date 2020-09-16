@@ -2,7 +2,7 @@
 
 Serialize-error is an npm package to Serialize/deserialize an error into a plain object
 
-This package is vulnerable to Remote Code Execution due to a deserialization vulnerability which occur when unmarshalling a serialised error object 
+This package is vulnerable to Remote Code Execution due to untrusted data being passed into serializedError() and new Error()
 
 ## Proof of Concept
 
