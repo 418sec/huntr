@@ -1,2 +1,0 @@
-# Description
-Nixpkgs is a collection of over 40,000 software packages that can be installed with the Nix package manager. It also implements NixOS, a purely-functional Linux distribution.This package is vulnerable to ```MITM``` or ```Man-In-The-Middle``` attack due to a downloading resources through insecure protocols. It is possible for an attacker to intercept and alter the packages which may leads to RCE / other attacks which may help the attacker gain access to host.
