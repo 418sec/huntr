@@ -4,6 +4,9 @@ This package is vulnerable to MITM or Man-In-The-Middle attack due to a download
 
 * https://github.com/mongodb/mongo-php-library/blob/master/.evergreen/download-mongodb.sh
 
+run-orchestration.sh run this file this will run the download-mongodb.sh and download file to our home directory 
+* https://drive.google.com/file/d/1gGr6dm2EU6wP-XyjqEOPh7hhtRGrpLXE/view?usp=sharing
+
 All the files downloaded is available in https which is secure.
 ## 💥 Impact
 The attacker is able to perform MiTM attacks due to downloading resources through insecure protocols
