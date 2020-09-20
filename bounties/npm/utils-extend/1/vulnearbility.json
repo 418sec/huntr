@@ -10,7 +10,8 @@
     "Package": {
       "Registry": "npm",
       "Name": "utils-extend",
-      "URL": "https://www.npmjs.com/package/utils-extend"
+      "URL": "https://www.npmjs.com/package/utils-extend",
+      "Downloads": "154832"
     },
     "CWEs": [
       {
