@@ -5,6 +5,9 @@ Lack of RateLimiting in the login page of ampache.
 * setted up ampache platform to reproduce the vulnerability
 * I used an intruder in BURP SUITE to test for rate limiting on the password field.
 * It shows 200 OK for wrong information and if password matches BURP show a 302 status code.(even with high thread and without throttle)
+
+* https://drive.google.com/file/d/1MOzGvpLTdl84cEqwrA6MtrTWudjnRiYF/view?usp=sharing
+
 ## 💥 Impact
 The attacker is able to perform bruteforce attack to login into victim account.
 ## ✅ Checklist
