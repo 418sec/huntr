@@ -1,5 +1,6 @@
 'use strict'
 
+const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch")
 const fs = require("fs/promises")
 const fdir = require("fdir")
@@ -25,12 +26,30 @@ bounties.withPromise().then(async bountyPaths => {
 
         // Let's work out the root repositry. Format: https://github.com/:owner/:repo
         const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split('/')
-        const repositoryOwner = repositoryUrlParts[3]
-        const repositoryName = repositoryUrlParts[4]
 
         // Add the Repository Owner & Name as individual key/values
         vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3]
         vulnerabilityDetails.Repository.Name = repositoryUrlParts[4]
+
+        // Call GitHub's API
+        const github = new Octokit({
+            auth: process.env.GITHUB_TOKEN
+        });
+
+        // Get Forks & Stars from GitHub
+        await github.repos
+            .get({
+              owner: vulnerabilityDetails.Repository.Owner,
+              repo: vulnerabilityDetails.Repository.Name
+            })
+            .then((octokitResponse) => {
+              vulnerabilityDetails.Repository.Forks = octokitResponse.data.forks_count;
+              vulnerabilityDetails.Repository.Stars = octokitResponse.data.stargazers_count;
+              console.log(`Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`);
+            })
+            .catch((octokitError) => {
+              console.error("ERROR fetching package repository data:", octokitError);
+            });
 
         // Find and add Download count for the specific package
         switch (vulnerabilityDetails.Package.Registry.toLowerCase()) {

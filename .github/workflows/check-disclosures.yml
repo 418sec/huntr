@@ -3,7 +3,6 @@ name: Check disclosures
 on: 
   pull_request:
     branches:
-      - master
       - staging
     paths:
       - 'bounties/**/vulnerability.json'
