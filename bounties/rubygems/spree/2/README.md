@@ -6,8 +6,9 @@ Username enumeration on the "Forgot Password" page of Spree.
 3. Log out and go back to the "Login" page.
 4. Click "Forgot Password"
 5. Enter an incorrect email and click "Reset My Password".
+6. Enter a correct password and click again on "Reset My Password"
+7. Logins can be enumerated
 
-* It shows 200 OK for wrong information and if password matches BURP show a 302 FOUND status code.
 * [POC] https://drive.google.com/file/d/1di5jNI1hyYoFcqs17iCG-EUibDa9TWhI/view?usp=sharing; https://drive.google.com/file/d/1xSgV14W32V34htF5RWcxnVwugI6gEe8L/view?usp=sharing
 
 # Impact
