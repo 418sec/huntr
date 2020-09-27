@@ -1,5 +1,5 @@
 ### Description
-write
+A remote attacker could inject arbitrary JavaScript into the application using the package through the comment parameter within \contrat\card.php.
 
 
 
