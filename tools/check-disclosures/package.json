@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "ajv": "^6.12.2",
     "fdir": "^3.4.3",
     "json-source-map": "^0.6.1"
