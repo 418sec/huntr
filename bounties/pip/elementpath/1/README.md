@@ -30,7 +30,7 @@ doc = '''
 <lolz>&lol9;</lolz>
 '''
 root = ElementTree.XML(doc)
-print(elementpath.select(root, '/userInfo/*'))
+print(elementpath.select(root, '/lolz/*'))
 ```
 
 2. Execute the following commands in another terminal:
