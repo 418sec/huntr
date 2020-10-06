@@ -1,5 +1,5 @@
 # Description
-Lack of RateLimiting in the login page of spree.
+Lack of Rate Limiting in the login page of spree.
 # Proof of Concept 
 * clone the github repo 
 * setted up spree platform to reproduce the vulnerability
