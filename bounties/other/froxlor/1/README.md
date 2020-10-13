@@ -1,5 +1,5 @@
 # Description
-The server administration software for your needs. Developed by experienced server administrators, this panel simplifies the effort of managing your hosting platform.
+FRoxlor is server administration software for your needs. Developed by experienced server administrators, this panel simplifies the effort of managing your hosting platform.
 this pakage is vulnerable for xss
 
 # Payload USED
