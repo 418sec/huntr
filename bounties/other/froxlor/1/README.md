@@ -9,7 +9,7 @@ this pakage is vulnerable for xss
 # POC
 * used https://demo.froxlor.org/ for testing
 * login to admin account
-* In customers account click on settings and update the address column with the payload and save the updates made.
+* In customers section click on settings and update the address column with the payload and save the updates made.
 * then just login to customer ac
 * XSS triggered.
 # PermaLinks
