@@ -11,6 +11,9 @@ Admin cookies and other details leading to an account take over to a higher leve
 * Booyah!!! XSS triggered.
 * other POC's are available at the corresponding PR pages
 # PermaLinks
+![1](https://user-images.githubusercontent.com/43377443/93658388-cb1d9100-fa58-11ea-823b-2b0068e1f61b.PNG)
+![2](https://user-images.githubusercontent.com/43377443/93658389-cc4ebe00-fa58-11ea-8004-5c8469a943f7.PNG)
+![3](https://user-images.githubusercontent.com/43377443/93658390-cce75480-fa58-11ea-8a68-1de4c13f2cab.PNG)
 * [POC](https://drive.google.com/drive/folders/1QfRhBX54orE65lq6rM33Fchft_gsaMHI?usp=sharing)
 * Github PR [ISSUE @ team page](https://github.com/418sec/huntr/pull/691)
 * Github PR [issue @ contact creation and management page](https://github.com/418sec/huntr/pull/692)
