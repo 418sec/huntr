@@ -15,8 +15,7 @@ var obj = {}
 const patch = [{op: "add", path: "/__proto__/polluted", value: "Yes! Its Polluted"}];
 console.log("Before : " + obj.polluted);
 json8Patch.apply(obj, patch);
-var obj1={}
-console.log("After : " + obj1.polluted);
+console.log("After : " + {}.polluted);
 ```
 
 2. Execute the following commands in another terminal:
