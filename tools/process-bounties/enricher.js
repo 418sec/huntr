@@ -74,6 +74,8 @@ bounties.withPromise().then(async (bountyPaths) => {
               error
             );
           });
+
+        // Check it exists before assigning
         downloads
           ? (vulnerabilityDetails.Package.Downloads = downloads.toString())
           : (vulnerabilityDetails.Package.Downloads = "0");
