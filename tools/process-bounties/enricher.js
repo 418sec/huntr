@@ -1,26 +1,29 @@
 "use strict";
 
+const { DateTime } = require("luxon");
 const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
 const fs = require("fs/promises");
-const fdir = require("fdir");
+const { fdir } = require("fdir");
 
 const homeDir = "../../";
 const bountyDir = homeDir + "bounties";
 
+console.log("initiated");
 const bounties = new fdir()
   .withBasePath()
   .filter((path) => path.includes("vulnerability.json"))
   .crawl(bountyDir);
 
+console.log("bountyDir", bountyDir);
 bounties.withPromise().then(async (bountyPaths) => {
   // Iterate through each bounty, and enrich, if appropriate
   for (const bountyPath of bountyPaths) {
-    let bountyDetails = await fs.readFile(bountyPath, "utf8").then(JSON.parse);
+    // let bountyDetails = await fs.readFile(bountyPath, "utf8").then(JSON.parse);
     console.log("Enriching bounty:", bountyPath);
 
     const bountyDir = bountyPath.split("/vulnerability.json")[0];
-    //         const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
+    // const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
     const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`;
     let vulnerabilityDetails = await fs
       .readFile(vulnerabilityDetailsPath, "utf8")
@@ -45,10 +48,8 @@ bounties.withPromise().then(async (bountyPaths) => {
         repo: vulnerabilityDetails.Repository.Name,
       })
       .then((octokitResponse) => {
-        vulnerabilityDetails.Repository.Forks =
-          octokitResponse.data.forks_count;
-        vulnerabilityDetails.Repository.Stars =
-          octokitResponse.data.stargazers_count;
+        vulnerabilityDetails.Repository.Forks = octokitResponse.data.forks_count.toString();
+        vulnerabilityDetails.Repository.Stars = octokitResponse.data.stargazers_count.toString();
         console.log(
           `Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`
         );
@@ -62,60 +63,113 @@ bounties.withPromise().then(async (bountyPaths) => {
       case "npm":
         const { downloads } = await (
           await fetch(
-            `https://api.npmjs.org/downloads/point/last-week/${packageName}`
+            `https://api.npmjs.org/downloads/point/last-week/${vulnerabilityDetails.Package.Name}`
           )
-        ).json();
-        return downloads.toString();
+        )
+          .json()
+          .catch((error) => {
+            vulnerabilityDetails.Package.Downloads = "0";
+            console.log(
+              `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
+              error
+            );
+          });
+        downloads
+          ? (vulnerabilityDetails.Package.Downloads = downloads.toString())
+          : (vulnerabilityDetails.Package.Downloads = "0");
+        break;
       case "rubygems":
         // get the latest version for this package
         const { version } = await (
           await fetch(
-            `https://rubygems.org/api/v1/versions/${packageName}/latest.json`
+            `https://rubygems.org/api/v1/versions/${vulnerabilityDetails.Package.Name}/latest.json`
           )
         ).json();
 
         // get the downloads of the latest version of this package
-        const { created_at, version_downloads } = await (
-          await fetch(
-            `https://rubygems.org/api/v2/rubygems/${packageName}/versions/${version}.json`
+        if (version !== "unknown") {
+          const { created_at, version_downloads } = await (
+            await fetch(
+              `https://rubygems.org/api/v2/rubygems/${vulnerabilityDetails.Package.Name}/versions/${version}.json`
+            )
           )
-        ).json();
+            .json()
+            .catch((error) => {
+              vulnerabilityDetails.Package.Downloads = "0";
+              console.log(
+                `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
+                error
+              );
+            });
 
-        // divide it by days since it was created
-        const createDatetime = DateTime.fromISO(created_at);
-        const todayDatetime = DateTime.local();
-        const { days: daysSinceCreated } = todayDatetime.diff(
-          createDatetime,
-          "days"
-        );
-        return Math.round(
-          (version_downloads / daysSinceCreated) * 7
-        ).toString();
-      case "pypi":
-        const {
-          data: { last_week },
-        } = await (
+          // divide it by days since it was created
+          const createDatetime = DateTime.fromISO(created_at);
+          const todayDatetime = DateTime.local();
+          const { days: daysSinceCreated } = todayDatetime.diff(
+            createDatetime,
+            "days"
+          );
+
+          vulnerabilityDetails.Package.Downloads = Math.round(
+            (version_downloads / daysSinceCreated) * 7
+          ).toString();
+        } else {
+          vulnerabilityDetails.Package.Downloads = "0";
+          console.log(
+            `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
+            "Could not fetch version to calculate weekly downloads."
+          );
+        }
+        break;
+      case "pip":
+        const last_week = await (
           await fetch(
-            `https://pypistats.org/api/packages/${packageName}/recent?period=week`
-          )
-        ).json();
-        return last_week.toString();
+            `https://pypistats.org/api/packages/${vulnerabilityDetails.Package.Name}/recent?period=week`
+          ).catch((error) => {
+            vulnerabilityDetails.Package.Downloads = "0";
+            console.log(
+              `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
+              error
+            );
+          })
+        )
+          .json()
+          .catch((error) => {
+            vulnerabilityDetails.Package.Downloads = "0";
+            console.log(
+              `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
+              error
+            );
+          });
+        vulnerabilityDetails.Package.Downloads = last_week.toString();
+        break;
       case "packagist":
         const {
           package: {
             downloads: { daily },
           },
         } = await (
-          await fetch(`https://repo.packagist.org/packages/${packageName}.json`)
-        ).json();
-        return (daily * 7).toString();
+          await fetch(
+            `https://repo.packagist.org/packages/${vulnerabilityDetails.Package.Name}.json`
+          )
+        )
+          .json()
+          .catch((error) => {
+            vulnerabilityDetails.Package.Downloads = "0";
+            console.log(
+              `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
+              error
+            );
+          });
+        vulnerabilityDetails.Package.Downloads = (daily * 7).toString();
+        break;
       default:
-        return "0";
+        vulnerabilityDetails.Package.Downloads = "0";
     }
+    // Write the final output to vulnerability.json
+    await fs.writeFile(
+      vulnerabilityDetailsPath,
+      JSON.stringify(vulnerabilityDetails, null, 4)
+    );
   }
-  // Write the final output to vulnerability.json
-  await fs.writeFile(
-    vulnerabilityDetailsPath,
-    JSON.stringify(vulnerabilityDetails, null, 4)
-  );
 });
