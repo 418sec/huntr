@@ -9,7 +9,6 @@ const { fdir } = require("fdir");
 const homeDir = "../../";
 const bountyDir = homeDir + "bounties";
 
-console.log("initiated");
 const bounties = new fdir()
   .withBasePath()
   .filter((path) => path.includes("vulnerability.json"))
