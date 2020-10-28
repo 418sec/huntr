@@ -14,7 +14,6 @@ const bounties = new fdir()
   .filter((path) => path.includes("vulnerability.json"))
   .crawl(bountyDir);
 
-console.log("bountyDir", bountyDir);
 bounties.withPromise().then(async (bountyPaths) => {
   // Iterate through each bounty, and enrich, if appropriate
   for (const bountyPath of bountyPaths) {
@@ -123,7 +122,7 @@ bounties.withPromise().then(async (bountyPaths) => {
         }
         break;
       case "pip":
-        const last_week = await (
+        const pypiResponse = await (
           await fetch(
             `https://pypistats.org/api/packages/${vulnerabilityDetails.Package.Name}/recent?period=week`
           ).catch((error) => {
@@ -133,16 +132,12 @@ bounties.withPromise().then(async (bountyPaths) => {
               error
             );
           })
-        )
-          .json()
-          .catch((error) => {
-            vulnerabilityDetails.Package.Downloads = "0";
-            console.log(
-              `ERROR fetching download count for '${vulnerabilityDetails.Package.Registry}/${vulnerabilityDetails.Package.Name}':`,
-              error
-            );
-          });
-        vulnerabilityDetails.Package.Downloads = last_week.toString();
+        ).json();
+
+        vulnerabilityDetails.Package.Downloads = pypiResponse.data
+          ? pypiResponse.data.last_week.toString()
+          : "0";
+
         break;
       case "packagist":
         const {
