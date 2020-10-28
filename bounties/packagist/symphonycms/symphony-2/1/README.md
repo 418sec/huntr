@@ -13,7 +13,7 @@ Expected behavior
 `When admin or user view content, a pop-up will be displayed`
 
 Affected componets:
-`events\event.publish_article.php in Symphony CMS 3.0.0 allows XSS via fields['body'] to appendSubheading`
+`events\event.publish_article.php in Symphony CMS 3.0.0 allows XSS via fields['body'] to appendSubheading` 
 
 # POC:
 ```
