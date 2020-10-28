@@ -3,7 +3,7 @@
 const fs = require("fs/promises");
 const fsSync = require("fs");
 
-const fdir = require("fdir");
+const { fdir } = require("fdir");
 
 const homeDir = "../../"
 const bountyDir = homeDir + "bounties"
