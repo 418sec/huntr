@@ -4,7 +4,7 @@ const { DateTime } = require("luxon");
 const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
 const fs = require("fs/promises");
-const fdir = require("fdir");
+const { fdir } = require("fdir");
 
 const homeDir = "../../";
 const bountyDir = homeDir + "bounties";
@@ -14,31 +14,30 @@ const bounties = new fdir()
   .filter((path) => path.includes("vulnerability.json"))
   .crawl(bountyDir);
 
+const github = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+});
+
 bounties.withPromise().then(async (bountyPaths) => {
   // Iterate through each bounty, and enrich, if appropriate
   for (const bountyPath of bountyPaths) {
     // let bountyDetails = await fs.readFile(bountyPath, "utf8").then(JSON.parse);
     console.log("Enriching bounty:", bountyPath);
-
     const bountyDir = bountyPath.split("/vulnerability.json")[0];
     // const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
     const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`;
     let vulnerabilityDetails = await fs
       .readFile(vulnerabilityDetailsPath, "utf8")
       .then(JSON.parse);
-
     // Let's work out the root repositry. Format: https://github.com/:owner/:repo
     const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split("/");
-
     // Add the Repository Owner & Name as individual key/values
     vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3];
     vulnerabilityDetails.Repository.Name = repositoryUrlParts[4];
-
     // Call GitHub's API
     const github = new Octokit({
       auth: process.env.GITHUB_TOKEN,
     });
-
     // Get Forks & Stars from GitHub
     await github.repos
       .get({
@@ -54,6 +53,21 @@ bounties.withPromise().then(async (bountyPaths) => {
       })
       .catch((octokitError) => {
         console.error("ERROR fetching package repository data:", octokitError);
+      });
+
+    // Get the repos primary CodeBase and append to vulnerability.json
+    await github.repos
+      .listLanguages({
+        owner: vulnerabilityDetails.Repository.Owner,
+        repo: vulnerabilityDetails.Repository.Name,
+      })
+      .then((response) => {
+        vulnerabilityDetails.Repository.CodeBase = [
+          Object.keys(response.data)[0],
+        ];
+      })
+      .catch((error) => {
+        console.error("ERROR fetching package repository data:", error);
       });
 
     // Find and add Download count for the specific package
@@ -72,7 +86,6 @@ bounties.withPromise().then(async (bountyPaths) => {
               error
             );
           });
-
         // Check it exists before assigning
         downloads
           ? (vulnerabilityDetails.Package.Downloads = downloads.toString())
@@ -85,7 +98,6 @@ bounties.withPromise().then(async (bountyPaths) => {
             `https://rubygems.org/api/v1/versions/${vulnerabilityDetails.Package.Name}/latest.json`
           )
         ).json();
-
         // get the downloads of the latest version of this package
         if (version !== "unknown") {
           const { created_at, version_downloads } = await (
@@ -101,7 +113,6 @@ bounties.withPromise().then(async (bountyPaths) => {
                 error
               );
             });
-
           // divide it by days since it was created
           const createDatetime = DateTime.fromISO(created_at);
           const todayDatetime = DateTime.local();
@@ -109,7 +120,6 @@ bounties.withPromise().then(async (bountyPaths) => {
             createDatetime,
             "days"
           );
-
           vulnerabilityDetails.Package.Downloads = Math.round(
             (version_downloads / daysSinceCreated) * 7
           ).toString();
@@ -133,11 +143,9 @@ bounties.withPromise().then(async (bountyPaths) => {
             );
           })
         ).json();
-
         vulnerabilityDetails.Package.Downloads = pypiResponse.data
           ? pypiResponse.data.last_week.toString()
           : "0";
-
         break;
       case "packagist":
         const {
