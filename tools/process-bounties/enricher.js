@@ -14,10 +14,6 @@ const bounties = new fdir()
   .filter((path) => path.includes("vulnerability.json"))
   .crawl(bountyDir);
 
-const github = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-});
-
 bounties.withPromise().then(async (bountyPaths) => {
   // Iterate through each bounty, and enrich, if appropriate
   for (const bountyPath of bountyPaths) {
@@ -55,14 +51,14 @@ bounties.withPromise().then(async (bountyPaths) => {
         console.error("ERROR fetching package repository data:", octokitError);
       });
 
-    // Get the repos primary CodeBase and append to vulnerability.json
+    // Get the repos primary Codebase and append to vulnerability.json
     await github.repos
       .listLanguages({
         owner: vulnerabilityDetails.Repository.Owner,
         repo: vulnerabilityDetails.Repository.Name,
       })
       .then((response) => {
-        vulnerabilityDetails.Repository.CodeBase = [
+        vulnerabilityDetails.Repository.Codebase = [
           Object.keys(response.data)[0],
         ];
       })
