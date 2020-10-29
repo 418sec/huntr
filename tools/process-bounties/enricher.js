@@ -4,7 +4,7 @@ const { DateTime } = require("luxon");
 const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
 const fs = require("fs/promises");
-const { fdir } = require("fdir");
+const fdir = require("fdir");
 
 const homeDir = "../../";
 const bountyDir = homeDir + "bounties";
