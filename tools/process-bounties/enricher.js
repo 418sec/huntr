@@ -17,23 +17,26 @@ const bounties = new fdir()
 bounties.withPromise().then(async (bountyPaths) => {
   // Iterate through each bounty, and enrich, if appropriate
   for (const bountyPath of bountyPaths) {
-    // let bountyDetails = await fs.readFile(bountyPath, "utf8").then(JSON.parse);
     console.log("Enriching bounty:", bountyPath);
+
     const bountyDir = bountyPath.split("/vulnerability.json")[0];
-    // const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
     const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`;
     let vulnerabilityDetails = await fs
       .readFile(vulnerabilityDetailsPath, "utf8")
       .then(JSON.parse);
+
     // Let's work out the root repositry. Format: https://github.com/:owner/:repo
     const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split("/");
+
     // Add the Repository Owner & Name as individual key/values
     vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3];
     vulnerabilityDetails.Repository.Name = repositoryUrlParts[4];
+
     // Call GitHub's API
     const github = new Octokit({
       auth: process.env.GITHUB_TOKEN,
     });
+
     // Get Forks & Stars from GitHub
     await github.repos
       .get({
@@ -43,9 +46,9 @@ bounties.withPromise().then(async (bountyPaths) => {
       .then((octokitResponse) => {
         vulnerabilityDetails.Repository.Forks = octokitResponse.data.forks_count.toString();
         vulnerabilityDetails.Repository.Stars = octokitResponse.data.stargazers_count.toString();
-        console.log(
-          `Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`
-        );
+        // console.log(
+        //   `Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`
+        // );
       })
       .catch((octokitError) => {
         console.error("ERROR fetching package repository data:", octokitError);
