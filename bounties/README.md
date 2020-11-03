@@ -1,4 +1,4 @@
-# Overview 
+# Overview
 
 This folder contains all the bounties that have been hosted by the https://huntr.dev platform.  
 
