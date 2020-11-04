@@ -12,7 +12,7 @@
 2. Install it(https://exiftool.org/install.html)
 3. Modify the image to add 'Model' key then value '<script>alert(document.domain)</script>'
 4. Open terminal -> change directory to where the image is located
-5. run this command 'exiftool -Model="<script>alert(document.domain)</script>" imagefilename.jpg'
+5. run this command 'exiftool -Model="<script>alert(document.domain)</script>" imagefilename.jpg
 6. Move it in your project root dir
 ```
 4. Create a page.php file on your project root dir then copy and paste this code below
