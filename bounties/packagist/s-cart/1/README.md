@@ -7,7 +7,7 @@ https://s-cart.org/about.html
 
 # Steps To Reproduce-:  
 
-1) install ttps://github.com/s-cart/s-cart locally or https://demo.s-cart.org/ for demo
+1) install https://github.com/s-cart/s-cart locally or https://demo.s-cart.org/ for demo
 2) when adding products to cart add crafted jscode 
 
   
