@@ -1,4 +1,4 @@
-## Discription
+## Description
 mkdocs is a Project which helps in creating static websites for documentation with Markdown.
 
 ## Payload Used
