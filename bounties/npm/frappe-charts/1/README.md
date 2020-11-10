@@ -2,7 +2,7 @@
 
 `frappe-charts` is vulnerable to `Cross-Site Scripting (XSS)`.
 
-# Steps To Reproduce-:  
+# Steps To Reproduce
 
 1. Open NPM repo https://www.npmjs.com/package/frappe-charts
 2. Open the Explore demos https://frappe.io/charts
