@@ -49,3 +49,5 @@ if (diff.filter((item) => item.change === "M" || "D"))
   console.error("Diff must only contain new bounties.", diff);
 
 console.log("Diff is valid.", diff);
+
+return {test: "hello"};
