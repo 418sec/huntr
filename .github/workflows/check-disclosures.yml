@@ -26,7 +26,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: context
-        run: echo ${{ toJson(github) }}
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: diff
         run: git diff --name-status ${{ github.event.pull_request.base.sha }} ${{ github.sha }} --
       - name: Install npm dependencies
