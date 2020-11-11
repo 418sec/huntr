@@ -25,15 +25,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: diff
-        env:
-          BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_COMMIT_SHA: ${{ github.sha }}
-        run: git diff --name-status $BASE_COMMIT_SHA $HEAD_COMMIT_SHA --
       - name: Install npm dependencies
         run: npm ci
       - name: Check the disclosures

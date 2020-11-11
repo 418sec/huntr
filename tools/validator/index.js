@@ -16,14 +16,15 @@ const diffString = await promisifiedExecFile("git", [
 
 // Check for errors
 if (diffString.stderr)
-  throw `Error whilst executing git diff: ${diffString.stderr}`;
+  console.error("Error whilst executing git diff", diffString.stderr);
 
 // Process git diff's stdout
 const diffStringLines = diffString.stdout
   .split(/[\r\n]+/) // Split by newlines
   .filter((e) => e); // This removes empty strings
 
-if (diffStringLines.length === 0) throw "Diff is empty.";
+if (diffStringLines.length === 0)
+  console.error("Diff is empty.", diffString.stdout);
 
 let diff = [];
 diffStringLines.forEach((line) => {
@@ -34,18 +35,17 @@ diffStringLines.forEach((line) => {
   });
 });
 
-console.log("diff:", diff);
-
 // Check for non-bounty files
 if (diff.filter((item) => item.path.startsWith("bounties/")))
-  throw "Diff must only contain changes to bounty files.";
+  console.error("Diff must only contain changes to bounty files.", diff);
 
 // Check for many new bounty directories
 const diffDirs = [...new Set(diff.map((item) => dirname(item.path)))];
-if (diffDirs.length > 1) throw "Diff must only contain one bounty directory.";
+if (diffDirs.length > 1)
+  console.error("Diff must only contain one bounty directory.", diff);
 
 // Check for only new bounties (additions)
 if (diff.filter((item) => item.change === "M" || "D"))
-  throw "Diff must only contain new bounties.";
+  console.error("Diff must only contain new bounties.", diff);
 
-console.log("Diff is valid");
+console.log("Diff is valid.", diff);
