@@ -9,7 +9,7 @@ const promisifiedExecFile = promisify(execFile);
 const diffString = await promisifiedExecFile("git", [
   "diff",
   "--name-status",
-  "refs/heads/staging",
+  "refs/remote/heads/staging",
   "--",
 ]);
 
