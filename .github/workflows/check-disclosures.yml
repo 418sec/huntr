@@ -25,8 +25,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - name: context
+        run: echo "${{ toJson(github) }}"
       - name: diff
-        run: git diff --name-status ${{ github.event.before }} ${{ github.sha }} --
+        run: git diff --name-status ${{ github.event.pull_request.base.sha }} ${{ github.sha }} --
       - name: Install npm dependencies
         run: npm ci
       - name: Check the disclosures
