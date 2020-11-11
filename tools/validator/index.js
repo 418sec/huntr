@@ -6,7 +6,11 @@ import {dirname} from "path";
 const promisifiedExecFile = promisify(execFile);
 
 // Get the git diff
-const diffString = await promisifiedExecFile("git", ["diff", "--name-status"]);
+const diffString = await promisifiedExecFile("git", [
+  "diff",
+  "HEAD^",
+  "--name-status",
+]);
 
 // Check for errors
 if (diffString.stderr)
@@ -27,6 +31,8 @@ diffStringLines.forEach((line) => {
     path: path,
   });
 });
+
+console.log(diff);
 
 // Check for non-bounty files
 if (diff.filter((item) => item.path.startsWith("bounties/")))
