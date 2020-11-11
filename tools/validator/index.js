@@ -28,6 +28,8 @@ diffStringLines.forEach((line) => {
   });
 });
 
+console.log("diff:", diff);
+
 // Check for non-bounty files
 if (diff.filter((item) => item.path.startsWith("bounties/")))
   throw "Diff must only contain changes to bounty files.";
