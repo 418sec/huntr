@@ -8,8 +8,9 @@ const promisifiedExecFile = promisify(execFile);
 // Get the git diff
 const diffString = await promisifiedExecFile("git", [
   "diff",
-  "staging",
   "--name-status",
+  "refs/heads/staging",
+  "--",
 ]);
 
 // Check for errors
