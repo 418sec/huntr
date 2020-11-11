@@ -27,6 +27,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: test
+        run: git tag -l
       - name: Install npm dependencies
         run: npm ci
       - name: Check the disclosures
