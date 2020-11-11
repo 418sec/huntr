@@ -25,7 +25,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: diff
         env:
-          CI_COMMIT_BEFORE_SHA: ${{github.events.before}}
+          CI_COMMIT_BEFORE_SHA: ${{ github.event.before }}
         run: git diff --name-status "$CI_COMMIT_BEFORE_SHA" --
       - name: Install npm dependencies
         run: npm ci
