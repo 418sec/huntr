@@ -182,4 +182,7 @@ jobs:
         contains-a-valid-vulnerability-json,
         contains-a-valid-readme-md,
       ]
-    uses: KeisukeYamashita/auto-pull-request-merge@v1
+    steps:
+      - id: auto-pull-request-merge
+        name: Merge disclosure
+        uses: KeisukeYamashita/auto-pull-request-merge@v1
