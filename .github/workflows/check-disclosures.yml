@@ -40,6 +40,34 @@ jobs:
           BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_COMMIT_SHA: ${{ github.sha }}
         run: node ./generate-diff.js
+  contains-only-one-bounty:
+    name: Contains only one bounty
+    needs: generate-diff
+    runs-on: ubuntu-latest
+    outputs:
+      bounty_dir: ${{ steps.contains-only-bounty-files.outputs.bounty_dir }}
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: contains-only-bounty-files
+        name: Contains only bounty files
+        env:
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./contains-only-one-bounty.js
   contains-only-bounty-files:
     name: Contains only bounty files
     needs: generate-diff
@@ -92,34 +120,6 @@ jobs:
         env:
           DIFF: ${{ needs.generate-diff.outputs.diff }}
         run: node ./contains-only-new-bounty-files.js
-  contains-only-one-bounty:
-    name: Contains only one bounty
-    needs: generate-diff
-    runs-on: ubuntu-latest
-    outputs:
-      bounty_dir: ${{ steps.contains-only-bounty-files.outputs.bounty_dir }}
-    steps:
-      - id: checkout
-        uses: actions/checkout@v2
-      - id: node-setup
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
-      - id: restore-node-cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - id: dependency-install
-        name: Install npm dependencies
-        run: npm ci
-      - id: contains-only-bounty-files
-        name: Contains only bounty files
-        env:
-          DIFF: ${{ needs.generate-diff.outputs.diff }}
-        run: node ./contains-only-one-bounty.js
   contains-a-valid-vulnerability-json:
     name: Contains a valid vulnerability.json
     needs: contains-only-one-bounty
@@ -146,3 +146,29 @@ jobs:
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./contains-a-valid-vulnerability-json.js
+  contains-a-valid-readme-md:
+    name: Contains a valid README.md
+    needs: contains-only-one-bounty
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: contains-a-valid-readme-md
+        name: Contains a valid README.md
+        env:
+          BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
+        run: node ./contains-a-valid-readme-md.js
