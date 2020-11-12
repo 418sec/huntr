@@ -2,8 +2,11 @@ name: Process disclosure
 
 on:
   pull_request:
+    types: [opened, synchronize, labeled]
     branches:
       - staging
+    paths:
+      - "bounties/**"
 
 defaults:
   run:
