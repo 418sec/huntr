@@ -5,15 +5,16 @@ on:
     branches:
       - staging
 
+defaults:
+  run:
+    working-directory: tools/validator
+
 jobs:
   generate-diff:
     name: Generate diff
     runs-on: ubuntu-latest
     outputs:
       diff: ${{ steps.generate-diff.outputs.diff }}
-    defaults:
-      run:
-        working-directory: tools/validator
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -43,9 +44,6 @@ jobs:
     name: Contains only bounty files
     needs: generate-diff
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: tools/validator
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -68,3 +66,55 @@ jobs:
         env:
           DIFF: ${{ needs.generate-diff.outputs.diff }}
         run: node ./contains-only-bounty-files.js
+  contains-only-new-bounty-files:
+    name: Contains only new bounty files
+    needs: generate-diff
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: contains-only-bounty-files
+        name: Contains only bounty files
+        env:
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./contains-only-new-bounty-files.js
+  contains-only-one-bounty:
+    name: Contains only one bounty
+    needs: generate-diff
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: contains-only-bounty-files
+        name: Contains only bounty files
+        env:
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./contains-only-one-bounty.js
