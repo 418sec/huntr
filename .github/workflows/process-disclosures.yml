@@ -10,7 +10,7 @@ on:
 
 defaults:
   run:
-    working-directory: tools/validator
+    working-directory: tools/process-disclosure
 
 jobs:
   generate-diff:
