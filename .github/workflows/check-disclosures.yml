@@ -182,6 +182,7 @@ jobs:
         contains-a-valid-vulnerability-json,
         contains-a-valid-readme-md,
       ]
+    runs-on: ubuntu-latest
     steps:
       - id: auto-pull-request-merge
         name: Merge disclosure
