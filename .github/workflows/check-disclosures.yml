@@ -173,13 +173,13 @@ jobs:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./contains-a-valid-readme-md.js
   merge-disclosure:
-    - name: Merge disclosure
-      needs:
-        [
-          contains-only-one-bounty,
-          contains-only-bounty-files,
-          contains-only-new-bounty-files,
-          contains-a-valid-vulnerability-json,
-          contains-a-valid-readme-md,
-        ]
-      uses: KeisukeYamashita/auto-pull-request-merge@v1
+    name: Merge disclosure
+    needs:
+      [
+        contains-only-one-bounty,
+        contains-only-bounty-files,
+        contains-only-new-bounty-files,
+        contains-a-valid-vulnerability-json,
+        contains-a-valid-readme-md,
+      ]
+    uses: KeisukeYamashita/auto-pull-request-merge@v1
