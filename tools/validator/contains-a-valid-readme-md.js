@@ -9,7 +9,6 @@ const vulnerabilityReadmePath = `../../${process.env.BOUNTY_DIR}/README.md`;
 // Try to read the README.md
 const vulnerabilityReadme = await fs
   .readFile(vulnerabilityReadmePath, "utf8")
-  .catch((err) => {
-    core.error(err);
+  .catch(() => {
     core.setFailed(`A README.md does not exist in ${process.env.BOUNTY_DIR}`);
   });
