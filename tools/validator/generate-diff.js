@@ -1,7 +1,6 @@
 "use strict";
 import {promisify} from "util";
 import {execFile} from "child_process";
-import {dirname} from "path";
 
 import * as core from "@actions/core";
 
@@ -37,30 +36,4 @@ diffStringLines.forEach((line) => {
   });
 });
 
-let isValid = true;
-
-// Check for non-bounty files
-if (diff.filter((item) => item.path.startsWith("bounties/"))) {
-  core.warning("Diff must only contain changes to bounty files.");
-  isValid = false;
-}
-
-// Check for many new bounty directories
-const diffDirs = [...new Set(diff.map((item) => dirname(item.path)))];
-if (diffDirs.length > 1) {
-  core.warning("Diff must only contain one bounty directory.");
-  isValid = false;
-}
-
-// Check for only new bounties (additions)
-if (diff.filter((item) => item.change === "M" || "D")) {
-  core.warning("Diff must only contain new bounties.", diff);
-  isValid = false;
-}
-
-if (isValid) {
-  core.info("Diff is valid.", diff);
-  core.setOutput("diff", diff);
-} else {
-  core.setFailed("Diff is invalid.");
-}
+core.setOutput("diff", diff);

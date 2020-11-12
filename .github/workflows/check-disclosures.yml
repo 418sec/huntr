@@ -6,29 +6,65 @@ on:
       - staging
 
 jobs:
-  run-validator:
-    name: "Validation"
+  generate-diff:
+    name: Generate diff
     runs-on: ubuntu-latest
+    outputs:
+      diff: ${{ steps.generate-diff.outputs.diff }}
     defaults:
       run:
         working-directory: tools/validator
     steps:
-      - uses: actions/checkout@v2
+      - id: checkout
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v1
+      - id: node-setup
+        uses: actions/setup-node@v1
         with:
           node-version: "14.x"
-      - uses: actions/cache@v2
+      - id: restore-node-cache
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install npm dependencies
+      - id: dependency-install
+        name: Install npm dependencies
         run: npm ci
-      - name: Check the disclosures
+      - id: generate-diff
+        name: Generate the diff
         env:
           BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_COMMIT_SHA: ${{ github.sha }}
-        run: node index.js
+        run: node ./generate-diff.js
+  contains-only-bounty-files:
+    name: Contains only bounty files
+    needs: generate-diff
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/validator
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: contains-only-bounty-files
+        name: Contains only bounty files
+        env:
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./contains-only-bounty-files.js
