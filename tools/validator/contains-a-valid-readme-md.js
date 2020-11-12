@@ -2,6 +2,8 @@
 
 import * as fs from "fs/promises";
 
+import * as core from "@actions/core";
+
 const vulnerabilityReadmePath = `../../${process.env.BOUNTY_DIR}/README.md`;
 
 // Try to read the README.md
