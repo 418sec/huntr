@@ -32,6 +32,9 @@ bounties.withPromise().then(async (bountyPaths) => {
     vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3];
     vulnerabilityDetails.Repository.Name = repositoryUrlParts[4];
 
+    // Appending the PR# to the vulnerability.json
+    vulnerabilityDetails.PrNumber = process.env.PR_NUMBER;
+
     // Call GitHub's API
     const github = new Octokit({
       auth: process.env.GITHUB_TOKEN,

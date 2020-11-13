@@ -29,6 +29,9 @@ jobs:
         run: node enricher.js
         env:
           GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          GITHUB_ACTION: ${{ github.event.action }}
+          PR_NUMBER: ${{ github.event.number }}
+          PR_USER_ID: ${{ github.event.pull_request.user.id }}
       - name: Create Issue & Fork
         run: node createIssueAndFork.js --trace-warnings
         env:
