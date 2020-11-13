@@ -1,0 +1,33 @@
+name: Publish disclosure
+on:
+  pull_request:
+    branches:
+      - staging
+    types: [closed]
+    paths:
+      - "bounties/**"
+
+# Add the PrNumber to the vulnerability.json
+# Add the Discloser contributor key
+# Create the fork of the repo
+jobs:
+  process-disclosure:
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Run appender
+        run: node appender.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_USER_ID: ${{ github.event.pull_request.user.id }}
+      - name: Run forker
+      run: node forker.js
+      env:
+        GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+
+# GET DIFF: https://github.com/adam-nygate/huntr/runs/1390968646?check_suite_focus=true
+# READ FILES: https://github.com/adam-nygate/huntr/blob/staging/tools/process-disclosure/contains-a-valid-vulnerability-json.js
+
+        # 1. Enrich
+        # 2. Index
+        # 3. Publish
