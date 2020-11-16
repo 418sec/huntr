@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       diff: ${{ steps.generate-diff.outputs.diff }}
-    if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
+    # if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -43,7 +43,7 @@ jobs:
           HEAD_COMMIT_SHA: ${{ github.sha }}
         run: node ./generate-diff.js
   publish-disclosure:
-    if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
+    # if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
     steps:
       - name: Run appender
         needs: generate-diff
