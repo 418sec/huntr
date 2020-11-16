@@ -11,15 +11,48 @@ on:
 # Add the Discloser contributor key
 # Create the fork of the repo
 jobs:
+  generate-diff:
+    name: Generate diff
+    runs-on: ubuntu-latest
+    outputs:
+      diff: ${{ steps.generate-diff.outputs.diff }}
+    if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: generate-diff
+        name: Generate the diff
+        env:
+          BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_COMMIT_SHA: ${{ github.sha }}
+        run: node ./generate-diff.js
   process-disclosure:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
     steps:
       - name: Run appender
+        needs: generate-diff
         run: node appender.js
         env:
           GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_USER_ID: ${{ github.event.pull_request.user.id }}
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
       - name: Run forker
       run: node forker.js
       env:
