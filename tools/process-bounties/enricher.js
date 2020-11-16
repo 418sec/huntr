@@ -61,6 +61,7 @@ bounties.withPromise().then(async (bountyPaths) => {
         repo: vulnerabilityDetails.Repository.Name,
       })
       .then((response) => {
+        console.log(Object.keys(response.data)[0])
         vulnerabilityDetails.Repository.Codebase = [
           Object.keys(response.data)[0] === null ? "Other" : Object.keys(response.data)[0],
         ];
