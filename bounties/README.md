@@ -108,7 +108,7 @@ This contains all the metadata related to the vulnerability. This file is create
 
 ## bounty.json
 
-This contains all the metadata related to the bounty. This file only persists whilst the bounty is available (the vulnerability is not fixed). This file is created by the huntr team, once a disclosure has been reviewed. 
+This contains all the metadata related to the bounty. This file only persists whilst the bounty is available (the vulnerability is not fixed). This file is created by the huntr team, once a disclosure has been reviewed.
 
 ```json
 {
