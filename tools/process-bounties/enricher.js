@@ -28,9 +28,12 @@ bounties.withPromise().then(async (bountyPaths) => {
     // Let's work out the root repositry. Format: https://github.com/:owner/:repo
     const repositoryUrlParts = vulnerabilityDetails.Repository.URL.split("/");
 
-    // Add the Repository Owner & Name as individual key/values
+    // Add the Repository Owner & Name to the vulnerability.json
     vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3];
     vulnerabilityDetails.Repository.Name = repositoryUrlParts[4];
+
+    // Appending the PR# to the vulnerability.json
+    vulnerabilityDetails.PrNumber = process.env.PR_NUMBER;
 
     // Call GitHub's API
     const github = new Octokit({
@@ -44,11 +47,9 @@ bounties.withPromise().then(async (bountyPaths) => {
         repo: vulnerabilityDetails.Repository.Name,
       })
       .then((octokitResponse) => {
+        // Append Forks/Stars to the vulnerability.json
         vulnerabilityDetails.Repository.Forks = octokitResponse.data.forks_count.toString();
         vulnerabilityDetails.Repository.Stars = octokitResponse.data.stargazers_count.toString();
-        // console.log(
-        //   `Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`
-        // );
       })
       .catch((octokitError) => {
         console.error("ERROR fetching package repository data:", octokitError);
@@ -61,6 +62,7 @@ bounties.withPromise().then(async (bountyPaths) => {
         repo: vulnerabilityDetails.Repository.Name,
       })
       .then((response) => {
+        // Append Codebase to vulnerability.json
         vulnerabilityDetails.Repository.Codebase = [
           Object.keys(response.data)[0],
         ];
