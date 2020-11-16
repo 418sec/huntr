@@ -54,13 +54,12 @@ jobs:
           PR_USER_ID: ${{ github.event.pull_request.user.id }}
           DIFF: ${{ needs.generate-diff.outputs.diff }}
       - name: Run forker
-      run: node forker.js
-      env:
-        GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
-
+        run: node forker.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
 # GET DIFF: https://github.com/adam-nygate/huntr/runs/1390968646?check_suite_focus=true
 # READ FILES: https://github.com/adam-nygate/huntr/blob/staging/tools/process-disclosure/contains-a-valid-vulnerability-json.js
 
-        # 1. Enrich
-        # 2. Index
-        # 3. Publish
+# 1. Enrich
+# 2. Index
+# 3. Publish        # 3. Publish        # 3. Publish
