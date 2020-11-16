@@ -42,7 +42,7 @@ jobs:
           BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_COMMIT_SHA: ${{ github.sha }}
         run: node ./generate-diff.js
-  process-disclosure:
+  publish-disclosure:
     if: github.event.pull_request.merged == true && github.event.label.name == 'disclosure'
     steps:
       - name: Run appender
