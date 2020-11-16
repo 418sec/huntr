@@ -62,7 +62,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       })
       .then((response) => {
         vulnerabilityDetails.Repository.Codebase = [
-          Object.keys(response.data)[0],
+          Object.keys(response.data)[0] === null ? "Other" : Object.keys(response.data)[0],
         ];
       })
       .catch((error) => {
