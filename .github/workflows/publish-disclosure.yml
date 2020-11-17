@@ -1,4 +1,5 @@
 name: Publish disclosure
+
 on:
   pull_request:
     branches:
@@ -6,6 +7,10 @@ on:
     types: [closed]
     paths:
       - "bounties/**"
+
+defaults:
+  run:
+    working-directory: tools/publish-disclosure
 
 # Add the PrNumber to the vulnerability.json
 # Add the Discloser contributor key
