@@ -11,6 +11,7 @@
   "type": "module",
   "dependencies": {
     "@actions/core": "^1.2.6",
+    "@octokit/rest": "^18.0.9",
     "ajv": "^6.12.6"
   }
 }
