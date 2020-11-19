@@ -90,43 +90,7 @@ bounties.withPromise().then(async (bountyPaths) => {
             });
       }
     }
-    // } else {
-    //     // Bounty does not have a GitHub Issue
-    //     console.log('Creating a new issue for:', `https://github.com/${repositoryOwner}/${repositoryName}`)
 
-    //     const githubIssueTitle = Mustache.render(githubIssueTitleTemplate, {
-    //         vulnerabilitySummary: vulnerabilityDetails.Summary
-    //     })
-    //     //console.log('Issue Title:', githubIssueTitle)
-
-    //     const githubIssueBody = Mustache.render(githubIssueBodyTemplate, {
-    //         username: vulnerabilityDetails.Author.Username,
-    //         vulnerabilityDescription,
-    //     })
-    //     //console.log('Issue Body:', githubIssueBody)
-
-    //     // Create an issue
-    //     if (process.env.GITHUB_TOKEN)
-    //         await octokit.issues.create({
-    //             owner: repositoryOwner,
-    //             repo: repositoryName,
-    //             title: githubIssueTitle,
-    //             body: githubIssueBody
-    //         })
-    //             .then(async response => {
-    //                 // Add issue url to the vulnerability.json
-    //                 vulnerabilityDetails.References.push({
-    //                     "Description": "GitHub Issue",
-    //                     "URL": response.data.html_url
-    //                 })
-    //                 await fs.writeFile(vulnerabilityDetailsPath, JSON.stringify(vulnerabilityDetails, null, 4))
-    //                 console.log('GitHub Issue added to vulnerability details:', response.data.html_url)
-    //                 // Need to commit the code back?
-    //             })
-    //             .catch(err => {
-    //                 console.log('Error creating issue:', err)
-    //             })
-    // }
     console.log(
       "Creating a fork of:",
       `https://github.com/${repositoryOwner}/${repositoryName}`
