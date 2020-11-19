@@ -106,7 +106,7 @@ bounties.withPromise().then(async (bountyPaths) => {
         })
         .then(async (response) => {
           console.log(
-            "ForkURL added to bounty details:",
+            "418sec fork created with URL: ",
             response.data.html_url
           );
           // Need to commit this back?
