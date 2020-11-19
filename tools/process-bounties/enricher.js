@@ -61,9 +61,15 @@ bounties.withPromise().then(async (bountyPaths) => {
         repo: vulnerabilityDetails.Repository.Name,
       })
       .then((response) => {
-        vulnerabilityDetails.Repository.Codebase = [
-          Object.keys(response.data)[0],
-        ];
+        if (JSON.stringify(response.data) === JSON.stringify({})) {
+          vulnerabilityDetails.Repository.Codebase = [
+            "Other"
+          ];
+        } else {
+          vulnerabilityDetails.Repository.Codebase = [
+            Object.keys(response.data)[0],
+          ];
+        }
       })
       .catch((error) => {
         console.error("ERROR fetching package repository data:", error);
