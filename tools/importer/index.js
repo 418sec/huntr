@@ -97,15 +97,4 @@ dataToImport.data.listBounties.forEach(async (oldBounty) => {
     JSON.stringify(vulnerability, null, 4)
   );
   console.log("Successfully wrote", thisBountyDir + "vulnerability.json");
-
-  // // Prepare the bounty file and save it
-  // const bounty = {
-  //     "ForkURL": oldBounty.ForkSourceUrl,
-  //     "Bounty": {
-  //         "Credit": oldBounty.CreditReward,
-  //         "Cash": oldBounty.CashReward
-  //     }
-  // };
-  // await writeFileAsync(thisBountyDir + 'bounty.json', JSON.stringify(bounty, null, 4));
-  // console.log("Successfully wrote", thisBountyDir + 'bounty.json');
 });
