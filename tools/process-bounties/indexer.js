@@ -1,8 +1,6 @@
 "use strict";
 
 const fs = require("fs/promises");
-const fsSync = require("fs");
-
 const fdir = require("fdir");
 
 const homeDir = "../../";
@@ -12,7 +10,6 @@ const rootIndexFilename = "index.json";
 const rootIndexPath = homeDir + rootIndexFilename;
 
 const vulnerabilityFilename = "vulnerability.json";
-const bountyFilename = "bounty.json";
 
 const bounties = new fdir()
   .withBasePath()
@@ -28,27 +25,11 @@ bounties.withPromise().then(async (bountyPaths) => {
       `/${vulnerabilityFilename}`
     )[0];
 
-    const vulnerabilityJsonContent = await fs
-      .readFile(bountyPath, "utf8")
-      .then(JSON.parse);
     const vulnerabilityDetails = await fs
       .readFile(`${vulnerabilityJsonDir}/${vulnerabilityFilename}`, "utf8")
       .then(JSON.parse);
 
-    const liveBounty = fsSync.existsSync(vulnerabilityJsonDir + "/bounty.json");
-    const bountyJsonContent = liveBounty
-      ? await fs
-          .readFile(vulnerabilityJsonDir + "/bounty.json", "utf8")
-          .then(JSON.parse)
-      : {
-          Bounty: {
-            Credit: parseInt(vulnerabilityDetails.CVSS.Score * 100),
-            Cash: 25,
-          },
-        };
-
     bountiesToIndex.push({
-      // "ID": `${vulnerabilityDetails.PackageVulnerabilityID}-${vulnerabilityDetails.Package.Registry}-${vulnerabilityDetails.Package.Name.replace('/','-')}`,
       ID: `${vulnerabilityDetails.PackageVulnerabilityID}-${
         vulnerabilityDetails.Package.Registry
       }-${encodeURIComponent(vulnerabilityDetails.Package.Name)}`,
@@ -64,8 +45,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       Severity: vulnerabilityDetails.CVSS.Score,
       AffectedVersionRange: vulnerabilityDetails.AffectedVersionRange,
       DisclosureDate: vulnerabilityDetails.DisclosureDate,
-      Bounty: bountyJsonContent.Bounty,
-      Live: liveBounty,
+      PrNumber: vulnerabilityDetails.PrNumber,
     });
   }
 
