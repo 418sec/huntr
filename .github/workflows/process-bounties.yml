@@ -45,3 +45,7 @@ jobs:
         with:
           github_token: ${{ secrets.HUNTR_HELPER_TOKEN }}
           branch: "staging"
+      - name: Merge staging into master
+        run: node merger.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
