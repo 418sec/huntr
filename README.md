@@ -180,58 +180,104 @@ Your `vulnerability.json` must take the following format to get accepted:
 
 <br />
 
-```js
+```json
 {
-  "PackageVulnerabilityID": "", // numerical incrementing ID, i.e. '1'
-  "DisclosureDate": "", // disclosure submission date (YYYY-MM-DD)
-  "AffectedVersionRange": "", // the vulnerable version/s of the package (use '*' for all)
-  "Summary": "", // summarises the vulnerability disclosure
+  "PackageVulnerabilityID": "",
+  "DisclosureDate": "",
+  "AffectedVersionRange": "",
+  "Summary": "",
   "Contributor": {
-    "Discloser": "", // you can leave this blank
-    "Fixer": "" // you can leave this blank
+    "Discloser": "",
+    "Fixer": ""
   },
   "Package": {
-    "Registry": "", // one of maven, npm, packagist, pip, rubygems, other
-    "Name": "", // this should exactly match the name of the folder inside the registry folder
-    "URL": "" // URL to the package on the corresponding package manager
+    "Registry": "",
+    "Name": "",
+    "URL": ""
   },
   "CWEs": [
     {
-      "ID": "", // Common Weakness Enumeration ID of the vulnerability, i.e. '400'
-      "Description": "" // name of the vulnerability CWE ID, i.e. Failure to Sanitize...
+      "ID": "",
+      "Description": ""
     }
   ],
   "CVSS": {
-    "Version": "", // the version of CVSS calculator used, i.e. '3.1'
-    "AV": "", // attack vector
-    "AC": "", // attack complexity
-    "PR": "", // privileges required
-    "UI": "", // user interaction
-    "S": "", // scope
-    "C": "", // confidentiality
-    "I": "", // integrity
-    "A": "", // availability
-    "E": "", // exploit code maturity
-    "RL": "", // remediation level
-    "RC": "", // report confidence
-    "Score": "" // score for assessing the severity of the vulnerability
+    "Version": "",
+    "AV": "",
+    "AC": "",
+    "PR": "",
+    "UI": "",
+    "S": "",
+    "C": "",
+    "I": "",
+    "A": "",
+    "E": "",
+    "RL": "",
+    "RC": "",
+    "Score": ""
   },
-  "CVEs": [""], // publicly known information-security vulnerabilities and exposures
+  "CVEs": [""], 
   "Repository": {
-    "URL": "", // GitHub repo URL
-    "Codebase": [""] // specifies the languages used in the repo
+    "URL": "",
+    "Codebase": [""] 
   },
-  "Permalinks": [""], // blocks of code that are responsible for causing the vulnerability
+  "Permalinks": [""], 
   "References": [
     {
       "Description": "",
       "URL": ""
     }
-  ] // links to articles/exploits/blogs related to vulnerability
+  ]
 }
 ```
 
-_N.B. - ensure you remove all of the comments `//` before submitting_
+<br />
+
+Furthermore, the contents of each key must have a value that follows the defintiion table:
+
+<br />
+
+<table align="center">
+<th>Field</th><th>Definition</th><th>Example</th>
+<tr><td>PackageVulnerabilityID</td><td>Numerical incrementing ID</td><td>1</td></tr>
+<tr><td>DisclosureDate</td><td>Disclosure submission date</td><td>2020-12-01</td></tr>
+<tr><td>AffectedVersionRange</td><td>Vulnerable version/s of the package</td><td>*</td></tr>
+<tr><td>Summary</td><td>Summary of the vulnerability</td><td>Prototype Pollution</td></tr>
+<tr><td>Discloser</td><td>GitHub ID of the discloser</td><td><i>No input required...</i></td></tr>
+<tr><td>Fixer</td><td>GitHub ID of the fixer</td><td><i>No input required...</i></td></tr>
+<tr><td>Package.Registry</td><td>Name of package manager/registry</td><td>npm</td></tr>
+<tr><td>Package.Name</td><td>Name of the vulnerable package</td><td>lodash</td></tr>
+<tr><td>Package.URL</td><td>URL to the package in the registry</td><td>https://www.npmjs.com/package/lodash</td></tr>
+<tr><td>CWEs.ID</td><td>Common Weakness Enumeration ID of the vulnerability</td><td>400</td></tr>
+<tr><td>CWEs.Description</td><td>Name of the CWE ID</td><td>Failure to Sanitize Input</td></tr>
+<tr><td>CVSS.Version</td><td>Version of CVSS Calculator</td><td>3.1</td></tr>
+<tr><td>CVSS.AV</td><td>Attack Vector</td><td>P</td></tr>
+<tr><td>CVSS.AC</td><td>Attack Complexity</td><td>H</td></tr>
+<tr><td>CVSS.PR</td><td>Privileges Required</td><td>L</td></tr>
+<tr><td>CVSS.UI</td><td>Privileges Required</td><td>L</td></tr>
+<tr><td>CVSS.S</td><td>Scope</td><td>L</td></tr>
+<tr><td>CVSS.C</td><td>Confidentiality</td><td>L</td></tr>
+<tr><td>CVSS.I</td><td>Integrity</td><td>L</td></tr>
+<tr><td>CVSS.A</td><td>Availability</td><td>L</td></tr>
+<tr><td>CVSS.E</td><td>Exploit Code Maturity</td><td>L</td></tr>
+<tr><td>CVSS.RL</td><td>Remediation Level</td><td>L</td></tr>
+<tr><td>CVSS.RC</td><td>Report Confidence</td><td>L</td></tr>
+<tr><td>CVSS.Score</td><td>Common Vulnerability Scoring System</td><td>9.8</td></tr>
+<tr><td>CVEs</td><td>Common Vulnerabilities and Exposures (CVE)</td><td><code>["CVE-abc-123"]</code></td></tr>
+<tr><td>Repository.URL</td><td>GitHub Repository URL</td><td>https://github.com/418sec/huntr</td></tr>
+<tr><td>Repository.Codebase</td><td>GitHub Repository Codebase</td><td><code>["JavaScript"]</code></td></tr>
+<tr><td>Permalinks</td><td>GitHub Permalinks</td><td><code>["https://github.com/418sec/huntr/blob/staging/.gitignore#L1"]</code></td></tr>
+<tr><td>References</td><td>Links or Articles relating to vulnerability</td><td><code>{
+      "Description": "Blog",
+      "URL": "https://huntr.dev/blog"
+    }</code></td></tr>
+</table>
+
+<br />
+
+<p align="center"><i>Data Definition Table for vulnerability.json</i></p>
+
+<br />
 
 <br />
 
@@ -282,16 +328,30 @@ _N.B - ensure that any hyperlinks or URLs are added to the `References` array in
 
 <br />
 
-If you are up to this point, great job! You can now go ahead and open a pull request from your fork to `418sec/huntr`.
+If you are up to this point, great job! You can now go ahead and open a pull request from your fork to `418sec/huntr:staging`. Make sure that you have submitted only one `vulnerability.json` and `README.md` per pull request. If you do this properly, a <img style="margin-top:20px;" alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/disclosure"> label will be added to your PR.
 
-Before being accepted, your `vulnerability.json` will go through some checks to ensure a minimum level of quality. If your disclosure fails these checks, you will be able to view the results of these checks by 
+<br />
 
-
-<p align="center"><b>Existing disclosures are labelled with: </b> <br /><img style="margin-top:20px;" alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/disclosure">
+All previous disclosure PRs are labelled with:<br />
+<img style="margin-top:20px;" alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/disclosure">
 <img alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/discussion">
-</p>
 
+<br />
 
+Before being accepted, your `vulnerability.json` will go through some checks to ensure a minimum level of quality. If your disclosure fails these checks, you will be able to view the results of these checks at the bottom of your PR.
+
+<br />
+
+Once your disclosure is accepted, within a few minutes, your disclosure will be visible on the platform under the address:
+
+```url
+https://huntr.dev/bounties/${PackageVulnerabilityID}-${Package.Registry}-${Package.Name}
+```
+
+Our community will now be able to discuss your disclosure and submit fixes for it...
+
+<br />
+<br />
 <p align="center">
 <i>Need more help? Take a look at our video walkthrough for more information...</i>
 </p>
@@ -299,7 +359,21 @@ Before being accepted, your `vulnerability.json` will go through some checks to 
 <a href="https://www.youtube.com/watch?v=KBB5YtU84F8" title="How to disclose with huntr and GitHub"><img src="https://img.youtube.com/vi/KBB5YtU84F8/0.jpg" width="250"></a>
 </p>
 
+<br />
+
 ## Fix
+
+<br />
+
+## Discuss
+
+<br />
+
+We encourage everyone to engage in the discourse for vulnerability disclosures and fixes through our platform. To sign up, [click here](https://huntr.dev/profile). You will find a comments section on each bounty page where you can express your thoughts and learn with others.
+
+<br />
+
+If you have any feedback about this repository or the platform, get involved with the conversation on our [Discord](https://discord.gg/6wVS2dm). Join our growing community today!
 
 <br />
 
@@ -307,17 +381,15 @@ Before being accepted, your `vulnerability.json` will go through some checks to 
 
 <br />
 
-If you'd like to disclose a vulnerability, [click here](https://github.com/418sec/huntr/compare/staging...staging?template=disclose-vulnerability.md)
+_You may find the following links helpful:_
 
-If you'd like to sponsor huntr, [click here](https://www.paypal.me/418sec)
-
-If you are a package maintainer and want to get in touch, [click here](https://www.huntr.dev/contact-us)
-
-To join us on Discord, [click here](https://discord.gg/6wVS2dm)
-
-To follow us on Twitter, [click here](https://twitter.com/huntrdev)
-
-
+- [Platform](https://huntr.dev)
+- [Blog](https://huntr.dev/blog)
+- [Previous Disclosures](https://github.com/418sec/huntr/pulls?q=label%3Adisclosure)
+- [Sponsor Us](https://www.paypal.me/418sec)
+- [Contact Us](https://www.huntr.dev/contact-us)
+- [Discord](https://discord.gg/6wVS2dm)
+- [Twitter](https://twitter.com/huntrdev)
 
 ## Updates
 
