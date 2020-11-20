@@ -334,7 +334,7 @@ _N.B - ensure that any hyperlinks or URLs are added to the `References` array in
 
 <br />
 
-### Disclosure Acceptance 🎉
+### Disclosure Merging 🎉
 
 <br />
 
