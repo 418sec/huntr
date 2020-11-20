@@ -180,7 +180,7 @@ Your `vulnerability.json` must take the following format to get accepted:
 
 <br />
 
-```json
+```js
 {
   "PackageVulnerabilityID": "", // numerical incrementing ID, i.e. '1'
   "DisclosureDate": "", // disclosure submission date (YYYY-MM-DD)
@@ -282,7 +282,7 @@ _N.B - ensure that any hyperlinks or URLs are added to the `References` array in
 
 <br />
 
-<b>If you are up to this point, great job! You can now go ahead and open a pull request from your fork to `418sec/huntr`.</b>
+If you are up to this point, great job! You can now go ahead and open a pull request from your fork to `418sec/huntr`.
 
 Before being accepted, your `vulnerability.json` will go through some checks to ensure a minimum level of quality. If your disclosure fails these checks, you will be able to view the results of these checks by 
 
