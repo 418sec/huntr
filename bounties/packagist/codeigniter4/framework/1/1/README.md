@@ -6,7 +6,7 @@ This package is vulnerable to Cross-site scripting and can be exploited by bypas
 
 ## POC
 
-1. Install via composer by following this (link)[https://codeigniter.com/user_guide/installation/installing_composer.html]
+1. Install via composer by following this [link](https://codeigniter.com/user_guide/installation/installing_composer.html)
 2. Update the index method code on `app/Controllers/Home.php`
 ```
 helper('security');
@@ -15,4 +15,4 @@ $payload = 'http://www.example.com/x" onerror=alert(1)//';
 $imageurl = strip_image_tags($payload);
 echo '<img src="'.$imageurl.'">';
 ```
-3. Run the app to verify the vulnerability by following this (link)[https://codeigniter.com/user_guide/installation/running.html#local-development-server]
+3. Run the app to verify the vulnerability by following this [link](https://codeigniter.com/user_guide/installation/running.html#local-development-server)
