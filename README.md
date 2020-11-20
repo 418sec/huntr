@@ -70,6 +70,10 @@ _If you want to do a bit more reading around the platform and our mission, take 
 
 <br />
 
+_For the best experience when disclosing a vulnerability with us, [sign up](https://huntr.dev/profile) to the platform using your GitHub account._
+
+<br />
+
 Before disclosing a vulnerability, you should fork the repository and familiarise yourself with the contents of your new repo. You can fork by clicking here:
 
 <br />
@@ -348,6 +352,8 @@ Once your disclosure is accepted, within a few minutes, your disclosure will be 
 https://huntr.dev/bounties/${PackageVulnerabilityID}-${Package.Registry}-${Package.Name}
 ```
 
+<br />
+
 Our community will now be able to discuss your disclosure and submit fixes for it...
 
 <br />
@@ -362,6 +368,44 @@ Our community will now be able to discuss your disclosure and submit fixes for i
 <br />
 
 ## Fix
+
+<br />
+
+_For the best experience when fixing a vulnerability with us, [sign up](https://huntr.dev/profile) to the platform using your GitHub account._
+
+<br />
+
+All of our submitted disclosures will be displayed on the [bounties](https://huntr.dev/bounties) page on the platform. You can filter by programming language and view disclosures ordered by most recent, first.
+
+<br />
+
+### Submit a fix ⚒️
+
+<br />
+
+To start working on a fix, visit any bounty page and click the <b>Fork and Fix</b> button. This will only be visible if you have [signed up](https://huntr.dev/profile) with your GitHub account. This will create a fork of a `418sec` GitHub repository; we have forked the upstream repository so that we don't bother the true maintainer with heavy discussion threads on their repository.
+
+<br />
+
+For example:
+
+```
+lodash/lodash
+|_418sec/lodash
+  |_YOUR-USERNAME/lodash
+```
+
+<br />
+
+Once you have forked through our platform, you will be provided a `git clone` command. With this, you can start working on your fork and building your fix, woohoo! 🎉
+
+<br />
+
+Once you are happy with your fix on your forked repository, you can now open up a pull request from your fork to the `418sec` repository.
+
+<br />
+
+We encourage you to reference your pull request submission on the original disclosure through the comments section on the platform. To do this, simply copy your GitHub PR URL into the comments section. This will automatically setup a linked reference to your PR. This will give you the opportunity to get community feedback on your fix and learn with others on their submissions too.
 
 <br />
 
