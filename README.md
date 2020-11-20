@@ -82,14 +82,14 @@ To follow us on Twitter, [click here](https://twitter.com/huntrdev)
 
 <br />
 
-<table>
+<table style="border:none;">
 <tr>
-<td><b>To stay up-to-date with any new disclosures or changes on the repository, turn your notifications to <kbd>Watching</kbd>.
+<td width="225">To stay up-to-date with any new disclosures or changes on the repository, turn your notifications to <kbd>Watching</kbd>...
 
 <br />
 <br />
 
-To show some love, give us a star!</b></td>
+To show us some love, give us a star! ⭐</td>
 <td><img src="img/watch.gif" width="800" /></td>
 </tr>
 </table>
