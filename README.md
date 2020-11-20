@@ -76,7 +76,7 @@ Before disclosing a vulnerability, you should fork the repository and familiaris
 
 <a href="https://github.com/418sec/huntr/fork"><img alt="GitHub forks" src="https://img.shields.io/github/forks/418sec/huntr?style=social"></a>
 
-### Database
+### Database 💽
 
 <br />
 
@@ -140,7 +140,7 @@ Each _new_ and _unique_ disclosure should iterate on this number, if the package
 
 <br />
 
-### Submit a disclosure
+### Submit a disclosure 📨
 
 <br />
 
@@ -174,12 +174,122 @@ bounties/npm/lodash/1/README.md
 
 ### `vulnerability.json`
 
+<br />
+
+Your `vulnerability.json` must take the following format to get accepted:
+
+<br />
+
+```json
+{
+  "PackageVulnerabilityID": "", // numerical incrementing ID, i.e. '1'
+  "DisclosureDate": "", // disclosure submission date (YYYY-MM-DD)
+  "AffectedVersionRange": "", // the vulnerable version/s of the package (use '*' for all)
+  "Summary": "", // summarises the vulnerability disclosure
+  "Contributor": {
+    "Discloser": "", // you can leave this blank
+    "Fixer": "" // you can leave this blank
+  },
+  "Package": {
+    "Registry": "", // one of maven, npm, packagist, pip, rubygems, other
+    "Name": "", // this should exactly match the name of the folder inside the registry folder
+    "URL": "" // URL to the package on the corresponding package manager
+  },
+  "CWEs": [
+    {
+      "ID": "", // Common Weakness Enumeration ID of the vulnerability, i.e. '400'
+      "Description": "" // name of the vulnerability CWE ID, i.e. Failure to Sanitize...
+    }
+  ],
+  "CVSS": {
+    "Version": "", // the version of CVSS calculator used, i.e. '3.1'
+    "AV": "", // attack vector
+    "AC": "", // attack complexity
+    "PR": "", // privileges required
+    "UI": "", // user interaction
+    "S": "", // scope
+    "C": "", // confidentiality
+    "I": "", // integrity
+    "A": "", // availability
+    "E": "", // exploit code maturity
+    "RL": "", // remediation level
+    "RC": "", // report confidence
+    "Score": "" // score for assessing the severity of the vulnerability
+  },
+  "CVEs": [""], // publicly known information-security vulnerabilities and exposures
+  "Repository": {
+    "URL": "", // GitHub repo URL
+    "Codebase": [""] // specifies the languages used in the repo
+  },
+  "Permalinks": [""], // blocks of code that are responsible for causing the vulnerability
+  "References": [
+    {
+      "Description": "",
+      "URL": ""
+    }
+  ] // links to articles/exploits/blogs related to vulnerability
+}
+```
+
+_N.B. - ensure you remove all of the comments `//` before submitting_
+
+<br />
+
+For more information on the requested meta-data, you can refer to the following resources:
+
+- [CVE - Common Vulnerabilities and Exposures](https://cve.mitre.org/)
+- [CVSS - Common Vulnerability Scoring System](https://www.first.org/cvss/calculator/3.1)
+- [CWE - Common Weakness Enumeration](https://cwe.mitre.org/)
+- [How to create a permalink with GitHub](https://docs.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet)
+
+<br />
+
+
 ### `README.md`
 
+<br />
+
+The `README.md` file is fully customisable, but you can use the following template:
+
+```md
+# Description
+
+`myPackage` is vulnerable to `a scary vulnerability`.
+
+This exploit may result in the modification of..., which may result in...
+
+# Proof of Concept
+
+1. Create the following PoC file:
+
+{Show PoC code here...}
+
+2. Execute the following commands in another terminal:
+
+{Show terminal commands here...}
+
+3. Check the Output:
+
+{Show result of execution here...}
+
+```
+
+_N.B - ensure that any hyperlinks or URLs are added to the `References` array in the `vulnerability.json`_
+
+<br />
+
+### Disclosure Acceptance 🎉
+
+<br />
+
+<b>If you are up to this point, great job! You can now go ahead and open a pull request from your fork to `418sec/huntr`.</b>
+
+Before being accepted, your `vulnerability.json` will go through some checks to ensure a minimum level of quality. If your disclosure fails these checks, you will be able to view the results of these checks by 
 
 
-
-
+<p align="center"><b>Existing disclosures are labelled with: </b> <br /><img style="margin-top:20px;" alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/disclosure">
+<img alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/discussion">
+</p>
 
 
 <p align="center">
@@ -187,12 +297,6 @@ bounties/npm/lodash/1/README.md
 </p>
 <p align="center">
 <a href="https://www.youtube.com/watch?v=KBB5YtU84F8" title="How to disclose with huntr and GitHub"><img src="https://img.youtube.com/vi/KBB5YtU84F8/0.jpg" width="250"></a>
-</p>
-
-
-
-<p align="center"><b>Existing disclosures are labelled with: </b> <br /><img style="margin-top:20px;" alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/disclosure">
-<img alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/discussion">
 </p>
 
 ## Fix
