@@ -52,11 +52,11 @@
 
 <a href="https://huntr.dev"><b>huntr</b></a> is a bug bounty platform developed by <a href="https://418sec.com"><b>418sec</b></a>. We provide the open source community a way to learn and master open source security with real world practice on packages being utilised by millions of developers and services around the world.
 
-This repository is an _open_ and _freely_ available database for all of the disclosures we have received. We display these disclosures on our platform for you to learn about, attempt a fix and discuss with other members of the community.
+This repository is an _open_ and _freely_ available database for all of the disclosures we have received from the open source community. We display these disclosures on our platform for you to learn about, attempt a fix and discuss with others.
 
-You already have what it takes, so keep reading to learn more on how to disclose a vulnerability, submit a fix and share your opinions with us.
+You already have what it takes. Keep reading to learn more on how to disclose a vulnerability, submit a fix and share your opinions with us.
 
-_If you want to do a bit more reading behind the platform and our mission, take a look at_:
+_If you want to do a bit more reading around the platform and our mission, take a look at_:
 
 - [Our Blog](https://huntr.dev/blog)
 - [AWS Open Source Blog](https://aws.amazon.com/blogs/opensource/how-a-startup-wants-to-help-secure-the-open-source-ecosystem-with-huntr-a-bug-bounty-board/)
@@ -64,6 +64,19 @@ _If you want to do a bit more reading behind the platform and our mission, take 
 ## Disclose
 
 <br />
+
+<p align="center">
+<table align="center">
+<tr>
+<td width="250"><i>Need more help? Take a look at our video walkthrough for more information...</i></td>
+<td>
+  <a href="https://www.youtube.com/watch?v=KBB5YtU84F8" title="How to disclose with huntr and GitHub"><img src="https://img.youtube.com/vi/KBB5YtU84F8/0.jpg" width="250"></a>
+</td>
+</tr>
+</table>
+</p>
+
+
 
 <p align="center"><b>Existing disclosures are labelled with: </b> <br /><img style="margin-top:20px;" alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/disclosure">
 <img alt="GitHub labels" src="https://img.shields.io/github/labels/418sec/huntr/discussion">
