@@ -78,6 +78,10 @@ Before disclosing a vulnerability, you should fork the repository and familiaris
 
 <br />
 
+### Bounties
+
+<br />
+
 The `bounties` folder holds all previous disclosures and is also the location where new disclosures are added. Inside the `bounties` folder, each directory represents a _package manager_. These include:
 
 <br />
