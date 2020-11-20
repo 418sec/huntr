@@ -70,7 +70,67 @@ _If you want to do a bit more reading around the platform and our mission, take 
 
 <br />
 
-To 
+Before disclosing a vulnerability, you should fork the repository and familiarise yourself with the contents of your new repo. You can fork by clicking here:
+
+<br />
+
+<a href="https://github.com/418sec/huntr/fork"><img alt="GitHub forks" src="https://img.shields.io/github/forks/418sec/huntr?style=social"></a>
+
+<br />
+
+The `bounties` folder holds all previous disclosures and is also the location where new disclosures are added. Inside the `bounties` folder, each directory represents a _package manager_. These include:
+
+<br />
+
+<a href="https://maven.apache.org/"><img src="https://img.shields.io/badge/maven-black?style=plastic&logo=java&logoColor=red"></a>
+<a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>
+<a href="https://packagist.org/"><img src="https://img.shields.io/badge/packagist-black?style=plastic&logo=composer&logoColor=blue"></a>
+<a href="https://pip.pypa.io/en/stable/"><img src="https://img.shields.io/badge/pip-black?style=plastic&logo=pypi&logoColor=yellow"></a>
+<a href="https://rubygems.org/"><img src="https://img.shields.io/badge/rubygems-black?style=plastic&logo=rubygems&logoColor=red"></a>
+<img src="https://img.shields.io/badge/other-black?style=plastic">
+
+<br />
+
+Within each of these folders, you will find the names of packages that are served by these package managers. For example, `bounties/npm/yup` refers to:
+
+<br />
+
+<a href="https://www.npmjs.com/package/yup"><b>yup</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>
+
+<br />
+
+Some package managers (i.e. <a href="https://packagist.org/"><img src="https://img.shields.io/badge/packagist-black?style=plastic&logo=composer&logoColor=blue"></a>) format their package names like `owner/name`, e.g. <a href="https://packagist.org/packages/intervention/image"><b>intervention/image</b></a>. Where this is the case, the package directory assumes the following structure:
+
+```
+bounties
+  - packagist
+    - intervention
+      - image
+```
+
+_Otherwise_, it will follow:
+
+```
+bounties
+  - npm
+    - yup
+```
+
+<br />
+
+Inside of each package directory, there will be a numbered list of directories starting at `1`. This number is the identifier for the vulnerability/disclosure. This number, as well as the directory, refers to the respective vulnerability on the platform:
+
+```js
+https://huntr.dev/bounties/1-npm-yup
+```
+
+Each new disclosure should iterate on this number, if the package for a specific package manager does not already exist.
+
+
+
+
+
+
 
 <p align="center">
 <i>Need more help? Take a look at our video walkthrough for more information...</i>
