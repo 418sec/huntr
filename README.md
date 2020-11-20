@@ -76,9 +76,7 @@ Before disclosing a vulnerability, you should fork the repository and familiaris
 
 <a href="https://github.com/418sec/huntr/fork"><img alt="GitHub forks" src="https://img.shields.io/github/forks/418sec/huntr?style=social"></a>
 
-<br />
-
-### Bounties
+### Database
 
 <br />
 
@@ -112,6 +110,8 @@ bounties
       - image
 ```
 
+<br />
+
 _Otherwise_, it will follow:
 
 ```
@@ -122,13 +122,51 @@ bounties
 
 <br />
 
-Inside of each package directory, there will be a numbered list of directories starting at `1`. This number is the identifier for the vulnerability/disclosure. This number, as well as the directory, refers to the respective vulnerability on the platform:
+Inside of each package directory, there will be a numbered list of directories starting at `1`. This number is the identifier for the vulnerability/disclosure. For example, `bounties/npm/yup/1` is the first disclosure in our database for <a href="https://www.npmjs.com/package/yup"><b>yup</b></a>.
+
+<br />
+
+This number, as well as the directory, refers to the respective vulnerability on the platform. The contents of the files inside a directory location will be used to generate the content for the platform vulnerability page:
+
+<br />
 
 ```js
 https://huntr.dev/bounties/1-npm-yup
 ```
 
-Each new disclosure should iterate on this number, if the package for a specific package manager does not already exist.
+<br />
+
+Each _new_ and _unique_ disclosure should iterate on this number, if the package for a specific package manager does not already exist.
+
+<br />
+
+### Submit a disclosure
+
+<br />
+
+Now that we have covered the basics of the vulnerability database, we can now submit a disclosure...
+
+<br />
+
+Each disclosure is made up of two files:
+
+<br />
+
+`vulnerability.json` and a `README.md`
+
+<br />
+
+The `vulnerability.json` contains all meta-data related to the vulnerability or disclosure. This file is created by a discloser, within an existing or new, package manager and package of choice. For example, if you wanted to disclose a vulnerability in <a href="https://www.npmjs.com/package/lodash"><b>lodash</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>, on your personal fork of the repo, you will create two empty files:
+
+<br />
+
+```json
+bounties/npm/lodash/1/vulnerability.json
+```
+
+```json
+bounties/npm/lodash/1/README.md
+```
 
 
 
