@@ -48,7 +48,8 @@
   <a href="#fix"><b>Fix</b></a> •
   <a href="#discuss"><b>Discuss</b></a> •
   <a href="#links"><b>Links</b></a> •
-  <a href="#updates"><b>Updates</b></a>
+  <a href="#updates"><b>Updates</b></a> •
+  <a href="#community"><b>Community</b></a> •
 </p>
 <hr />
 
@@ -436,6 +437,8 @@ _You may find the following links helpful:_
 - [Discord](https://discord.gg/6wVS2dm)
 - [Twitter](https://twitter.com/huntrdev)
 
+<br />
+
 ## Updates
 
 <br />
@@ -447,3 +450,13 @@ _You may find the following links helpful:_
 <p align="center" width="100">
 <img src="img/watch.gif" width="600" />
 </p>
+
+<br />
+
+## Community
+
+<br />
+
+_You can find community-based projects here:_
+
+- [HuntrBot](https://github.com/Asjidkalam/HuntrBot)
