@@ -27,6 +27,11 @@
 <a href="https://github.com/418sec/huntr/pulls?q=is%3Apr+is%3Aopen+label%3Adisclosure" target="_blank"><img alt="GitHub closed pull requests by-label" src="https://img.shields.io/github/issues-pr-closed-raw/418sec/huntr/disclosure?color=%23ef5a4d&label=resolved%20disclosure%20PRs&style=flat-square"></a>
 </p>
 <br />
+<p align="center">
+<a href="https://discord.gg/wkPS6yx"><img alt="Discord" src="https://img.shields.io/discord/672495759706554369?label=Discord&logo=discord&logoColor=%23ef5a4d&style=flat-square"></a>
+<a href="https://twitter.com/huntrdev"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/huntrdev?style=social"></a>
+</p>
+<br />
 <p align="center"><a href="https://huntr.dev" target="_blank"><b>Visit the platform</b></a> or continue reading...</p>
 <p align="center">
 <a href="https://huntr.dev" target="_blank"><img src="img/bounties.png" width="350"></a>
@@ -64,6 +69,8 @@ _If you want to do a bit more reading around the platform and our mission, take 
 ## Disclose
 
 <br />
+
+To 
 
 <p align="center">
 <i>Need more help? Take a look at our video walkthrough for more information...</i>
