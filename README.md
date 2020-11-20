@@ -156,7 +156,9 @@ Each disclosure is made up of two files:
 
 <br />
 
-The `vulnerability.json` contains all meta-data related to the vulnerability or disclosure. This file is created by a discloser, within an existing or new, package manager and package of choice. For example, if you wanted to disclose a vulnerability in <a href="https://www.npmjs.com/package/lodash"><b>lodash</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>, on your personal fork of the repo, you will create two empty files:
+The `vulnerability.json` contains all meta-data related to the vulnerability or disclosure. You can find a template below for the `vulnerability.json` which should be filled with relevant information. The `README.md` is a custom description of the disclosure that will appear on the platform. It is rendered with a simple Markdown processor that includes basic styling - similar to GitHub Flavoured Markdown. You can be as creative and artistic with your `README.md` as you please. These files are created by a discloser, within an existing or new package manager and package of choice.
+
+For example, if you wanted to disclose a vulnerability in <a href="https://www.npmjs.com/package/lodash"><b>lodash</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>, on your personal fork of the repo, you will create two empty files:
 
 <br />
 
@@ -167,6 +169,12 @@ bounties/npm/lodash/1/vulnerability.json
 ```json
 bounties/npm/lodash/1/README.md
 ```
+
+<br />
+
+### `vulnerability.json`
+
+### `README.md`
 
 
 
