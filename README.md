@@ -66,14 +66,10 @@ _If you want to do a bit more reading around the platform and our mission, take 
 <br />
 
 <p align="center">
-<table align="center">
-<tr>
-<td width="250"><i>Need more help? Take a look at our video walkthrough for more information...</i></td>
-<td>
-  <a href="https://www.youtube.com/watch?v=KBB5YtU84F8" title="How to disclose with huntr and GitHub"><img src="https://img.youtube.com/vi/KBB5YtU84F8/0.jpg" width="250"></a>
-</td>
-</tr>
-</table>
+<i>Need more help? Take a look at our video walkthrough for more information...</i>
+</p>
+<p align="center">
+<a href="https://www.youtube.com/watch?v=KBB5YtU84F8" title="How to disclose with huntr and GitHub"><img src="https://img.youtube.com/vi/KBB5YtU84F8/0.jpg" width="250"></a>
 </p>
 
 
@@ -106,14 +102,10 @@ To follow us on Twitter, [click here](https://twitter.com/huntrdev)
 
 <br />
 
-<table>
-<tr>
-<td width="225">To stay up-to-date with any new disclosures or changes on the repository, turn your notifications to <kbd>Watching</kbd>...
+<p align="center">
+<i>Turn your notifications to <i>watching</i> to keep yourself up-to-date. To show us some love, give us a star!</i>
+</p>
 
-<br />
-<br />
-
-To show us some love, give us a star! ⭐</td>
-<td><img src="img/watch.gif" width="800" /></td>
-</tr>
-</table>
+<p align="center" width="100">
+<img src="img/watch.gif" width="600" />
+</p>
