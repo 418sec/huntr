@@ -46,6 +46,7 @@
   <a href="#about"><b>About</b></a> •
   <a href="#disclose"><b>Disclose</b></a> •
   <a href="#fix"><b>Fix</b></a> •
+  <a href="#discuss"><b>Discuss</b></a> •
   <a href="#links"><b>Links</b></a> •
   <a href="#updates"><b>Updates</b></a>
 </p>
