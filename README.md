@@ -68,6 +68,8 @@ _If you want to do a bit more reading around the platform and our mission, take 
 - [Our Blog](https://huntr.dev/blog)
 - [AWS Open Source Blog](https://aws.amazon.com/blogs/opensource/how-a-startup-wants-to-help-secure-the-open-source-ecosystem-with-huntr-a-bug-bounty-board/)
 
+<br />
+
 ## Disclose
 
 <br />
@@ -81,6 +83,8 @@ Before disclosing a vulnerability, you should fork the repository and familiaris
 <br />
 
 <a href="https://github.com/418sec/huntr/fork"><img alt="GitHub forks" src="https://img.shields.io/github/forks/418sec/huntr?style=social"></a>
+
+<br/>
 
 ### Database 💽
 
