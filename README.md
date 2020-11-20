@@ -27,21 +27,21 @@
 <a href="https://github.com/418sec/huntr/pulls?q=is%3Apr+is%3Aopen+label%3Adisclosure" target="_blank"><img alt="GitHub closed pull requests by-label" src="https://img.shields.io/github/issues-pr-closed-raw/418sec/huntr/disclosure?color=%23ef5a4d&label=resolved%20disclosure%20PRs&style=flat-square"></a>
 </p>
 <br />
-<p align="center">
-<a href="https://huntr.dev" target="_blank"><img src="img/bounties.png" width="300"></a>
-<a href="https://huntr.dev" target="_blank"><img src="img/bounty.png" width="300"></a>
-</p>
-<p align="center">
-<a href="https://huntr.dev" target="_blank"><img src="img/comments.png" width="300"></a>
-<a href="https://huntr.dev" target="_blank"><img src="img/user.png" width="301"></a>
-</p>
 <p align="center"><a href="https://huntr.dev" target="_blank"><b>Visit the platform</b></a> or continue reading...</p>
+<p align="center">
+<a href="https://huntr.dev" target="_blank"><img src="img/bounties.png" width="350"></a>
+<a href="https://huntr.dev" target="_blank"><img src="img/bounty.png" width="350"></a>
+</p>
+<p align="center">
+<a href="https://huntr.dev" target="_blank"><img src="img/comments.png" width="350"></a>
+<a href="https://huntr.dev" target="_blank"><img src="img/user.png" width="351"></a>
+</p>
 <hr />
 <p align="center">
-  <a href="#how-to-use"><b>About</b></a> •
-  <a href="#download"><b>Disclose</b></a> •
-  <a href="#credits"><b>Fix</b></a> •
-  <a href="#related"><b>Links</b></a> •
+  <a href="#about"><b>About</b></a> •
+  <a href="#disclose"><b>Disclose</b></a> •
+  <a href="#fix"><b>Fix</b></a> •
+  <a href="#links"><b>Links</b></a> •
   <a href="#updates"><b>Updates</b></a>
 </p>
 <hr />
@@ -49,6 +49,17 @@
 ## About
 
 <br />
+
+<a href="https://huntr.dev"><b>huntr</b></a> is a bug bounty platform developed by <a href="https://418sec.com"><b>418sec</b></a>. We provide the open source community a way to learn and master open source security with real world practice on packages being utilised by millions of developers and services around the world.
+
+This repository is an _open_ and _freely_ available database for all of the disclosures we have received. We display these disclosures on our platform for you to learn about, attempt a fix and discuss with other members of the community.
+
+You already have what it takes, so keep reading to learn more on how to disclose a vulnerability, submit a fix and share your opinions with us.
+
+_If you want to do a bit more reading behind the platform and our mission, take a look at_:
+
+- [Our Blog](https://huntr.dev/blog)
+- [AWS Open Source Blog](https://aws.amazon.com/blogs/opensource/how-a-startup-wants-to-help-secure-the-open-source-ecosystem-with-huntr-a-bug-bounty-board/)
 
 ## Disclose
 
@@ -82,7 +93,7 @@ To follow us on Twitter, [click here](https://twitter.com/huntrdev)
 
 <br />
 
-<table style="border:none;">
+<table>
 <tr>
 <td width="225">To stay up-to-date with any new disclosures or changes on the repository, turn your notifications to <kbd>Watching</kbd>...
 
