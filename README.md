@@ -49,7 +49,7 @@
   <a href="#discuss"><b>Discuss</b></a> •
   <a href="#links"><b>Links</b></a> •
   <a href="#updates"><b>Updates</b></a> •
-  <a href="#community"><b>Community</b></a> •
+  <a href="#community"><b>Community</b></a>
 </p>
 <hr />
 
