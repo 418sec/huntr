@@ -282,7 +282,7 @@ Furthermore, the contents of each key must have a value that follows the definit
 <tr><td>CVSS.RL</td><td>Remediation Level</td><td>L</td></tr>
 <tr><td>CVSS.RC</td><td>Report Confidence</td><td>L</td></tr>
 <tr><td>CVSS.Score</td><td>Common Vulnerability Scoring System</td><td>9.8</td></tr>
-<tr><td>CVEs</td><td>Common Vulnerabilities and Exposures (CVE)</td><td><code>["CVE-abc-123"]</code></td></tr>
+<tr><td>CVEs</td><td>Common Vulnerabilities and Exposures (CVE)</td><td><code>["CVE-abc-123"]</code><i>- optional</i></td></tr>
 <tr><td>Repository.URL</td><td>GitHub Repository URL</td><td>https://github.com/418sec/huntr</td></tr>
 <tr><td>Repository.Codebase</td><td>GitHub Repository Codebase</td><td><code>["JavaScript"]</code></td></tr>
 <tr><td>Repository.Owner</td><td>GitHub Repository Owner</td><td>418sec</td></tr>
