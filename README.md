@@ -235,7 +235,9 @@ Your `vulnerability.json` must take the following format to get accepted:
   "CVEs": [""], 
   "Repository": {
     "URL": "",
-    "Codebase": [""] 
+    "Codebase": [""],
+    "Owner": "",
+    "Name": ""
   },
   "Permalinks": [""], 
   "References": [
@@ -283,6 +285,8 @@ Furthermore, the contents of each key must have a value that follows the definit
 <tr><td>CVEs</td><td>Common Vulnerabilities and Exposures (CVE)</td><td><code>["CVE-abc-123"]</code></td></tr>
 <tr><td>Repository.URL</td><td>GitHub Repository URL</td><td>https://github.com/418sec/huntr</td></tr>
 <tr><td>Repository.Codebase</td><td>GitHub Repository Codebase</td><td><code>["JavaScript"]</code></td></tr>
+<tr><td>Repository.Owner</td><td>GitHub Repository Owner</td><td>418sec</td></tr>
+<tr><td>Repository.Name</td><td>GitHub Repository Name</td><td>huntr</td></tr>
 <tr><td>Permalinks</td><td>GitHub Permalinks</td><td><code>["https://github.com/418sec/huntr/blob/staging/.gitignore#L1"]</code></td></tr>
 <tr><td>References</td><td>Links or Articles relating to vulnerability</td><td><code>{
       "Description": "Blog",
