@@ -107,7 +107,7 @@ Within each of these folders, you will find the names of packages that are serve
 
 <br />
 
-<a href="https://www.npmjs.com/package/yup"><b>yup</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>
+<a href="https://www.npmjs.com/package/yup"><img src="https://img.shields.io/badge/npm-yup-black?style=plastic&logo=npm"></a>
 
 <br />
 
