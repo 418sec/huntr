@@ -166,7 +166,15 @@ Each disclosure is made up of two files:
 
 The `vulnerability.json` contains all meta-data related to the vulnerability or disclosure. You can find a template below for the `vulnerability.json` which should be filled with relevant information. The `README.md` is a custom description of the disclosure that will appear on the platform. It is rendered with a simple Markdown processor that includes basic styling - similar to GitHub Flavoured Markdown. You can be as creative and artistic with your `README.md` as you please. These files are created by a discloser, within an existing or new package manager and package of choice.
 
-For example, if you wanted to disclose a vulnerability in <a href="https://www.npmjs.com/package/lodash"><b>lodash</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>, on your personal fork of the repo, you will create two empty files:
+For example, if you wanted to disclose a vulnerability in:
+
+<br />
+
+<a href="https://www.npmjs.com/package/lodash"><img src="https://img.shields.io/badge/npm-lodash-black?style=plastic&logo=npm"></a>
+
+<br />
+
+...you will create two empty files on your personal fork:
 
 <br />
 
@@ -245,11 +253,12 @@ Furthermore, the contents of each key must have a value that follows the definti
 
 <br />
 
-<table align="center">
+<b>
+<table style="text-align:right;">
 <th>Field</th><th>Definition</th><th>Example</th>
 <tr><td>PackageVulnerabilityID</td><td>Numerical incrementing ID</td><td>1</td></tr>
 <tr><td>DisclosureDate</td><td>Disclosure submission date</td><td>2020-12-01</td></tr>
-<tr><td>AffectedVersionRange</td><td>Vulnerable version/s of the package</td><td>*</td></tr>
+<tr><td>AffectedVersionRange</td><td>Vulnerable version/s of the package</td><td>* or 1.0.0</td></tr>
 <tr><td>Summary</td><td>Summary of the vulnerability</td><td>Prototype Pollution</td></tr>
 <tr><td>Discloser</td><td>GitHub ID of the discloser</td><td><i>No input required...</i></td></tr>
 <tr><td>Fixer</td><td>GitHub ID of the fixer</td><td><i>No input required...</i></td></tr>
@@ -280,6 +289,7 @@ Furthermore, the contents of each key must have a value that follows the definti
       "URL": "https://huntr.dev/blog"
     }</code></td></tr>
 </table>
+</b>
 
 <br />
 
