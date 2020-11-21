@@ -262,8 +262,8 @@ Furthermore, the contents of each key must have a value that follows the definit
 <tr><td>DisclosureDate</td><td>Disclosure submission date</td><td>2020-12-01</td></tr>
 <tr><td>AffectedVersionRange</td><td>Vulnerable version/s of the package</td><td>* or 1.0.0</td></tr>
 <tr><td>Summary</td><td>Summary of the vulnerability</td><td>Prototype Pollution</td></tr>
-<tr><td>Discloser</td><td>GitHub ID of the discloser</td><td><i>No input required...</i></td></tr>
-<tr><td>Fixer</td><td>GitHub ID of the fixer</td><td><i>No input required...</i></td></tr>
+<tr><td>Contributor.Discloser</td><td>GitHub ID of the discloser</td><td><i>No input required...</i></td></tr>
+<tr><td>Contributor.Fixer</td><td>GitHub ID of the fixer</td><td><i>No input required...</i></td></tr>
 <tr><td>Package.Registry</td><td>Name of package manager/registry</td><td>npm</td></tr>
 <tr><td>Package.Name</td><td>Name of the vulnerable package</td><td>lodash</td></tr>
 <tr><td>Package.URL</td><td>URL to the package in the registry</td><td>https://www.npmjs.com/package/lodash</td></tr>
