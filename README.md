@@ -249,7 +249,7 @@ Your `vulnerability.json` must take the following format to get accepted:
 
 <br />
 
-Furthermore, the contents of each key must have a value that follows the defintiion table:
+Furthermore, the contents of each key must have a value that follows the definition table:
 
 <br />
 
