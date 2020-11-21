@@ -451,6 +451,19 @@ _You may find the following links helpful:_
 
 <br />
 
+### Templates
+
+<br />
+
+Not sure what to write in the description of your pull request? You can use our PR (pull request) templates to help you:
+
+<br />
+
+- [Disclosure Template](https://github.com/418sec/huntr/blob/staging/.github/PULL_REQUEST_TEMPLATE/disclose-vulnerability.md)
+- [Fix Template](https://github.com/418sec/.github/blob/master/PULL_REQUEST_TEMPLATE.md)
+
+<br />
+
 ## Updates
 
 <br />
