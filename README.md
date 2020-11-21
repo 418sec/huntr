@@ -448,6 +448,7 @@ _You may find the following links helpful:_
 - [Contact Us](https://www.huntr.dev/contact-us)
 - [Discord](https://discord.gg/6wVS2dm)
 - [Twitter](https://twitter.com/huntrdev)
+- [Team](https://418sec.com)
 
 <br />
 
