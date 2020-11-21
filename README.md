@@ -360,7 +360,7 @@ Before being accepted, your `vulnerability.json` will go through some checks to 
 
 <br />
 
-Once your disclosure is accepted, within a few minutes, your disclosure will be visible on the platform under the address:
+Once your disclosure is accepted, within a few minutes, it will be visible on the platform under the URL:
 
 ```url
 https://huntr.dev/bounties/${PackageVulnerabilityID}-${Package.Registry}-${Package.Name}
