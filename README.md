@@ -140,9 +140,7 @@ This number, as well as the directory, refers to the respective vulnerability on
 
 <br />
 
-```js
 https://huntr.dev/bounties/1-npm-yup
-```
 
 <br />
 
