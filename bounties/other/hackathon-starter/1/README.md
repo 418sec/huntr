@@ -4,7 +4,7 @@
 
 # Proof of Concept
 
-### Login Brute-Force
+# Login Brute-Force
 
 1. Install the package by following these ![instructions](https://github.com/sahat/hackathon-starter#getting-started) or try the live demo https://hackathon-starter.walcony.com
 2. Navigate to `/login` and send the POST request to Burp Intruder
@@ -14,7 +14,7 @@
   https://raw.githubusercontent.com/arjunshibu/files/main/hackathon-starter-poc/poc2.png                                            
   https://raw.githubusercontent.com/arjunshibu/files/main/hackathon-starter-poc/poc3.png                                            
   
-### Mass Account Creation
+# Mass Account Creation
 
 1. Navigate to `/signup` and send the POST request to Burp Intruder
 2. I used numbers as payloads
