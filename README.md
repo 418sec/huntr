@@ -107,7 +107,7 @@ Within each of these folders, you will find the names of packages that are serve
 
 <br />
 
-<a href="https://www.npmjs.com/package/yup"><b>yup</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>
+<a href="https://www.npmjs.com/package/yup"><img src="https://img.shields.io/badge/npm-yup-black?style=plastic&logo=npm"></a>
 
 <br />
 
@@ -140,9 +140,7 @@ This number, as well as the directory, refers to the respective vulnerability on
 
 <br />
 
-```js
 https://huntr.dev/bounties/1-npm-yup
-```
 
 <br />
 
@@ -168,7 +166,15 @@ Each disclosure is made up of two files:
 
 The `vulnerability.json` contains all meta-data related to the vulnerability or disclosure. You can find a template below for the `vulnerability.json` which should be filled with relevant information. The `README.md` is a custom description of the disclosure that will appear on the platform. It is rendered with a simple Markdown processor that includes basic styling - similar to GitHub Flavoured Markdown. You can be as creative and artistic with your `README.md` as you please. These files are created by a discloser, within an existing or new package manager and package of choice.
 
-For example, if you wanted to disclose a vulnerability in <a href="https://www.npmjs.com/package/lodash"><b>lodash</b></a> on <a href="https://npmjs.com"><img src="https://img.shields.io/badge/npm-black?style=plastic&logo=npm"></a>, on your personal fork of the repo, you will create two empty files:
+For example, if you wanted to disclose a vulnerability in:
+
+<br />
+
+<a href="https://www.npmjs.com/package/lodash"><img src="https://img.shields.io/badge/npm-lodash-black?style=plastic&logo=npm"></a>
+
+<br />
+
+...you will create two empty files on your personal fork:
 
 <br />
 
@@ -229,7 +235,9 @@ Your `vulnerability.json` must take the following format to get accepted:
   "CVEs": [""], 
   "Repository": {
     "URL": "",
-    "Codebase": [""] 
+    "Codebase": [""],
+    "Owner": "",
+    "Name": ""
   },
   "Permalinks": [""], 
   "References": [
@@ -243,18 +251,19 @@ Your `vulnerability.json` must take the following format to get accepted:
 
 <br />
 
-Furthermore, the contents of each key must have a value that follows the defintiion table:
+Furthermore, the contents of each key must have a value that follows the definition table:
 
 <br />
 
-<table align="center">
+<b>
+<table style="text-align:right;">
 <th>Field</th><th>Definition</th><th>Example</th>
 <tr><td>PackageVulnerabilityID</td><td>Numerical incrementing ID</td><td>1</td></tr>
 <tr><td>DisclosureDate</td><td>Disclosure submission date</td><td>2020-12-01</td></tr>
-<tr><td>AffectedVersionRange</td><td>Vulnerable version/s of the package</td><td>*</td></tr>
+<tr><td>AffectedVersionRange</td><td>Vulnerable version/s of the package</td><td>* or 1.0.0</td></tr>
 <tr><td>Summary</td><td>Summary of the vulnerability</td><td>Prototype Pollution</td></tr>
-<tr><td>Discloser</td><td>GitHub ID of the discloser</td><td><i>No input required...</i></td></tr>
-<tr><td>Fixer</td><td>GitHub ID of the fixer</td><td><i>No input required...</i></td></tr>
+<tr><td>Contributor.Discloser</td><td>GitHub ID of the discloser</td><td><i>No input required...</i></td></tr>
+<tr><td>Contributor.Fixer</td><td>GitHub ID of the fixer</td><td><i>No input required...</i></td></tr>
 <tr><td>Package.Registry</td><td>Name of package manager/registry</td><td>npm</td></tr>
 <tr><td>Package.Name</td><td>Name of the vulnerable package</td><td>lodash</td></tr>
 <tr><td>Package.URL</td><td>URL to the package in the registry</td><td>https://www.npmjs.com/package/lodash</td></tr>
@@ -273,15 +282,18 @@ Furthermore, the contents of each key must have a value that follows the definti
 <tr><td>CVSS.RL</td><td>Remediation Level</td><td>L</td></tr>
 <tr><td>CVSS.RC</td><td>Report Confidence</td><td>L</td></tr>
 <tr><td>CVSS.Score</td><td>Common Vulnerability Scoring System</td><td>9.8</td></tr>
-<tr><td>CVEs</td><td>Common Vulnerabilities and Exposures (CVE)</td><td><code>["CVE-abc-123"]</code></td></tr>
+<tr><td>CVEs</td><td>Common Vulnerabilities and Exposures (CVE)</td><td><code>["CVE-abc-123"]</code><i>- optional</i></td></tr>
 <tr><td>Repository.URL</td><td>GitHub Repository URL</td><td>https://github.com/418sec/huntr</td></tr>
 <tr><td>Repository.Codebase</td><td>GitHub Repository Codebase</td><td><code>["JavaScript"]</code></td></tr>
+<tr><td>Repository.Owner</td><td>GitHub Repository Owner</td><td>418sec</td></tr>
+<tr><td>Repository.Name</td><td>GitHub Repository Name</td><td>huntr</td></tr>
 <tr><td>Permalinks</td><td>GitHub Permalinks</td><td><code>["https://github.com/418sec/huntr/blob/staging/.gitignore#L1"]</code></td></tr>
 <tr><td>References</td><td>Links or Articles relating to vulnerability</td><td><code>{
       "Description": "Blog",
       "URL": "https://huntr.dev/blog"
     }</code></td></tr>
 </table>
+</b>
 
 <br />
 
@@ -352,7 +364,7 @@ Before being accepted, your `vulnerability.json` will go through some checks to 
 
 <br />
 
-Once your disclosure is accepted, within a few minutes, your disclosure will be visible on the platform under the address:
+Once your disclosure is accepted, within a few minutes, it will be visible on the platform under the URL:
 
 ```url
 https://huntr.dev/bounties/${PackageVulnerabilityID}-${Package.Registry}-${Package.Name}
@@ -440,6 +452,20 @@ _You may find the following links helpful:_
 - [Contact Us](https://www.huntr.dev/contact-us)
 - [Discord](https://discord.gg/6wVS2dm)
 - [Twitter](https://twitter.com/huntrdev)
+- [Team](https://418sec.com)
+
+<br />
+
+### Templates
+
+<br />
+
+Not sure what to write in the description of your pull request? You can use our PR (pull request) templates to help you:
+
+<br />
+
+- [Disclosure Template](https://github.com/418sec/huntr/blob/staging/.github/PULL_REQUEST_TEMPLATE/disclose-vulnerability.md)
+- [Fix Template](https://github.com/418sec/.github/blob/master/PULL_REQUEST_TEMPLATE.md)
 
 <br />
 
