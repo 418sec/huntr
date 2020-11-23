@@ -53,44 +53,6 @@ bounties.withPromise().then(async (bountyPaths) => {
         reference.Description?.toUpperCase() === "GitHub Issue".toUpperCase()
     );
 
-    if (githubIssueReferences?.length > 0) {
-      // Bounty has a GitHub Issue
-      for (const githubIssueReference of githubIssueReferences) {
-        // Format: https://github.com/:owner/:repo/issues/:number
-        const githubIssueUrlParts = githubIssueReference?.URL.split("/");
-        const githubIssueOwner = githubIssueUrlParts[3];
-        const githubIssueRepo = githubIssueUrlParts[4];
-        const githubIssueNumber = githubIssueUrlParts[6];
-
-        console.log(
-          "Adding a comment to issue:",
-          `https://github.com/${githubIssueOwner}/${githubIssueRepo}/issues/${githubIssueNumber}`
-        );
-
-        const githubIssueCommentBody = githubIssueCommentBodyTemplate;
-        //console.log('Issue Comment body:', githubIssueCommentBody)
-
-        //Add a comment to the issue
-        if (process.env.GITHUB_TOKEN)
-          await octokit.issues
-            .createComment({
-              owner: githubIssueOwner,
-              repo: githubIssueRepo,
-              issue_number: githubIssueNumber,
-              body: githubIssueCommentBody,
-            })
-            .then((response) => {
-              console.log(
-                "GitHub Issue Comment created:",
-                response.data.html_url
-              );
-            })
-            .catch((err) => {
-              console.log("Error creating issue comment:", err);
-            });
-      }
-    }
-
     console.log(
       "Creating a fork of:",
       `https://github.com/${repositoryOwner}/${repositoryName}`
