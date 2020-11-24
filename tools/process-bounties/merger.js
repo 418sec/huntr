@@ -7,8 +7,8 @@ octokit.repos
   .merge({
     owner: "418sec",
     repo: "huntr",
-    base: "418sec:master",
-    head: "418sec:staging",
+    base: "master",
+    head: "staging",
   })
   .then(() => {
     console.log("Successfully merged staging into master.");
