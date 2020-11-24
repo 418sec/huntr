@@ -181,8 +181,8 @@ jobs:
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./contains-a-valid-readme-md.js
-  contains-a-valid-readme-md:
-    name: Directory name matches Package.Name value
+  contains-a-valid-directory:
+    name: Directory format matches vulnerability.json values
     needs: 
       [ 
         contains-only-one-bounty, 
@@ -207,8 +207,8 @@ jobs:
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
-      - id: directory-matches-package-name
-        name: Directory name matches Package.Name value
+      - id: contains-a-valid-directory
+        name: Directory format matches vulnerability.json values
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./directory-matches-package-name.js
