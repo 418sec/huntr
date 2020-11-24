@@ -16,11 +16,9 @@ const vulnerabilityJson = await fs
   });
 const packageName = vulnerabilityJson.Package.Name
 const packageId = vulnerabilityJson.PackageVulnerabilityID
-// `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`
 
-// TODO: \S does not seem to catch
 // Check ID & Package.Name matches the directory name
-const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/.\/${packageId}\/(vulnerability\.json|README\.md)`);
+const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\w\/${packageId}\/(vulnerability\.json|README\.md)`);
 const illegalId = diff.filter((item) => !validId.test(item.path));
 if (illegalId.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json `ID` value.");
