@@ -2,9 +2,10 @@ import * as fs from "fs/promises";
 import * as core from "@actions/core";
 
 const diff = JSON.parse(process.env.DIFF);
-const vulnerabilityJsonPath = `../../${process.env.BOUNTY_DIR}/vulnerability.json`;
+console.log('diff', diff);
 
 // Try to read the vulnerability.json and parse it
+const vulnerabilityJsonPath = `../../${process.env.BOUNTY_DIR}/vulnerability.json`;
 const vulnerabilityJson = await fs
   .readFile(vulnerabilityJsonPath, "utf8")
   .then(JSON.parse)
