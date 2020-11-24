@@ -6,7 +6,7 @@
 
 * Navigate to `/signup` and create a victim account
 
-### Update Profile
+# Update Profile
 
 1. Use the CSRF PoC from Burpsuite
 ```html
@@ -27,7 +27,7 @@
 2. Visit the payload link and click submit button
 3. The account credentials should have changed to attacker's data now.
 
-### Delete Profile
+# Delete Profile
 
 1. Use the CSRF PoC from Burpsuite
 ```html
