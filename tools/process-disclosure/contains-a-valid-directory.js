@@ -4,7 +4,7 @@ import * as core from "@actions/core";
 const diff = JSON.parse(process.env.DIFF);
 const vulnerabilityJsonPath = `../../${process.env.BOUNTY_DIR}/vulnerability.json`;
 
-// Try to read the vulnerability.json and parse it, returning Package.Name value
+// Try to read the vulnerability.json and parse it
 const vulnerabilityJson = await fs
   .readFile(vulnerabilityJsonPath, "utf8")
   .then(JSON.parse)
@@ -15,9 +15,15 @@ const vulnerabilityJson = await fs
   });
 const packageName = vulnerabilityJson.Package.Name
 const packageId = vulnerabilityJson.ID
+// `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`
 
-// Check Package.Name matches the directory name
-const validPath = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`);
-const illegalPaths = diff.filter((item) => !validPath.test(item.path));
-if (illegalPaths.length > 0)
-    core.setFailed("Bounty path does not match vulnerability.json values.");
+// Check ID & Package.Name matches the directory name
+const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S\/${packageId}\/vulnerability\.json`);
+const illegalId = diff.filter((item) => !validId.test(item.path));
+if (illegalId.length > 0)
+    core.setFailed("Bounty path does not match vulnerability.json `ID` value.");
+
+const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/[1-9]\/vulnerability\.json`);
+const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
+if (illegalPackageName.length > 0)
+    core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
