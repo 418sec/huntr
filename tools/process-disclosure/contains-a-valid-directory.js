@@ -14,7 +14,7 @@ const vulnerabilityJson = await fs
     );
   });
 const packageName = vulnerabilityJson.Package.Name
-const packageId = vulnerabilityJson.ID
+const packageId = vulnerabilityJson.PackageVulnerabilityID
 // `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`
 
 // Check ID & Package.Name matches the directory name
