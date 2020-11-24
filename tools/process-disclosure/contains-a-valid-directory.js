@@ -19,19 +19,19 @@ const packageId = vulnerabilityJson.PackageVulnerabilityID
 // `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`
 
 // Check ID & Package.Name matches the directory name
-const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S\/${packageId}\/vulnerability\.json`);
+const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S\/${packageId}\/(vulnerability\.json|README\.md)`);
 const illegalId = diff.filter((item) => !validId.test(item.path));
 if (illegalId.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json `ID` value.");
 
-const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/[1-9]\/vulnerability\.json`);
+const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/[1-9]\/(vulnerability\.json|README\.md)`);
 const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
 if (illegalPackageName.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
 
 // GENERIC TEST (REGEX SHOULD WORK)
-console.log('Generic regex:', `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`);
-const validPath = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`);
+console.log('Generic regex:', `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/(vulnerability\.json|README\.md)`);
+const validPath = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/(vulnerability\.json|README\.md)`);
 const illegalPath = diff.filter((item) => !validPath.test(item.path));
 if (illegalPath.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json values.");
