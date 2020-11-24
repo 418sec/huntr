@@ -13,3 +13,4 @@ https://s-cart.org/about.html
   
 # POC
   [gdrive](https://drive.google.com/file/d/1E7AE7EFPTiiEEj8jAKvVAumWKu4PRs0L/view?usp=sharing)
+  payload used = "><script>alert("test")</script>
