@@ -37,6 +37,19 @@ bounties.withPromise().then(async (bountyPaths) => {
       auth: process.env.GITHUB_TOKEN,
     });
 
+    let remainingRequests = await octokit.rateLimit.get()
+      .then(response => {
+        console.log("Remaning requests: ", response.data.rate.remaining)
+        return response.data.rate.remaining
+      })
+      .catch(() => {
+        return 0;
+      })
+
+    if (remainingRequests < 2000) {
+      return;
+    }
+
     // Get Forks & Stars from GitHub
     await github.repos
       .get({
