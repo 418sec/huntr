@@ -185,6 +185,7 @@ jobs:
     name: Directory format matches vulnerability.json values
     needs: 
       [ 
+        generate-diff,
         contains-only-one-bounty, 
         contains-a-valid-vulnerability-json 
       ]
@@ -211,6 +212,7 @@ jobs:
         name: Directory format matches vulnerability.json values
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
         run: node ./contains-a-valid-directory.js
   merge-disclosure:
     name: Merge disclosure
