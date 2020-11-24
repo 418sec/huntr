@@ -37,7 +37,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       auth: process.env.GITHUB_TOKEN,
     });
 
-    let remainingRequests = await octokit.rateLimit.get()
+    let remainingRequests = await github.rateLimit.get()
       .then(response => {
         console.log("Remaning requests: ", response.data.rate.remaining)
         return response.data.rate.remaining
