@@ -46,7 +46,7 @@ bounties.withPromise().then(async (bountyPaths) => {
         return 0;
       })
 
-    if (remainingRequests < 3000) {
+    if (remainingRequests < 2000) {
       return;
     }
 
