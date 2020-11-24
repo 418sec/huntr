@@ -5,7 +5,7 @@
 https://github.com/s-cart/s-cart
 https://s-cart.org/about.html
 
-# Steps To Reproduce-:  
+# Steps To Reproduce
 
 1) install https://github.com/s-cart/s-cart locally or https://demo.s-cart.org/ for demo
 2) the search function in admin dashboard is vulnerable for XSS 
