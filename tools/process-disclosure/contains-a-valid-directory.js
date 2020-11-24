@@ -27,3 +27,10 @@ const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|ru
 const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
 if (illegalPackageName.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
+
+// GENERIC TEST (REGEX SHOULD WORK)
+console.log('Generic regex:', `bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`);
+const validPath = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/${packageId}\/vulnerability\.json`);
+const illegalPath = diff.filter((item) => !validPath.test(item.path));
+if (illegalPath.length > 0)
+    core.setFailed("Bounty path does not match vulnerability.json values.");
