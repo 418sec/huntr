@@ -28,10 +28,9 @@ export default function MyChart(props) {
         colors={["#21ba45"]}
         axisOptions={{ xAxisMode: "tick", yAxisMode: "tick", xIsSeries: 1 }}
         height={250}
-        data={{
+        data=
           labels: ["Sun", "Mon'><img src=x onerror=alert(1)>", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
           datasets: [{ values: [18, 60, 30, 35, 8, 52, 17, 4] }],
-        }}
       />
       <button onClick={exportChart} type="button">
         Export
