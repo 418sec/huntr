@@ -36,6 +36,4 @@ diffStringLines.forEach((line) => {
   });
 });
 
-console.log('diff', diff);
-
 core.setOutput("diff", diff);
