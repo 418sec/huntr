@@ -18,9 +18,8 @@ const packageId = vulnerabilityJson.PackageVulnerabilityID
 console.log('packageName', packageName);
 console.log('packageId', packageId);
 
-// TODO: Replace `\w` to include `-` and `@`
 // Check ID & Package.Name matches the directory name
-const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\w\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
+const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S+\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
 const illegalId = diff.filter((item) => !validId.test(item.path));
 if (illegalId.length > 0)
     console.log("Bounty path does not match vulnerability.json `PackageVulnerabilityID` value.");
