@@ -39,10 +39,12 @@ jobs:
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
-      - name: GITHUB CONTEXT
+      - id: generate-diff
+        name: Generate the diff
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node ./generate-diff.js
   contains-only-one-bounty:
     name: Contains only one bounty
     needs: generate-diff
