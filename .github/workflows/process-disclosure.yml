@@ -23,7 +23,7 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
       - id: node-setup
         uses: actions/setup-node@v1
         with:
