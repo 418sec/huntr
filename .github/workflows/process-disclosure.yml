@@ -1,7 +1,7 @@
 name: Process disclosure
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, labeled]
     branches:
       - staging
