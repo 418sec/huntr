@@ -23,7 +23,8 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -41,7 +42,7 @@ jobs:
       - id: generate-diff
         name: Generate the diff
         env:
-          BASE_COMMIT_SHA: ${{ "test" }}
+          BASE_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
           HEAD_COMMIT_SHA: ${{ github.sha }}
         run: node ./generate-diff.js
   contains-only-one-bounty:
