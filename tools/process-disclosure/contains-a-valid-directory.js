@@ -23,6 +23,9 @@ const packageRegistry = vulnerabilityJson.Package.Registry
 const vulnerabilityDir = `bounties/${packageRegistry}/${packageName}/${packageId}/vulnerability.json`
 const readmeDir = `bounties/${packageRegistry}/${packageName}/${packageId}/README.md`
 
+console.log('vulnerabilityDir', vulnerabilityDir);
+console.log('readmeDir', readmeDir);
+
 // Filter paths that do not match
 const illegalDir = diff.filter((item) => item.path !== vulnerabilityDir || item.path !== readmeDir);
 if (illegalDir.length > 0)
