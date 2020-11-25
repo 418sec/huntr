@@ -39,12 +39,9 @@ jobs:
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
-      - id: generate-diff
-        name: Generate the diff
+      - name: GITHUB CONTEXT
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-          BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_COMMIT_SHA: ${{ github.sha }}
         run: echo "$GITHUB_CONTEXT"
   contains-only-one-bounty:
     name: Contains only one bounty
@@ -183,39 +180,6 @@ jobs:
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./contains-a-valid-readme-md.js
-  contains-a-valid-directory:
-    name: Directory format matches vulnerability.json values
-    needs: 
-      [ 
-        generate-diff,
-        contains-only-one-bounty, 
-        contains-a-valid-vulnerability-json 
-      ]
-    runs-on: ubuntu-latest
-    if: github.event.label.name == 'disclosure'
-    steps:
-      - id: checkout
-        uses: actions/checkout@v2
-      - id: node-setup
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
-      - id: restore-node-cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - id: dependency-install
-        name: Install npm dependencies
-        run: npm ci
-      - id: contains-a-valid-directory
-        name: Directory format matches vulnerability.json values
-        env:
-          BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
-          DIFF: ${{ needs.generate-diff.outputs.diff }}
-        run: node ./contains-a-valid-directory.js
   merge-disclosure:
     name: Merge disclosure
     needs:
@@ -225,7 +189,6 @@ jobs:
         contains-only-new-bounty-files,
         contains-a-valid-vulnerability-json,
         contains-a-valid-readme-md,
-        contains-a-valid-directory
       ]
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
