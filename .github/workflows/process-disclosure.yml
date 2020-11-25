@@ -24,6 +24,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.base.sha }}
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -43,7 +44,7 @@ jobs:
         env:
           BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_COMMIT_SHA: ${{ github.sha }}
-        run: echo ${{ github }}
+        run: echo ${{ github.event }}
   contains-only-one-bounty:
     name: Contains only one bounty
     needs: generate-diff
