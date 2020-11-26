@@ -232,7 +232,7 @@ jobs:
       ]
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
-    run: node ./merger.js
     env:
       GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
       PR_NUMBER: ${{ github.event.number }}
+    run: node ./merger.js
