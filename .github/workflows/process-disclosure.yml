@@ -198,7 +198,7 @@ jobs:
       ]
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
-    steps:
-      - id: auto-pull-request-merge
-        name: Merge disclosure
-        uses: KeisukeYamashita/auto-pull-request-merge@v1
+    run: node ./merger.js
+    env:
+      GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+      PR_NUMBER: ${{ github.event.number }}
