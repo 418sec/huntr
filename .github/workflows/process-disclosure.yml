@@ -24,6 +24,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          ref: pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -41,8 +42,8 @@ jobs:
       - id: generate-diff
         name: Generate the diff
         env:
-          BASE_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
-          HEAD_COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          BASE_COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          HEAD_COMMIT_SHA: ${{ github.event.pull_request.head.sha }} 
         run: node ./generate-diff.js
   contains-only-one-bounty:
     name: Contains only one bounty
