@@ -186,19 +186,21 @@ jobs:
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./contains-a-valid-readme-md.js
-    contains-a-valid-directory:
-    name: Directory format matches vulnerability.json values
-    needs: 
-      [ 
-        generate-diff,
-        contains-only-one-bounty, 
-        contains-a-valid-vulnerability-json 
+  contains-a-valid-directory:
+    name: Directory format matches vulnerability values
+    needs:
+      [
+        generate-diff
+        contains-only-one-bounty,
+        contains-a-valid-vulnerability-json,
       ]
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
     steps:
       - id: checkout
         uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
