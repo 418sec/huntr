@@ -230,6 +230,7 @@ jobs:
         contains-only-new-bounty-files,
         contains-a-valid-vulnerability-json,
         contains-a-valid-readme-md,
+        contains-a-valid-directory,
       ]
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
