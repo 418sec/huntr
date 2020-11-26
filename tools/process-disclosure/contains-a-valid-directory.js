@@ -24,16 +24,9 @@ const vulnerabilityDir = `bounties/${packageRegistry}/${packageName}/${packageId
 const readmeDir = `bounties/${packageRegistry}/${packageName}/${packageId}/README.md`
 
 // Filter paths that do not match
-const illegalDir = diff.filter((item) => item.path == vulnerabilityDir || item.path == readmeDir);
+const illegalDir = diff.filter((item) => !(item.path == vulnerabilityDir || item.path == readmeDir));
 if (illegalDir.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json value.");
-
-
-// // SIMPLE, still does not work
-// const validDir = new RegExp(`bounties\/${packageRegistry}\/${packageName}\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
-// const illegalDir = diff.filter((item) => !validDir.test(item.path));
-// if (illegalDir.length > 0)
-//     core.setFailed("Bounty path does not match vulnerability.json value.");
 
 // // Check ID & Package.Name matches the directory name
 // const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S+\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
