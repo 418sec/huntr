@@ -235,6 +235,24 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
     steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
       - id: auto-pull-request-merge
         name: Merge disclosure
         env:
