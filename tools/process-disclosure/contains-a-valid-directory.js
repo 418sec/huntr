@@ -28,14 +28,14 @@ const illegalDir = diff.filter((item) => !(item.path == vulnerabilityDir || item
 if (illegalDir.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json values.");
 
-// TODO: Check specifically which part of the directory schema fails (Package.Name or ID)
+// // TODO: Check specifically which part of the directory schema fails (Package.Name or ID)
 // // Check ID & Package.Name matches the directory name
 // const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S+\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
 // const illegalId = diff.filter((item) => !validId.test(item.path));
 // if (illegalId.length > 0)
 //     core.setFailed("Bounty path does not match vulnerability.json `PackageVulnerabilityID` value.");
 
-// const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/([1-9]|[1-9])\/(vulnerability\.json|README\.md)`, 'g');
+// const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/([1-9]|[0-9])\/(vulnerability\.json|README\.md)`, 'g');
 // const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
 // if (illegalPackageName.length > 0)
 //     core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
