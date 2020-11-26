@@ -190,7 +190,7 @@ jobs:
     name: Directory format matches vulnerability values
     needs:
       [
-        generate-diff
+        generate-diff,
         contains-only-one-bounty,
         contains-a-valid-vulnerability-json,
       ]
