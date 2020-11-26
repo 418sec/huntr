@@ -1,7 +1,7 @@
 name: Process disclosure
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, labeled]
     branches:
       - staging
@@ -24,6 +24,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          ref: refs/pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -41,8 +42,8 @@ jobs:
       - id: generate-diff
         name: Generate the diff
         env:
-          BASE_COMMIT_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_COMMIT_SHA: ${{ github.sha }}
+          BASE_COMMIT_SHA: ${{ github.sha }} 
+          HEAD_COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
         run: node ./generate-diff.js
   contains-only-one-bounty:
     name: Contains only one bounty
@@ -135,6 +136,8 @@ jobs:
     steps:
       - id: checkout
         uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -162,6 +165,8 @@ jobs:
     steps:
       - id: checkout
         uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -181,6 +186,41 @@ jobs:
         env:
           BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
         run: node ./contains-a-valid-readme-md.js
+  contains-a-valid-directory:
+    name: Directory format matches vulnerability values
+    needs:
+      [
+        generate-diff,
+        contains-only-one-bounty,
+        contains-a-valid-vulnerability-json,
+      ]
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'disclosure'
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: contains-a-valid-directory
+        name: Directory format matches vulnerability.json values
+        env:
+          BOUNTY_DIR: ${{ needs.contains-only-one-bounty.outputs.bounty_dir }}
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./contains-a-valid-directory.js
   merge-disclosure:
     name: Merge disclosure
     needs:
@@ -190,10 +230,32 @@ jobs:
         contains-only-new-bounty-files,
         contains-a-valid-vulnerability-json,
         contains-a-valid-readme-md,
+        contains-a-valid-directory,
       ]
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure'
     steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
       - id: auto-pull-request-merge
         name: Merge disclosure
-        uses: KeisukeYamashita/auto-pull-request-merge@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+        run: node ./merger.js
