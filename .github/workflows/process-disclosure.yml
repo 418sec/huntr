@@ -136,6 +136,8 @@ jobs:
     steps:
       - id: checkout
         uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
@@ -163,6 +165,8 @@ jobs:
     steps:
       - id: checkout
         uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
       - id: node-setup
         uses: actions/setup-node@v1
         with:
