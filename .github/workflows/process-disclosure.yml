@@ -43,7 +43,7 @@ jobs:
         name: Generate the diff
         env:
           BASE_COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-          HEAD_COMMIT_SHA: ${{ github.event.pull_request.head.sha }} 
+          HEAD_COMMIT_SHA: ${{ github.sha }} 
         run: node ./generate-diff.js
   contains-only-one-bounty:
     name: Contains only one bounty
