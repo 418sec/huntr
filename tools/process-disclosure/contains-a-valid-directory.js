@@ -30,11 +30,11 @@ if (illegalDir.length > 0)
 
 // Check ID & Package.Name matches the directory name
 const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S+\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
-const illegalPackageName = diff.filter((item) => !validId.test(item.path));
+const illegalId = diff.filter((item) => !validId.test(item.path));
 if (illegalId.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json `PackageVulnerabilityID` value.");
 
-const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/([1-9]|[1-9][0-9]|[1-9][0-9][0-9])\/(vulnerability\.json|README\.md)`, 'g');
+const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/([1-9]|[1-9])\/(vulnerability\.json|README\.md)`, 'g');
 const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
 if (illegalPackageName.length > 0)
     core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
