@@ -23,19 +23,19 @@ const packageRegistry = vulnerabilityJson.Package.Registry
 const vulnerabilityDir = `bounties/${packageRegistry}/${packageName}/${packageId}/vulnerability.json`
 const readmeDir = `bounties/${packageRegistry}/${packageName}/${packageId}/README.md`
 
-// Filter paths that do not match
+// Filter paths that do not match vulnerability valuess
 const illegalDir = diff.filter((item) => !(item.path == vulnerabilityDir || item.path == readmeDir));
 if (illegalDir.length > 0)
-    core.setFailed("Bounty path does not match vulnerability.json value (generic).");
+    core.setFailed("Bounty path does not match vulnerability.json values.");
 
-// Check ID & Package.Name matches the directory name
-const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S+\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
-console.log('validId.test(item.path)', validId.test(item.path));
-const illegalId = diff.filter((item) => !validId.test(item.path));
-if (illegalId.length > 0)
-    core.setFailed("Bounty path does not match vulnerability.json `PackageVulnerabilityID` value.");
+// TODO: Check specifically which part of the directory schema fails (Package.Name or ID)
+// // Check ID & Package.Name matches the directory name
+// const validId = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/\S+\/${packageId}\/(vulnerability\.json|README\.md)`, 'g');
+// const illegalId = diff.filter((item) => !validId.test(item.path));
+// if (illegalId.length > 0)
+//     core.setFailed("Bounty path does not match vulnerability.json `PackageVulnerabilityID` value.");
 
-const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/([1-9]|[1-9])\/(vulnerability\.json|README\.md)`, 'g');
-const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
-if (illegalPackageName.length > 0)
-    core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
+// const validPackageName = new RegExp(`bounties\/(maven|npm|other|packagist|pip|rubygems)\/${packageName}\/([1-9]|[1-9])\/(vulnerability\.json|README\.md)`, 'g');
+// const illegalPackageName = diff.filter((item) => !validPackageName.test(item.path));
+// if (illegalPackageName.length > 0)
+//     core.setFailed("Bounty path does not match vulnerability.json `Package.Name` value.");
