@@ -46,6 +46,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       AffectedVersionRange: vulnerabilityDetails.AffectedVersionRange,
       DisclosureDate: vulnerabilityDetails.DisclosureDate,
       PrNumber: vulnerabilityDetails.PrNumber,
+      Live: vulnerabilityDetails.Contributor.Fixer === "" || !vulnerabilityDetails.Contributor.Fixer === "n/a"
     });
   }
 
