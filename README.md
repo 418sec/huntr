@@ -346,7 +346,7 @@ _N.B - ensure that any hyperlinks or URLs are added to the `References` array in
 
 <br />
 
-### Disclosure Merging 🎉
+### Disclosure Acceptance 🎉
 
 <br />
 
@@ -364,15 +364,11 @@ Before being accepted, your `vulnerability.json` will go through some checks to 
 
 <br />
 
-Once your disclosure is accepted, within a few minutes, it will be visible on the platform under the URL:
+Once your disclosure is accepted by our sheriffs, it will be visible on the platform under the URL:
 
 ```url
 https://huntr.dev/bounties/${PackageVulnerabilityID}-${Package.Registry}-${Package.Name}
 ```
-
-<br />
-
-Our community will now be able to discuss your disclosure and submit fixes for it...
 
 <br />
 <br />
