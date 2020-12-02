@@ -46,7 +46,11 @@ bounties.withPromise().then(async (bountyPaths) => {
       AffectedVersionRange: vulnerabilityDetails.AffectedVersionRange,
       DisclosureDate: vulnerabilityDetails.DisclosureDate,
       PrNumber: vulnerabilityDetails.PrNumber,
-      Live: vulnerabilityDetails.Contributor.Fixer === "" || !vulnerabilityDetails.Contributor.Fixer === "n/a"
+      Live: vulnerabilityDetails.Contributor.Fixer === "" || !vulnerabilityDetails.Contributor.Fixer === "n/a",
+      Bounty: {
+        Credit: `${vulnerabilityDetails.CVSS.Score * 100}`,
+        Cash: "25"
+      }
     });
   }
 
