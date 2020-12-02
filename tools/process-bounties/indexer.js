@@ -48,7 +48,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       PrNumber: vulnerabilityDetails.PrNumber,
       Live: vulnerabilityDetails.Contributor.Fixer === "" || !vulnerabilityDetails.Contributor.Fixer === "n/a",
       Bounty: {
-        Credit: `${vulnerabilityDetails.CVSS.Score * 100}`,
+        Credit: `${(parseFloat(vulnerabilityDetails.CVSS.Score) * 100).toFixed(0)}`,
         Cash: "25"
       }
     });
