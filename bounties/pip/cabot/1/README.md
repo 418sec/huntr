@@ -10,4 +10,4 @@ Executed Persistent stored XSS in cabot check settings, as well as the address f
 https://drive.google.com/file/d/1hcRdxOArwzYlPOmBIj9sDkpLLGUXpiu2/view?usp=sharing
 https://drive.google.com/file/d/1wrgPledd9WVQ69Yk84S3z3ZjusoDJXli/view?usp=sharing
 # Impact
-Able to execute Persistent stored XSS payloads in cabot which can be used to capture user cookie.
+Able to execute Persistent stored XSS payloads in cabot which can be used to capture user cookie. 
