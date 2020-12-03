@@ -6,10 +6,10 @@
 </p>
 <br />
 <p align="center">
-<b><a href="https://huntr.dev/" _target="blank">huntr.dev</a> - where bug hunters are made.</b>
+<b><a href="https://huntr.dev/" _target="blank">huntr.dev</a> - the place to protect open source</b>
 </p>
 <p align="center">
-<code style="font-size:12px;background-color:black;">Tired of CTFs? Level up your hacking by protecting real open source projects with others.</code>
+<code style="font-size:12px;background-color:black;">Get recognised for protecting millions of developers</code>
 </p>
 <br />
 <p align="center">
