@@ -1,5 +1,5 @@
 # Description
-**Arbitrary Code Excecution** in Tensorflow/Models.The TensorFlow Model Garden is a repository with a number of different implementations of state-of-the-art (SOTA) models and modeling solutions for TensorFlow users. We aim to demonstrate the best practices for modeling so that TensorFlow users can take full advantage of TensorFlow for their research and product development
+**Arbitrary Code Excecution** in tensorflow/tpu.This repository is a collection of reference models and tools used with Cloud TPUs
 # Technical Description
 This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **pyyaml**
 # Exploit code
