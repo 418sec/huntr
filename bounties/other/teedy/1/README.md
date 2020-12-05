@@ -26,19 +26,3 @@ Teedy is a lightweight document management system packed with all the features y
 
 An attacker is able to takeover any account
 
-## :white_check_mark: Checklist
-
-* [x]  _Created and populated the `README.md` and `vulnerability.json` files_
-
-* [x]  _Provided the repository URL and any applicable permalinks_
-
-* [x]  _Defined all the applicable weaknesses (CWEs)_
-
-* [x]  _Proposed the CVSS vector items i.e. User Interaction, Attack Complexity_
-
-* [x]  _Checked that the vulnerability affects the latest version of the package released_
-
-* [x]  _Checked that a fix does not currently exist that remediates this vulnerability_
-
-* [x]  _Complied with all applicable laws_
-
