@@ -3,10 +3,10 @@
 
 
 # Steps To Reproduce & POC
-1:Download and Setup `Subrion` [Subrion-Link](https://github.com/intelliants/subrion/)
-2:Extract the source code to an Apache server with MYSQL
-3:As Default 3 Currencies are added in the Site you can view it by navigaing to http://localhost/huntr/subrion/panel/currencies/
-4:Save the below code as HTML and Click Submit . The Currencie will be deleted
+1:Download and Setup `Subrion` [Subrion-Link](https://github.com/intelliants/subrion/)   
+2:Extract the source code to an Apache server with MYSQL   
+3:As Default 3 Currencies are added in the Site you can view it by navigaing to http://localhost/huntr/subrion/panel/currencies/   
+4:Save the below code as HTML and Click Submit . The Currencie will be deleted    
 ```
 <form method="GET" action="http://localhost/bludit-master/admin/install-theme/alternative">
 <input type="submit" >
