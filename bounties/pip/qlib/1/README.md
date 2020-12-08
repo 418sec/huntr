@@ -2,7 +2,7 @@
 **Arbitrary Code Excecution** in microsoft/qlib.
 Qlib is an AI-oriented quantitative investment platform, which aims to realize the potential, empower the research, and create the value of AI technologies in quantitative investment.
 # Technical Description
-This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **ruamel.yaml**
+This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **yaml**
 # Exploit code
 **Python File**
 ```python
