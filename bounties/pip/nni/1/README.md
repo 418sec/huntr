@@ -2,7 +2,7 @@
 **Arbitrary Code Excecution** in microsoft/nni.
 An open source AutoML toolkit for automate machine learning lifecycle, including feature engineering, neural architecture search, model compression and hyper-parameter tuning.
 # Technical Description
-This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **ruamel.yaml**
+This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **yaml**
 # Exploit code
 **Python File**
 ```python
