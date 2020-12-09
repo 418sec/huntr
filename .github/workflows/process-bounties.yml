@@ -29,6 +29,10 @@ jobs:
         run: node enricher.js
         env:
           GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+      - name: Create Issue & Fork
+        run: node createIssueAndFork.js --trace-warnings
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
       - name: Run indexer
         run: node indexer.js
       - name: Commit new index
@@ -41,7 +45,3 @@ jobs:
         with:
           github_token: ${{ secrets.HUNTR_HELPER_TOKEN }}
           branch: "staging"
-      - name: Merge staging into master
-        run: node merger.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
