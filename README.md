@@ -483,7 +483,7 @@ Not sure what to write in the description of your pull request? You can use our 
 
 <br />
 
-We are always on the lookout for sheriffs, a.k.a. legendary code reviewers to review community submitted disclosures and fixes. If you are interested, drop a comment on our [GitHub Discussion](https://github.com/418sec/huntr/discussions/1343).
+We are always on the lookout for sheriffs, a.k.a. legendary code reviewers, to review community submitted disclosures and fixes. If you are interested, drop a comment on our [GitHub Discussion](https://github.com/418sec/huntr/discussions/1343).
 
 <br />
 
