@@ -1,0 +1,54 @@
+{
+    "PackageVulnerabilityID": "1",
+    "DisclosureDate": "2020-09-13",
+    "AffectedVersionRange": "*",
+    "Summary": "XSS",
+    "Contributor": {
+        "Discloser": "b1nslashsh",
+        "Fixer": ""
+    },
+    "Package": {
+        "Registry": "other",
+        "Name": "thirtybees",
+        "URL": "https://github.com/adevait/hrm",
+        "Downloads": ""
+    },
+    "CWEs": [
+        {
+            "ID": "494",
+            "Description": ""
+        }
+    ],
+    "CVSS": {
+        "Version": "3.1",
+        "AV": "N",
+        "AC": "H",
+        "PR": "N",
+        "UI": "R",
+        "S": "C",
+        "C": "L",
+        "I": "L",
+        "A": "N",
+        "E": "",
+        "RL": "",
+        "RC": "",
+        "Score": "8.1"
+    },
+    "CVEs": [
+        ""
+    ],
+    "Repository": {
+        "URL": "https://github.com/adevait/hrm",
+        "Codebase": [
+            "PHP"
+        ],
+        "Owner": "adevait",
+        "Name": "hrm",
+        "Forks": 62,
+        "Stars": 100
+    },
+    "Permalinks": [
+        "https://drive.google.com/drive/folders/1aozrNN4u0tXIPFTHbefQPOZHKbbHLRGY?usp=sharing"
+    ],
+    "References": []
+}
