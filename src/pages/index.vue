@@ -1,7 +1,7 @@
 <template>
   <main class="container mx-auto max-w-full">
     <section id="banner" class="bg-indigo-900">
-      <div class="mx-auto p-3 text-center font-thin text-white">
+      <div class="mx-auto p-3 text-center font-thin">
         <span class="mx-3 block sm:inline">
           <svg
             class="inline w-6 h-6 text-brand-500"
@@ -59,9 +59,7 @@
     <section id="hero" class="py-20 mx-auto w-4/5">
       <div class="flex flex-wrap items-center text-center lg:text-left">
         <div class="lg:w-1/2 px-2 lg:pr-10 mt-10 lg:mt-0 order-1 lg:order-none">
-          <h2
-            class="text-white tracking-tight text-3xl sm:text-4xl mb-6 font-semibold"
-          >
+          <h2 class="tracking-tight text-3xl sm:text-4xl mb-6 font-semibold">
             The place to protect open source
           </h2>
           <p class="mb-8 text-gray-400 leading-relaxed">
@@ -70,7 +68,7 @@
           </p>
           <div>
             <a
-              class="inline-block py-4 px-8 mr-6 text-white bg-brand-500 hover:bg-red-500 font-semibold rounded shadow"
+              class="inline-block py-4 px-8 mr-6 bg-brand-500 hover:bg-red-500 font-semibold rounded shadow"
               href="#"
             >
               Join 1000+ huntrs
@@ -92,20 +90,14 @@
           </div>
         </div>
         <div class="lg:w-1/2">
-          <img
-            class="fill-current text-white"
-            src="img/hero-hacker.svg"
-            alt=""
-          />
+          <img class="fill-current" src="img/hero-hacker.svg" alt="" />
         </div>
       </div>
     </section>
 
     <section id="feature-impact" class="py-20 bg-gray-900">
       <div class="w-4/5 mx-auto">
-        <h2
-          class="text-3xl text-center text-white font-semibold font-heading mb-12"
-        >
+        <h2 class="text-3xl text-center font-semibold font-heading mb-12">
           Protect packages that are used
           <span class="text-brand-500">over 1 billion</span> times each day
         </h2>
@@ -142,7 +134,7 @@
       <div class="flex flex-wrap items-center lg:text-left">
         <div class="md:w-2/3 lg:w-1/2 mt-10 lg:mt-0 mx-auto">
           <h2
-            class="text-3xl lg:px-4 mb-6 text-white leading-tight font-semibold font-heading text-center lg:text-left"
+            class="text-3xl lg:px-4 mb-6 leading-tight font-semibold font-heading text-center lg:text-left"
           >
             The truly open bounty platform
           </h2>
@@ -164,7 +156,7 @@
               </svg>
             </div>
             <div class="col-span-5">
-              <h3 class="text-2xl mb-2 text-white font-light">
+              <h3 class="text-2xl mb-2 font-light">
                 No more <s>redactions</s>
               </h3>
               <p class="text-gray-400 leading-relaxed">
@@ -190,9 +182,7 @@
               </svg>
             </div>
             <div class="col-span-5">
-              <h3 class="text-2xl mb-2 text-white font-light">
-                Save the world
-              </h3>
+              <h3 class="text-2xl mb-2 font-light">Save the world</h3>
               <p class="text-gray-400 leading-relaxed">
                 See how many people you're protecting.
               </p>
@@ -216,9 +206,7 @@
               </svg>
             </div>
             <div class="col-span-5">
-              <h3 class="text-2xl mb-2 text-white font-light">
-                Share with friends
-              </h3>
+              <h3 class="text-2xl mb-2 font-light">Share with friends</h3>
               <p class="text-gray-400 leading-relaxed">
                 Share your open source success!
               </p>
@@ -250,9 +238,7 @@
               />
             </svg>
           </div>
-          <h3
-            class="text-xl text-white text-center my-3 font-semibold font-heading"
-          >
+          <h3 class="text-xl text-center my-3 font-semibold font-heading">
             Disclose
           </h3>
           <p class="text-gray-400 leading-relaxed text-center">
@@ -277,9 +263,7 @@
               />
             </svg>
           </div>
-          <h3
-            class="text-xl text-white text-center my-3 font-semibold font-heading"
-          >
+          <h3 class="text-xl text-center my-3 font-semibold font-heading">
             Patch
           </h3>
           <p class="text-gray-400 leading-relaxed text-center">
@@ -304,9 +288,7 @@
               />
             </svg>
           </div>
-          <h3
-            class="text-xl text-white text-center my-3 font-semibold font-heading"
-          >
+          <h3 class="text-xl text-center my-3 font-semibold font-heading">
             Review
           </h3>
           <p class="text-gray-400 leading-relaxed text-center">
@@ -319,16 +301,14 @@
 
     <section id="cta" class="py-12 bg-gray-900 text-center">
       <div class="w-4/5 md:w-full mx-auto">
-        <h2
-          class="text-4xl text-white leading-tight font-semibold font-heading"
-        >
+        <h2 class="text-4xl leading-tight font-semibold font-heading">
           Start contributing to open source today
         </h2>
         <p class="mt-6 mb-8 text-gray-400 leading-relaxed">
           New vulnerabilities to fix every week
         </p>
         <a
-          class="inline-block py-4 px-8 leading-none text-white bg-brand-500 hover:bg-red-500 font-semibold rounded shadow"
+          class="inline-block py-4 px-8 leading-none bg-brand-500 hover:bg-red-500 font-semibold rounded shadow"
           href="#"
           >Browse Vulnerabilities
           <svg

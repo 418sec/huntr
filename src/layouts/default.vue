@@ -193,7 +193,7 @@ export default {
   },
   head() {
     return {
-      bodyAttrs: { class: 'bg-black' },
+      bodyAttrs: { class: 'bg-black text-white' },
     }
   },
 }
