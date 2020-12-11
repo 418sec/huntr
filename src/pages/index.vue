@@ -2,7 +2,7 @@
   <main class="container mx-auto max-w-full">
     <section id="banner" class="bg-indigo-900">
       <div class="mx-auto p-3 text-center font-thin text-white">
-        <span class="mx-2 block sm:inline">
+        <span class="mx-3 block sm:inline">
           <svg
             class="inline w-6 h-6 text-brand-500"
             fill="none"
@@ -19,7 +19,7 @@
           </svg>
           <p class="inline">Get paid for every disclosure and fix</p>
         </span>
-        <span class="mx-2 block md:inline">
+        <span class="mx-3 block md:inline">
           <svg
             class="inline w-6 h-6 text-brand-500"
             fill="none"
@@ -36,7 +36,7 @@
           </svg>
           <p class="inline">Share your profile, badges and ranking</p>
         </span>
-        <span class="mx-2 block lg:inline">
+        <span class="mx-3 block lg:inline">
           <svg
             class="inline w-6 h-6 text-brand-500"
             fill="none"
@@ -59,7 +59,9 @@
     <section id="hero" class="py-20 mx-auto w-4/5">
       <div class="flex flex-wrap items-center text-center lg:text-left">
         <div class="lg:w-1/2 px-2 lg:pr-10 mt-10 lg:mt-0 order-1 lg:order-none">
-          <h2 class="text-white tracking-tight text-4xl mb-6 font-semibold">
+          <h2
+            class="text-white tracking-tight text-3xl sm:text-4xl mb-6 font-semibold"
+          >
             The place to protect open source
           </h2>
           <p class="mb-8 text-gray-400 leading-relaxed">
@@ -100,48 +102,47 @@
     </section>
 
     <section id="feature-impact" class="py-20 bg-gray-900">
-      <h2
-        class="text-3xl text-center text-white font-semibold font-heading mb-12"
-      >
-        Protect packages that are used
-        <span class="text-brand-500">over 1 billion</span> times each day
-      </h2>
-      <div class="grid grid-cols-8 mx-auto w-4/5">
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/vue.svg" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/bitcoin.png" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/kubernetes.svg" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/angular.svg" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/react.svg" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/elastic.png" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/bootstrap.svg" alt="" />
-        </div>
-        <div class="w-auto mx-auto px-8">
-          <img src="img/package-logos/tensorflow.svg" alt="" />
+      <div class="w-4/5 mx-auto">
+        <h2
+          class="text-3xl text-center text-white font-semibold font-heading mb-12"
+        >
+          Protect packages that are used
+          <span class="text-brand-500">over 1 billion</span> times each day
+        </h2>
+        <div class="grid grid-cols-8 mx-auto">
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/vue.svg" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/bitcoin.png" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/kubernetes.svg" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/angular.svg" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/react.svg" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/elastic.png" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/bootstrap.svg" alt="" />
+          </div>
+          <div class="h-auto mx-3 md:mx-5 lg:mx-8">
+            <img src="img/package-logos/tensorflow.svg" alt="" />
+          </div>
         </div>
       </div>
     </section>
 
     <section id="feature-timeline" class="py-12 w-4/5 mx-auto">
-      <div class="flex flex-wrap items-center text-center lg:text-left -mx-2">
-        <div class="lg:w-1/2">
-          <img src="img/feature-timeline.png" alt="" />
-        </div>
-        <div class="lg:w-1/2 mt-10 lg:mt-0">
+      <div class="flex flex-wrap items-center lg:text-left">
+        <div class="md:w-2/3 lg:w-1/2 mt-10 lg:mt-0 mx-auto">
           <h2
-            class="text-3xl px-4 mb-6 text-white leading-tight font-semibold font-heading"
+            class="text-3xl lg:px-4 mb-6 text-white leading-tight font-semibold font-heading text-center lg:text-left"
           >
             The truly open bounty platform
           </h2>
@@ -224,12 +225,15 @@
             </div>
           </div>
         </div>
+        <div class="lg:w-1/2">
+          <img src="img/feature-timeline.png" alt="" />
+        </div>
       </div>
     </section>
 
     <section id="feature-opportunities" class="py-10 w-4/5 mx-auto">
-      <div class="flex flex-wrap">
-        <div class="lg:w-1/3 px-4 mb-6">
+      <div class="flex flex-wrap justify-center">
+        <div class="sm:w-1/3 max-w-xs px-2 mb-6">
           <div class="bg-gray-900 h-12 w-12 rounded-lg m-auto flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -256,7 +260,7 @@
             <a src="#" class="text-brand-500">discover</a> new vulnerabilities.
           </p>
         </div>
-        <div class="lg:w-1/3 px-4 mb-6">
+        <div class="sm:w-1/3 max-w-xs px-2 mb-6">
           <div class="bg-gray-900 h-12 w-12 rounded-lg m-auto flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +287,7 @@
             your bounty and write your fix.
           </p>
         </div>
-        <div class="lg:w-1/3 px-4 mb-6">
+        <div class="sm:w-1/3 max-w-xs px-2 mb-6">
           <div class="bg-gray-900 h-12 w-12 rounded-lg m-auto flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +318,7 @@
     </section>
 
     <section id="cta" class="py-12 bg-gray-900 text-center">
-      <div class="w-full max-w-4/5 mx-auto">
+      <div class="w-4/5 md:w-full mx-auto">
         <h2
           class="text-4xl text-white leading-tight font-semibold font-heading"
         >
