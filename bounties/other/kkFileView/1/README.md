@@ -1,6 +1,6 @@
 # Description
 
-`kkFileView` this package is vulnerable to `Stored Cross-Site Scripting (XSS)`.
+`kkFileView` this package is vulnerable to `Reflected Cross-Site Scripting (XSS)`.
 
 https://github.com/kekingcn/kkFileView
 
