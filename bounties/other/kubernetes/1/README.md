@@ -19,4 +19,5 @@ os.chdir('../../')
 os.system('python hack/verify-publishing-bot.py')
 ```
 # POC
-* Run the exploit code [aksdlak](https://cdn.discordapp.com/attachments/749019614352244777/787368162122530816/kube.gif)
+* Run the exploit code 
+![aksdlak](https://cdn.discordapp.com/attachments/749019614352244777/787380186093453392/Screenshot_from_2020-12-12_22-30-23.png)
