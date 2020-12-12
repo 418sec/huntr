@@ -1,5 +1,5 @@
 # Description
-**Arbitrary Code Excecution** in gen_proto_file.py in prebuilt.py tools of Mongoose-os repo .Prebuild.py is a utility for prebuilding binary libs and apps.
+**Arbitrary Code Excecution** in prebuilt.py tools of Mongoose-os repo .Prebuild.py is a utility for prebuilding binary libs and apps.
 Mongoose OS - an IoT Firmware Development Framework. Supported microcontrollers: ESP32, ESP8266, CC3220, CC3200, STM32F4, STM32L4, STM32F7. Amazon AWS IoT, Microsoft Azure, Google IoT Core integrated. Code in C or JavaScript..
 # Technical Description
 This package was vulnerable to Arbitrary code execution due to a use of a known vulnerable function **load()** in **yaml**. 
