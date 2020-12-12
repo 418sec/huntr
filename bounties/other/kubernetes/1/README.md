@@ -21,4 +21,4 @@ os.system('python hack/verify-publishing-bot.py')
 # POC
 * Run the exploit code 
 
-![](https://cdn.discordapp.com/attachments/749019614352244777/787368162122530816/kube.gif
+![](https://cdn.discordapp.com/attachments/749019614352244777/787368162122530816/kube.gif)
