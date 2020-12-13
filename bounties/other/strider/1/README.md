@@ -1,6 +1,6 @@
 ## :writing_hand: Description
 
-`Strider` is an Open Source Continuous Deployment / Continuous Integration platform. It is written in Node.js and Ember.js and uses MongoDB as a backing store. This platform is vulnerable to `Cross-Site Request Forgery (CSRF)`. This allowes an attacker to takeover accounts, privillege escalation and accounts deletion.
+`Strider` is an Open Source Continuous Deployment / Continuous Integration platform. It is written in Node.js and Ember.js and uses MongoDB as a backing store. This platform is vulnerable to `Cross-Site Request Forgery (CSRF)`. It allowes an attacker to takeover accounts, privillege escalation and accounts deletion.
 
 ## :male_detective: Proof of Concept
 
@@ -13,8 +13,8 @@ npm i
 node bin/strider addUser # add users accordingly
 NODE_ENV=production npm start # start server
 ```
-1. Login as admin
-3. Use any of the CSRF POCs
+3. Login as admin
+4. Use any of the CSRF POCs
 #### Change email
 ```html
 <html>
