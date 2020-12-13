@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt-ts",
+    "dev": "nuxt-ts --spa",
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
@@ -16,7 +16,10 @@
     "@nuxtjs/axios": "^5.12.2",
     "@tailwindcss/typography": "^0.3.1",
     "core-js": "^3.6.5",
+    "luxon": "^1.25.0",
     "nuxt": "^2.14.6",
+    "reading-time": "^1.2.1",
+    "truncate": "^2.1.0",
     "vue-simple-icons": "^3.10.0"
   },
   "devDependencies": {
@@ -26,6 +29,7 @@
     "@nuxtjs/eslint-config-typescript": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/tailwindcss": "^3.1.0",
+    "@types/luxon": "^1.25.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
