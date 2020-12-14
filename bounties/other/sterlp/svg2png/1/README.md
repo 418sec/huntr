@@ -1,4 +1,4 @@
-# Description
+# :book: Description
 
  `Svg2Png` Manage your Icons in SVG and generate the needed PNG into your projects as needed. No "Web Service" needed, just an executable JAR file. this package is vulnerable to `(XXE)`.
 
