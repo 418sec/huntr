@@ -58,9 +58,8 @@
 
     <Nuxt />
 
-    <footer class="bg-black w-5/6 mx-auto">
-      <h2 id="footerHeading" class="sr-only">Footer</h2>
-      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <footer class="bg-black w-4/5 mx-auto">
+      <div class="max-w-7xl mx-auto py-8">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
           <div class="space-y-8 xl:col-span-1">
             <p class="text-gray-500 text-base">2020 &copy; 418sec</p>
@@ -88,7 +87,7 @@
           </div>
           <div class="grid grid-cols-2 col-span-2">
             <div class="grid grid-cols-2 col-span-1 col-start-2">
-              <div>
+              <div class="mx-auto">
                 <h3 class="text-sm font-semibold text-gray-400 tracking-wider">
                   huntr
                 </h3>
@@ -96,7 +95,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       Home
                     </a>
@@ -105,7 +104,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       Blog
                     </a>
@@ -114,7 +113,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       FAQ
                     </a>
@@ -123,14 +122,14 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       Contact Us
                     </a>
                   </li>
                 </ul>
               </div>
-              <div class="mt-12 md:mt-0">
+              <div class="mx-auto">
                 <h3 class="text-sm font-semibold text-gray-400 tracking-wider">
                   418sec
                 </h3>
@@ -138,7 +137,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       Company
                     </a>
@@ -147,7 +146,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       About
                     </a>
@@ -156,7 +155,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-base text-gray-500 hover:text-gray-900"
+                      class="text-base text-brand-500 hover:text-brand-400"
                     >
                       Team
                     </a>
@@ -194,7 +193,7 @@ export default {
   },
   head() {
     return {
-      bodyAttrs: { class: 'bg-black' },
+      bodyAttrs: { class: 'bg-black text-white' },
     }
   },
 }
