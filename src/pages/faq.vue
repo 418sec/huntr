@@ -41,7 +41,7 @@ a:hover {
 <script>
 export default {
   async asyncData({ $content }) {
-    // Get's all the FAQ's from the content folder and appends a `visible` flag
+    // Get's all the FAQs from the content folder and appends a `visible` flag
     const faqs = (await $content('faq').fetch()).map((obj) => ({
       ...obj,
       visible: false,
