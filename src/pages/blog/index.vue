@@ -30,15 +30,12 @@
           <figure v-if="blog.image">
             <img class="w-full rounded-lg" :src="blog.image" />
           </figure>
-          <p class="mt-3 text-base text-gray-500">
+          <p class="mt-3 text-gray-500">
             {{ blog.description }}
           </p>
         </a>
         <div class="mt-3">
-          <a
-            href="#"
-            class="text-base font-semibold text-brand-500 hover:text-red-500"
-          >
+          <a href="#" class="font-semibold text-brand-500 hover:text-red-500">
             Read full story
             <svg
               class="inline w-6 h-6"

@@ -7,7 +7,7 @@
         >
           Questions with answers that != 42
         </h2>
-        <div v-for="faq in faqs" :key="faq.slug" class="p-1 mb-2 border-b">
+        <article v-for="faq in faqs" :key="faq.slug" class="p-1 mb-2 border-b">
           <button
             class="flex items-center w-full text-left"
             @click="$set(faq, 'visible', !faq.visible)"
@@ -22,17 +22,17 @@
           <p class="my-2">
             <nuxt-content v-if="faq.visible" :document="faq" />
           </p>
-        </div>
+        </article>
       </div>
     </section>
   </main>
 </template>
 
-<style>
-a {
+<style scoped>
+article >>> a {
   @apply text-brand-500;
 }
-a:hover {
+article >>> a:hover {
   @apply text-red-500;
   @apply underline;
 }
