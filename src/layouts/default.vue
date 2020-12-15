@@ -1,12 +1,16 @@
 <template>
   <div>
-    <header id="navbar" class="sticky top-0 bg-black">
+    <header id="navbar" class="sticky top-0 bg-black z-40">
       <nav
         id="nav"
         class="flex flex-wrap items-center justify-between p-4 w-5/6 mx-auto"
       >
         <nuxt-link id="logo" to="/" class="flex flex-shrink-0 mr-6">
-          <img class="block h-10 w-auto mr-1" src="img/sygnet.png" alt="Logo" />
+          <img
+            class="block h-10 w-auto mr-1"
+            src="/img/sygnet.png"
+            alt="Logo"
+          />
           <span class="text-3xl text-white font-mono">huntr</span>
         </nuxt-link>
         <div class="block lg:hidden">

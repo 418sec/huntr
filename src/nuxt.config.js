@@ -58,34 +58,4 @@ export default {
       },
     },
   },
-
-  // TailwindCSS module (https://tailwindcss.nuxtjs.org/tailwind-config#config-option)
-  tailwindcss: {
-    config: {
-      // Use the @tailwindcss/typography plugin
-      plugins: [tailwindTypography],
-      variants: {
-        extend: {
-          fill: ['hover'],
-        },
-      },
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              100: '#fceeea',
-              200: '#fad6d2',
-              300: '#f9b4a9',
-              400: '#f9826f',
-              500: '#ef5a4d',
-              600: '#f2362c',
-              700: '#d6292a',
-              800: '#ac2229',
-              900: '#8a1c23',
-            },
-          },
-        },
-      },
-    },
-  },
 }
