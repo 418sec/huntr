@@ -23,7 +23,10 @@
           <span class="float-right">{{ blog.readingTimeText }}</span>
         </div>
 
-        <a href="#" class="mt-2 block">
+        <nuxt-link
+          :to="{ name: 'blog-slug', params: { slug: blog.slug } }"
+          class="mt-2 block"
+        >
           <p class="text-xl font-semibold text-brand-500">
             {{ blog.title }}
           </p>
@@ -33,9 +36,12 @@
           <p class="mt-3 text-gray-500">
             {{ blog.description }}
           </p>
-        </a>
+        </nuxt-link>
         <div class="mt-3">
-          <a href="#" class="font-semibold text-brand-500 hover:text-red-500">
+          <nuxt-link
+            :to="{ name: 'blog-slug', params: { slug: blog.slug } }"
+            class="font-semibold text-brand-500 hover:text-red-500"
+          >
             Read full story
             <svg
               class="inline w-6 h-6"
@@ -51,7 +57,7 @@
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </nuxt-link>
         </div>
       </article>
       <footer class="mx-auto w-full md:w-3/4">
@@ -128,7 +134,7 @@ export default {
     // Get this pages' blogs from the content folder
     const blogs = (
       await $content('blog', { text: true })
-        .sortBy('createdAt')
+        .sortBy('publishedAt')
         .limit(perPage)
         .skip(skipNumber)
         .fetch()
