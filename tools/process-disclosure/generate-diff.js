@@ -1,38 +1,42 @@
 "use strict";
-import {promisify} from "util";
-import {execFile} from "child_process";
 
 import * as core from "@actions/core";
+import { Octokit } from "@octokit/rest"
 
-const promisifiedExecFile = promisify(execFile);
+const octokit = new Octokit({
+  auth: "token " + process.env.GITHUB_TOKEN
+})
 
-// Get the git diff
-const diffString = await promisifiedExecFile("git", [
-  "diff",
-  "--name-status",
-  process.env.BASE_COMMIT_SHA,
-  process.env.HEAD_COMMIT_SHA,
-  "--",
-]);
+console.log("Checking list of files for PR: ", process.env.PR_NUMBER)
+
+const listFiles = await octokit.pulls
+    .listFiles({
+      owner: "418sec",
+      repo: "huntr",
+      pull_number: `${process.env.PR_NUMBER}`
+    }).then(response => {
+      return response.data
+    }).catch(() => {
+      return false;
+    })
 
 // Check for errors
-if (diffString.stderr)
-  core.setFailed(`Error whilst executing git diff: ${diffString.stderr}`);
+if (!listFiles)
+  core.setFailed(`Error whilst executing list files.`);
 
-// Process git diff's stdout
-const diffStringLines = diffString.stdout
-  .split(/[\r\n]+/) // Split by newlines
-  .filter((e) => e); // This removes empty strings
-
-if (diffStringLines.length === 0)
-  core.setFailed(`Diff is empty: ${diffString.stdout}`);
+if (listFiles.length === 0)
+  core.setFailed(`Diff is empty.`);
 
 let diff = [];
-diffStringLines.forEach((line) => {
-  const [change, path] = line.split(/\t/);
+
+listFiles.forEach((file) => {
+  let change = file.status === "added" ? "A" : 
+              file.status === "removed" ? "D" : 
+              file.status === "modified" ? "M" : 
+              "Error"
   diff.push({
     change: change,
-    path: path,
+    path: file.filename
   });
 });
 
