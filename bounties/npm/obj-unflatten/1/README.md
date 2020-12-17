@@ -1,8 +1,8 @@
-## :writing_hand: Description
+# Description
 
 `obj-unflatten` convert flatten objects in nested ones. This package is vulnerable to `Prototype Pollution`.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
 1. Create the following PoC file:
 ```javascript
@@ -23,6 +23,6 @@ Before: undefined
 After: Prototype Polluted!
 ```
 
-## :boom: Impact
+# Impact
 
 `Prototype Pollution` leads to Information Disclosure/DoS/RCE.
