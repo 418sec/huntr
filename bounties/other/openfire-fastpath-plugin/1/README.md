@@ -8,10 +8,5 @@
 2. Run the server http://localhost:9090/index.jsp
 3. Click on "Plugins" http://localhost:9090/plugin-admin.jsp and install the "fastpath" plugin.
 4. Click on  "fastpath" and "create workgroup" http://localhost:9090/plugins/fastpath/workgroup-create.jsp
-```
 5. Insert payload in GWorkgroup Name:  "><ScRiPt>alert('XSS')</ScRiPt> and create workgroup
 6. XSS will be triggered.
-OR
-5. Create any workgroup and add queue -> insert payload in Name Of Queue:  "><ScRiPt>alert('XSS')</ScRiPt> and create workgroup
-6. XSS will be triggered.
-```
