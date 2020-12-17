@@ -32,10 +32,10 @@
           :class="{ hidden: !menuVisible }"
           class="navbar-menu lg:flex lg:flex-grow lg:items-center w-full lg:w-auto"
         >
-          <div class="lg:ml-auto">
+          <div class="lg:mx-auto">
             <div
               v-if="!menuVisible"
-              class="block lg:inline-block mt-4 lg:mt-0 mr-10"
+              class="block lg:inline-block mt-4 lg:mt-0 mx-5"
               @mouseleave="aboutMenuVisible = false"
             >
               <a
@@ -82,39 +82,53 @@
             </div>
             <nuxt-link
               v-if="menuVisible"
-              class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-gray-400 hover:text-white"
+              class="block lg:inline-block mt-4 lg:mt-0 text-gray-400 hover:text-white"
               to="blog"
             >
               Blog
             </nuxt-link>
             <nuxt-link
               v-if="menuVisible"
-              class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-gray-400 hover:text-white"
+              class="block lg:inline-block mt-4 lg:mt-0 text-gray-400 hover:text-white"
               to="faq"
             >
               FAQ
             </nuxt-link>
             <a
-              class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-gray-400 hover:text-white"
+              class="block lg:inline-block mt-4 lg:mt-0 lg:mx-5 text-gray-400 hover:text-white"
               href="#"
             >
               Fix
             </a>
             <a
-              class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-gray-400 hover:text-white"
+              class="block lg:inline-block mt-4 lg:mt-0 lg:mx-5 text-gray-400 hover:text-white"
               href="#"
             >
               Disclose
             </a>
           </div>
           <div>
-            <a
-              class="inline-block py-3 px-3 mt-4 lg:mt-0 leading-none font-semibold rounded shadow border border-brand-500 text-brand-500 hover:bg-brand-500 hover:text-white"
+            <button
+              v-if="!$auth.loggedIn"
+              class="inline-block p-3 mt-4 lg:mt-0 leading-none font-semibold rounded shadow border border-brand-500 text-brand-500 hover:bg-brand-500 hover:text-white"
               href="#"
+              @click="$auth.loginWith('cognito')"
             >
               <git-hub-icon class="inline mr-1 fill-current" />
               Sign in with GitHub
-            </a>
+            </button>
+            <nuxt-link
+              v-if="$auth.loggedIn"
+              :to="{
+                name: 'users-id',
+                params: { id: $auth.user.preferred_username },
+              }"
+            >
+              <img
+                class="inline-block mt-4 lg:mt-0 shadow border-2 border-brand-500 w-16 rounded-full"
+                :src="$auth.user.picture"
+              />
+            </nuxt-link>
           </div>
         </div>
       </nav>

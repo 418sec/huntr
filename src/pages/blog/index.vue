@@ -15,8 +15,8 @@
         <div class="text-xs leading-5 text-gray-500 max-w-prose">
           <span class="">
             Published
-            <time :datetime="blog.publishedAtDate">
-              {{ blog.publishedAtFormatted }}
+            <time :datetime="$moment(blog.publishedAt).format('YYYY-MM-DD')">
+              {{ $moment(blog.publishedAt).format('Do MMMM YYYY') }}
             </time>
             by {{ blog.author }}
           </span>
@@ -110,7 +110,6 @@
 </template>
 
 <script>
-const { DateTime } = require('luxon')
 const readingTime = require('reading-time')
 const truncate = require('truncate')
 
@@ -140,17 +139,10 @@ export default {
         .fetch()
     ).map((obj) => ({
       ...obj,
-      publishedAtDate: obj.publishedAt
-        ? DateTime.fromISO(obj.publishedAt).toISODate()
-        : DateTime.fromISO(obj.createdAt).toISODate(),
-      publishedAtFormatted: obj.publishedAt
-        ? DateTime.fromISO(obj.publishedAt).toLocaleString(DateTime.DATE_FULL)
-        : DateTime.fromISO(obj.createdAt).toLocaleString(DateTime.DATE_FULL),
+      publishedAt: obj.publishedAt || obj.createdAt, // If no publishedAt date is provided, use the createdAt date
       readingTimeText: readingTime(obj.text).text, // Reading time text
-      author: obj.author ? obj.author : 'the huntr team', // Provides a default author
-      description: obj.description // If no description provided, display the truncated body
-        ? obj.description
-        : truncate(obj.text, 300),
+      author: obj.author || 'the huntr team', // Provides a default author
+      description: obj.description || truncate(obj.text, 300), // If no description provided, display the truncated body
     }))
 
     return {

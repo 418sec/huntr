@@ -1,5 +1,3 @@
-import tailwindTypography from '@tailwindcss/typography'
-
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -19,7 +17,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ['plugins/chatwoot.js', 'plugins/cypress.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -30,6 +28,8 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://github.com/nuxt-community/moment-module
+    '@nuxtjs/moment',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -38,6 +38,10 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://github.com/dansmaculotte/nuxt-segment
+    '@dansmaculotte/nuxt-segment',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -55,6 +59,45 @@ export default {
       headers: {
         'Cache-Control': 'no-store',
         Vary: '*',
+      },
+    },
+  },
+
+  segment: {
+    writeKey: 'VWwEgATDMwku1jvgt0soCRaORr8xbOyx',
+    disabled: process.env.NODE_ENV === 'development',
+  },
+
+  auth: {
+    redirect: {
+      login: false,
+      logout: false,
+      home: '/profile/',
+      callback: '/auth/callback/',
+    },
+    strategies: {
+      cognito: {
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: 'https://auth.huntr.dev/oauth2/authorize',
+          token: 'https://auth.huntr.dev/oauth2/token',
+          userInfo: 'https://auth.huntr.dev/oauth2/userInfo',
+          logout: 'https://auth.huntr.dev/logout',
+        },
+        token: {
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 1800,
+        },
+        refreshToken: {
+          property: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30,
+        },
+        responseType: 'code',
+        grantType: 'authorization_code',
+        clientId: '3515589jstkcr0dhh1ehlcurm0',
+        scope: ['openid', 'profile', 'email'],
+        codeChallengeMethod: 'S256',
       },
     },
   },
