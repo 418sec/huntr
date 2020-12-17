@@ -1,8 +1,8 @@
-## :writing_hand: Description
+# Description
 
 `Strider` is an Open Source Continuous Deployment / Continuous Integration platform. It is written in Node.js and Ember.js and uses MongoDB as a backing store. This platform is vulnerable to `Cross-Site Request Forgery (CSRF)`. It allowes an attacker to takeover accounts, privillege escalation and accounts deletion.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
 1. Setup MongoDB
 2. Install the package
