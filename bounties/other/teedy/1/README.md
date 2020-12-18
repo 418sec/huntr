@@ -1,8 +1,8 @@
-## :writing_hand: Description
+# Description
 
 Teedy is a lightweight document management system packed with all the features you can expect from big expensive solutions. It is vulnerable to account takeover with CSRF.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
 1. Install the package by following these [instructions](https://github.com/sismics/docs#install-with-docker) or try the live demo https://demo.teedy.io
 2. Login as admin with credentials `admin:admin`
@@ -22,7 +22,7 @@ Teedy is a lightweight document management system packed with all the features y
 4. Visit the payload URL and click submit button
 5. The user's password is changed successfully
 
-## :boom: Impact
+# Impact
 
 An attacker is able to takeover any account
 
