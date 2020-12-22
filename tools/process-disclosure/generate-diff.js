@@ -3,9 +3,7 @@
 import * as core from "@actions/core";
 import { Octokit } from "@octokit/rest"
 
-const octokit = new Octokit({
-  auth: "token " + process.env.GITHUB_TOKEN
-})
+const octokit = new Octokit();
 
 console.log("Checking list of files for PR: ", process.env.PR_NUMBER)
 
