@@ -6,7 +6,7 @@ BentoML is a framework for serving, managing, and deploying machine learning mod
 
 1. run exploit.py
 ```python
-// exploit.py
+# exploit.py
 import os
 import pickle
 #setup
