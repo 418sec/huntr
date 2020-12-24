@@ -4,7 +4,7 @@ Apache Flink is an open source stream processing framework with powerful stream-
     untrusted loading of data by the pickle.load function leading to Arbitrary code execution.
 
 # Proof of Concept
-1. run exploit.py
+Run exploit.py
 ```python
 import os
 import pickle
