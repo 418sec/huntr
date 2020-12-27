@@ -1,4 +1,5 @@
 # Description
+
 ParlAI (pronounced “par-lay”) is a python framework for sharing, training and testing dialogue models, from open-domain chitchat to VQA (Visual Question Answering).
 * **Vulnerability description**
     Vulnerable to YAML deserialization attack caused by unsafe loading.
