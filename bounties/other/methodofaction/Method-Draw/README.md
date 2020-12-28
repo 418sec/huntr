@@ -1,7 +1,7 @@
 # :book: Description
 
 
- `Jodit` An excellent WYSIWYG editor written in pure TypeScript without the use of additional libraries. Its file editor and image editor. This package is vulnerable for `(XSS)`.
+ `Method Draw` is a web based vector drawing application.. This package is vulnerable for `(SSRF)`.
 
 https://github.com/methodofaction/Method-Draw
 https://editor.method.ac/
@@ -18,4 +18,4 @@ https://editor.method.ac/
 # :telescope: POC
 https://drive.google.com/file/d/1pFEfdYStjGGj0wgvN8itpgYH8Al8Q_w5/view?usp=sharing
 ## 💥 Impact
-XSS
+SSRF
