@@ -16,8 +16,6 @@ https://editor.method.ac/
   ```
 
 # :telescope: POC
-![poc](https://user-images.githubusercontent.com/36979660/103232342-36340900-4960-11eb-98cb-bfe21f791335.png)
-
-https://drive.google.com/file/d/1zQEckBimk9cFiubEmO2k8EUCA2LuBkG_/view?usp=sharing
+https://drive.google.com/file/d/1pFEfdYStjGGj0wgvN8itpgYH8Al8Q_w5/view?usp=sharing
 ## 💥 Impact
 XSS
