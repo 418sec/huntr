@@ -30,7 +30,7 @@
     "@nuxtjs/eslint-config-typescript": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/moment": "^1.6.1",
-    "@nuxtjs/tailwindcss": "^3.1.0",
+    "@nuxtjs/tailwindcss": "^3.4.1",
     "@types/luxon": "^1.25.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
