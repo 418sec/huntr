@@ -2,6 +2,10 @@
 
 `paddlepaddle` is an industrial platform with advanced technologies and rich features that cover core deep learning frameworks, basic model libraries, end-to-end development kits, tools & components as well as service platforms. This package is vulnerable to `Arbitrary Code Execution`.
 
+## :bug: Vulnerability
+
+`paddle.fluid.load_program_state()` function is used to load program state from local file. It should only unpickle files that are saved with `paddle.fluid.save()` function.
+
 ## :male_detective: Proof of Concept
 
 #### Installation
