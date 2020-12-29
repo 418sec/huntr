@@ -2,7 +2,7 @@
 title: "April huntr highlights - Disclosure & Giveaway"
 publishedAt: 2020-06-24
 image: https://landen.imgix.net/blog_ihKQMyRvTUWMCgFu/assets/fVqLgQzvqGGCwoLA.jpg?w=880
-author: huntr Team
+author: the huntr Team
 ---
 
 April is now over and we're sure its been as weird and wonderful for you as it has been for us. This month was filled with disclosures, fixes and great conversations. We rolled out a few front-end design changes to the site, started to develop the profile page and implemented the disclosure capability, so you can start getting rewarded for disclosing vulnerabilities in open source code.
