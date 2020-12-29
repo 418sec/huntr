@@ -6,7 +6,7 @@
 https://github.com/ciur/papermerge
 https://pypi.org/project/papermerge/
 # :recycle:  Steps To Reproduce-:  
-  0) `pip install pepermerge` or use demo https://demo.papermerge.com/
+  0) clone https://github.com/ciur/papermerge or use demo https://demo.papermerge.com/
   1) add jscode in meta form. Payload used : `"><img src=x onerror=alert(137)>`
 
 # :telescope: POC
