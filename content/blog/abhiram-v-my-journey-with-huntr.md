@@ -9,7 +9,7 @@ In this article, we hear from one of our community members, Abhiram V - also ref
 
 If you also want to share your experiences on the platform with us, don't hesitate to get in touch. If you have any questions, feel free to [contact us](https://huntr.dev/contact-us).
 
-`My fellow huntrs,`
+`My fellow huntrs.,`
 
 `Hello 👋! I'm Abhiram V, a.k.a. Anon-Artist. I am a cyber security enthusiast, an ethical hacker and a part-time bug bounty hunter. I would like to thank the team at`[_huntr_](https://huntr.dev/)`for giving me the opportunity to write a blog article on my experiences with`[_huntr_](https://huntr.dev/).
 
