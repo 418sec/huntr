@@ -1,6 +1,4 @@
 # :book: Description
-
-
  `Trumbowyg` is a simple and lightweight WYSIWYG editor, weight only 20kB minifed (8kB gzip) for faster page loading. This package is vulnerable for `(XSS)`.
 
 https://github.com/Alex-D/Trumbowyg
