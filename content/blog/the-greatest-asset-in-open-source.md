@@ -17,6 +17,6 @@ That is why we are in the process of open sourcing huntr! Our huntr repository i
 
 We're so excited to see so many huntrs fixing open source code for everyone, but for this to work, it's you guys, the community, huntrs, who must be involved in development. We have already started this through our huntr Discord, which now has over 300 developers collaborating, learning, networking, creating memes and getting to know us a little better. To make sure that we are on the right track, we need you to be involved as much as possible; come and discuss our next moves, request new features and find new bugs... We want to make the experience for you as easy and enjoyable as possible, so come and tell us how we can do that! 🤗
 
-Join us on Discord, Twitter, and GitHub, and get involved!
+Join us on [Discord](https://discord.gg/hXNUzp), [Twitter](https://twitter.com/huntrdev?lang=en), and [GitHub](https://github.com/418sec/huntr), and get involved!
 
-Until next time...
+_Until next time..._
