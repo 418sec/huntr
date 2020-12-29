@@ -28,4 +28,4 @@ open('exploit.yml','w+').write(exploit)
 ppyfile.find_and_parse_config('exploit.yml')
 os.system('rm -r exploit.yml')
 ```
-![]()
+![](https://user-images.githubusercontent.com/43377443/103290032-984b4780-4a0e-11eb-8875-783a29efdbe9.png)
