@@ -133,7 +133,7 @@ export default {
     // Get this pages' blogs from the content folder
     const blogs = (
       await $content('blog', { text: true })
-        .sortBy('publishedAt')
+        .sortBy('publishedAt', 'desc')
         .limit(perPage)
         .skip(skipNumber)
         .fetch()
