@@ -4,7 +4,7 @@
 
 ## :bug: Vulnerability
 
-`ste2func()` function unpickles data encoded in base64. Lack of restriction allowes unpickling of malicious data.
+`str2func()` function unpickles data encoded in base64. Lack of restriction allowes unpickling of malicious data.
 
 ## :male_detective: Proof of Concept
 
