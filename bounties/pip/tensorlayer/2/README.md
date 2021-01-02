@@ -4,7 +4,7 @@
 
 ## :bug: Vulnerability
 
-Use of `eval()` in `eval_layer()` function without filtering causes execution of system commands
+Use of `eval()` in `eval_layer()` function without escaping causes execution of system commands
 
 ## :male_detective: Proof of Concept
 
