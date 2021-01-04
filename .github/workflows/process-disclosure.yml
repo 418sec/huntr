@@ -43,7 +43,6 @@ jobs:
         name: Generate the diff
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
         run: node ./generate-diff.js
   contains-only-one-bounty:
     name: Contains only one bounty
