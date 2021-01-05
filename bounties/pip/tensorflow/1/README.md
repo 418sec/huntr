@@ -20,4 +20,5 @@ payload = '''!!python/object/new:type
 '''
 model_config.model_from_yaml(payload,None)
 ```
+![Screenshot from 2021-01-05 06-30-32](https://user-images.githubusercontent.com/43377443/103595136-b4744a80-4f20-11eb-953a-7f862044eea4.png)
 
