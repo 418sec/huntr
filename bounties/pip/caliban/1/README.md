@@ -1,8 +1,8 @@
-## ✍️ Description
+# Description
 Caliban is a tool that helps researchers launch and track their numerical experiments in an isolated, reproducible computing environment. It was developed by machine learning researchers and engineers, and makes it easy to go from a simple prototype running on a workstation to thousands of experimental jobs running on Cloud.
 * **Vulnerability discription**
 Vulnerable to yaml deserilisation attack caused by unsafe loading.
-## 🕵️‍♂️ Proof of Concept
+# Proof of Concept
 * [vulnerable part of code](https://github.com/google/caliban/blob/56f96e7e05b1d33ebdebc01620dc867f7ec54df3/caliban/platform/gke/util.py#L790)
 ```python
 job_spec = yaml.load(f, Loader=yaml.FullLoader)
