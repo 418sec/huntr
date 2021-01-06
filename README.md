@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://huntr.dev/" target="_blank"><img src="https://pbs.twimg.com/profile_banners/1175417058940674050/1609921917/1500x500" width="700"></a>
+<a href="https://huntr.dev/" target="_blank"><img src="https://pbs.twimg.com/profile_banners/1175417058940674050/1609921917/1500x500"></a>
 </p>
 <p align="center">
 <hr />
