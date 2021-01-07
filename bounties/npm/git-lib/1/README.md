@@ -2,7 +2,7 @@
 
 The issue occurs because a `user input` is formatted inside a `command` that will be executed without any check.
 
-## Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
+# Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
 
 1. Create the following PoC file:
 

@@ -2,7 +2,7 @@
 
 Affected versions of this package are vulnerable to Command Injection. the `classToPlainFromExist` function could be tricked into adding or modifying properties of `Object.prototype` using a `__proto__` payload.
 
-## POC
+# POC
 
 ```js
 var root = require("class-transformer");

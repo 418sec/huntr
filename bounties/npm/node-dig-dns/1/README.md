@@ -4,7 +4,7 @@ I would like to report an `RCE` issue in the `node-dig-dns` module. It allows th
 
 The issue occurs because a user input is formatted inside a command that will be executed without any check. The issue arises [here](https://github.com/StephanGeorg/node-dig-dns/blob/master/src/index.js#L6).
 
-## Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
+# Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
 
 1. Create the following PoC file:
 

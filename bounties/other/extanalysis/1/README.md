@@ -2,7 +2,7 @@
 
 The `ExtAnalysis` project is vulnerable against various CSRFs, that could lead to loss of functionalities and placement of malicious files in arbitrary directories without knowledge of the victim.
 
-## Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
+# Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
 
 1. Download the git project and run the server through the `python2 extanalysis.py` command
 2. Insert on a malicious host the following code

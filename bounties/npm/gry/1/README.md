@@ -2,7 +2,7 @@
 
 The issue occurs because a `user input` is formatted inside a `command` that will be executed without any check.
 
-## Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
+# Proof of Concept (Credit: [Mik317](https://huntr.dev/app/users/Mik317))
 
 1. Create the following PoC file:
 
@@ -25,7 +25,7 @@ node poc.js #  Run the PoC
 
 4. Recheck the files: now `HACKED` has been created
 
-## References:
+# References:
 
 - [GitHub Issue](https://github.com/IonicaBizau/node-gry/issues/21)
 - [GitHub Permalink #1](https://github.com/IonicaBizau/node-gry/blob/master/lib/index.js#L149)
