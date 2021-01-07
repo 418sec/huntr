@@ -1,8 +1,8 @@
-## Overview
+# Overview
 
 The issue occurs because a `user input` is formatted inside a `command` that will be executed without any check.
 
-## Proof of Concept
+# Proof of Concept
 
 1. Create the following PoC file:
 
