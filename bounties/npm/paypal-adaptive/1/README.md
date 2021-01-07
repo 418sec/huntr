@@ -2,7 +2,7 @@
 
 Affected versions of this package are vulnerable to Prototype Pollution. The `PayPal` function could be tricked into adding or modifying properties of `Object.prototype` using a `__proto__` payload.
 
-## POC
+# POC
 
 ```js
 var PayPal = require('paypal-adaptive');
