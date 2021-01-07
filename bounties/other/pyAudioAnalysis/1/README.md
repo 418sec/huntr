@@ -1,10 +1,10 @@
-## :writing_hand: Description
+# Description
 
 `pyAudioAnalysis` is an open Python library that provides a wide range of audio-related functionalities focusing on feature extraction, classification, segmentation and visualization issues. This package is vulnerable to `Arbitrary Code Execution`.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
-#### Installation
+# Installation
 ```bash
 git clone https://github.com/tyiannak/pyAudioAnalysis.git
 cd pyAudioAnalysis
@@ -12,7 +12,7 @@ pip install -r ./requirements.txt
 pip install -e .
 ```
 
-#### Run exploit.py
+# Run exploit.py
 ```python
 #!/usr/bin/env python3
 
