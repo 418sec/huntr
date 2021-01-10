@@ -1,20 +1,20 @@
-## :writing_hand: Description
+# Description
 
 `TFlearn` is a modular and transparent deep learning library built on top of Tensorflow. It was designed to provide a higher-level API to TensorFlow in order to facilitate and speed-up experimentations, while remaining fully transparent and compatible with it. This package is vulnerable to `Arbitrary Code Execution`.
 
-## :bug: Vulnerability
+# Vulnerability
 
 `load_batch()` function is used to load CIFAR 10 dataset for training. Lack of restriction in input allowes attacker-crafted file to get unpickled which causes code execution.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
-#### Installation
+# Installation
 ```bash
 pip install tensorflow
 pip install tflearn
 ```
 
-#### Run exploit.py
+# Run exploit.py
 ```python
 #!/usr/bin/env python3
 
