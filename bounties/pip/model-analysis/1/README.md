@@ -1,5 +1,5 @@
 # Description
-TensorFlow Model Analysis (TFMA) is a library for evaluating TensorFlow models. 
+TensorFlow Model Analysis (TFMA) is a library for evaluating TensorFlow models
 * **Vulnerability description**
     untrusted loading of data by the pickle.load function leading to Arbitrary code execution.
 
