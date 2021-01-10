@@ -1,5 +1,5 @@
 # Description
-TF-Agents is a library for Reinforcement Learning in TensorFlow  
+TF-Agents is a library for Reinforcement Learning in TensorFlow.  
 * **Vulnerability description**
     untrusted loading of data by the pickle.load function leading to Arbitrary code execution.
 
