@@ -1,20 +1,20 @@
-## :writing_hand: Description
+# Description
 
 `Ray` is an open source framework that provides a simple, universal API for building distributed applications. It is packaged with RLlib, a scalable reinforcement learning library, and Tune, a scalable hyperparameter tuning library. This package is vulnerable to `Arbitrary Code Execution`.
 
-## :bug: Vulnerability
+# Vulnerability
 
 `NevergradSearch` class uses `nevergrad` package to optimize hyperparameters. The `restore()` method is supposed to load objects saved with `save()` method. But lack of restriction allowes attacker constructed data to be unpickled.
 
-## :male_detective: Proof of Concept
+# Proof of Concept
 
-#### Installation
+# Installation
 ```bash
 pip install ray
 pip install nevergrad
 ```
 
-#### Run exploit.py
+# Run exploit.py
 ```python
 #!/usr/bin/env python3
 
