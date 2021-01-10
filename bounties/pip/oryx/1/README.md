@@ -1,5 +1,5 @@
 # Description
-Oryx is a library for probabilistic programming and deep learning built on top of Jax. The approach is to expose a set of function transformations that compose and integrate with JAX's existing transformations 
+Oryx is a library for probabilistic programming and deep learning built on top of Jax. The approach is to expose a set of function transformations that compose and integrate with JAX's existing transformations.
 * **Vulnerability description**
     untrusted loading of data by the pickle.load function leading to Arbitrary code execution.
 
