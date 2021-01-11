@@ -4,7 +4,7 @@ Dolibarr is vulnerable to an IDOR vulnerability which can lead to Privilege Esca
 
 # Proof of Concept
 
-1.Download and Install Dolibarr form [Dolibarr](https://github.com/Dolibarr/dolibarr/) 
+1.Download and Install Dolibarr from [Dolibarr](https://github.com/Dolibarr/dolibarr/) 
 
 2.Create two New users with the following permissions(let the new user be SAM and John)      
    -Delete or disable other users    
