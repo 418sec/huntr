@@ -28,7 +28,7 @@
 </p>
 <br />
 <p align="center">
-<a href="https://discord.gg/wkPS6yx"><img alt="Discord" src="https://img.shields.io/discord/672495759706554369?label=Discord&logo=discord&logoColor=%23ef5a4d&style=flat-square"></a>
+<a href="https://discord.gg/pu3XJ5S5zv"><img alt="Discord" src="https://img.shields.io/discord/672495759706554369?label=Discord&logo=discord&logoColor=%23ef5a4d&style=flat-square"></a>
 <a href="https://twitter.com/huntrdev"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/huntrdev?style=social"></a>
 </p>
 <br />
