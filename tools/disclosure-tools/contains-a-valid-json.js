@@ -6,6 +6,8 @@ import Ajv from "ajv";
 
 import * as core from "@actions/core"
 
+const diff = JSON.parse(process.env.DIFF);
+
 const jsonPath = "../../" + diff.filter(file => 
     file.path.includes("vulnerability.json")
 )[0].path;

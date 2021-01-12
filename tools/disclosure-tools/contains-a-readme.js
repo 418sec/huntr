@@ -3,6 +3,8 @@
 import * as fs from "fs/promises";
 import * as core from "@actions/core";
 
+const diff = JSON.parse(process.env.DIFF);
+
 const mdPath = "../../" + diff.filter(file => 
     file.path.includes("README.md")
 )[0].path;

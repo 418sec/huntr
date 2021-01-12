@@ -6,6 +6,8 @@ import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit();
 
+const diff = JSON.parse(process.env.DIFF);
+
 const jsonPath = "../../" + diff.filter(file => 
     file.path.includes("vulnerability.json")
 )[0].path;
