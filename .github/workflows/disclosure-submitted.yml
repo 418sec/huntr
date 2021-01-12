@@ -1,11 +1,11 @@
 name: Disclosure Submitted
-on: 
+on:
   pull_request_target:
-  types: [opened, synchronize]
-  branches:
-    - action/disclosure-submitted
-  paths:
-    - "bounties/**"
+    types: [opened, synchronize]
+    branches:
+      - action/disclosure-submitted
+    paths:
+      - "bounties/**"
 
 defaults:
   run:
