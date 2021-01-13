@@ -27,9 +27,9 @@ octokit.pulls
         const vulnerabilityJson = JSON.parse(
           Buffer.from(response.data.content, "base64").toString()
         );
-        core.setOutput("repoOwner", vulnerabilityJson.Repository.Owner);
-        core.setOutput("repoName", vulnerabilityJson.Repository.Name);
-        core.setOutput("packageName", vulnerabilityJson.Package.Name);
+        core.setOutput("repo-owner", vulnerabilityJson.Repository.Owner);
+        core.setOutput("repo-name", vulnerabilityJson.Repository.Name);
+        core.setOutput("package-name", vulnerabilityJson.Package.Name);
       });
   })
   .catch((error) => {

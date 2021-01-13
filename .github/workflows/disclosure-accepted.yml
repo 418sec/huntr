@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     outputs:
-      repoOwner: ${{ steps.get-repository-info.outputs.repoOwner }}
-      repoName: ${{ steps.get-repository-info.outputs.repoName }}
-      packageName: ${{ steps.get-repository-info.outputs.packageName }}
+      repo-owner: ${{ steps.get-repository-info.outputs.repo-owner }}
+      repo-name: ${{ steps.get-repository-info.outputs.repo-name }}
+      package-name: ${{ steps.get-repository-info.outputs.package-name }}
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -72,14 +72,40 @@ jobs:
         name: Run create-fork.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_OWNER: ${{ needs.get-repository-info.outputs.repoOwner }}
-          REPO_NAME: ${{ needs.get-repository-info.outputs.repoName }}
+          REPO_OWNER: ${{ needs.get-repository-info.outputs.repo-owner }}
+          REPO_NAME: ${{ needs.get-repository-info.outputs.repo-name }}
         run: node create-fork.js
 
   # create-branch:
   #   needs: create-fork
   #   if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
 
-  # track-heap:
-  #   needs: [create-fork, create-branch]
-  #   if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
+  # analytics:
+  #   name: Run Heap Analytics
+  #   runs-on: ubuntu-latest
+  #   needs: create-branch
+  #   steps:
+  #     - id: checkout
+  #       uses: actions/checkout@v2
+  #     - id: node-setup
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: "14.x"
+  #     - id: restore-node-cache
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: ~/.npm
+  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-node-
+  #     - id: dependency-install
+  #       name: Install NPM packages
+  #       run: npm ci
+  #     - id: analytics
+  #       name: Run Heap Analytics
+  #       env:
+  #         APP_ID: ${{ secrets.HEAP_ID }}
+  #         EVENT_NAME: "Disclosure Accepted"
+  #         USER_ID: ${{ github.event.pull_request.user.id }}
+  #         PACKAGE_NAME: ${{ steps.get-repository-info.outputs.package-name }}
+  #       run: node ../shared/analytics.js
