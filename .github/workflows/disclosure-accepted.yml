@@ -42,6 +42,7 @@ jobs:
       - id: get-repository-info
         name: Get the repository path
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: node get-repository-info.js
 
@@ -70,6 +71,7 @@ jobs:
       - id: run-create-fork
         name: Run create-fork.js
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: ${{ needs.get-repository-info.outputs.repoOwner }}
           REPO_NAME: ${{ needs.get-repository-info.outputs.repoName }}
         run: node create-fork.js
