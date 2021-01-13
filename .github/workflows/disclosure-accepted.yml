@@ -1,0 +1,83 @@
+name: Disclosure Accepted
+
+on:
+  pull_request:
+    types: [merged]
+    branches:
+      - action/disclosure-accepted # < TESTING
+      # - staging # < PRODUCTION
+    paths:
+      - "bounties/**"
+
+defaults:
+  run:
+    working-directory: tools/disclosure-accepted
+
+jobs:
+  get-repository-info:
+    name: Get repository info
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'disclosure'
+    outputs:
+      repoOwner: ${{ steps.get-repository-info.outputs.repoOwner }}
+      repoName: ${{ steps.get-repository-info.outputs.repoName }}
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: get-repository-info
+        name: Get the repository path
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: node get-repository-info.js
+
+  create-fork:
+    name: Create fork
+    needs: get-repository-info
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'disclosure'
+    steps:
+      - uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: run-create-fork
+        name: Run create-fork.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          REPO_OWNER: ${{ needs.get-repository-info.outputs.repoOwner }}
+          REPO_NAME: ${{ needs.get-repository-info.outputs.repoName }}
+        run: node create-fork.js
+
+  # create-branch:
+  #   needs: create-fork
+  #   if: github.event.label.name == 'disclosure'
+
+  # track-heap:
+  #   needs: [create-fork, create-branch]
+  #   if: github.event.label.name == 'disclosure'
