@@ -1,15 +1,11 @@
-# Fork the Disclosure repository
-# Create a unique bounty branch on fork creation
-# Run Heap Analytics tracking
-
 name: Disclosure Accepted
 
 on:
   pull_request:
     types: [merged]
     branches:
-      # - staging # < PRODUCTION
       - action/disclosure-accepted # < TESTING
+      # - staging # < PRODUCTION
     paths:
       - "bounties/**"
 
