@@ -53,7 +53,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       },
       Repository: {
         Name: vulnerabilityDetails.Repository.Owner,
-        Owner: vulnerabilityDetails.Repository.Name,
+        Owner: vulnerabilityDetails.Repository.Name
       }
     });
   }
