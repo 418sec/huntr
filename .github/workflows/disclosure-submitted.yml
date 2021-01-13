@@ -9,7 +9,7 @@
 
 # defaults:
 #   run:
-#     working-directory: tools/disclosure-tools
+#     working-directory: tools/disclosure-submitted
 
 # jobs:
 #   generate-diff:
@@ -290,4 +290,4 @@
 #           EVENT_NAME: "Disclosure Submitted"
 #           USER_ID: ${{ github.event.pull_request.user.id }}
 #           PACKAGE_NAME: ${{ needs.contains-a-valid-directory.outputs.package-name }}
-#         run: node ./analytics.js
+#         run: node ../shared/analytics.js
