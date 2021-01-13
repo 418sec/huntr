@@ -21,6 +21,7 @@ jobs:
     outputs:
       repoOwner: ${{ steps.get-repository-info.outputs.repoOwner }}
       repoName: ${{ steps.get-repository-info.outputs.repoName }}
+      packageName: ${{ steps.get-repository-info.outputs.packageName }}
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -69,7 +70,6 @@ jobs:
       - id: run-create-fork
         name: Run create-fork.js
         env:
-          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
           REPO_OWNER: ${{ needs.get-repository-info.outputs.repoOwner }}
           REPO_NAME: ${{ needs.get-repository-info.outputs.repoName }}
         run: node create-fork.js
