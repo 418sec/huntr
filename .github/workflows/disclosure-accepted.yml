@@ -2,7 +2,7 @@ name: Disclosure Accepted
 
 on:
   pull_request:
-    types: [merged]
+    types: [closed]
     branches:
       - action/disclosure-accepted # < TESTING
       # - staging # < PRODUCTION
@@ -17,7 +17,7 @@ jobs:
   get-repository-info:
     name: Get repository info
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'disclosure'
+    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     outputs:
       repoOwner: ${{ steps.get-repository-info.outputs.repoOwner }}
       repoName: ${{ steps.get-repository-info.outputs.repoName }}
@@ -48,7 +48,7 @@ jobs:
     name: Create fork
     needs: get-repository-info
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'disclosure'
+    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v2
       - id: node-setup
@@ -76,8 +76,8 @@ jobs:
 
   # create-branch:
   #   needs: create-fork
-  #   if: github.event.label.name == 'disclosure'
+  #   if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
 
   # track-heap:
   #   needs: [create-fork, create-branch]
-  #   if: github.event.label.name == 'disclosure'
+  #   if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
