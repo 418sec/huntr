@@ -29,6 +29,7 @@ octokit.pulls
         );
         core.setOutput("repoOwner", vulnerabilityJson.Repository.Owner);
         core.setOutput("repoName", vulnerabilityJson.Repository.Name);
+        core.setOutput("packageName", vulnerabilityJson.Package.Name);
       });
   })
   .catch((error) => {
