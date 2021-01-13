@@ -263,7 +263,7 @@
 #           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 #           MERGE_LABELS: "disclosure"
 #   analytics:
-#     name: Track disclosure submitted
+#     name: Run Heap Analytics
 #     runs-on: ubuntu-latest
 #     needs: auto-merge
 #     steps:
@@ -284,7 +284,7 @@
 #         name: Install NPM packages
 #         run: npm ci
 #       - id: analytics
-#         name: Track disclosure submitted
+#         name: Run Heap Analytics
 #         env:
 #           APP_ID: "${{ secrets.HEAP_ID }}"
 #           EVENT_NAME: "Disclosure Submitted"
