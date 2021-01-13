@@ -5,11 +5,9 @@ const octokit = new Octokit({
 
 octokit.repos
   .createFork({
-    owner: PROCESS.env.repoOwner, // TODO, pass in env
-    repo: PROCESS.env.repoName, // TODO, pass in env
+    owner: process.env.REPO_OWNER,
+    repo: process.env.REPO_NAME,
     organization: "418sec",
   })
-  .then(() => console.log("disclosureAccepted, createFork() successful."))
-  .catch((error) =>
-    console.log("disclosureAccepted, createFork() ERROR:", error)
-  );
+  .then(() => console.log("Fork created successfully"))
+  .catch((error) => console.error("Error while creating fork:", error));

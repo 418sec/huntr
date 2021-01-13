@@ -75,7 +75,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
           REPO_OWNER: ${{ needs.get-repository-info.outputs.repoOwner }}
-          REPO_OWNER: ${{ needs.get-repository-info.outputs.repoName }}
+          REPO_NAME: ${{ needs.get-repository-info.outputs.repoName }}
         run: node create-fork.js
         
   # create-branch:

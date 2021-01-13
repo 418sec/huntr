@@ -24,13 +24,13 @@ octokit.pulls
         ref: "staging",
       })
       .then((response) => {
-        const decodedContent = JSON.parse(
+        const vulnerabilityJson = JSON.parse(
           Buffer.from(response.data.content, "base64").toString()
         );
-        core.setOutput("repoOwner", decodedContent.Repository.Owner);
-        core.setOutput("repoName", decodedContent.Repository.Name);
+        core.setOutput("repoOwner", vulnerabilityJson.Repository.Owner);
+        core.setOutput("repoName", vulnerabilityJson.Repository.Name);
       });
   })
   .catch((error) => {
-    console.log("Error while fetching repository information:", error);
+    console.error("Error while fetching repository information:", error);
   });
