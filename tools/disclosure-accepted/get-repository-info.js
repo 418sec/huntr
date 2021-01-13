@@ -13,14 +13,14 @@ octokit.pulls
   .then(async (files) => {
     const vulnerabilityJsonPath = files.data.filter(
       (file) => file.filename.split("/").pop() == "vulnerability.json"
-    )[0];
+    )[0].filename;
 
     // Get the vulnerability.json contents
     await octokit.repos
       .getContent({
         owner: "418sec",
         repo: "huntr",
-        path: vulnerabilityJsonPath.filename,
+        path: vulnerabilityJsonPath,
         ref: "staging",
       })
       .then((response) => {
