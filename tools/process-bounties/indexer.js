@@ -50,6 +50,10 @@ bounties.withPromise().then(async (bountyPaths) => {
       Bounty: {
         Credit: `${(parseFloat(vulnerabilityDetails.CVSS.Score) * 100).toFixed(0)}`,
         Cash: "25"
+      },
+      Repository: {
+        Name: vulnerabilityDetails.Repository.Owner,
+        Owner: vulnerabilityDetails.Repository.Name
       }
     });
   }
