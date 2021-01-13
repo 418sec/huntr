@@ -8,7 +8,7 @@ octokit.pulls
   .listFiles({
     owner: "418sec",
     repo: "huntr",
-    pull_number: 1568, // < EXAMPLE // process.env.PR_NUMBER,
+    pull_number: process.env.PR_NUMBER,
   })
   .then(async (files) => {
     const vulnerabilityJsonPath = files.data.filter(
