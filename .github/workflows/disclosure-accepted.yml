@@ -1,14 +1,15 @@
 # Fork the Disclosure repository
 # Create a unique bounty branch on fork creation
 # Run Heap Analytics tracking
- 
- name: Disclosure accepted
+
+name: Disclosure Accepted
 
 on:
   pull_request:
     types: [merged]
     branches:
-      - staging
+      # - staging # < PRODUCTION
+      - action/disclosure-accepted # < TESTING
     paths:
       - "bounties/**"
 
@@ -17,14 +18,13 @@ defaults:
     working-directory: tools/disclosure-accepted
 
 jobs:
-
   get-repository-info:
     name: Get repository info
     runs-on: ubuntu-latest
+    if: github.event.label.name == 'disclosure'
     outputs:
       repoOwner: ${{ steps.get-repository-info.outputs.repoOwner }}
       repoName: ${{ steps.get-repository-info.outputs.repoName }}
-    if: github.event.label.name == 'disclosure'
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -77,7 +77,7 @@ jobs:
           REPO_OWNER: ${{ needs.get-repository-info.outputs.repoOwner }}
           REPO_NAME: ${{ needs.get-repository-info.outputs.repoName }}
         run: node create-fork.js
-        
+
   # create-branch:
   #   needs: create-fork
   #   if: github.event.label.name == 'disclosure'
