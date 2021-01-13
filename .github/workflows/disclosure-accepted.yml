@@ -4,7 +4,8 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - staging
+      # - staging
+      - action/disclosure-accepted
     paths:
       - "bounties/**"
 
@@ -16,7 +17,7 @@ jobs:
   get-repository-info:
     name: Get repository info
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'test' && github.event.pull_request.merged == true
+    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     outputs:
       repo-owner: ${{ steps.get-repository-info.outputs.repo-owner }}
       repo-name: ${{ steps.get-repository-info.outputs.repo-name }}
@@ -49,7 +50,7 @@ jobs:
     name: Create fork
     needs: get-repository-info
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'test' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
+    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
       - id: node-setup
@@ -77,7 +78,7 @@ jobs:
 
   create-branch:
     needs: create-fork
-    if: github.event.label.name == 'test' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
+    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
       - id: node-setup
