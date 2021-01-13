@@ -3,7 +3,7 @@
 #   pull_request_target:
 #     types: [opened, synchronize, reopened]
 #     branches:
-#       - action/disclosure-submitted
+#       - staging
 #     paths:
 #       - "bounties/**"
 
