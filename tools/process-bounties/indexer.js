@@ -52,8 +52,8 @@ bounties.withPromise().then(async (bountyPaths) => {
         Cash: "25"
       },
       Repository: {
-        Name: vulnerabilityDetails.Repository.Owner,
-        Owner: vulnerabilityDetails.Repository.Name
+        Name: vulnerabilityDetails.Repository.Name,
+        Owner: vulnerabilityDetails.Repository.Owner
       }
     });
   }
