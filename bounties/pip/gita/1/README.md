@@ -27,3 +27,4 @@ open('cmds.yml','w+').write(payload)
 get_cmds_from_files()
 print("calc has been poped -> Arbitrary Code Execution")
 ```
+![gita_pc](https://user-images.githubusercontent.com/43377443/104534296-08c2ad00-563a-11eb-9063-89e7d62b76e1.PNG)
