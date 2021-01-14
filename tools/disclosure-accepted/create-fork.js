@@ -8,6 +8,10 @@ const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
 const repoOwner = vulnerabilityJson.Repository.Owner;
 const repoName = vulnerabilityJson.Repository.Name;
 
+console.log(
+  "Forking repository:",
+  `${repoOwner}/${repoName} > 418sec/${repoName}`
+);
 octokit.repos
   .createFork({
     owner: repoOwner,
