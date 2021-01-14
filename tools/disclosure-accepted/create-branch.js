@@ -1,6 +1,6 @@
 "use strict";
+import * as core from "@actions/core";
 import { Octokit } from "@octokit/rest";
-import { Cipher } from "crypto";
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
