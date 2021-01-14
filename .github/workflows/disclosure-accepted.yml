@@ -17,7 +17,7 @@ jobs:
   get-vulnerability-json:
     name: Get the vulnerability.json
     runs-on: ubuntu-latest
-    # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
+    if: github.event.pull_request.labels == ['disclosure'] && github.event.pull_request.merged == true
     outputs:
       vulnerability-json: ${{ steps.get-vulnerability-json.outputs.vulnerability-json }}
     steps:
@@ -69,7 +69,7 @@ jobs:
       - id: run-create-fork
         name: Run create-fork.js
         env:
-          HUNTR_HELPER_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
           VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node create-fork.js
 
@@ -98,7 +98,7 @@ jobs:
       - id: run-create-branch
         name: Run create-branch.js
         env:
-          HUNTR_HELPER_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
           VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node create-branch.js
 
