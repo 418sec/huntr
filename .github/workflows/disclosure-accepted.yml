@@ -41,6 +41,7 @@ jobs:
         name: Get the repository path
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_RECEIVED: ${{ github.event }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: node get-vulnerability-json.js
 
