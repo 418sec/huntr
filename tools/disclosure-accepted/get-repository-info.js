@@ -1,5 +1,7 @@
+"use strict";
+
 import * as core from "@actions/core";
-const { Octokit } = require("@octokit/rest");
+import { Octokit } from "@octokit/rest";
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });

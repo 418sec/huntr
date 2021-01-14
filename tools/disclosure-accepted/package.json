@@ -6,5 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@octokit/rest": "^18.0.12"
+  }
 }
