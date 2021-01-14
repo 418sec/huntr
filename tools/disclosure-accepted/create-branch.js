@@ -3,7 +3,8 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-const branchName = `index-package-username`; // TODO: example format, represents unique branch for each submission
+// TODO: example format, represents unique branch for each submission
+const branchName = `index-package-username`;
 
 // Get the repo's default branch
 octokit.repos
