@@ -6,6 +6,8 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
+console.log("Fetching repository information for PR#:", process.env.PR_NUMBER);
+
 octokit.pulls
   .listFiles({
     owner: "418sec",
@@ -29,11 +31,11 @@ octokit.pulls
         const vulnerabilityJson = JSON.parse(
           Buffer.from(response.data.content, "base64").toString()
         );
-        core.setOutput("repo-owner", vulnerabilityJson.Repository.Owner);
-        core.setOutput("repo-name", vulnerabilityJson.Repository.Name);
-        core.setOutput("package-name", vulnerabilityJson.Package.Name);
+        console.log("vulnerability.json", vulnerabilityJson);
+        core.setOutput("vulnerability-json", vulnerabilityJson);
       });
   })
   .catch((error) => {
     console.error("Error while fetching repository information:", error);
+    core.setFailed("Could not fetch repository information.");
   });

@@ -4,8 +4,9 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-// TODO: example format, represents unique branch for each submission
-const branchName = `index-package-username`;
+const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
+const repoName = vulnerabilityJson.Repository.Name;
+const branchName = `index-package-username`; // TODO: example format, represents unique branch for each submission
 
 // Get the repo's default branch
 octokit.repos
@@ -19,7 +20,7 @@ octokit.repos
     await octokit.git
       .getRef({
         owner: "418sec",
-        repo: process.env.REPO_NAME,
+        repo: repoName,
         ref: `heads/${defaultBranch}`,
       })
       .then(async (response) => {
@@ -27,7 +28,7 @@ octokit.repos
         await github.git
           .createRef({
             owner: "418sec",
-            repo: process.env.REPO_NAME,
+            repo: repoName,
             ref: `refs/heads/${branchName}`,
             sha: response.data.object.sha,
           })
@@ -38,4 +39,5 @@ octokit.repos
   })
   .catch((error) => {
     console.log("Error trying to create branch:", error);
+    core.setFailed("Could not create branch.");
   });

@@ -4,16 +4,20 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
+const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
+const repoOwner = vulnerabilityJson.Repository.Owner;
+const repoName = vulnerabilityJson.Repository.Name;
+
 octokit.repos
   .createFork({
-    owner: process.env.REPO_OWNER,
-    repo: process.env.REPO_NAME,
+    owner: repoOwner,
+    repo: repoName,
     organization: "418sec",
   })
   .then(() =>
     console.log(
       "Fork created successfully:",
-      `${process.env.REPO_OWNER}/${process.env.REPO_NAME} > 418sec/${process.env.REPO_NAME}`
+      `${repoOwner}/${repoName} > 418sec/${repoName}`
     )
   )
-  .catch((error) => console.error("Error while creating fork:", error));
+  .catch((error) => console.error("Error while creating fork:", error)); // TODO: Check if error is due to existing repo, otherwise setFailed

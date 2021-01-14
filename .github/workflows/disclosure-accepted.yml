@@ -19,9 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     outputs:
-      repo-owner: ${{ steps.get-repository-info.outputs.repo-owner }}
-      repo-name: ${{ steps.get-repository-info.outputs.repo-name }}
-      package-name: ${{ steps.get-repository-info.outputs.package-name }}
+      vulnerability-json: ${{ steps.get-repository-info.outputs.vulnerability-json }}
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -72,8 +70,7 @@ jobs:
         name: Run create-fork.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_OWNER: ${{ needs.get-repository-info.outputs.repo-owner }}
-          REPO_NAME: ${{ needs.get-repository-info.outputs.repo-name }}
+          VULNERABILITY_JSON: ${{ needs.get-repository-info.outputs.vulnerability-json }}
         run: node create-fork.js
 
   create-branch:
@@ -102,9 +99,7 @@ jobs:
         name: Run create-branch.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGE_NAME: ${{ needs.get-repository-info.outputs.package-name }}
-          REPO_OWNER: ${{ needs.get-repository-info.outputs.repo-owner }}
-          REPO_NAME: ${{ needs.get-repository-info.outputs.repo-name }}
+          VULNERABILITY_JSON: ${{ needs.get-repository-info.outputs.vulnerability-json }}
         run: node create-branch.js
 
   analytics:
@@ -135,5 +130,5 @@ jobs:
           APP_ID: ${{ secrets.HEAP_ID }}
           EVENT_NAME: "Disclosure Accepted"
           USER_ID: ${{ github.event.pull_request.user.id }}
-          PACKAGE_NAME: ${{ steps.get-repository-info.outputs.package-name }}
+          VULNERABILITY_JSON: ${{ needs.get-repository-info.outputs.vulnerability-json }}
         run: node ../shared/analytics.js
