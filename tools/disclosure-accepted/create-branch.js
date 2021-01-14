@@ -31,7 +31,7 @@ octokit.repos
         const latestSha = response.data.object.sha;
         console.log("Latest commit SHA fetched:", latestSha);
         // Create the new branch
-        await github.git
+        await octokit.git
           .createRef({
             owner: "418sec",
             repo: repoName,
