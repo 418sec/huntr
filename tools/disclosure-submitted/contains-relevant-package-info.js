@@ -25,6 +25,10 @@ const jsonContents = await fs
 
 const packageRegistry = jsonContents.Package.Registry === "pip" ? "pypi" : jsonContents.Package.Registry;
 
+if(packageRegistry === "other") {
+    return;
+}
+
 const packageName = jsonContents.Package.Name;
 const packageUrl = jsonContents.Package.URL;
 

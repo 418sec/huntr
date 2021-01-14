@@ -9,4 +9,6 @@ if(staffIds.includes(process.env.USER_ID)) {
 
 await heap.track(process.env.EVENT_NAME, `github_${process.env.USER_ID}`, {
     name: process.env.PACKAGE_NAME
+}).then(() => {
+    console.log(`Track ${process.env.EVENT_NAME} for user (${process.env.USER_ID}) on ${process.env.PACKAGE_NAME}`)
 })
