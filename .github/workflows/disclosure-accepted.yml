@@ -48,8 +48,8 @@ jobs:
 
   create-fork:
     name: Create fork
-    needs: get-repository-info
     runs-on: ubuntu-latest
+    needs: get-repository-info
     if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
@@ -79,6 +79,7 @@ jobs:
   create-branch:
     name: Create branch
     needs: create-fork
+    runs-on: ubuntu-latest
     if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
