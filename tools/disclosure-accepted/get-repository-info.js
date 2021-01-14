@@ -18,6 +18,7 @@ octokit.pulls
     const vulnerabilityJsonPath = files.data.filter(
       (file) => file.filename.split("/").pop() == "vulnerability.json"
     )[0].filename;
+    console.log("Found vulnerability.json path: ", vulnerabilityJsonPath);
 
     // Get the vulnerability.json contents
     await octokit.repos
