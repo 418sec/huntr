@@ -4,6 +4,11 @@ const octokit = new Octokit({
   auth: process.env.HUNTR_HELPER_TOKEN,
 });
 
+console.log(
+  "process.env.HUNTR_HELPER_TOKEN.length > 0",
+  process.env.HUNTR_HELPER_TOKEN.length > 0
+);
+
 const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
 const repoOwner = vulnerabilityJson.Repository.Owner;
 const repoName = vulnerabilityJson.Repository.Name;
