@@ -14,12 +14,12 @@ defaults:
     working-directory: tools/disclosure-accepted
 
 jobs:
-  get-repository-info:
-    name: Get repository info
+  get-vulnerability-json:
+    name: Get the vulnerability.json
     runs-on: ubuntu-latest
     # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     outputs:
-      vulnerability-json: ${{ steps.get-repository-info.outputs.vulnerability-json }}
+      vulnerability-json: ${{ steps.get-vulnerability-json.outputs.vulnerability-json }}
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -37,17 +37,17 @@ jobs:
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
-      - id: get-repository-info
+      - id: get-vulnerability-json
         name: Get the repository path
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: node get-repository-info.js
+        run: node get-vulnerability-json.js
 
   create-fork:
     name: Create fork
     runs-on: ubuntu-latest
-    needs: get-repository-info
+    needs: get-vulnerability-json
     # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
@@ -70,12 +70,12 @@ jobs:
         name: Run create-fork.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VULNERABILITY_JSON: ${{ needs.get-repository-info.outputs.vulnerability-json }}
+          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node create-fork.js
 
   create-branch:
     name: Create branch
-    needs: [get-repository-info, create-fork]
+    needs: [get-vulnerability-json, create-fork]
     runs-on: ubuntu-latest
     # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
@@ -99,13 +99,13 @@ jobs:
         name: Run create-branch.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VULNERABILITY_JSON: ${{ needs.get-repository-info.outputs.vulnerability-json }}
+          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node create-branch.js
 
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
-    needs: [get-repository-info, create-branch]
+    needs: [get-vulnerability-json, create-branch]
     # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - id: checkout
@@ -130,5 +130,5 @@ jobs:
           APP_ID: ${{ secrets.HEAP_ID }}
           EVENT_NAME: "Disclosure Accepted"
           USER_ID: ${{ github.event.pull_request.user.id }}
-          VULNERABILITY_JSON: ${{ needs.get-repository-info.outputs.vulnerability-json }}
+          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node ../shared/analytics.js
