@@ -25,7 +25,7 @@ octokit.pulls
         owner: "418sec",
         repo: "huntr",
         path: vulnerabilityJsonPath,
-        ref: "staging",
+        ref: "action/disclosure-accepted", // testing purposes, production: staging
       })
       .then((response) => {
         const vulnerabilityJson = JSON.parse(
