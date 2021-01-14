@@ -24,6 +24,8 @@ const jsonContents = await fs
     });
 
 const packageRegistry = jsonContents.Package.Registry === "pip" ? "pypi" : jsonContents.Package.Registry;
+console.log(jsonContents)
+console.log(packageRegistry)
 
 if (!packageRegistry === "other") {
 
