@@ -13,6 +13,7 @@
     "@actions/core": "^1.2.6",
     "@octokit/rest": "^18.0.12",
     "ajv": "^6.12.6",
+    "graphql": "^15.4.0",
     "graphql-request": "^3.4.0",
     "heap-api": "^1.0.1"
   }
