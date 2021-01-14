@@ -273,7 +273,8 @@ jobs:
       contains-a-valid-directory,
       contains-a-readme,
       contains-a-valid-json,
-      contains-a-valid-repo
+      contains-a-valid-repo,
+      contains-relevant-package-info
     ]
     runs-on: ubuntu-latest
     steps:
