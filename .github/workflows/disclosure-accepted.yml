@@ -17,7 +17,7 @@ jobs:
   get-repository-info:
     name: Get repository info
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
+    # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true
     outputs:
       repo-owner: ${{ steps.get-repository-info.outputs.repo-owner }}
       repo-name: ${{ steps.get-repository-info.outputs.repo-name }}
@@ -50,7 +50,7 @@ jobs:
     name: Create fork
     runs-on: ubuntu-latest
     needs: get-repository-info
-    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
+    # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
       - id: node-setup
@@ -80,7 +80,7 @@ jobs:
     name: Create branch
     needs: create-fork
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
+    # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - uses: actions/checkout@v2
       - id: node-setup
@@ -111,7 +111,7 @@ jobs:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
     needs: create-branch
-    if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
+    # if: github.event.label.name == 'disclosure' && github.event.pull_request.merged == true # Are these if's required if 'needs' is used?
     steps:
       - id: checkout
         uses: actions/checkout@v2
