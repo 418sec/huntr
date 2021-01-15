@@ -38,8 +38,8 @@ octokit.repos
             ref: `refs/heads/${branchName}`,
             sha: latestSha,
           })
-          .then(() => {
-            console.log("Successfully created branch:", branchName);
+          .then((response) => {
+            console.log("Successfully created branch:", response);
           });
       });
   })
