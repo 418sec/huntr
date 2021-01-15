@@ -6,11 +6,16 @@ const octokit = new Octokit({
 });
 
 const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
+const bountyIndex = vulnerabilityJson.PackageVulnerabilityID;
 const repoName = vulnerabilityJson.Repository.Name;
-const branchName = `index-package-username`; // TODO: example format, represents unique branch for each submission
+const repoOwner = vulnerabilityJson.Repository.Owner;
+const packageRegistry = vulnerabilityJson.Package.Registry;
 
-console.log("Fetching the default branch for:", `418sec/${repoName}`);
+const branchName = `${bountyIndex}-${packageRegistry}-${repoOwner}/${repoName}`;
+console.log("Creating branch:", branchName);
+
 // Get the repo's default branch
+console.log("Fetching the default branch for:", `418sec/${repoName}`);
 octokit.repos
   .get({
     owner: "418sec",
@@ -30,6 +35,7 @@ octokit.repos
       .then(async (response) => {
         const latestSha = response.data.object.sha;
         console.log("Latest commit SHA fetched:", latestSha);
+
         // Create the new branch
         await octokit.git
           .createRef({
