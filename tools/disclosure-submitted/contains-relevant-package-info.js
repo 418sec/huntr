@@ -6,7 +6,7 @@ import { GraphQLClient, gql } from 'graphql-request'
 
 const graphQLClient = new GraphQLClient(process.env.GRAPHQL_API_URL, {
     headers: {
-        authorization: `Bearer ${process.env.GRAPHQL_API_KEY}`
+        "x-api-key": `${process.env.GRAPHQL_API_KEY}`
     }
 })
 
@@ -24,8 +24,6 @@ const jsonContents = await fs
     });
 
 const packageRegistry = jsonContents.Package.Registry === "pip" ? "pypi" : jsonContents.Package.Registry;
-console.log(jsonContents)
-console.log(packageRegistry)
 
 if (!(packageRegistry === "other")) {
 
@@ -47,7 +45,9 @@ if (!(packageRegistry === "other")) {
     }
 
     const packageDetails = await graphQLClient.request(query, variables)
-        .then(JSON.parse)
+        .then(response => {
+            return JSON.parse(response.getPackageDetails)
+        })
         .catch(() => {
             core.setFailed(
                 `The package name (${packageName}) and/or package registry (${packageRegistry}) could not be found...`
