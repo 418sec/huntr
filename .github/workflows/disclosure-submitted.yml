@@ -270,8 +270,7 @@ jobs:
     needs: [
       contains-a-readme,
       contains-only-new-files,
-      contains-only-db-files,
-      contains-only-one-directory
+      contains-only-db-files
     ]
     steps:
       - id: checkout
@@ -291,25 +290,6 @@ jobs:
         name: Install NPM packages
         run: npm ci
       - id: analytics
-  add-label:
-    name: Add label to PR
-    needs: [
-      contains-only-new-files,
-      contains-only-one-directory,
-      contains-only-db-files,
-      contains-a-valid-directory,
-      contains-a-readme,
-      contains-a-valid-json,
-      contains-a-valid-repo,
-      contains-relevant-package-info
-    ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-ecosystem/action-add-labels@v1.1.0
-        with:
-          github_token: ${{ secrets.github_token }}
-          labels: disclosure
         name: Run Heap Analytics
         env:
           HEAP_ID: "${{ secrets.HEAP_ID }}"
@@ -317,6 +297,25 @@ jobs:
           USER_ID: ${{ github.event.pull_request.user.id }}
           PACKAGE_NAME: ${{ needs.contains-a-valid-directory.outputs.package-name }}
         run: node ../shared/analytics.js
+  # add-label:
+  #   name: Add label to PR
+  #   needs: [
+  #     contains-only-new-files,
+  #     contains-only-one-directory,
+  #     contains-only-db-files,
+  #     contains-a-valid-directory,
+  #     contains-a-readme,
+  #     contains-a-valid-json,
+  #     contains-a-valid-repo,
+  #     contains-relevant-package-info
+  #   ]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions-ecosystem/action-add-labels@v1.1.0
+  #       with:
+  #         github_token: ${{ secrets.github_token }}
+  #         labels: disclosure
   # auto-merge:
   #   name: Auto merge PR
   #   runs-on: ubuntu-latest
