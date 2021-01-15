@@ -20,6 +20,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'disclosure') && github.event.pull_request.merged
     outputs:
       vulnerability-json: ${{ steps.get-vulnerability-json.outputs.vulnerability-json }}
+      vulnerability-json-sha: ${{ steps.get-vulnerability-json.outputs.vulnerability-json-sha }}
       vulnerability-json-path: ${{ steps.get-vulnerability-json.outputs.vulnerability-json-path }}
     steps:
       - id: checkout
@@ -71,6 +72,7 @@ jobs:
         env:
           HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
           VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
+          VULNERABILITY_JSON_SHA: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-sha }}
           VULNERABILITY_JSON_PATH: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-path }}
           DISCLOSER_ID: ${{ github.event.pull_request.user.id }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
