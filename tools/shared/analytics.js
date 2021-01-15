@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 
-import * as heap from "heap-api";
+import heap from "heap-api";
 
 const analytics = heap(`${process.env.HEAP_ID}`);
 
