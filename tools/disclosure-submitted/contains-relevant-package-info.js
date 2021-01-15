@@ -55,7 +55,7 @@ if (!(packageRegistry === "other")) {
         });
 
     if (packageDetails.package.url !== packageUrl) {
-        core.warning(`Suggestion - should your Package.URL be: ${packageDetails.package.url}?`)
+        core.warning(`Suggestion - should your Package.URL be: ${packageDetails.package.url} ?`)
         core.setFailed(`The PR does not contain a valid registry URL...`)
     }
 
