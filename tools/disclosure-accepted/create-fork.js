@@ -29,4 +29,8 @@ octokit.repos
       `${repoOwner}/${repoName} > 418sec/${repoName}`
     )
   )
-  .catch((error) => console.error("Error while creating fork:", error)); // TODO: Check if error is due to existing repo, otherwise setFailed
+  .catch((error) => {
+    console.log("Error while creating fork:", error);
+    // TODO: Check if error is due to existing repo, otherwise setFailed
+    // core.setFailed("Error while creating fork:", error);
+  });

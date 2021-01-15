@@ -44,6 +44,5 @@ octokit.repos
       });
   })
   .catch((error) => {
-    console.log("Error trying to create branch:", error);
-    core.setFailed("Could not create branch.");
+    core.setFailed("Error attempting to create branch:", error);
   });
