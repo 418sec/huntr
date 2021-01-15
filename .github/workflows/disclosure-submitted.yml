@@ -42,6 +42,37 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: node ./generate-diff.js
+  get-package-name:
+    name: Get package name
+    needs: generate-diff
+    runs-on: ubuntu-latest
+    outputs: 
+      package-name: ${{ steps.get-package-name.outputs.package-name }}
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: refs/pull/${{ github.event.number }}/merge
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install NPM packages
+        run: npm ci
+      - id: get-package-name
+        name: Get package name
+        env:
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./get-package-name.js
   contains-only-new-files:
     name: Check for only new files
     needs: generate-diff
@@ -123,8 +154,6 @@ jobs:
   contains-a-valid-directory:
     name: Contains a valid directory
     needs: generate-diff
-    outputs: 
-      package-name: ${{ steps.contains-a-valid-directory.outputs.package-name }}
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -299,7 +328,7 @@ jobs:
           HEAP_ID: "${{ secrets.HEAP_ID }}"
           EVENT_NAME: "Disclosure Submitted"
           USER_ID: ${{ github.event.pull_request.user.id }}
-          PACKAGE_NAME: ${{ needs.contains-a-valid-directory.outputs.package-name }}
+          PACKAGE_NAME: ${{ needs.get-package-name.outputs.package-name }}
         run: node ../shared/analytics.js
   add-label:
     name: Add label to PR

@@ -20,5 +20,3 @@ const mdDir = `bounties/${Package.Registry}/${Package.Name}/${PackageVulnerabili
 const illegalDir = diff.filter((file) => !(file.path == jsonDir || file.path == mdDir));
 if (illegalDir.length > 0)
     core.setFailed("The PR does not strictly contain a valid directory...");
-
-core.setOutput("package-name", Package.Name)
