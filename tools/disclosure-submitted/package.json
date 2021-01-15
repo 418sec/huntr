@@ -1,7 +1,7 @@
 {
-  "name": "validator",
+  "name": "disclosure-tools",
   "version": "1.0.0",
-  "description": "",
+  "description": "Validates and runs cleanliness checks on disclosures",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,8 @@
   "type": "module",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@octokit/rest": "^18.0.9",
-    "ajv": "^6.12.6"
+    "@octokit/rest": "^18.0.12",
+    "ajv": "^6.12.6",
+    "heap-api": "^1.0.1"
   }
 }
