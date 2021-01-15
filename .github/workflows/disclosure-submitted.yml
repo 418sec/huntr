@@ -267,6 +267,9 @@ jobs:
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/shared
     needs: [
       contains-a-readme,
       contains-only-new-files,
