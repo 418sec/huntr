@@ -36,10 +36,17 @@ if (!(packageRegistry === "other")) {
     const repositoryName = jsonContents.Repository.Name;
 
     const query = gql`
-            getPackageDetails(PackageName:"${packageName}", PackageManager:"${packageRegistry}")
-        `
+        query getPackageDetails($PackageName: String!, $PackageManager: String!) {
+            getPackageDetails(PackageName: $PackageName, PackageManager: $PackageManager)
+        }
+    `
 
-    const packageDetails = await graphQLClient.request(query)
+    const variables = {
+        PackageName: packageName,
+        PackageManager: packageRegistry
+    }
+
+    const packageDetails = await graphQLClient.request(query, variables)
         .then(JSON.parse)
         .catch(() => {
             core.setFailed(
