@@ -48,6 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs: 
       package-name: ${{ steps.get-package-name.outputs.package-name }}
+    if: github.event.action == 'opened'
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -306,6 +307,7 @@ jobs:
       contains-only-one-directory,
       get-package-name
     ]
+    if: github.event.action == 'opened'
     steps:
       - id: checkout
         uses: actions/checkout@v2
