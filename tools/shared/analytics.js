@@ -1,4 +1,4 @@
-import * as core from "@actions/core";
+const core = require("@actions/core");
 
 const heap = require("heap-api")(`${process.env.HEAP_ID}`);
 
