@@ -1,12 +1,12 @@
 "use strict";
 import { Octokit } from "@octokit/rest";
 const octokit = new Octokit({
-  auth: process.env.HUNTR_HELPER_TOKEN,
+  auth: process.env.HUNTR_HELPER_PIPELINE_TOKEN,
 });
 
 console.log(
   "process.env.HUNTR_HELPER_TOKEN.length > 0",
-  process.env.HUNTR_HELPER_TOKEN.length > 0
+  process.env.HUNTR_HELPER_PIPELINE_TOKEN.length > 0
 );
 
 const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
