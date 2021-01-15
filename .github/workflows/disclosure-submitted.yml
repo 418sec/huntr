@@ -75,7 +75,7 @@ jobs:
           DIFF: ${{ needs.generate-diff.outputs.diff }}
         run: node ./get-package-name.js
   contains-only-new-files:
-    name: Check for only new files
+    name: Contains only new files
     needs: generate-diff
     runs-on: ubuntu-latest
     steps:
@@ -96,7 +96,7 @@ jobs:
         name: Install NPM packages
         run: npm ci
       - id: contains-only-new-files
-        name: Check for only new files
+        name: Contains only new files
         env:
           DIFF: ${{ needs.generate-diff.outputs.diff }}
         run: node ./contains-only-new-files.js
