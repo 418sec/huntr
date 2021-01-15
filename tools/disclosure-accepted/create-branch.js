@@ -39,7 +39,10 @@ octokit.repos
             sha: latestSha,
           })
           .then((response) => {
-            console.log("Successfully created branch:", response);
+            console.log(
+              `Successfully created branch '${branchName}' on 418sec/${defaultBranch}:`,
+              response
+            );
           });
       });
   })
