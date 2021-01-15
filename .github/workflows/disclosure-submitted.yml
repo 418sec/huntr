@@ -263,7 +263,7 @@ jobs:
         name: Contains a valid repo
         env:
           DIFF: ${{ needs.generate-diff.outputs.diff }}
-        run: node ./contains-a-valid-json.js
+        run: node ./contains-a-valid-repo.js
   contains-relevant-package-info:
     name: Contains relevant package information
     needs: generate-diff
