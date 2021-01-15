@@ -59,9 +59,9 @@ if (!(packageRegistry === "other")) {
         core.setFailed(`The PR does not contain a valid registry URL...`)
     }
 
-    if (packageDetails.repository.owner !== repositoryOwner && packageDetails.repository.name !== repositoryName) {
+    if (packageDetails.repository.owner !== repositoryOwner || packageDetails.repository.name !== repositoryName) {
         core.warning(`Suggestion - should your Repository.Owner and Repository.Name be: ${packageDetails.repository.owner}, ${packageDetails.repository.name}?`)
-        core.setFailed(`The PR does not contain a valid registry URL...`)
+        core.setFailed(`The PR does not contain valid repository information...`)
     }
 
 } else {
