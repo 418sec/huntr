@@ -270,7 +270,8 @@ jobs:
     needs: [
       contains-a-readme,
       contains-only-new-files,
-      contains-only-db-files
+      contains-only-db-files,
+      contains-only-one-directory
     ]
     steps:
       - id: checkout
