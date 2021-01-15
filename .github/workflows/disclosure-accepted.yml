@@ -69,7 +69,7 @@ jobs:
       - id: update-vulnerability-json
         name: Update the vulnerability.json contents
         env:
-          HUNTR_HELPER_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
           VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
           VULNERABILITY_JSON_PATH: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-path }}
           DISCLOSER_ID: ${{ github.event.pull_request.user.id }}
@@ -100,7 +100,7 @@ jobs:
       - id: run-create-fork
         name: Run create-fork.js
         env:
-          HUNTR_HELPER_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
           VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node create-fork.js
 
@@ -128,14 +128,14 @@ jobs:
       - id: run-create-branch
         name: Run create-branch.js
         env:
-          HUNTR_HELPER_TOKEN: ${{ secrets.HUNTR_HELPER_TOKEN }}
+          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
           VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node create-branch.js
 
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
-    needs: [get-vulnerability-json, create-branch]
+    needs: [update-vulnerability-json, create-branch]
     steps:
       - id: checkout
         uses: actions/checkout@v2
