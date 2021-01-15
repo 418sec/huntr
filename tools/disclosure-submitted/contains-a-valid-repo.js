@@ -19,6 +19,11 @@ const jsonContents = await fs
         core.setFailed("The PR does not contain a readable vulnerability.json...");
     });
 
+console.log({
+  owner: jsonContents.Repository.Owner,
+  repo: jsonContents.Repository.Name,
+})
+
 await octokit.repos.get({
     owner: jsonContents.Repository.Owner,
     repo: jsonContents.Repository.Name,
