@@ -286,7 +286,12 @@ jobs:
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
-    needs: add-label
+    needs: [
+      contains-a-read-me,
+      contains-only-new-files,
+      contains-only-db-files,
+      contains-only-one-directory
+    ]
     steps:
       - id: checkout
         uses: actions/checkout@v2
