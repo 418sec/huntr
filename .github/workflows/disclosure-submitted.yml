@@ -264,30 +264,11 @@ jobs:
           GRAPHQL_API_URL: ${{ secrets.GRAPHQL_API_URL }}
           GRAPHQL_API_KEY: ${{ secrets.GRAPHQL_API_KEY }}
         run: node ./contains-relevant-package-info.js
-  add-label:
-    name: Add label to PR
-    needs: [
-      contains-only-new-files,
-      contains-only-one-directory,
-      contains-only-db-files,
-      contains-a-valid-directory,
-      contains-a-readme,
-      contains-a-valid-json,
-      contains-a-valid-repo,
-      contains-relevant-package-info
-    ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-ecosystem/action-add-labels@v1.1.0
-        with:
-          github_token: ${{ secrets.github_token }}
-          labels: disclosure
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
     needs: [
-      contains-a-read-me,
+      contains-a-readme,
       contains-only-new-files,
       contains-only-db-files,
       contains-only-one-directory
@@ -310,6 +291,25 @@ jobs:
         name: Install NPM packages
         run: npm ci
       - id: analytics
+  add-label:
+    name: Add label to PR
+    needs: [
+      contains-only-new-files,
+      contains-only-one-directory,
+      contains-only-db-files,
+      contains-a-valid-directory,
+      contains-a-readme,
+      contains-a-valid-json,
+      contains-a-valid-repo,
+      contains-relevant-package-info
+    ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-ecosystem/action-add-labels@v1.1.0
+        with:
+          github_token: ${{ secrets.github_token }}
+          labels: disclosure
         name: Run Heap Analytics
         env:
           HEAP_ID: "${{ secrets.HEAP_ID }}"
