@@ -27,7 +27,7 @@ const packageRegistry = jsonContents.Package.Registry === "pip" ? "pypi" : jsonC
 console.log(jsonContents)
 console.log(packageRegistry)
 
-if (!packageRegistry === "other") {
+if (!(packageRegistry === "other")) {
 
     const packageName = jsonContents.Package.Name;
     const packageUrl = jsonContents.Package.URL;
