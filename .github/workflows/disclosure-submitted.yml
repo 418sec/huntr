@@ -303,7 +303,8 @@ jobs:
       contains-a-readme,
       contains-only-new-files,
       contains-only-db-files,
-      contains-only-one-directory
+      contains-only-one-directory,
+      get-package-name
     ]
     steps:
       - id: checkout
