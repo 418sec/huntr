@@ -26,5 +26,5 @@ octokit.repos
     )
   )
   .catch((error) => {
-    core.setFailed("Error while creating fork:", error);
+    core.setFailed(`Error while creating fork: ${error}`);
   });

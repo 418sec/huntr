@@ -25,7 +25,7 @@ async () => {
       repo: repoName,
     })
     .catch((error) => {
-      core.setFailed("Error attempting to find the default branch:", error);
+      core.setFailed(`Error attempting to find the default branch: ${error}`);
     });
 
   // Get the latest commit SHA
@@ -40,7 +40,9 @@ async () => {
       ref: `heads/${default_branch}`,
     })
     .catch((error) => {
-      core.setFailed("Error attempting to fetch the latest commit SHA:", error);
+      core.setFailed(
+        `Error attempting to fetch the latest commit SHA: ${error}`
+      );
     });
 
   // Create the new branch
@@ -58,6 +60,6 @@ async () => {
       );
     })
     .catch((error) => {
-      core.setFailed("Error attempting to create a new branch:", error);
+      core.setFailed(`Error attempting to create a new branch: ${error}`);
     });
 };
