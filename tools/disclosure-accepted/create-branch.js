@@ -52,8 +52,7 @@ await octokit.git
   })
   .then((response) => {
     console.log(
-      `Successfully created branch '${branchName}' on 418sec/${defaultBranch}:`,
-      response
+      `Successfully created branch '${branchName}' on 418sec/${default_branch}`
     );
   })
   .catch((error) => {
