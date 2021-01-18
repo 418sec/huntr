@@ -1,4 +1,5 @@
 "use strict";
+import * as core from "@actions/core";
 import { Octokit } from "@octokit/rest";
 const octokit = new Octokit({
   auth: process.env.HUNTR_HELPER_PIPELINE_TOKEN,
