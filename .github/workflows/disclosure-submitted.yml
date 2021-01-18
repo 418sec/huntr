@@ -3,7 +3,7 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened]
     branches:
-      - action/disclosure-submitted
+      - epic/actions-pipeline
     paths:
       - "bounties/**"
 
