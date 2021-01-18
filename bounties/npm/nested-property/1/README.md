@@ -10,7 +10,7 @@
 const { get } = require('nested-property')
 
 console.log(`Before: ${{}.polluted}`)
-get({}, 'constructor.prototype').polluted = true
+get({}, '__proto__').polluted = true
 console.log(`After: ${{}.polluted}`)
 ```
 2. Execute the following commands in the terminal:
