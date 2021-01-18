@@ -10,7 +10,6 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@actions/core": "^1.2.6",
     "heap-api": "^1.0.1"
   }
 }
