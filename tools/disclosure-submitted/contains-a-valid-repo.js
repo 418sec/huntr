@@ -23,8 +23,9 @@ await octokit.repos.get({
     owner: jsonContents.Repository.Owner,
     repo: jsonContents.Repository.Name,
   })
-  .catch(error => {
-    if (error.status == 404) {
+  .then(() => {
+    console.log("Repo found...")
+  })
+  .catch(() => {
       core.setFailed("The PR does not contain a valid repo owner/name...");
-    }
   });

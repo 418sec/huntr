@@ -30,7 +30,7 @@ const ajv = new Ajv({
 
 if(!ajv.validate(schema, jsonContents)) {
     ajv.errors.forEach((error) => {
-        core.warning(`${error.dataPath} : ${error.message}`)
+        core.warning(`JSON ${error.message}`)
     })
 
     core.setFailed("The PR does not contain a valid vulnerability.json...")
