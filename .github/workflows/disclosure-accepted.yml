@@ -161,5 +161,4 @@ jobs:
           APP_ID: ${{ secrets.HEAP_ID }}
           EVENT_NAME: "Disclosure Accepted"
           USER_ID: ${{ github.event.pull_request.user.id }}
-          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
         run: node ../shared/analytics.js
