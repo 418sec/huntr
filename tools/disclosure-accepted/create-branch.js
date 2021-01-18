@@ -8,10 +8,10 @@ const octokit = new Octokit({
 const vulnerabilityJson = JSON.parse(process.env.VULNERABILITY_JSON);
 const bountyIndex = vulnerabilityJson.PackageVulnerabilityID;
 const repoName = vulnerabilityJson.Repository.Name;
-const repoOwner = vulnerabilityJson.Repository.Owner;
+const packageName = vulnerabilityJson.Package.Name;
 const packageRegistry = vulnerabilityJson.Package.Registry;
 
-const branchName = `${bountyIndex}-${packageRegistry}-${repoOwner}/${repoName}`;
+const branchName = `${bountyIndex}-${packageRegistry}-${packageName}`;
 console.log("Creating branch:", branchName);
 
 async () => {
