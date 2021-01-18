@@ -21,9 +21,8 @@ octokit.repos
   })
   .then((response) =>
     console.log(
-      "Fork created successfully ",
-      `${repoOwner}/${repoName} > 418sec/${repoName}:`,
-      response
+      "Fork created successfully",
+      `${repoOwner}/${repoName} > 418sec/${repoName}:`
     )
   )
   .catch((error) => {
