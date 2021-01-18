@@ -34,9 +34,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          key: ${{ runner.os }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
@@ -61,9 +59,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          key: ${{ runner.os }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
@@ -92,10 +88,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
+          key: ${{ runner.OS }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
@@ -120,10 +113,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
+          key: ${{ runner.OS }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
       - id: dependency-install
         name: Install npm dependencies
         run: npm ci
@@ -149,9 +139,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          key: ${{ runner.os }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
       - id: dependency-install
         name: Install NPM packages
         run: npm ci
