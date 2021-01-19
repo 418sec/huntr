@@ -50,7 +50,7 @@ await octokit.git
     ref: `refs/heads/${branchName}`,
     sha: sha,
   })
-  .then((response) => {
+  .then(() => {
     console.log(
       `Successfully created branch '${branchName}' on 418sec/${default_branch}`
     );

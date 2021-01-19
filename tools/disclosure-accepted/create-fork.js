@@ -19,7 +19,7 @@ octokit.repos
     repo: repoName,
     organization: "418sec",
   })
-  .then((response) =>
+  .then(() =>
     console.log(
       "Fork created successfully",
       `${repoOwner}/${repoName} > 418sec/${repoName}`
