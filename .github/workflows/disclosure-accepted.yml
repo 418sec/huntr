@@ -47,6 +47,9 @@ jobs:
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/shared
     needs: get-vulnerability-json
     steps:
       - id: checkout
