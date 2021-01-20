@@ -353,7 +353,9 @@ jobs:
       - uses: actions-ecosystem/action-add-labels@v1.1.0
         with:
           github_token: ${{ secrets.github_token }}
-          labels: disclosure
+          labels: |
+            disclosure
+            automerge
   auto-merge:
     name: Auto merge PR
     runs-on: ubuntu-latest
