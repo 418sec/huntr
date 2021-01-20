@@ -363,8 +363,6 @@ jobs:
     steps:
       - name: Auto merge PR
         uses: "pascalgn/automerge-action@v0.13.0"
-        with:
-          args: "--trace"
         env:
           GITHUB_TOKEN: "${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}"
           MERGE_LABELS: "disclosure"
