@@ -13,7 +13,8 @@ console.log(
   "Forking repository:",
   `${repoOwner}/${repoName} > 418sec/${repoName}`
 );
-octokit.repos
+
+await octokit.repos
   .createFork({
     owner: repoOwner,
     repo: repoName,
