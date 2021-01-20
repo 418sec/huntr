@@ -23,3 +23,5 @@ open("ops.yml","w+").write(payload)
 os.system("python3 generate_code.py")
 
 ```
+
+![](https://user-images.githubusercontent.com/43377443/105158203-ba2e7a80-5b33-11eb-8bab-e0ec49b18f58.PNG)
