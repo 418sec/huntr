@@ -21,3 +21,4 @@ git clone https://github.com/Sierkinhane/CRNN_Chinese_Characters_Rec.git
 cd CRNN_Chinese_Characters_Rec
 python3 train.py --cfg path_to_exploit.yml
 ```
+![CRNN_Chinese_Characters_Rec_POC](https://user-images.githubusercontent.com/43377443/105637184-1e35a380-5e92-11eb-8064-356d5c6c9169.PNG)
