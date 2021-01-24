@@ -23,4 +23,4 @@ os.chdir("../")
 print(os.getcwd())
 os.system("python3 run.py")
 ```
-![]()
+![](https://user-images.githubusercontent.com/43377443/105618821-b6d80f00-5e11-11eb-8a2c-b259cae61cd8.PNG)
