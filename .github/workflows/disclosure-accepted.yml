@@ -4,8 +4,7 @@ on:
   pull_request_target:
     types: [closed]
     branches:
-      - epic/actions-pipeline
-      # - staging
+      - staging
     paths:
       - "bounties/**"
 
