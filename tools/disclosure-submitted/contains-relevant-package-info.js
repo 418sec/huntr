@@ -60,8 +60,12 @@ if (!(packageRegistry === "other")) {
     }
 
     if (packageDetails.repository.owner !== repositoryOwner || packageDetails.repository.name !== repositoryName) {
-        core.warning(`Suggestion - should your Repository.Owner and Repository.Name be: ${packageDetails.repository.owner}, ${packageDetails.repository.name}?`)
-        core.setFailed(`The PR does not contain valid repository information...`)
+        if (packageDetails.repository.owner === "n/a" && packageDetails.repository.name === "n/a") {
+            core.warning(`The repository could not be found using libraries.io. Please raise a support ticket.`)
+        } else {
+            core.warning(`Suggestion - should your Repository.Owner and Repository.Name be: ${packageDetails.repository.owner}, ${packageDetails.repository.name}?`)
+            core.setFailed(`The PR does not contain valid repository information...`)
+        }
     }
 
 } else {
