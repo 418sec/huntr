@@ -70,7 +70,7 @@ jobs:
       - id: analytics
         name: Run Heap Analytics
         env:
-          APP_ID: ${{ secrets.HEAP_ID }}
+          HEAP_ID: ${{ secrets.HEAP_ID }}
           EVENT_NAME: "Disclosure Accepted"
           USER_ID: ${{ github.event.pull_request.user.id }}
           PACKAGE_NAME: ${{ needs.get-vulnerability-json.outputs.package-name }}
