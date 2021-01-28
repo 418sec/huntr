@@ -1,4 +1,5 @@
-## ✍️ Description
+# Description
+
 Google Cloud Datalab Python package. Used in Google Cloud Datalab and can be used in Jupyter Notebook.
 This adds a number of Python modules such as google.datalab.bigquery, google.datalab.storage, etc, for accessing Google Cloud Platform services as well as adding some new cell magics such as %chart, %bigquery, %storage, etc.
 See https://github.com/googledatalab/notebooks for samples of using this package.
