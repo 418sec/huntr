@@ -9,7 +9,7 @@ Vulnerable to YAML deserialization attack caused by unsafe loading.
 # Proof of Concept
 
 ### Installation
-```bash
+```
 pip3 install bitcoinexchangefh
 ```
 
