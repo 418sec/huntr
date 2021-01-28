@@ -209,7 +209,8 @@ Your `vulnerability.json` must take the following format to get accepted:
   "Package": {
     "Registry": "",
     "Name": "",
-    "URL": ""
+    "URL": "",
+    "Downloads": ""
   },
   "CWEs": [
     {
