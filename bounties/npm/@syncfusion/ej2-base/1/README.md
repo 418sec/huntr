@@ -1,4 +1,4 @@
-# Description
+# Description 
 
 `@syncfusion/ej2-base` is vulnerable to `Cross-Site Scripting (XSS)`.
 
