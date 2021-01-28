@@ -209,7 +209,8 @@ Your `vulnerability.json` must take the following format to get accepted:
   "Package": {
     "Registry": "",
     "Name": "",
-    "URL": ""
+    "URL": "",
+    "Downloads": ""
   },
   "CWEs": [
     {
@@ -237,7 +238,9 @@ Your `vulnerability.json` must take the following format to get accepted:
     "URL": "",
     "Codebase": [""],
     "Owner": "",
-    "Name": ""
+    "Name": "",
+    "Forks": "",
+    "Stars": ""
   },
   "Permalinks": [""], 
   "References": [
@@ -245,7 +248,8 @@ Your `vulnerability.json` must take the following format to get accepted:
       "Description": "",
       "URL": ""
     }
-  ]
+  ],
+  "PrNumber": ""
 }
 ```
 
