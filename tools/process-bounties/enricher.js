@@ -17,11 +17,9 @@ const bounties = new fdir()
 bounties.withPromise().then(async (bountyPaths) => {
   // Iterate through each bounty, and enrich, if appropriate
   for (const bountyPath of bountyPaths) {
-    // let bountyDetails = await fs.readFile(bountyPath, "utf8").then(JSON.parse);
     console.log("Enriching bounty:", bountyPath);
 
     const bountyDir = bountyPath.split("/vulnerability.json")[0];
-    // const vulnerabilityDescription = await fs.readFile(`${bountyDir}/README.md`, 'utf8')
     const vulnerabilityDetailsPath = `${bountyDir}/vulnerability.json`;
     let vulnerabilityDetails = await fs
       .readFile(vulnerabilityDetailsPath, "utf8")
@@ -39,6 +37,19 @@ bounties.withPromise().then(async (bountyPaths) => {
       auth: process.env.GITHUB_TOKEN,
     });
 
+    let remainingRequests = await github.rateLimit.get()
+      .then(response => {
+        console.log("Remaning requests: ", response.data.rate.remaining)
+        return response.data.rate.remaining
+      })
+      .catch(() => {
+        return 0;
+      })
+
+    if (remainingRequests < 1000) {
+      return;
+    }
+
     // Get Forks & Stars from GitHub
     await github.repos
       .get({
@@ -48,12 +59,33 @@ bounties.withPromise().then(async (bountyPaths) => {
       .then((octokitResponse) => {
         vulnerabilityDetails.Repository.Forks = octokitResponse.data.forks_count.toString();
         vulnerabilityDetails.Repository.Stars = octokitResponse.data.stargazers_count.toString();
-        console.log(
-          `Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`
-        );
+        // console.log(
+        //   `Forks appended: ${octokitResponse.data.forks_count}, Stars appended: ${octokitResponse.data.stargazers_count}`
+        // );
       })
       .catch((octokitError) => {
         console.error("ERROR fetching package repository data:", octokitError);
+      });
+
+    // Get the repos primary Codebase and append to vulnerability.json
+    await github.repos
+      .listLanguages({
+        owner: vulnerabilityDetails.Repository.Owner,
+        repo: vulnerabilityDetails.Repository.Name,
+      })
+      .then((response) => {
+        if (JSON.stringify(response.data) === JSON.stringify({})) {
+          vulnerabilityDetails.Repository.Codebase = [
+            "Other"
+          ];
+        } else {
+          vulnerabilityDetails.Repository.Codebase = [
+            Object.keys(response.data)[0],
+          ];
+        }
+      })
+      .catch((error) => {
+        console.error("ERROR fetching package repository data:", error);
       });
 
     // Find and add Download count for the specific package
@@ -72,7 +104,6 @@ bounties.withPromise().then(async (bountyPaths) => {
               error
             );
           });
-
         // Check it exists before assigning
         downloads
           ? (vulnerabilityDetails.Package.Downloads = downloads.toString())
@@ -85,7 +116,6 @@ bounties.withPromise().then(async (bountyPaths) => {
             `https://rubygems.org/api/v1/versions/${vulnerabilityDetails.Package.Name}/latest.json`
           )
         ).json();
-
         // get the downloads of the latest version of this package
         if (version !== "unknown") {
           const { created_at, version_downloads } = await (
@@ -101,7 +131,6 @@ bounties.withPromise().then(async (bountyPaths) => {
                 error
               );
             });
-
           // divide it by days since it was created
           const createDatetime = DateTime.fromISO(created_at);
           const todayDatetime = DateTime.local();
@@ -109,7 +138,6 @@ bounties.withPromise().then(async (bountyPaths) => {
             createDatetime,
             "days"
           );
-
           vulnerabilityDetails.Package.Downloads = Math.round(
             (version_downloads / daysSinceCreated) * 7
           ).toString();
@@ -133,11 +161,9 @@ bounties.withPromise().then(async (bountyPaths) => {
             );
           })
         ).json();
-
         vulnerabilityDetails.Package.Downloads = pypiResponse.data
           ? pypiResponse.data.last_week.toString()
           : "0";
-
         break;
       case "packagist":
         const {
