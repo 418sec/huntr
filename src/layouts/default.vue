@@ -94,6 +94,13 @@
             >
               FAQ
             </nuxt-link>
+            <nuxt-link
+              v-if="menuVisible"
+              class="block lg:inline-block mt-4 lg:mt-0 text-gray-400 hover:text-white"
+              to="contact"
+            >
+              Contact Us
+            </nuxt-link>
             <a
               class="block lg:inline-block mt-4 lg:mt-0 lg:mx-5 text-gray-400 hover:text-white"
               href="#"
