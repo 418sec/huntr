@@ -1,0 +1,54 @@
+{
+  "PackageVulnerabilityID": "1",
+  "DisclosureDate": "2020-02-08",
+  "AffectedVersionRange": "*",
+  "Summary": "Arbitrary Code Execution",
+  "Contributor": {
+    "Discloser": "Anon-Artist",
+    "Fixer": ""
+  },
+  "Package": {
+    "Registry": "pip",
+    "Name": "simiki",
+    "URL": "https://pypi.org/project/simiki",
+    "Downloads": ""
+  },
+  "CWEs": [
+    {
+      "ID": "94",
+      "Description": "Arbitrary Code Execution"
+    }
+  ],
+  "CVSS": {
+    "Version": "3.1",
+    "AV": "",
+    "AC": "",
+    "PR": "",
+    "UI": "",
+    "S": "",
+    "C": "",
+    "I": "",
+    "A": "",
+    "E": "",
+    "RL": "",
+    "RC": "",
+    "Score": "8.5"
+  },
+  "CVEs": [""], 
+  "Repository": {
+    "URL": "https://github.com/tankywoo/simiki",
+    "Codebase": ["Python"],
+    "Owner": "tankywoo",
+    "Name": "simiki",
+    "Forks": "157",
+    "Stars": "1100"
+  },
+  "Permalinks": ["https://drive.google.com/file/d/1Dhb0bLnuzuvTsV_NiwOQ0gper3rrWeEi/view?usp=sharing"], 
+  "References": [
+    {
+      "Description": "",
+      "URL": ""
+    }
+  ],
+  "PrNumber": "1859"
+}
