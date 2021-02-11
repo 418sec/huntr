@@ -9,8 +9,6 @@ const jsonPath =
   "../../" +
   diff.filter((file) => file.path.includes("vulnerability.json"))[0].path;
 
-console.log("jsonPath", jsonPath);
-
 const jsonContents = await fs
   .readFile(jsonPath, "utf-8")
   .then(JSON.parse)
