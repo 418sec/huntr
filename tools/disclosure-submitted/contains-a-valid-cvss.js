@@ -9,6 +9,8 @@ const jsonPath =
   "../../" +
   diff.filter((file) => file.path.includes("vulnerability.json"))[0].path;
 
+console.log("jsonPath", jsonPath);
+
 const jsonContents = await fs
   .readFile(jsonPath, "utf-8")
   .then(JSON.parse)
@@ -90,23 +92,4 @@ switch (cvss.E.toUpperCase()) {
     core.setFailed("Invalid E vector was provided in the CVSS field.");
 }
 
-switch (cvss.RL.toUpperCase()) {
-  case "X":
-  case "O":
-  case "T":
-  case "W":
-  case "U":
-  default:
-    core.setFailed("Invalid RL vector was provided in the CVSS field.");
-}
-
-switch (cvss.RC) {
-  case "X":
-  case "U":
-  case "R":
-  case "C":
-  default:
-    core.setFailed("Invalid RC vector was provided in the CVSS field.");
-}
-
-if (!cvss.Score) core.setFailed("No Score was provided for CVSS.");
+// Calculate score + append

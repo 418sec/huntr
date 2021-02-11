@@ -9,7 +9,7 @@ const PR_NUMBER = process.env.PR_NUMBER.toString();
 
 const files = await octokit.pulls
   .listFiles({
-    owner: "benharvie",
+    owner: "benharvie", // 418sec
     repo: "huntr",
     pull_number: PR_NUMBER,
   })
