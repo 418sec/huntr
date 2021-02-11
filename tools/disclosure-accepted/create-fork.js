@@ -26,7 +26,7 @@ await octokit.repos
       "Fork created successfully",
       `${repoOwner}/${repoName} > 418sec/${forkName}`
     );
-    core.setOutput("forkName", forkName);
+    core.setOutput("fork-name", forkName);
   })
   .catch((error) => {
     core.setFailed(`Error while creating fork: ${error}`);
