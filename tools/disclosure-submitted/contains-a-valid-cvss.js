@@ -89,5 +89,3 @@ switch (cvss.E.toUpperCase()) {
   default:
     core.setFailed("Invalid E vector was provided in the CVSS field.");
 }
-
-// Calculate score + append
