@@ -27,4 +27,4 @@ After: polluted!
 
 # Impact
 
-`Prototype Pollution` leads to Information Disclosure/DoS/RCE.
+`Prototype Pollution` leads to Information Disclosure/DoS/RCE
