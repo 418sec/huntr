@@ -32,19 +32,25 @@ bounties.withPromise().then(async (bountyPaths) => {
     vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3];
     vulnerabilityDetails.Repository.Name = repositoryUrlParts[4];
 
+    // TEMPORARY: populate historical bounties with ForkName, default: Repository.Name
+    // Can be removed after first run
+    vulnerabilityDetails.Repository.ForkName =
+      vulnerabilityDetails.Repository.Name;
+
     // Call GitHub's API
     const github = new Octokit({
       auth: process.env.GITHUB_TOKEN,
     });
 
-    let remainingRequests = await github.rateLimit.get()
-      .then(response => {
-        console.log("Remaning requests: ", response.data.rate.remaining)
-        return response.data.rate.remaining
+    let remainingRequests = await github.rateLimit
+      .get()
+      .then((response) => {
+        console.log("Remaning requests: ", response.data.rate.remaining);
+        return response.data.rate.remaining;
       })
       .catch(() => {
         return 0;
-      })
+      });
 
     if (remainingRequests < 1000) {
       return;
@@ -75,9 +81,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       })
       .then((response) => {
         if (JSON.stringify(response.data) === JSON.stringify({})) {
-          vulnerabilityDetails.Repository.Codebase = [
-            "Other"
-          ];
+          vulnerabilityDetails.Repository.Codebase = ["Other"];
         } else {
           vulnerabilityDetails.Repository.Codebase = [
             Object.keys(response.data)[0],

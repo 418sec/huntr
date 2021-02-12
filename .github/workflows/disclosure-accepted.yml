@@ -43,13 +43,71 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: node get-vulnerability-json.js
 
+  create-fork:
+    name: Create fork
+    runs-on: ubuntu-latest
+    needs: get-vulnerability-json
+    outputs:
+      fork-name: ${{ steps.run-create-fork.outputs.fork-name }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: run-create-fork
+        name: Run create-fork.js
+        env:
+          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
+          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
+        run: node create-fork.js
+
+  update-vulnerability-json:
+    name: Update the vulnerability.json contents
+    runs-on: ubuntu-latest
+    needs: [get-vulnerability-json, create-fork]
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
+      - id: dependency-install
+        name: Install npm dependencies
+        run: npm ci
+      - id: update-vulnerability-json
+        name: Update the vulnerability.json contents
+        env:
+          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
+          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
+          VULNERABILITY_JSON_SHA: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-sha }}
+          VULNERABILITY_JSON_PATH: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-path }}
+          DISCLOSER_ID: ${{ github.event.pull_request.user.id }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          FORK_NAME: ${{ needs.create-fork.outputs.fork-name }}
+        run: node update-vulnerability-json.js
+
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: tools/shared
-    needs: get-vulnerability-json
+    needs: [get-vulnerability-json, create-fork]
     steps:
       - id: checkout
         uses: actions/checkout@v2
@@ -75,58 +133,3 @@ jobs:
           USER_ID: ${{ github.event.pull_request.user.id }}
           PACKAGE_NAME: ${{ needs.get-vulnerability-json.outputs.package-name }}
         run: node ../shared/analytics.js
-
-  update-vulnerability-json:
-    name: Update the vulnerability.json contents
-    runs-on: ubuntu-latest
-    needs: get-vulnerability-json
-    steps:
-      - id: checkout
-        uses: actions/checkout@v2
-      - id: node-setup
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
-      - id: restore-node-cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
-      - id: dependency-install
-        name: Install npm dependencies
-        run: npm ci
-      - id: update-vulnerability-json
-        name: Update the vulnerability.json contents
-        env:
-          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
-          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
-          VULNERABILITY_JSON_SHA: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-sha }}
-          VULNERABILITY_JSON_PATH: ${{ needs.get-vulnerability-json.outputs.vulnerability-json-path }}
-          DISCLOSER_ID: ${{ github.event.pull_request.user.id }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: node update-vulnerability-json.js
-
-  create-fork:
-    name: Create fork
-    runs-on: ubuntu-latest
-    needs: get-vulnerability-json
-    steps:
-      - uses: actions/checkout@v2
-      - id: node-setup
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
-      - id: restore-node-cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-trusted-${{ hashFiles('**/package-lock.json') }}
-      - id: dependency-install
-        name: Install npm dependencies
-        run: npm ci
-      - id: run-create-fork
-        name: Run create-fork.js
-        env:
-          HUNTR_HELPER_PIPELINE_TOKEN: ${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}
-          VULNERABILITY_JSON: ${{ needs.get-vulnerability-json.outputs.vulnerability-json }}
-        run: node create-fork.js
