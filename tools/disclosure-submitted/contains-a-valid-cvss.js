@@ -20,8 +20,11 @@ const cvss = jsonContents.CVSS;
 
 switch (cvss.AV.toUpperCase()) {
   case "N":
+    break;
   case "A":
+    break;
   case "L":
+    break;
   case "P":
     break;
   default:
@@ -30,6 +33,7 @@ switch (cvss.AV.toUpperCase()) {
 
 switch (cvss.AC.toUpperCase()) {
   case "L":
+    break;
   case "H":
     break;
   default:
@@ -38,7 +42,9 @@ switch (cvss.AC.toUpperCase()) {
 
 switch (cvss.PR.toUpperCase()) {
   case "N":
+    break;
   case "L":
+    break;
   case "H":
     break;
   default:
@@ -47,6 +53,7 @@ switch (cvss.PR.toUpperCase()) {
 
 switch (cvss.UI.toUpperCase()) {
   case "N":
+    break;
   case "R":
     break;
   default:
@@ -55,22 +62,29 @@ switch (cvss.UI.toUpperCase()) {
 
 switch (cvss.S.toUpperCase()) {
   case "U":
+    break;
   case "C":
+    break;
   default:
     core.setFailed("Invalid S vector was provided in the CVSS field.");
 }
 
 switch (cvss.C.toUpperCase()) {
   case "N":
+    break;
   case "L":
+    break;
   case "H":
+    break;
   default:
     core.setFailed("Invalid C vector was provided in the CVSS field.");
 }
 
 switch (cvss.I.toUpperCase()) {
   case "N":
+    break;
   case "L":
+    break;
   case "H":
     break;
   default:
@@ -79,7 +93,9 @@ switch (cvss.I.toUpperCase()) {
 
 switch (cvss.A.toUpperCase()) {
   case "N":
+    break;
   case "L":
+    break;
   case "H":
     break;
   default:
@@ -88,9 +104,13 @@ switch (cvss.A.toUpperCase()) {
 
 switch (cvss.E.toUpperCase()) {
   case "X":
+    break;
   case "U":
+    break;
   case "P":
+    break;
   case "F":
+    break;
   case "H":
     break;
   default:
