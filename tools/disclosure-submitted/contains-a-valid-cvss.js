@@ -23,6 +23,7 @@ switch (cvss.AV.toUpperCase()) {
   case "A":
   case "L":
   case "P":
+    break;
   default:
     core.setFailed("Invalid AV vector was provided in the CVSS field.");
 }
@@ -30,6 +31,7 @@ switch (cvss.AV.toUpperCase()) {
 switch (cvss.AC.toUpperCase()) {
   case "L":
   case "H":
+    break;
   default:
     core.setFailed("Invalid AC vector was provided in the CVSS field.");
 }
@@ -38,6 +40,7 @@ switch (cvss.PR.toUpperCase()) {
   case "N":
   case "L":
   case "H":
+    break;
   default:
     core.setFailed("Invalid PR vector was provided in the CVSS field.");
 }
@@ -45,6 +48,7 @@ switch (cvss.PR.toUpperCase()) {
 switch (cvss.UI.toUpperCase()) {
   case "N":
   case "R":
+    break;
   default:
     core.setFailed("Invalid UI vector was provided in the CVSS field.");
 }
@@ -68,6 +72,7 @@ switch (cvss.I.toUpperCase()) {
   case "N":
   case "L":
   case "H":
+    break;
   default:
     core.setFailed("Invalid I vector was provided in the CVSS field.");
 }
@@ -76,6 +81,7 @@ switch (cvss.A.toUpperCase()) {
   case "N":
   case "L":
   case "H":
+    break;
   default:
     core.setFailed("Invalid A vector was provided in the CVSS field.");
 }
@@ -86,6 +92,7 @@ switch (cvss.E.toUpperCase()) {
   case "P":
   case "F":
   case "H":
+    break;
   default:
     core.setFailed("Invalid E vector was provided in the CVSS field.");
 }
