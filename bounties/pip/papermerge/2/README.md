@@ -8,6 +8,6 @@
 - Try To Upload That File To The Instance. And The XSS Will Be Triggered.
 
 ## :boom: Proof Of Concept:
-![ProofOfConcept](https://im6.ezgif.com/tmp/ezgif-6-991cae4f1b62.gif)
+![ProofOfConcept](https://i.imgur.com/2AfJaA6.gif)
 
 Regards.
