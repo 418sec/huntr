@@ -331,7 +331,6 @@ jobs:
     needs:
       [
         contains-a-readme,
-        contains-a-valid-cvss,
         contains-only-new-files,
         contains-only-db-files,
         contains-only-one-directory,
@@ -375,6 +374,7 @@ jobs:
         contains-a-valid-json,
         contains-a-valid-repo,
         contains-relevant-package-info,
+        contains-a-valid-cvss,
       ]
     runs-on: ubuntu-latest
     steps:
