@@ -1,4 +1,4 @@
-# Description
+# Description 
 
 `@antv/g2` is vulnerable to `Cross-Site Scripting (XSS)`.
 
