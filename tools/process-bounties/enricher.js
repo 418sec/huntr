@@ -32,11 +32,6 @@ bounties.withPromise().then(async (bountyPaths) => {
     vulnerabilityDetails.Repository.Owner = repositoryUrlParts[3];
     vulnerabilityDetails.Repository.Name = repositoryUrlParts[4];
 
-    // TEMPORARY: populate historical bounties with ForkName, default: Repository.Name
-    // Can be removed after first run
-    vulnerabilityDetails.Repository.ForkName =
-      vulnerabilityDetails.Repository.Name;
-
     // Call GitHub's API
     const github = new Octokit({
       auth: process.env.GITHUB_TOKEN,
