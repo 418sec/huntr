@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-vulnerability-json
     outputs:
-      fork-name: ${{ steps.create-fork.outputs.fork-name }}
+      fork-name: ${{ steps.run-create-fork.outputs.fork-name }}
     steps:
       - uses: actions/checkout@v2
       - id: node-setup
