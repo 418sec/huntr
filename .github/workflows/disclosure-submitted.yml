@@ -375,7 +375,6 @@ jobs:
         contains-a-valid-json,
         contains-a-valid-repo,
         contains-relevant-package-info,
-        contains-a-valid-cvss,
       ]
     runs-on: ubuntu-latest
     steps:
