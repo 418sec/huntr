@@ -101,35 +101,35 @@ jobs:
           FORK_NAME: ${{ needs.create-fork.outputs.fork-name }}
         run: node update-vulnerability-json.js
 
-  # analytics:
-  #   name: Run Heap Analytics
-  #   runs-on: ubuntu-latest
-  #   defaults:
-  #     run:
-  #       working-directory: tools/shared
-  #   needs: [get-vulnerability-json, create-fork]
-  #   steps:
-  #     - id: checkout
-  #       uses: actions/checkout@v2
-  #     - id: node-setup
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: "14.x"
-  #     - id: restore-node-cache
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-node-
-  #     - id: dependency-install
-  #       name: Install NPM packages
-  #       run: npm ci
-  #     - id: analytics
-  #       name: Run Heap Analytics
-  #       env:
-  #         HEAP_ID: ${{ secrets.HEAP_ID }}
-  #         EVENT_NAME: "Disclosure Accepted"
-  #         USER_ID: ${{ github.event.pull_request.user.id }}
-  #         PACKAGE_NAME: ${{ needs.get-vulnerability-json.outputs.package-name }}
-  #       run: node ../shared/analytics.js
+  analytics:
+    name: Run Heap Analytics
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/shared
+    needs: [get-vulnerability-json, create-fork]
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install NPM packages
+        run: npm ci
+      - id: analytics
+        name: Run Heap Analytics
+        env:
+          HEAP_ID: ${{ secrets.HEAP_ID }}
+          EVENT_NAME: "Disclosure Accepted"
+          USER_ID: ${{ github.event.pull_request.user.id }}
+          PACKAGE_NAME: ${{ needs.get-vulnerability-json.outputs.package-name }}
+        run: node ../shared/analytics.js
