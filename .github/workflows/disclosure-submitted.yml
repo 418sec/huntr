@@ -394,4 +394,3 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}"
           MERGE_LABELS: "disclosure"
-          MERGE_RETRIES: "20"
