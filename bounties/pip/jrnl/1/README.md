@@ -1,4 +1,4 @@
-# Description 
+# Description  
 
 `jrnl` is a simple journal application for the command line., which is vulnerable to `Arbitary Code Execution`.
 
