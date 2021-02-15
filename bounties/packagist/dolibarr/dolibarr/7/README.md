@@ -1,4 +1,4 @@
-# Description
+# Description 
 
 Dolibarr is vulnerable to an IDOR vulnerability which can lead to Privilege Escalation. 
 
