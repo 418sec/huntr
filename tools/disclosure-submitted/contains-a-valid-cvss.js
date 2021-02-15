@@ -101,18 +101,3 @@ switch (cvss.A.toUpperCase()) {
   default:
     core.setFailed("Invalid A vector was provided in the CVSS field.");
 }
-
-switch (cvss.E.toUpperCase()) {
-  case "X":
-    break;
-  case "U":
-    break;
-  case "P":
-    break;
-  case "F":
-    break;
-  case "H":
-    break;
-  default:
-    core.setFailed("Invalid E vector was provided in the CVSS field.");
-}
