@@ -390,7 +390,7 @@ jobs:
     needs: add-label
     steps:
       - name: Auto merge PR
-        uses: "pascalgn/automerge-action@v0.13.1"
+        uses: "pascalgn/automerge-action@135f0bdb927d9807b5446f7ca9ecc2c51de03c4a"
         env:
           GITHUB_TOKEN: "${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}"
           MERGE_LABELS: "disclosure"
