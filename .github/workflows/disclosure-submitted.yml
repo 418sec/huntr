@@ -387,8 +387,8 @@ jobs:
   auto-merge:
     name: Auto merge PR
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'disclosure')
     needs: add-label
+    if: contains(github.event.pull_request.labels.*.name, 'disclosure')
     steps:
       - name: Auto merge PR
         uses: "ridedott/merge-me-action@v1.2.62"
