@@ -387,10 +387,11 @@ jobs:
   auto-merge:
     name: Auto merge PR
     runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'disclosure')
     needs: add-label
     steps:
       - name: Auto merge PR
-        uses: "reitermarkus/automerge@v1.5.0"
+        uses: "ridedott/merge-me-action@v1.2.62"
         env:
-          token: "${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}"
-          required-labels: "disclosure"
+          GITHUB_TOKEN: "${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}"
+          GITHUB_LOGIN: huntr-helper
