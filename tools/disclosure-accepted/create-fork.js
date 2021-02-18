@@ -20,12 +20,14 @@ await octokit.repos
     repo: repoName,
     organization: "418sec",
   })
-  .then(() =>
+  .then((response) => {
+    const forkName = response.data.name;
     console.log(
       "Fork created successfully",
-      `${repoOwner}/${repoName} > 418sec/${repoName}`
-    )
-  )
+      `${repoOwner}/${repoName} > 418sec/${forkName}`
+    );
+    core.setOutput("fork-name", forkName);
+  })
   .catch((error) => {
     core.setFailed(`Error while creating fork: ${error}`);
   });

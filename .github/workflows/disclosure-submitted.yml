@@ -294,6 +294,34 @@ jobs:
           GRAPHQL_API_URL: ${{ secrets.GRAPHQL_API_URL }}
           GRAPHQL_API_KEY: ${{ secrets.GRAPHQL_API_KEY }}
         run: node ./contains-relevant-package-info.js
+  contains-a-valid-cvss:
+    name: Contains a valid CVSS vector and score
+    needs: generate-diff
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+      - id: node-setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - id: restore-node-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - id: dependency-install
+        name: Install NPM packages
+        run: npm ci
+      - id: contains-a-valid-cvss
+        name: Contains a valid CVSS vector and score
+        env:
+          DIFF: ${{ needs.generate-diff.outputs.diff }}
+        run: node ./contains-a-valid-cvss.js
   analytics:
     name: Run Heap Analytics
     runs-on: ubuntu-latest
@@ -346,6 +374,7 @@ jobs:
         contains-a-valid-json,
         contains-a-valid-repo,
         contains-relevant-package-info,
+        contains-a-valid-cvss,
       ]
     runs-on: ubuntu-latest
     steps:
@@ -361,7 +390,7 @@ jobs:
     needs: add-label
     steps:
       - name: Auto merge PR
-        uses: "pascalgn/automerge-action@v0.13.0"
+        uses: "pascalgn/automerge-action@v0.13.1"
         env:
           GITHUB_TOKEN: "${{ secrets.HUNTR_HELPER_PIPELINE_TOKEN }}"
           MERGE_LABELS: "disclosure"

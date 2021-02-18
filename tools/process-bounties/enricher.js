@@ -37,14 +37,15 @@ bounties.withPromise().then(async (bountyPaths) => {
       auth: process.env.GITHUB_TOKEN,
     });
 
-    let remainingRequests = await github.rateLimit.get()
-      .then(response => {
-        console.log("Remaning requests: ", response.data.rate.remaining)
-        return response.data.rate.remaining
+    let remainingRequests = await github.rateLimit
+      .get()
+      .then((response) => {
+        console.log("Remaning requests: ", response.data.rate.remaining);
+        return response.data.rate.remaining;
       })
       .catch(() => {
         return 0;
-      })
+      });
 
     if (remainingRequests < 1000) {
       return;
@@ -75,9 +76,7 @@ bounties.withPromise().then(async (bountyPaths) => {
       })
       .then((response) => {
         if (JSON.stringify(response.data) === JSON.stringify({})) {
-          vulnerabilityDetails.Repository.Codebase = [
-            "Other"
-          ];
+          vulnerabilityDetails.Repository.Codebase = ["Other"];
         } else {
           vulnerabilityDetails.Repository.Codebase = [
             Object.keys(response.data)[0],
