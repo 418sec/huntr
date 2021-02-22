@@ -6,7 +6,7 @@ Yaml.load was exploitable to Arbitrary Code Execution
 * run the exploit code
 ```
 import os
-# installation
+# installation 
 os.system("pip install altair vega_datasets")
 #
 import altair._magics as magics
