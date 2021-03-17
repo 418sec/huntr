@@ -7,7 +7,7 @@ Possibly leading to many kinds of attacks such as the denial-of-service, checkin
 
 ## PoC
 Run the PoC.js with the contents below:
-
+```javascript
 //PoC.js
 
 var cli = require('cli-tableau');
@@ -22,3 +22,4 @@ cli(JSON.parse(payload));
 console.log('After:', {}.polluted);
 
 //end of PoC.js
+```
