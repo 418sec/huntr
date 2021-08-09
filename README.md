@@ -36,14 +36,6 @@
 </p>
 <br />
 <p align="center"><a href="https://huntr.dev" target="_blank"><b>Visit the platform</b></a> or continue reading...</p>
-<p align="center">
-<a href="https://huntr.dev" target="_blank"><img src="img/bounties.png" width="350"></a>
-<a href="https://huntr.dev" target="_blank"><img src="img/bounty.png" width="350"></a>
-</p>
-<p align="center">
-<a href="https://huntr.dev" target="_blank"><img src="img/comments.png" width="350"></a>
-<a href="https://huntr.dev" target="_blank"><img src="img/user.png" width="351"></a>
-</p>
 <hr />
 
 ## About
