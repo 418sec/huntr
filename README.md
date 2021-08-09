@@ -12,7 +12,7 @@
 <b><a href="https://huntr.dev/" _target="blank">huntr.dev</a> - the place to protect open source</b>
 </p>
 <p align="center">
-<code style="font-size:12px;background-color:black;">Get recognised for protecting millions of developers</code>
+<code style="font-size:12px;background-color:black;">Get paid to find & fix security vulnerabilities in open source software and be recognised for protecting the world.</code>
 </p>
 <br />
 <p align="center">
