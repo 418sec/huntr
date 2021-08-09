@@ -44,10 +44,6 @@
 
 <a href="https://huntr.dev"><b>huntr</b></a> is a bug bounty platform developed by <a href="https://418sec.com"><b>418sec</b></a>. We provide the open source community a way to learn and master open source security with real world practice on packages being utilised by millions of developers and services around the world.
 
-This repository is an _open_ and _freely_ available database for all of the disclosures we have received from the open source community. We display these disclosures on our platform for you to learn about, attempt a fix and discuss with others.
-
-You already have what it takes. Keep reading to learn more on how to disclose a vulnerability, submit a fix and share your opinions with us.
-
 _If you want to do a bit more reading around the platform and our mission, take a look at_:
 
 - [Our Blog](https://huntr.dev/blog)
