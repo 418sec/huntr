@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://huntr.dev/" target="_blank"><img src="/img/landing.png"></a>
+<a href="https://huntr.dev/" target="_blank"><img src="/img/landing_image.png"></a>
 </p>
 <p align="center">
 <hr />
