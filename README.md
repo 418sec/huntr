@@ -30,10 +30,8 @@
 </p>
 <p align="center">
 	<strong>
-    •
 		<a href="https://github.com/418sec/huntr/issues/new">Report a bug</a>
 		•
 		<a href="https://github.com/418sec/huntr/issues/new">Create a feature request</a>
-		•
 	</strong>
 </p>
